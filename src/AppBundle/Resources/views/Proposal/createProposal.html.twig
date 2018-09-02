@@ -1,29 +1,29 @@
-{% extends 'AppBundle::layout.html.twig' %}
+{#{% extends 'AppBundle::layout.html.twig' %}#}
 
-{% block styles %}
-    {{ parent() }}
-    <style>
-        .glyphicon {
-            position: relative;
-            top: 1px;
-            display: inline-block;
-            font-family: 'Glyphicons Halflings';
-            font-style: normal;
-            font-weight: 400;
-            line-height: 1;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-    </style>
-    {% stylesheets
-        'css/bootstrap-datetimepicker.min.css'
-        filter='cssrewrite' output='css/compiled/app.css' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-    <link rel="stylesheet" href="{{ asset('../css/bootstrap-datetimepicker.min.css') }}" />
+{#{% block styles %}#}
+    {#{{ parent() }}#}
+    {#<style>#}
+        {#.glyphicon {#}
+            {#position: relative;#}
+            {#top: 1px;#}
+            {#display: inline-block;#}
+            {#font-family: 'Glyphicons Halflings';#}
+            {#font-style: normal;#}
+            {#font-weight: 400;#}
+            {#line-height: 1;#}
+            {#-webkit-font-smoothing: antialiased;#}
+            {#-moz-osx-font-smoothing: grayscale;#}
+        {#}#}
+    {#</style>#}
+    {#{% stylesheets#}
+        {#'css/bootstrap-datetimepicker.min.css'#}
+        {#filter='cssrewrite' output='css/compiled/app.css' %}#}
+        {#<link rel="stylesheet" href="{{ asset_url }}" />#}
+    {#{% endstylesheets %}#}
+    {#<link rel="stylesheet" href="{{ asset('../css/bootstrap-datetimepicker.min.css') }}" />#}
     {#<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />#}
 
-{% endblock %}
+{#{% endblock %}#}
 
 
 {% block content %}
