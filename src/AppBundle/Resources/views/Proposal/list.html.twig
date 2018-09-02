@@ -152,14 +152,14 @@
             {% for calculator in proposal.calculator %}
                 {% set num = num + 1 %}
                 {% set coste = coste + calculator.costeFinanciero.coste %}
-                {% set costeT =  calculator.costeTotal.coste %}
+                {% set costeT =  calculator.costeTotal.coste + costeT %}
                 {% set honorarios = honorarios + calculator.honorarios %}
 
-                {% set dias = calculator.dias  %}
-                {% set taeCF = calculator.costeFinanciero.tae %}
-                {% set taeCL = calculator.costeFinancieroLedser.tae %}
+                {% set dias = calculator.dias + dias %}
+                {% set taeCF = calculator.costeFinanciero.tae + taeCF %}
+                {% set taeCL = calculator.costeFinancieroLedser.tae + taeCL %}
                 {% set taeT = calculator.costeTotal.tae %}
-                {% set nominal = calculator.nominal %}
+                {% set nominal = calculator.nominal + nominal %}
             {% endfor %}
             {% set costeTTotal = costeTTotal + costeT %}
             {% set honorariosTotal = honorarios + honorariosTotal %}
