@@ -73,6 +73,7 @@ class ProposalController extends Controller
             $em->flush();
             return $this->redirect("create-calculator/". $proposal->getId());
         }
+        dump($form->createView());die;
         return $this->render('AppBundle:Proposal:createProposal.html.twig', ['form' => $form->createView()]);
     }
     /**
