@@ -24,6 +24,13 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @var Contact
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Proposal",cascade={"remove"}, mappedBy="user")
+     */
+    protected $proposal;
+
     public function __construct()
     {
         parent::__construct();
