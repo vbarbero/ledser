@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityRepository;
 
 class CalculatorRepository extends EntityRepository
 {
-    public function getReportToCalendar($user, $from, $to)
+    public function getReportToCalendar($from, $to)
     {
         $qb = $this->createQueryBuilder('c');
         $qb->where(

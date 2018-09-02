@@ -85,7 +85,7 @@ class ReportController extends Controller
         $beforeMonth->modify("-1 month");
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        $reports = $this->getDoctrine()->getRepository(Report::class)->getItemsByFilters($user, $thisMonth, $nextMonth);
+        $reports = $this->getDoctrine()->getRepository(Report::class)->getReportToCalendar($user, $thisMonth, $nextMonth);
         $calculators = $this->getDoctrine()->getRepository(Calculator::class)->getReportToCalendar($thisMonth, $nextMonth);
 
         return $this->render('AppBundle:Report:calendar.html.twig',
