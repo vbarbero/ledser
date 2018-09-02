@@ -131,9 +131,8 @@ class Proposal extends BaseEntity
     }
 
     /**
-     * @return Company
      */
-    public function getDrawee(): Company
+    public function getDrawee()
     {
         return $this->drawee;
     }
