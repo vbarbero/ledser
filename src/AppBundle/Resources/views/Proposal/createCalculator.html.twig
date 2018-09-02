@@ -381,7 +381,7 @@
                 );
                 $("#calculator_costeFinancieroLedser_tae").val(parseFloat($("#calculator_costeFinancieroLedser_total").val() / $("#calculator_dias").val() * 360).toFixed(2));
                 $("#calculator_costeFinancieroLedser_mensual").val(parseFloat($("#calculator_costeFinancieroLedser_tae").val() / 12).toFixed(2));
-                $("#calculator_costeFinancieroLedser_retencion").val(retencion);
+                $("#calculator_costeFinancieroLedser_retencion").val(nominal * retencion / 100);
                 $("#calculator_costeTotal_retencion").val(retencion);
                 $("#calculator_costeFinancieroLedser_nominal").val($("#calculator_costeFinanciero_nominal").val());
                 $("#calculator_costeTotal_nominal").val($("#calculator_costeFinanciero_nominal").val());
@@ -391,14 +391,14 @@
                     parseFloat($("#calculator_omf").val()) + parseFloat($("#calculator_mensajeria").val()) + parseFloat($("#calculator_burofax").val()) + parseFloat($("#calculator_gastos").val()));
                 $("#calculator_costeFinancieroLedser_liquido").val($("#calculator_costeFinancieroLedser_nominal").val() - $("#calculator_costeFinancieroLedser_coste").val());
                 $("#calculator_costeTotal_liquido").val($("#calculator_costeTotal_nominal").val() - $("#calculator_costeTotal_coste").val());
-                $("#calculator_costeFinancieroLedser_retencionTotal").val(nominal * retencion);
-                $("#calculator_costeTotal_retencionTotal").val(nominal * retencion);
+                $("#calculator_costeFinancieroLedser_retencionTotal").val(nominal * retencion / 100);
+                $("#calculator_costeTotal_retencionTotal").val(nominal * retencion / 100);
 
                 $("#calculator_costeTotal_total").val(parseFloat((parseFloat($("#calculator_costeFinanciero_coste").val()) + parseFloat($("#calculator_honorarios").val()) + parseFloat($("#calculator_timbres").val()) +
-                    parseFloat($("#calculator_omf").val()) + parseFloat($("#calculator_mensajeria").val()) + parseFloat($("#calculator_burofax").val()) + parseFloat($("#calculator_gastos").val())) / $("#calculator_costeFinanciero_nominal").val() * 100));
+                    parseFloat($("#calculator_omf").val()) + parseFloat($("#calculator_mensajeria").val()) + parseFloat($("#calculator_burofax").val()) + parseFloat($("#calculator_gastos").val())) / $("#calculator_costeFinanciero_nominal").val() * 100).toFixed(2));
 
-                $("#calculator_costeTotal_tae").val(parseFloat($("#calculator_costeTotal_total").val() / $("#calculator_dias").val() * 360));
-                $("#calculator_costeTotal_mensual").val(parseFloat($("#calculator_costeTotal_tae").val() / 12));
+                $("#calculator_costeTotal_tae").val(parseFloat($("#calculator_costeTotal_total").val() / $("#calculator_dias").val() * 360).toFixed(2));
+                $("#calculator_costeTotal_mensual").val(parseFloat($("#calculator_costeTotal_tae").val() / 12).toFixed(2));
             }
         }
     </script>
