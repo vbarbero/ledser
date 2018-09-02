@@ -103,9 +103,9 @@
         <td>Type</td>
         <td>Nominal</td>
         <td>Date diff</td>
-        <td>Tae coste financiero</td>
-        <td>Tae coste + ledser</td>
-        <td>Tae coste total</td>
+        <td>Tae coste financiero (coste)</td>
+        <td>Tae coste + ledser (honorarios)</td>
+        <td>Tae coste total (coste)</td>
         {#<div class="col">Tipo operacion</div>#}
         <td>Acción</td>
         </tr>
@@ -149,7 +149,7 @@
                 {% set num = num + 1 %}
                 {% set coste = coste + calculator.costeFinanciero.coste %}
                 {% set costeTotal = costeTotal + coste %}
-                {% set costeT = coste + calculator.costeTotal.coste %}
+                {% set costeT =  calculator.costeTotal.coste %}
                 {% set costeTTotal = costeTTotal + costeT %}
                 {% set honorarios = honorarios + calculator.honorarios %}
                 {% set honorariosTotal = honorarios + honorariosTotal %}
