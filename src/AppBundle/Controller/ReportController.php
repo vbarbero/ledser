@@ -78,6 +78,14 @@ class ReportController extends Controller
         $nextMonth->modify("+1 month");
         $beforeMonth = clone $thisMonth;
         $beforeMonth->modify("-1 month");
+        dump([
+            'days_in_month' => $days_in_month,
+            'running_day' => $running_day,
+            'today' => $today,
+            'nextMonth' => $nextMonth,
+            'beforeMonth' => $beforeMonth,
+            'thisMonth' => $thisMonth
+        ]);die;
 
         return $this->render('AppBundle:Report:calendar.html.twig',
             [
