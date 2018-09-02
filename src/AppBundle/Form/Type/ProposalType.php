@@ -21,7 +21,12 @@ class ProposalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('company', EntityType::class, ['class' => Company::class, 'choice_label' => 'name']);
-        $builder->add('finalcial', EntityType::class, ['class' => Company::class, 'choice_label' => 'name']);
+        $builder->add('finalcial', EntityType::class, [
+            'class' => Company::class,
+            'property' => 'name',
+            'query_builder' => function( CompanyRepository $er ) {
+                   return $er->getFinantial();
+            }]);
         $builder->add('drawee', EntityType::class, ['class' => Company::class, 'choice_label' => 'name']);
         $builder->add('state', ChoiceType::class, ['choices' => ProposalModel::getStateAsChoice()]);
         $builder->add('operationalType',ChoiceType::class, ['choices' => ProposalModel::getOperationalTypeAsChoice()]);
