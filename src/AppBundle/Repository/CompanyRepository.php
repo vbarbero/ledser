@@ -33,7 +33,7 @@ class CompanyRepository extends EntityRepository
         $qb->where(
                 $qb->expr()->neq('c.type', ":type_drawee")
             );
-        $qb->where(
+        $qb->andWhere(
                 $qb->expr()->neq('c.type', ":type_finantial")
             );
         $qb->setParameter('type_drawee', CompanyModel::DRAWEE);
