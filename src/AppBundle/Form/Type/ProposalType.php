@@ -23,7 +23,7 @@ class ProposalType extends AbstractType
         $builder->add('company', EntityType::class, ['class' => Company::class, 'choice_label' => 'name']);
         $builder->add('finalcial', EntityType::class, [
             'class' => Company::class,
-            'property' => 'name',
+            //'property' => 'name',
             'query_builder' => function( CompanyRepository $er ) {
                    return $er->getFinantial();
             }]);
