@@ -94,7 +94,9 @@
         {#<div class="w-100"></div>#}
         <tr>
         <td>Proposal From / Proposal To</td>
+        <td>User</td>
         <td>company</td>
+        <td>Finalcial</td>
         <td>Drawee</td>
         <td>state</td>
         <td>Rating</td>
@@ -117,7 +119,9 @@
 			<span style="display: block">{{ calculator.vencimiento   | date("Y-m-d") }}</span>
 		</div>
 		{%endfor %}
+            <td>{{ proposal.user.email  }}</td>
             <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
+            <td>{{ proposal.finalcial.name  }}</td>
             <td>{{ proposal.drawee.name  }}</td>
             <td>{{ proposal.state | proposal_status }}{%if (proposal.state == 5)%} {{proposal.reason}}{%endif%}</td>
             <td>{{ proposal.rating }}</td>
@@ -126,29 +130,59 @@
             {#<td>{{ proposal.type | proposal_type }}</td>#}
 
             {% set num = 0 %}
+            {% set coste = 0 %}
+            {% set costeTotal = 0 %}
+            {% set costeT = 0 %}
+            {% set costeTTotal = 0 %}
+            {% set honorarios = 0 %}
+            {% set honorariosTotal = 0 %}
             {% set nominal = 0 %}
             {% set dias = 0 %}
             {% set taeCF = 0 %}
             {% set taeCL = 0 %}
-	    {% set taeT = 0 %}
+            {% set taeT = 0 %}
+            {% set taeCFT = 0 %}
+            {% set taeCLT = 0 %}
+	        {% set taeTT = 0 %}
+	        {% set nominalT = 0 %}
             {% for calculator in proposal.calculator %}
                 {% set num = num + 1 %}
+                {% set coste = coste + calculator.costeFinanciero.coste %}
+                {% set costeTotal = costeTotal + coste %}
+                {% set costeT = coste + calculator.costeTotal.coste %}
+                {% set costeTTotal = costeTTotal + costeT %}
+                {% set honorarios = honorarios + calculator.honorarios %}
+                {% set honorariosTotal = honorarios + honorariosTotal %}
+
                 {% set dias = calculator.dias %}
                 {% set taeCF = calculator.costeFinanciero.tae %}
                 {% set taeCL = calculator.costeFinancieroLedser.tae %}
                 {% set taeT = calculator.costeTotal.tae %}
                 {% set nominal = calculator.nominal %}
+                {% set nominalT = nominalT + nominal %}
+                {% set taeCFT = taeCFT + taeCF %}
+                {% set taeCLT = taeCLT + taeCL %}
+                {% set taeTT = taeTT + taeT %}
             {% endfor %}
-            <td>{% if num == 0 %}0{% else %}{{ (nominal / num)|number_format(2) }}{% endif %}</td>
+            <td>{% if num == 0 %}0(0){% else %}{{ (nominal / num)|number_format(2) }}{% endif %}</td>
             <td>{% if num == 0 %}0{% else %}{{ (dias/num)|number_format(0) }}{% endif %}</td>
-            <td>{% if num == 0 %}0{% else %}{{ (taeCF/num)|number_format(2) }}{% endif %}</td>
-            <td>{% if num == 0 %}0{% else %}{{ (taeCL/num)|number_format(2) }}{% endif %}</td>
-            <td>{% if num == 0 %}0{% else %}{{ (taeT/num)|number_format(2) }}{% endif %}</td>
+            <td>{% if num == 0 %}0{% else %}{{ (taeCF/num)|number_format(2) }}({{ (coste/ num)|number_format(2) }}){% endif %}</td>
+            <td>{% if num == 0 %}0{% else %}{{ (taeCL/num)|number_format(2) }}({{ (honorarios/ num)|number_format(2) }}){% endif %}</td>
+            <td>{% if num == 0 %}0{% else %}{{ (taeT/num)|number_format(2) }}({{ (costeT/ num)|number_format(2) }}){% endif %}</td>
             <td>
                 <a href="{{ url('create_calculator', {proposal:proposal.id}) }}">Añadir calculadora</a>
                 <a href="{{ url('edit_proposal' , {proposal:proposal.id}) }}">Edit</a>
 		<a class="delete" data-href="{{ url('delete_proposal' , {proposal:proposal.id}) }}">Delete</a>
             </td>
+        </tr>
+        <tr>
+            <td>TOTAL</td>
+            <td col="7"></td>
+            <td>{{ (nominalT)|number_format(2) }}</td>
+            <td></td>
+            <td>{{ (taeCFT)|number_format(2) }} ({{ (costeTotal |number_format(2) }})</td>
+            <td>{{ (taeCLT)|number_format(2) }} ({{ (honorariosTotal)|number_format(2) }})</td>
+            <td>{{ (taeTT)|number_format(2) }} ({{ (costeTTotal)|number_format(2) }})</td>
         </tr>
     {% endfor %}
 
