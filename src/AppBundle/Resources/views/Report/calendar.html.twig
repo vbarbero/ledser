@@ -16,6 +16,8 @@
     </style>
 {% endblock %}
 {% block content %}
+    {{ today| date("Y-m-d") }}/
+    {{ thisMonth| date("Y-m-d") }}
     <table cellpadding="0" cellspacing="0" class="calendar">
         <tr class="calendar-row">
             <td>
