@@ -118,7 +118,7 @@
 		</div>
 		{%endfor %}
             <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
-            <td>{{ proposal.drawee  }}</td>
+            <td>{{ proposal.drawee.name  }}</td>
             <td>{{ proposal.state | proposal_status }}{%if (proposal.state == 5)%} {{proposal.reason}}{%endif%}</td>
             <td>{{ proposal.rating }}</td>
             <td>{{ proposal.operationalType  }}</td>
