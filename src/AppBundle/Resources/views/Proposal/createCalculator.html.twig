@@ -336,7 +336,7 @@
 
                 var nominal = parseFloat($("#calculator_nominal").val().replace(",", "."));
                 var retencion = parseFloat($("#calculator_costeFinanciero_retencion").val().replace(",", "."));
-                $("#calculator_costeFinanciero_nominal").val(nominal - (nominal * retencion));
+                $("#calculator_costeFinanciero_nominal").val(nominal - (nominal * (retencion/100)));
                 var tae, total, mensual, coste = 0.0;
                 if ('total' == $("#calculator_introduce").val()) {
                     total = $("#calculator_costeFinanciero_total").val();
