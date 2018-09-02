@@ -171,7 +171,7 @@ class Proposal extends BaseEntity
     /**
      * @return User
      */
-    public function getUser(): User
+    public function getUser()
     {
         return $this->user;
     }
