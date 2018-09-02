@@ -24,11 +24,15 @@ class ProposalType extends AbstractType
         $builder->add('finalcial', EntityType::class, [
             'class' => Company::class,
             'choice_label' => 'name',
-            //'property' => 'name',
             'query_builder' => function( CompanyRepository $er ) {
                    return $er->getFinantial();
             }]);
-        $builder->add('drawee', EntityType::class, ['class' => Company::class, 'choice_label' => 'name']);
+        $builder->add('drawee', EntityType::class, [
+            'class' => Company::class,
+            'choice_label' => 'name',
+            'query_builder' => function( CompanyRepository $er ) {
+                return $er->getDrawee();
+            }]);
         $builder->add('state', ChoiceType::class, ['choices' => ProposalModel::getStateAsChoice()]);
         $builder->add('operationalType',ChoiceType::class, ['choices' => ProposalModel::getOperationalTypeAsChoice()]);
         $builder->add('rating', ChoiceType::class, ['choices' => ProposalModel::getRatingAsChoice()]);

@@ -25,7 +25,7 @@ class CompanyRepository extends EntityRepository
             );
         $qb->setParameter('type', CompanyModel::DRAWEE);
         $qb->orderBy('c.name', 'ASC');
-        return $qb->getQuery();
+        return $qb;
     }
 }
 
