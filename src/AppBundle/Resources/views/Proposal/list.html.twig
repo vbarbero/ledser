@@ -166,9 +166,9 @@
             {% endfor %}
             <td>{% if num == 0 %}0(0){% else %}{{ (nominal / num)|number_format(2) }}{% endif %}</td>
             <td>{% if num == 0 %}0{% else %}{{ (dias/num)|number_format(0) }}{% endif %}</td>
-            <td>{% if num == 0 %}0{% else %}{{ (taeCF/num)|number_format(2) }}({{ (coste/ num)|number_format(2) }}){% endif %}</td>
-            <td>{% if num == 0 %}0{% else %}{{ (taeCL/num)|number_format(2) }}({{ (honorarios/ num)|number_format(2) }}){% endif %}</td>
-            <td>{% if num == 0 %}0{% else %}{{ (taeT/num)|number_format(2) }}({{ (costeT/ num)|number_format(2) }}){% endif %}</td>
+            <td>{% if num == 0 %}0{% else %}{{ (taeCF/num)|number_format(2) }} <br/>({{ (coste/ num)|number_format(2) }}){% endif %}</td>
+            <td>{% if num == 0 %}0{% else %}{{ (taeCL/num)|number_format(2) }}<br/>({{ (honorarios/ num)|number_format(2) }}){% endif %}</td>
+            <td>{% if num == 0 %}0{% else %}{{ (taeT/num)|number_format(2) }}<br/>({{ (costeT/ num)|number_format(2) }}){% endif %}</td>
             <td>
                 <a href="{{ url('create_calculator', {proposal:proposal.id}) }}">Añadir calculadora</a>
                 <a href="{{ url('edit_proposal' , {proposal:proposal.id}) }}">Edit</a>
