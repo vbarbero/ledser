@@ -358,7 +358,7 @@
                 }
                 else if ('coste' == $("#calculator_introduce").val()) {
                     coste = $("#calculator_costeFinanciero_coste").val();
-                    total = coste / nominal;
+                    total = coste / nominal * 100;
                     tae = total / $("#calculator_dias").val() * 360;
                     mensual = total / $("#calculator_dias").val() * 30;
                     //coste = $("#calculator_costeFinanciero_nominal").val() * total / 100;
