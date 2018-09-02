@@ -44,7 +44,7 @@
                     <a href="{{ url('report_list') }}?dayForm={{ day }}-{{ thisMonth|date('m') }}-{{ thisMonth|date('Y') }}&dayTo={{ day }}-{{ thisMonth|date('m') }}-{{ thisMonth|date('Y') }}"><div class="day-number">{{ day }}</div><p> </p></a>
                     {% if calculators[day] is defined %}
                         {% for calculator in calculators[day] %}
-                            <a href="{{ url('show_proposal', {id : calculator.getProposal.id }) }}"> <span >Proposal</span></a>
+                            <a href="{{ url('show_proposal', {id : calculator.getProposal.id }) }}"> <span >{{ calculator.getProposal.operationalType }}</span></a>
                         {% endfor %}
                     {% endif %}
                     {% if reports[day] is defined %}
