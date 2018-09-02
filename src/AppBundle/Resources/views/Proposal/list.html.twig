@@ -121,6 +121,7 @@
 			<span style="display: block">{{ calculator.vencimiento   | date("Y-m-d") }}</span>
 		</div>
 		{%endfor %}
+            </td>
             <td>{{ proposal.user  }}</td>
             <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
             <td>{{ proposal.finalcial.name  }}</td>
