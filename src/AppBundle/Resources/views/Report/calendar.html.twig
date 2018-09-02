@@ -42,7 +42,7 @@
             {% endfor %}
 
             {% for day in 1..days_in_month %}
-                <td class="calendar-day" {% if today|date("Y-m-d") == thisMonth|date("Y-m-") ~ day %}style="background-color: aqua" {% endif %}>
+                <td class="calendar-day" {% if today|date("Y-m-j") == thisMonth|date("Y-m-") ~ day %}style="background-color: aqua" {% endif %}>
                     <a href="{{ url('report_list') }}?dayForm={{ day }}-{{ thisMonth|date('m') }}-{{ thisMonth|date('Y') }}&dayTo={{ day }}-{{ thisMonth|date('m') }}-{{ thisMonth|date('Y') }}"><div class="day-number">{{ day }}</div><p> </p></a></td>
                 {% set day_of_week = day_of_week +1 %}
 
