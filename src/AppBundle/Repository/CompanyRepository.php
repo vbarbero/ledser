@@ -15,7 +15,7 @@ class CompanyRepository extends EntityRepository
             );
         $qb->setParameter('type', CompanyModel::FINANTIAL);
         $qb->orderBy('c.name', 'ASC');
-        return $qb->getQuery();
+        return $qb;
     }
     public function getDrawee()
     {
