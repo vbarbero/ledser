@@ -91,18 +91,12 @@
         </div>
     </div>
 
-    {% set coste = 0 %}
+
+
     {% set costeTotal = 0 %}
-    {% set costeT = 0 %}
     {% set costeTTotal = 0 %}
-    {% set honorarios = 0 %}
     {% set honorariosTotal = 0 %}
-    {% set nominal = 0 %}
-    {% set dias = 0 %}
     {% set diasT = 0 %}
-    {% set taeCF = 0 %}
-    {% set taeCL = 0 %}
-    {% set taeT = 0 %}
     {% set taeCFT = 0 %}
     {% set taeCLT = 0 %}
     {% set taeTT = 0 %}
@@ -147,6 +141,14 @@
             <td>{{ proposal.state | proposal_status }}{%if (proposal.state == 5)%} {{proposal.reason}}{%endif%}</td>
             <td>{{ proposal.rating }}</td>
             <td>{{ proposal.operationalType  }}</td>
+            {% set coste = 0 %}
+            {% set costeT = 0 %}
+            {% set honorarios = 0 %}
+            {% set nominal = 0 %}
+            {% set dias = 0 %}
+            {% set taeCF = 0 %}
+            {% set taeCL = 0 %}
+            {% set taeT = 0 %}
 
             {% set num = 0 %}
             {% for calculator in proposal.calculator %}
