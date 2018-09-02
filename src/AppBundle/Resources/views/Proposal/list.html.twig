@@ -99,6 +99,7 @@
     {% set honorariosTotal = 0 %}
     {% set nominal = 0 %}
     {% set dias = 0 %}
+    {% set diasT = 0 %}
     {% set taeCF = 0 %}
     {% set taeCL = 0 %}
     {% set taeT = 0 %}
@@ -106,25 +107,26 @@
     {% set taeCLT = 0 %}
     {% set taeTT = 0 %}
     {% set nominalT = 0 %}
+
     <table class="table bg-dark text-light">
         {#<div class="w-100"></div>#}
         <tr>
             <td>id</td>
             <td>Proposal From / Proposal To</td>
             <td>User</td>
-        <td>company</td>
-        <td>Finalcial</td>
-        <td>Drawee</td>
-        <td>state</td>
-        <td>Rating</td>
-        <td>Type</td>
-        <td>Nominal</td>
-        <td>Date diff</td>
-        <td>Tae coste financiero (coste)</td>
-        <td>Tae coste + ledser (honorarios)</td>
-        <td>Tae coste total (coste)</td>
-        {#<div class="col">Tipo operacion</div>#}
-        <td>Acción</td>
+            <td>company</td>
+            <td>Finalcial</td>
+            <td>Drawee</td>
+            <td>state</td>
+            <td>Rating</td>
+            <td>Type</td>
+            <td>Nominal</td>
+            <td>Date diff</td>
+            <td>Tae coste financiero (coste)</td>
+            <td>Tae coste + ledser (honorarios)</td>
+            <td>Tae coste total (coste)</td>
+            {#<div class="col">Tipo operacion</div>#}
+            <td>Acción</td>
         </tr>
 
     {% for proposal in proposals %}
@@ -150,22 +152,23 @@
             {% for calculator in proposal.calculator %}
                 {% set num = num + 1 %}
                 {% set coste = coste + calculator.costeFinanciero.coste %}
-                {% set costeTotal = costeTotal + coste %}
                 {% set costeT =  calculator.costeTotal.coste %}
-                {% set costeTTotal = costeTTotal + costeT %}
                 {% set honorarios = honorarios + calculator.honorarios %}
-                {% set honorariosTotal = honorarios + honorariosTotal %}
 
                 {% set dias = calculator.dias %}
                 {% set taeCF = calculator.costeFinanciero.tae %}
                 {% set taeCL = calculator.costeFinancieroLedser.tae %}
                 {% set taeT = calculator.costeTotal.tae %}
                 {% set nominal = calculator.nominal %}
-                {% set nominalT = nominalT + nominal %}
-                {% set taeCFT = taeCFT + taeCF %}
-                {% set taeCLT = taeCLT + taeCL %}
-                {% set taeTT = taeTT + taeT %}
             {% endfor %}
+            {% set costeTTotal = costeTTotal + costeT %}
+            {% set honorariosTotal = honorarios + honorariosTotal %}
+            {% set costeTotal = costeTotal + coste %}
+            {% set diasT = diasT + dias %}
+            {% set nominalT = nominalT + nominal %}
+            {% set taeCFT = taeCFT + taeCF %}
+            {% set taeCLT = taeCLT + taeCL %}
+            {% set taeTT = taeTT + taeT %}
             <td>{% if num == 0 %}0(0){% else %}{{ (nominal / num)|number_format(2) }}{% endif %}</td>
             <td>{% if num == 0 %}0{% else %}{{ (dias/num)|number_format(0) }}{% endif %}</td>
             <td>{% if num == 0 %}0{% else %}{{ (taeCF/num)|number_format(2) }} <br/>({{ (coste/ num)|number_format(2) }}){% endif %}</td>
@@ -183,7 +186,7 @@
             <td>TOTAL</td>
             <td colspan="7"></td>
             <td>{{ (nominalT)|number_format(2) }}</td>
-            <td></td>
+            <td>{{ (diasT / num)|number_format(2) }}</td>
             <td>{{ (taeCFT / num)|number_format(2) }} ({{ costeTotal |number_format(2) }})</td>
             <td>{{ (taeCLT / num)|number_format(2) }} ({{ (honorariosTotal)|number_format(2) }})</td>
             <td>{{ (taeTT / num)|number_format(2) }} ({{ (costeTTotal)|number_format(2) }})</td>
