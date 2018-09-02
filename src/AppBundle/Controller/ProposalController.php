@@ -63,6 +63,9 @@ class ProposalController extends Controller
     public function createProposalAction(Request $request)
     {
         $proposal = new Proposal();
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $proposal->setUser($user);
         $form = $this->createForm(ProposalType::class, $proposal);
 
         $form->handleRequest($request);

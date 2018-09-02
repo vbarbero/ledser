@@ -4,6 +4,7 @@ namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Proposal;
+use AppBundle\Entity\User;
 use AppBundle\Model\ProposalModel;
 use AppBundle\Repository\CompanyRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -23,6 +24,7 @@ class ProposalType extends AbstractType
         $builder->add('company', EntityType::class, ['class' => Company::class, 'choice_label' => 'name', 'query_builder' => function( CompanyRepository $er ) {
             return $er->getCompany();
         }]);
+        $builder->add('user', EntityType::class, ['class' => User::class, 'choice_label' => 'name']);
         $builder->add('finalcial', EntityType::class, [
             'class' => Company::class,
             'choice_label' => 'name',

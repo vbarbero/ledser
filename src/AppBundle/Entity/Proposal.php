@@ -19,6 +19,13 @@ class Proposal extends BaseEntity
     private $company;
 
     /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="proposal")
+     */
+    private $user;
+
+    /**
      * @var int
      *
      * @ORM\Column(type="integer")
@@ -159,6 +166,22 @@ class Proposal extends BaseEntity
     public function setRating($rating)
     {
         $this->rating = $rating;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
     }
 
     /**
