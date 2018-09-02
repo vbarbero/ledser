@@ -93,8 +93,9 @@
     <table class="table bg-dark text-light">
         {#<div class="w-100"></div>#}
         <tr>
-        <td>Proposal From / Proposal To</td>
-        <td>User</td>
+            <td>id</td>
+            <td>Proposal From / Proposal To</td>
+            <td>User</td>
         <td>company</td>
         <td>Finalcial</td>
         <td>Drawee</td>
@@ -112,6 +113,7 @@
 
     {% for proposal in proposals %}
         <tr class=" {% if loop.index is odd %}bg-secondary{% endif %}">
+            <td>{{ proposal.id  }}</td>
             <td>
 		{% for calculator in proposal.calculator %}
 		<div style="display: block">
