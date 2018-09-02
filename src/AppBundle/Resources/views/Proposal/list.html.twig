@@ -178,6 +178,8 @@
 		<a class="delete" data-href="{{ url('delete_proposal' , {proposal:proposal.id}) }}">Delete</a>
             </td>
         </tr>
+    {% endfor %}
+
         <tr>
             <td>TOTAL</td>
             <td col="7"></td>
@@ -187,8 +189,6 @@
             <td>{{ (taeCLT)|number_format(2) }} ({{ (honorariosTotal)|number_format(2) }})</td>
             <td>{{ (taeTT)|number_format(2) }} ({{ (costeTTotal)|number_format(2) }})</td>
         </tr>
-    {% endfor %}
-
     </table>
 {% endblock %}
 
