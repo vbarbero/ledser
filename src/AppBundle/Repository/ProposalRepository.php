@@ -50,7 +50,10 @@ class ProposalRepository extends EntityRepository
             );
             $qb->setParameter('operationalType', $proposalFilterModel->getOperationalType());
         }
-	$qb->orderBy('c.formalizacion', 'ASC');
+	    $qb->orderBy('c.formalizacion', 'ASC');
         return $qb->getQuery()->getResult();
     }
+
+
+
 }

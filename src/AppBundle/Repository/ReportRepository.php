@@ -125,4 +125,26 @@ class ReportRepository extends EntityRepository
         }
         return $qb->getQuery()->getResult();
     }
+
+    public function getReportToCalendar($user, $from, $to)
+    {
+        $qb = $this->createQueryBuilder('r');
+        $qb->where(
+            $qb->expr()->between('r.date', ':date_init', ':date_fin')
+        );
+        $qb->andWhere(
+            $qb->expr()->eq('r.user', ":user")
+        );
+        $qb->setParameter('user', $user);
+        $to->mofify("-1 seconds");
+        $qb->setParameter('date_init', $from->format("Y-m-d H:i:s"));
+        $qb->setParameter('date_fin', $to->format("Y-m-d H:i:s"));
+        $reports = [];
+        /** @var Report $report */
+        foreach ($qb->getQuery()->getResult() as $report)
+        {
+            $reports[$report->getDate()->format('j')][] = $report;
+        }
+        return $reports;
+    }
 }

@@ -2,12 +2,15 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Calculator;
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Contact;
+use AppBundle\Entity\Proposal;
 use AppBundle\Entity\Report;
 use AppBundle\Form\Model\CalendarFilterModel;
 use AppBundle\Form\Type\CalendarFilterType;
 use AppBundle\Form\Type\ReportType;
+use AppBundle\Repository\CalculatorRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -73,19 +76,17 @@ class ReportController extends Controller
         $days_in_month = date('t',mktime(0,0,0,$month,1,$year));
         $thisMonth = new \DateTime();
         $thisMonth->setDate($year,$month, 1);
+        $thisMonth->setTime(0,0,0);
         $today = new \DateTime();
         $nextMonth = clone $thisMonth;
         $nextMonth->modify("+1 month");
+        $nextMonth->setTime(0,0,0);
         $beforeMonth = clone $thisMonth;
         $beforeMonth->modify("-1 month");
-        dump([
-            'days_in_month' => $days_in_month,
-            'running_day' => $running_day,
-            'today' => $today,
-            'nextMonth' => $nextMonth,
-            'beforeMonth' => $beforeMonth,
-            'thisMonth' => $thisMonth
-        ]);die;
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $reports = $this->getDoctrine()->getRepository(Report::class)->getItemsByFilters($user, $thisMonth, $nextMonth);
+        $calculators = $this->getDoctrine()->getRepository(Calculator::class)->getReportToCalendar($thisMonth, $nextMonth);
 
         return $this->render('AppBundle:Report:calendar.html.twig',
             [
@@ -94,7 +95,9 @@ class ReportController extends Controller
                 'today' => $today,
                 'nextMonth' => $nextMonth,
                 'beforeMonth' => $beforeMonth,
-                'thisMonth' => $thisMonth
+                'thisMonth' => $thisMonth,
+                'reports' => $reports,
+                'calculators' => $calculators
             ]);
     }
 
