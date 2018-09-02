@@ -352,8 +352,8 @@
                 }
                 else if ('mensual' == $("#calculator_introduce").val()) {
                     mensual = $("#calculator_costeFinanciero_mensual").val();
-                    total = mensual * 12;
-                    tae = mensual * ($("#calculator_dias").val() / 30);
+                    total = mensual * ($("#calculator_dias").val() / 30);
+                    tae = mensual * 12;
                     coste = $("#calculator_costeFinanciero_nominal").val() * total / 100;
                 }
                 else if ('coste' == $("#calculator_introduce").val()) {
