@@ -32,7 +32,7 @@ class ProposalController extends Controller
         } else {
             $dateFrom = new \DateTime();
             $dateFrom->setTime(0,0,0);
-            $dateFrom->modify("first day of this month");
+            $dateFrom->modify("-30 days");
         }
         $proposalModel->setFrom($dateFrom);
         if($request->query->get('to'))
