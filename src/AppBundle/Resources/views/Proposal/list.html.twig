@@ -184,9 +184,9 @@
             <td colspan="7"></td>
             <td>{{ (nominalT)|number_format(2) }}</td>
             <td></td>
-            <td>{{ (taeCFT)|number_format(2) }} ({{ costeTotal |number_format(2) }})</td>
-            <td>{{ (taeCLT)|number_format(2) }} ({{ (honorariosTotal)|number_format(2) }})</td>
-            <td>{{ (taeTT)|number_format(2) }} ({{ (costeTTotal)|number_format(2) }})</td>
+            <td>{{ (taeCFT / num)|number_format(2) }} ({{ costeTotal |number_format(2) }})</td>
+            <td>{{ (taeCLT / num)|number_format(2) }} ({{ (honorariosTotal)|number_format(2) }})</td>
+            <td>{{ (taeTT / num)|number_format(2) }} ({{ (costeTTotal)|number_format(2) }})</td>
         </tr>
     </table>
 {% endblock %}
