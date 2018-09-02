@@ -347,7 +347,7 @@
                 else if ('tae' == $("#calculator_introduce").val()) {
                     tae = $("#calculator_costeFinanciero_tae").val();
                     total = tae / 360 * $("#calculator_dias").val();
-                    mensual = total / $("#calculator_dias").val() / 30;
+                    mensual = total / ($("#calculator_dias").val() / 30);
                     coste = $("#calculator_costeFinanciero_nominal").val() * total / 100;
                 }
                 else if ('mensual' == $("#calculator_introduce").val()) {
