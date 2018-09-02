@@ -39,7 +39,15 @@
             {{ 'finalcial' | trans }}:
         </div>
         <div class="col-lg-4">
-            {{ proposal.finalcial }}
+            {{ proposal.finalcial.name }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'drawee' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ proposal.drawee.name }}
         </div>
     </div>
     {% if general %}
