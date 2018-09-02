@@ -90,6 +90,22 @@
             {{ form_end(form) }}
         </div>
     </div>
+    {% set num = 0 %}
+    {% set coste = 0 %}
+    {% set costeTotal = 0 %}
+    {% set costeT = 0 %}
+    {% set costeTTotal = 0 %}
+    {% set honorarios = 0 %}
+    {% set honorariosTotal = 0 %}
+    {% set nominal = 0 %}
+    {% set dias = 0 %}
+    {% set taeCF = 0 %}
+    {% set taeCL = 0 %}
+    {% set taeT = 0 %}
+    {% set taeCFT = 0 %}
+    {% set taeCLT = 0 %}
+    {% set taeTT = 0 %}
+    {% set nominalT = 0 %}
     <table class="table bg-dark text-light">
         {#<div class="w-100"></div>#}
         <tr>
@@ -113,7 +129,7 @@
 
     {% for proposal in proposals %}
         <tr class=" {% if loop.index is odd %}bg-secondary{% endif %}">
-            <td>{{ proposal.id  }}</td>
+            <td>{{ loop.index  }}</td>
             <td>
             {% for calculator in proposal.calculator %}
                 <div style="display: block">
@@ -129,25 +145,8 @@
             <td>{{ proposal.state | proposal_status }}{%if (proposal.state == 5)%} {{proposal.reason}}{%endif%}</td>
             <td>{{ proposal.rating }}</td>
             <td>{{ proposal.operationalType  }}</td>
-            {#<td class="col">{{ proposal.calculator }}</td>#}
-            {#<td>{{ proposal.type | proposal_type }}</td>#}
 
-            {% set num = 0 %}
-            {% set coste = 0 %}
-            {% set costeTotal = 0 %}
-            {% set costeT = 0 %}
-            {% set costeTTotal = 0 %}
-            {% set honorarios = 0 %}
-            {% set honorariosTotal = 0 %}
-            {% set nominal = 0 %}
-            {% set dias = 0 %}
-            {% set taeCF = 0 %}
-            {% set taeCL = 0 %}
-            {% set taeT = 0 %}
-            {% set taeCFT = 0 %}
-            {% set taeCLT = 0 %}
-	        {% set taeTT = 0 %}
-	        {% set nominalT = 0 %}
+
             {% for calculator in proposal.calculator %}
                 {% set num = num + 1 %}
                 {% set coste = coste + calculator.costeFinanciero.coste %}
