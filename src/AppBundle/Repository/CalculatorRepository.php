@@ -17,7 +17,7 @@ class CalculatorRepository extends EntityRepository
         $qb->where(
             $qb->expr()->between('c.vencimiento', ':date_init', ':date_fin')
         );
-        $qb->andWhere($qb->expr()->eq('state', ':state'));
+        $qb->andWhere($qb->expr()->eq('p.state', ':state'));
         $to = clone $to;
         $to->modify("-1 seconds");
         $qb->setParameter('date_init', $from->format("Y-m-d H:i:s"));
