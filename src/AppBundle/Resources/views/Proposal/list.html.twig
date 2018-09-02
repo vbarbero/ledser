@@ -115,12 +115,12 @@
         <tr class=" {% if loop.index is odd %}bg-secondary{% endif %}">
             <td>{{ proposal.id  }}</td>
             <td>
-		{% for calculator in proposal.calculator %}
-		<div style="display: block">
-			<span style="display: block">{{ calculator.formalizacion | date("Y-m-d") }}</span> / 
-			<span style="display: block">{{ calculator.vencimiento   | date("Y-m-d") }}</span>
-		</div>
-		{%endfor %}
+            {% for calculator in proposal.calculator %}
+                <div style="display: block">
+                    <span style="display: block">{{ calculator.formalizacion | date("Y-m-d") }}</span> /
+                    <span style="display: block">{{ calculator.vencimiento   | date("Y-m-d") }}</span>
+                </div>
+            {%endfor %}
             </td>
             <td>{{ proposal.user  }}</td>
             <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
