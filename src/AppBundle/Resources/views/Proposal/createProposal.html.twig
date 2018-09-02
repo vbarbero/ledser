@@ -51,30 +51,22 @@
                 {{ form_widget(form.state) }}
             </div>
         </div>
-        {#<div class="row">#}
-            {#<div class="col-lg-4">#}
-                {#{{ form_label(form.type) }}#}
-            {#</div>#}
-            {#<div class="col-lg-4">#}
-                {#{{ form_widget(form.type) }}#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="row">#}
-            {#<div class="col-lg-4">#}
-                {#{{ form_label(form.finalcial) }}#}
-            {#</div>#}
-            {#<div class="col-lg-4">#}
-
-            {#</div>#}
-        {#</div>#}
-        {#<div class="row">#}
-            {#<div class="col-lg-4">#}
-                {#{{ form_label(form.drawee) }}#}
-            {#</div>#}
-            {#<div class="col-lg-4">#}
-
-            {#</div>#}
-        {#</div>#}
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.finalcial) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.finalcial) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.drawee) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.drawee) }}
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-4">
                 {{ form_label(form.rating) }}
