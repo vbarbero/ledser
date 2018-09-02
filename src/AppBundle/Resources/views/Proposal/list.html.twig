@@ -90,7 +90,7 @@
             {{ form_end(form) }}
         </div>
     </div>
-    {% set num = 0 %}
+
     {% set coste = 0 %}
     {% set costeTotal = 0 %}
     {% set costeT = 0 %}
@@ -148,14 +148,14 @@
             <td>{{ proposal.rating }}</td>
             <td>{{ proposal.operationalType  }}</td>
 
-
+            {% set num = 0 %}
             {% for calculator in proposal.calculator %}
                 {% set num = num + 1 %}
                 {% set coste = coste + calculator.costeFinanciero.coste %}
                 {% set costeT =  calculator.costeTotal.coste %}
                 {% set honorarios = honorarios + calculator.honorarios %}
 
-                {% set dias = calculator.dias %}
+                {% set dias = calculator.dias  %}
                 {% set taeCF = calculator.costeFinanciero.tae %}
                 {% set taeCL = calculator.costeFinancieroLedser.tae %}
                 {% set taeT = calculator.costeTotal.tae %}
@@ -186,10 +186,10 @@
             <td>TOTAL</td>
             <td colspan="8"></td>
             <td>{{ (nominalT)|number_format(2) }}</td>
-            <td>{{ (diasT / num)|number_format(2) }}</td>
-            <td>{{ (taeCFT / num)|number_format(2) }} ({{ costeTotal |number_format(2) }})</td>
-            <td>{{ (taeCLT / num)|number_format(2) }} ({{ (honorariosTotal)|number_format(2) }})</td>
-            <td>{{ (taeTT / num)|number_format(2) }} ({{ (costeTTotal)|number_format(2) }})</td>
+            <td>{{ (diasT / proposals| length)|number_format(2) }}</td>
+            <td>{{ (taeCFT / proposals| length)|number_format(2) }} ({{ costeTotal |number_format(2) }})</td>
+            <td>{{ (taeCLT / proposals| length)|number_format(2) }} ({{ (honorariosTotal)|number_format(2) }})</td>
+            <td>{{ (taeTT / proposals| length)|number_format(2) }} ({{ (costeTTotal)|number_format(2) }})</td>
         </tr>
     </table>
 {% endblock %}
