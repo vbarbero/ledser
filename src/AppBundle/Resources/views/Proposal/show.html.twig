@@ -1,0 +1,259 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'Id' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ proposal.id }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'Company Name' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ proposal.company.name }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'state' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ proposal.state | proposal_status }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'type' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ proposal.type | proposal_type }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'finalcial' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ proposal.finalcial }}
+        </div>
+    </div>
+    {% if general %}
+        <h2>Generak</h2>
+        <div class="row">
+            <div class="col-lg-4">
+                dias
+            </div>
+            <div class="col-lg-4">
+                {{ general.dias / (calculators | length) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                nominal
+            </div>
+            <div class="col-lg-4">
+                {{ general.nominal / (calculators | length) }}
+            </div>
+        </div>
+        <table class="table table-condensed">
+
+            <tr>
+                <td>Honorarios</td>
+                <td>Timbres</td>
+                <td>OMF</td>
+                <td>Mensajeria</td>
+                <td>Burofax</td>
+                <td>Otros gastos</td>
+            </tr>
+            <tr>
+                <td>{{ general.honorarios / (calculators | length) | number_format(2)}}</td>
+                <td>{{ general.timbres / (calculators | length) | number_format(2)}}</td>
+                <td>{{ general.omf / (calculators | length) | number_format(2)}}</td>
+                <td>{{ general.mensajeria / (calculators | length) | number_format(2)}}</td>
+                <td>{{ general.burofax / (calculators | length) | number_format(2)}}</td>
+                <td>{{ general.gastos / (calculators | length) | number_format(2)}}</td>
+            </tr>
+        </table>
+        <table class="table table-condensed">
+
+            <tr>
+                <td></td>
+                <td>Coste Financiero</td>
+                <td>Coste Financiero + Ledser</td>
+                <td>Coste Total</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td>{{ general.costeFinanciero.total / (calculators | length) | number_format(2)}}</td>
+                <td>{{ general.costeFinancieroLedser.total / (calculators | length) | number_format(2)}}</td>
+                <td>{{ general.costeTotal.total / (calculators | length) | number_format(2) }}</td>
+            </tr>
+            <tr>
+                <td>Tae</td>
+                <td>{{ general.costeFinanciero.tae / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeFinancieroLedser.tae / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeTotal.tae / (calculators | length) | number_format(2) }}</td>
+            </tr>
+            <tr>
+                <td>Mensual</td>
+                <td>{{ general.costeFinanciero.mensual / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeFinancieroLedser.mensual / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeTotal.mensual / (calculators | length) | number_format(2) }}</td>
+            </tr>
+            <tr>
+                <td>Retención</td>
+                <td>{{ general.costeFinanciero.retencion / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeFinancieroLedser.retencion / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeTotal.retencion / (calculators | length) | number_format(2) }}</td>
+            </tr>
+            <tr>
+                <td>Nominal</td>
+                <td>{{ general.costeFinanciero.nominal / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeFinancieroLedser.nominal / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeTotal.nominal / (calculators | length) | number_format(2) }}</td>
+            </tr>
+            <tr>
+                <td>Coste</td>
+                <td>{{ general.costeFinanciero.coste / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeFinancieroLedser.coste / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeTotal.coste / (calculators | length) | number_format(2) }}</td>
+            </tr>
+            <tr>
+                <td>Liquido</td>
+                <td>{{ general.costeFinanciero.liquido / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeFinancieroLedser.liquido / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeTotal.liquido / (calculators | length) | number_format(2) }}</td>
+            </tr>
+            <tr>
+                <td>Retencion Total</td>
+                <td>{{ general.costeFinanciero.retencionTotal / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeFinancieroLedser.retencionTotal / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeTotal.retencionTotal / (calculators | length) | number_format(2) }}</td>
+            </tr>
+        </table>
+    {% endif %}
+<h1>Calculadoras</h1>
+    {% for calculator in calculators %}
+        <div class="row">
+            <div class="col-lg-4">
+                {{ 'calculator Id' | trans }}:
+            </div>
+            <div class="col-lg-4">
+                {{ calculator.id }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                formalizacion
+            </div>
+            <div class="col-lg-4">
+                {{ calculator.formalizacion | date("Y-m-d") }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                vencimiento
+            </div>
+            <div class="col-lg-4">
+                {{ calculator.vencimiento | date("Y-m-d")  }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                dias
+            </div>
+            <div class="col-lg-4">
+                {{ calculator.dias }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                nominal
+            </div>
+            <div class="col-lg-4">
+                {{ calculator.nominal }}
+            </div>
+        </div>
+        <table class="table table-condensed">
+
+    <tr>
+                    <td>Honorarios</td>
+                    <td>Timbres</td>
+                    <td>OMF</td>
+                    <td>Mensajeria</td>
+                    <td>Burofax</td>
+                    <td>Otros gastos</td>
+                </tr>
+                <tr>
+                    <td>{{ calculator.honorarios | number_format(2)}}</td>
+                    <td>{{ calculator.timbres | number_format(2)}}</td>
+                    <td>{{ calculator.omf | number_format(2)}}</td>
+                    <td>{{ calculator.mensajeria | number_format(2)}}</td>
+                    <td>{{ calculator.burofax | number_format(2)}}</td>
+                    <td>{{ calculator.gastos | number_format(2)}}</td>
+                </tr>
+            </table>
+        <table class="table table-condensed">
+
+        <tr>
+                        <td></td>
+                        <td>Coste Financiero</td>
+                        <td>Coste Financiero + Ledser</td>
+                        <td>Coste Total</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>{{ calculator.costeFinanciero.total | number_format(2)}}</td>
+                        <td>{{ calculator.costeFinancieroLedser.total | number_format(2)}}</td>
+                        <td>{{ calculator.costeTotal.total | number_format(2) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Tae</td>
+                        <td>{{ calculator.costeFinanciero.tae | number_format(2) }}</td>
+                        <td>{{ calculator.costeFinancieroLedser.tae | number_format(2) }}</td>
+                        <td>{{ calculator.costeTotal.tae | number_format(2) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Mensual</td>
+                        <td>{{ calculator.costeFinanciero.mensual | number_format(2) }}</td>
+                        <td>{{ calculator.costeFinancieroLedser.mensual | number_format(2) }}</td>
+                        <td>{{ calculator.costeTotal.mensual | number_format(2) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Retención</td>
+                        <td>{{ calculator.costeFinanciero.retencion | number_format(2) }}</td>
+                        <td>{{ calculator.costeFinancieroLedser.retencion | number_format(2) }}</td>
+                        <td>{{ calculator.costeTotal.retencion | number_format(2) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nominal</td>
+                        <td>{{ calculator.costeFinanciero.nominal | number_format(2) }}</td>
+                        <td>{{ calculator.costeFinancieroLedser.nominal | number_format(2) }}</td>
+                        <td>{{ calculator.costeTotal.nominal | number_format(2) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Coste</td>
+                        <td>{{ calculator.costeFinanciero.coste | number_format(2) }}</td>
+                        <td>{{ calculator.costeFinancieroLedser.coste | number_format(2) }}</td>
+                        <td>{{ calculator.costeTotal.coste | number_format(2) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Liquido</td>
+                        <td>{{ calculator.costeFinanciero.liquido | number_format(2) }}</td>
+                        <td>{{ calculator.costeFinancieroLedser.liquido | number_format(2) }}</td>
+                        <td>{{ calculator.costeTotal.liquido | number_format(2) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Retencion Total</td>
+                        <td>{{ calculator.costeFinanciero.retencionTotal | number_format(2) }}</td>
+                        <td>{{ calculator.costeFinancieroLedser.retencionTotal | number_format(2) }}</td>
+                        <td>{{ calculator.costeTotal.retencionTotal | number_format(2) }}</td>
+                    </tr>
+                </table>
+    {% endfor %}
+{% endblock %}

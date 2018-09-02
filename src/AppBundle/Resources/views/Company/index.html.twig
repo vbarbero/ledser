@@ -1,0 +1,231 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block styles %}
+    {{ parent() }}
+
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #description {
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        #infowindow-content .title {
+            font-weight: bold;
+        }
+
+        #infowindow-content {
+            display: none;
+        }
+
+        #map #infowindow-content {
+            display: inline;
+        }
+
+        .pac-card {
+            margin: 10px 10px 0 0;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            font-family: Roboto;
+        }
+
+        #pac-container {
+            padding-bottom: 12px;
+            margin-right: 12px;
+        }
+
+        .pac-controls {
+            display: inline-block;
+            padding: 5px 11px;
+        }
+
+        .pac-controls label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+        #address-autocomplete {
+            background-color: #fff;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 400px;
+        }
+
+        #address-autocomplete:focus {
+            border-color: #4d90fe;
+        }
+
+        #title {
+            color: #fff;
+            background-color: #4d90fe;
+            font-size: 25px;
+            font-weight: 500;
+            padding: 6px 12px;
+        }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-10">
+            <h2>Create Company</h2>
+
+        </div>
+    </div>
+    <div class="row">
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.cif) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.cif) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.name) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.name) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.cnae) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.cnae) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.type) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.type, {attr: {'class': 'custom-select d-block w-100'}}) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="address-autocomplete">Dirección:</label>
+                {{ form_widget(form.autocomplete,  { 'id': 'address-autocomplete'}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.address) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.address,  { 'id': 'address-address'}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.addressNumber) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.addressNumber,  { 'id': 'address-number'}) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.city) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.city,  { 'id': 'address-city'}) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.zip) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.zip,  { 'id': 'address-zip'}) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.province) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.province,  { 'id': 'address-province'}) }}
+            </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+    <script>
+        function initAutocomplete() {
+            var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address-autocomplete'));
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                var street;
+                var number;
+                var city;
+                var province;
+                var zip;
+
+                for (var i = 0; i < place.address_components.length; i++) {
+                    for (var j = 0; j < place.address_components[i].types.length; j++) {
+                        if(place.address_components[i].types[j] == 'street_number'){
+                            number = place.address_components[i].short_name;
+                        } else if(place.address_components[i].types[j] == 'route'){
+                            street = place.address_components[i].short_name;
+                        } else if(place.address_components[i].types[j] == 'locality'){
+                            city = place.address_components[i].short_name;
+                        } else if(place.address_components[i].types[j] == 'postal_code'){
+                            zip = place.address_components[i].short_name;
+                        } else if(place.address_components[i].types[j] == 'administrative_area_level_2'){
+                            province = place.address_components[i].long_name;
+                        }
+                    }
+                }
+                if(number != undefined) {
+                    document.getElementById('address-address').value = street + ' ' + number;
+                } else {
+                    document.getElementById('address-address').value = street;
+                }
+                document.getElementById('address-province').value = province;
+                if(zip != undefined) {
+                    document.getElementById('address-zip').value = zip;
+                }
+                document.getElementById('address-city').value = city;
+            });
+        }
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ google_api_places }}&libraries=places&callback=initAutocomplete" async defer></script>
+
+{% endblock %}

@@ -1,0 +1,206 @@
+<?php
+
+namespace AppBundle\Controller;
+
+use AppBundle\Entity\Calculator;
+use AppBundle\Entity\Company;
+use AppBundle\Entity\Cost;
+use AppBundle\Entity\Proposal;
+use AppBundle\Form\Model\ProposalFilterModel;
+use AppBundle\Form\Type\CalculatorType;
+use AppBundle\Form\Type\ProposalEditType;
+use AppBundle\Form\Type\ProposalFilterType;
+use AppBundle\Form\Type\ProposalType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
+class ProposalController extends Controller
+{
+    /**
+     * @Route("/list-proposal", name="list_proposal")
+     */
+    public function listAction(Request $request)
+    {
+        $days = $this->getDoctrine()->getRepository(Proposal::class);
+
+        $proposalModel = new ProposalFilterModel();
+        if($request->query->get('from'))
+        {
+            $dateFrom = \DateTime::createFromFormat("d-m-Y H:i:s", $request->query->get('from') . " 00:00:00");
+
+        } else {
+            $dateFrom = new \DateTime();
+            $dateFrom->setTime(0,0,0);
+            $dateFrom->modify("first day of this month");
+        }
+        $proposalModel->setFrom($dateFrom);
+        if($request->query->get('to'))
+        {
+            $dateTo = \DateTime::createFromFormat("d-m-Y H:i:s", $request->query->get('to') . " 23:59:59");
+        }else {
+            $dateTo = new \DateTime();
+            $dateTo->setTime(23,59,59);
+        }
+        $proposalModel->setTo($dateTo);
+
+        $form = $this->createForm(ProposalFilterType::class, $proposalModel);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $proposalModel = $form->getData();
+            $proposals =$this->getDoctrine()->getRepository(Proposal::class)->getItemsByFilters($proposalModel);
+        } else {
+            $proposals =$this->getDoctrine()->getRepository(Proposal::class)->getItemsByFilters($proposalModel);
+        }
+
+//        $proposals = $this->getDoctrine()->getManager()->getRepository(Proposal::class)->findAll();
+        return $this->render('AppBundle:Proposal:list.html.twig', ['form' => $form->createView(), 'proposals' => $proposals]);
+    }
+
+    /**
+     * @Route("/create-proposal", name="create_proposal")
+     */
+    public function createProposalAction(Request $request)
+    {
+        $proposal = new Proposal();
+        $form = $this->createForm(ProposalType::class, $proposal);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $proposal = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($proposal);
+            $em->flush();
+            return $this->redirect("create-calculator/". $proposal->getId());
+        }
+        return $this->render('AppBundle:Proposal:createProposal.html.twig', ['form' => $form->createView()]);
+    }
+    /**
+     * @Route("/edit-proposal/{proposal}", name="edit_proposal")
+     */
+    public function editProposalAction(Proposal $proposal, Request $request)
+    {
+        $form = $this->createForm(ProposalEditType::class, $proposal);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $proposal = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($proposal);
+            $em->flush();
+            return $this->redirect($this->generateUrl('show_proposal', ['id' => $proposal->getId()]));
+        }
+        return $this->render('AppBundle:Proposal:editProposal.html.twig', ['form' => $form->createView()]);
+    }
+
+
+    /**
+     * @Route("/delete-proposal/{proposal}", name="delete_proposal")
+     */
+    public function deleteAction($proposal, Request $request)
+    {
+	$proposalObj = $this->getDoctrine()->getRepository(Proposal::class)->find($proposal);
+	$this->getDoctrine()->getManager()->remove($proposalObj);
+//dump($proposal, $proposalObj);die;
+	$this->getDoctrine()->getManager()->flush();
+
+	return $this->redirect($this->generateUrl('list_proposal'));
+
+    }
+
+
+    /**
+     * @Route("/create-calculator/{proposal}", name="create_calculator")
+     */
+    public function createCalculatorAction($proposal, Request $request)
+    {
+        $calculator = new Calculator();
+        $calculator->setProposal($this->getDoctrine()->getRepository(Proposal::class)->find($proposal));
+        $calculator->setFormalizacion(new \DateTime());
+        $calculator->setVencimiento(new \DateTime("+1 day"));
+        $calculator->setCosteFinanciero(new Cost());
+        $calculator->setCosteFinancieroLedser(new Cost());
+        $calculator->setCosteTotal(new Cost());
+        $form = $this->createForm(CalculatorType::class, $calculator);
+        $form->handleRequest($request);
+        if ( $form->isValid()) {
+            $calculator = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($calculator);
+            $em->flush();
+
+            if ($form->getClickedButton() && 'save' === $form->getClickedButton()->getName()) {
+                return $this->redirect($this->generateUrl("show_proposal",['id' => $calculator->getProposal()->getId()]));
+            }
+        else {
+            return $this->redirect($this->generateUrl("create_calculator",['proposal' => $calculator->getProposal()->getId()]));
+            }
+        }
+
+        return $this->render('AppBundle:Proposal:createCalculator.html.twig', ['form' => $form->createView()]);
+    }
+
+    /**
+     * @Route("/show-proposal/{id}", name="show_proposal")
+     */
+    public function showAction($id, Request $request)
+    {
+        $proposal = $this->getDoctrine()->getManager()->getRepository(Proposal::class)->find($id);
+        $calculators = $this->getDoctrine()->getManager()->getRepository(Calculator::class)->findBy(['proposal' => $id]);
+        $general = [];
+        if(count($calculators) > 1)
+        {
+            /** @var Calculator $calculator */
+            foreach ($calculators as $calculator)
+            {
+                $general['dias'] += $calculator->getDias();
+                $general['nominal'] += $calculator->getNominal();
+                $general['honorarios'] += $calculator->getHonorarios();
+                $general['timbres'] += $calculator->getTimbres();
+                $general['omf'] += $calculator->getOmf();
+                $general['mensajeria'] += $calculator->getMensajeria();
+                $general['burofax'] += $calculator->getBurofax();
+                $general['gastos'] += $calculator->getGastos();
+                $general['costeFinanciero']['total'] += $calculator->getCosteFinanciero()->getTotal();
+                $general['costeFinancieroLedser']['total'] += $calculator->getCosteFinancieroLedser()->getTotal();
+                $general['costeTotal']['total'] += $calculator->getCosteTotal()->getTotal();
+
+                $general['costeFinanciero']['tae'] += $calculator->getCosteFinanciero()->getTae();
+                $general['costeFinancieroLedser']['tae'] += $calculator->getCosteFinancieroLedser()->getTae();
+                $general['costeTotal']['tae'] += $calculator->getCosteTotal()->getTae();
+
+                $general['costeFinanciero']['mensual'] += $calculator->getCosteFinanciero()->getMensual();
+                $general['costeFinancieroLedser']['mensual'] += $calculator->getCosteFinancieroLedser()->getMensual();
+                $general['costeTotal']['mensual'] += $calculator->getCosteTotal()->getMensual();
+
+                $general['costeFinanciero']['mensual'] += $calculator->getCosteFinanciero()->getMensual();
+                $general['costeFinancieroLedser']['mensual'] += $calculator->getCosteFinancieroLedser()->getMensual();
+                $general['costeTotal']['mensual'] += $calculator->getCosteTotal()->getMensual();
+
+                $general['costeFinanciero']['retencion'] += $calculator->getCosteFinanciero()->getRetencion();
+                $general['costeFinancieroLedser']['retencion'] += $calculator->getCosteFinancieroLedser()->getRetencion();
+                $general['costeTotal']['retencion'] += $calculator->getCosteTotal()->getRetencion();
+
+                $general['costeFinanciero']['nominal'] += $calculator->getCosteFinanciero()->getNominal();
+                $general['costeFinancieroLedser']['nominal'] += $calculator->getCosteFinancieroLedser()->getNominal();
+                $general['costeTotal']['nominal'] += $calculator->getCosteTotal()->getNominal();
+
+                $general['costeFinanciero']['coste'] += $calculator->getCosteFinanciero()->getCoste();
+                $general['costeFinancieroLedser']['coste'] += $calculator->getCosteFinancieroLedser()->getCoste();
+                $general['costeTotal']['coste'] += $calculator->getCosteTotal()->getCoste();
+
+                $general['costeFinanciero']['liquido'] += $calculator->getCosteFinanciero()->getLiquido();
+                $general['costeFinancieroLedser']['liquido'] += $calculator->getCosteFinancieroLedser()->getLiquido();
+                $general['costeTotal']['liquido'] += $calculator->getCosteTotal()->getLiquido();
+
+                $general['costeFinanciero']['retencionTotal'] += $calculator->getCosteFinanciero()->getRetencionTotal();
+                $general['costeFinancieroLedser']['retencionTotal'] += $calculator->getCosteFinancieroLedser()->getRetencionTotal();
+                $general['costeTotal']['retencionTotal'] += $calculator->getCosteTotal()->getRetencionTotal();
+
+
+            }
+        }
+
+        return $this->render('AppBundle:Proposal:show.html.twig', ['proposal' => $proposal, 'calculators' => $calculators, 'general' => $general]);
+    }
+}

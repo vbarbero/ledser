@@ -1,0 +1,188 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ 'Company Name' | trans }}:
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.name }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ 'Cif' | trans }}:
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.cif }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ 'Cnae' | trans }}:
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.cnae }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ 'Address' | trans }}:
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.address }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ 'City' | trans }}:
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.city }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ 'Province' | trans }}:
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.province }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ 'Zip' | trans }}:
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.zip }}
+                </div>
+            </div>
+            <div class="row">
+                <h5>Contacts</h5>
+                {%  for contact in contacts %}
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                {{ 'Name' | trans }}:
+                            </div>
+                            <div class="col-lg-4">
+                                {{ contact.name }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                {{ 'Email' | trans }}:
+                            </div>
+                            <div class="col-lg-4">
+                                {{ contact.email }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                {{ 'Phone' | trans }}:
+                            </div>
+                            <div class="col-lg-4">
+                                {{ contact.phone }}
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                {{ form_start(form) }}
+                <div class="row" style="display: none">
+                    <div class="col-lg-4">
+                        {{ form_label(form.company) }}
+                    </div>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.company) }}
+                    </div>
+                </div>
+                <div class="row" style="display: none">
+                    <div class="col-lg-4">
+                        {{ form_label(form.user) }}
+                    </div>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.user) }}
+                    </div>
+                </div>
+                <div class="row" style="display: none">
+                    <div class="col-lg-4">
+                        {{ form_label(form.date) }}
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="input-group date" id="datetimepicker1">
+                            {{ form_widget(form.date, {attr:{readonly: 'readonly'}, required: true}) }}
+                            <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                            <span class="input-group-addon">
+                        <span class="fa fa-calendar">
+                        </span>
+                    </span>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row" style="display: none">
+                    <div class="col-lg-4">
+                        {{ form_label(form.action) }}
+                    </div>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.action) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        {{ form_label(form.done) }}
+                    </div>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.done) }}
+                    </div>
+                </div>
+                <div class="row" style="display: none">
+                    <div class="col-lg-4">
+                        {{ form_label(form.client_type) }}
+                    </div>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.client_type) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        {{ form_label(form.report) }}
+                    </div>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.report) }}
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="col-sm-4">  <table class="table table-condensed">
+                <tr>
+                    <td>{{ "Date" | trans }}</td>
+                    <td>{{ "Report" | trans }}</td>
+                </tr>
+                {% for old in history %}
+                    <tr>
+                        <td>{{ old.date | date("Y-m-d h:i") }}</td>
+                        <td>{{ old.report }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

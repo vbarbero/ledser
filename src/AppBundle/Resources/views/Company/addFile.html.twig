@@ -1,0 +1,34 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-10">
+            <h2>ADD FILE</h2>
+
+        </div>
+    </div>
+    <div class="row">
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.name) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.name) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.source) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.source) }}
+            </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}

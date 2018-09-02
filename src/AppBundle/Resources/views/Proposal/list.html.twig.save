@@ -1,0 +1,165 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block styles %}
+    {{ parent() }}
+    <style>
+        .glyphicon {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+    {% stylesheets
+        'css/bootstrap-datetimepicker.min.css'
+        filter='cssrewrite' output='css/compiled/app.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('../css/bootstrap-datetimepicker.min.css') }}" />
+    {#<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />#}
+
+{% endblock %}
+
+{% block content %}
+
+
+<td class="row">
+    <div class="col-sm-4" style="border: 1px solid">
+
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.status) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.status) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.from) }}
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group date" data-provide="datepicker">
+                    {{ form_widget(form.from, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.to) }}
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group date" data-provide="datepicker">
+                    {{ form_widget(form.to, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#<div class="row">#}
+            {#<div class="col-lg-4">#}
+                {#{{ form_label(form.type) }}#}
+            {#</div>#}
+            {#<div class="col-lg-4">#}
+                {#{{ form_widget(form.type) }}#}
+            {#</div>#}
+        {#</div>#}
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.operationalType) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.operationalType) }}
+            </div>
+        </div>
+
+        <div class="row">
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">{{ "Filter" | trans }}</button>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <table class="table bg-dark text-light">
+        {#<div class="w-100"></div>#}
+        <tr>
+        <td>Proposal From</td>
+        <td>company</td>
+        <td>Drawee</td>
+        <td>state</td>
+        <td>Rating</td>
+        <td>Type</td>
+        <td>Nominal</td>
+        <td>Date diff</td>
+        <td>Tae coste financiero</td>
+        <td>Tae coste + ledser</td>
+        <td>Tae coste total</td>
+        {#<div class="col">Tipo operacion</div>#}
+        <td>Acción</td>
+        </tr>
+
+    {% for proposal in proposals %}
+        <tr class=" {% if loop.index is odd %}bg-secondary{% endif %}">
+            <td>
+		{% for calculator in proposal.calculator %}
+			<span style="display: block">{{ calculator.formalizacion | date("Y-m-d") }}</span>
+		{%endfor %}
+		</td>
+            <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
+            <td>{{ proposal.drawee }}</td>
+            <td>{{ proposal.state | proposal_status }}</td>
+            <td>{{ proposal.rating }}</td>
+            <td>{{ proposal.type | proposal_type }}</td>
+            {#<td class="col">{{ proposal.calculator }}</td>#}
+            {#<td>{{ proposal.type | proposal_type }}</td>#}
+
+            {% set num = 0 %}
+            {% set nominal = 0 %}
+            {% set num = 0 %}
+            {% set num = 0 %}
+            {% set num = 0 %}
+            {% for calculator in proposal.calculator %}
+                {% set num = num + 1 %}
+                {% set dias = calculator.datediff %}
+                {% set taeCF = calculator.costeFinanciero.tae %}
+                {% set taeCL = calculator.costeFinancieroLedser.tae %}
+                {% set taeT = calculator.costeTotal.tae %}
+                {% set nominal = calculator.nominal %}
+            {% endfor %}
+            <td>{% if num == 0 %}0{% else %}{{ nominal / num }}{% endif %}</td>
+            <td>{% if num == 0 %}0{% else %}{{ dias/num }}{% endif %}</td>
+            <td>{% if num == 0 %}0{% else %}{{ taeCF/num }}{% endif %}</td>
+            <td>{% if num == 0 %}0{% else %}{{ taeCL/num }}{% endif %}</td>
+            <td>{% if num == 0 %}0{% else %}{{ taeT/num }}{% endif %}</td>
+            <td>
+                <a href="{{ url('create_calculator', {proposal:proposal.id}) }}">Añadir calculadora</a>
+                <a href="{ url('edit_proposal' , {proposal:proposal.id}) }}">Edit</a>
+            </td>
+        </tr>
+    {% endfor %}
+
+    </table>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.es.min.js') }}"></script>
+    <script type="text/javascript">
+        $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            startDate: '-3d'
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,233 @@
+{% extends 'AppBundle::layout.html.twig' %}
+{% block styles %}
+    {{ parent() }}
+    <style>
+        .glyphicon {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+    {% stylesheets
+        'css/bootstrap-datetimepicker.min.css'
+        filter='cssrewrite' output='css/compiled/app.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('../css/bootstrap-datetimepicker.min.css') }}" />
+    {#<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />#}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-4" style="border: 1px solid">
+
+    {{ form_start(form) }}
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.cif) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.cif) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.company) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.company) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.user) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.user) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.dateFrom) }}
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group date" data-provide="datepicker">
+                    {{ form_widget(form.dateFrom, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+                {#<div class="input-group date" id="datetimepicker1">#}
+                    {#{{ form_widget(form.dateFrom, {attr:{readonly: 'readonly'}}) }}#}
+                    {#<span class="input-group-addon">#}
+                        {#<span class="glyphicon glyphicon-calendar"></span>#}
+                    {#</span>#}
+                    {#<span class="input-group-addon">#}
+                        {#<span class="fa fa-calendar">#}
+                        {#</span>#}
+                    {#</span>#}
+
+                {#</div>#}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.dateTo) }}
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group date" data-provide="datepicker">
+                    {{ form_widget(form.dateTo, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+                {#<div class="input-group date" id="datetimepicker2">#}
+                    {#{{ form_widget(form.dateTo, {attr:{readonly: 'readonly'}}) }}#}
+                    {#<span class="input-group-addon">#}
+                        {#<span class="glyphicon glyphicon-calendar"></span>#}
+                    {#</span>#}
+                    {#<span class="input-group-addon">#}
+                        {#<span class="fa fa-calendar">#}
+                        {#</span>#}
+                    {#</span>#}
+
+                {#</div>#}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.done) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.done) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.phone) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.phone) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.clientType) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.clientType) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.actionType) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.actionType) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.province) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.province) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.zip) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.zip) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.city) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.city) }}
+            </div>
+        </div>
+
+        <div class="row">
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">{{ "Filter" | trans }}</button>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <div class="col-sm-4">
+            <table class="table table-condensed">
+                <tr>
+                    <td>DateTime</td>
+                    <td>Action</td>
+                    <td>Cif</td>
+                    <td>Company Name</td>
+                    <td>Client Type</td>
+                    <td>Zip</td>
+                    <td>City</td>
+                    <td>Province</td>
+                </tr>
+                {% for report in reports %}
+                    <tr>
+                        <td>{{ report.date|date ("Y-m-d H:i") }}</td>
+                        <td>{{ report.action | report_action }}</td>
+                        <td>{{ report.company.cif }}</td>
+                        <td><a href="{{ url("show_report", {id: report.id}) }}"> {{ report.company.name }}</a></td>
+                        <td>{{ report.clientType | report_client_type }}</td>
+                        <td>{{ report.company.zip}}</td>
+                        <td>{{ report.company.city}}</td>
+                        <td>{{ report.company.province}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.es.min.js') }}"></script>
+    <script type="text/javascript">
+        $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            startDate: '-3d'
+        });
+        // $('.datepicker').datepicker({
+        //     format: 'yyyy-mm-dd',
+        //     startDate: '-3d'
+        // });
+    </script>
+{% endblock %}
+{#{% block javascript %}#}
+    {#{{ parent() }}#}
+    {#{% javascripts '@AppBundle/Resources/public/js/bootstrap-datetimepicker.min.js' %}#}
+        {#<script src="{{ asset_url }}"></script>#}
+    {#{% endjavascripts %}#}
+    {#<script type="text/javascript">#}
+        {#$(function () {#}
+            {#$('#datetimepicker1').datetimepicker({useCurrent: false, startDate: new Date("2018-01-01"), format: 'yyyy-mm-dd hh:ii',  locale: 'es-ES', daysOfWeekDisabled: [0, 6],#}
+                {#disabledDates: [#}
+                    {#new Date(2013, 11 - 1, 21),#}
+                    {#"11/22/2013 00:53"#}
+                {#],weekStart: 1, todayHighlight: true});#}
+            {#$('#datetimepicker2').datetimepicker({useCurrent: false, startDate: new Date("2018-01-01"), format: 'yyyy-mm-dd hh:ii',  locale: 'es-ES', daysOfWeekDisabled: [0, 6],#}
+                {#disabledDates: [#}
+                    {#new Date(2013, 11 - 1, 21),#}
+                    {#"11/22/2013 00:53"#}
+                {#],weekStart: 1, todayHighlight: true});#}
+        {#});#}
+    {#</script>#}
+
+{#{% endblock %}#}

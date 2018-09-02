@@ -1,0 +1,21 @@
+./app/console rabbitmq:setup-fabric
+ crea las colas
+
+./app/console rabbitmq:purge --no-confirmation mailer
+
+	vacia la cola
+
+php app/console debug:container | grep old_sound_rabbit_ buscamos los servicios del bundle
+
+./app/console rabbitmq:consumer -m 50 mailer
+
+
+
+
+
+
+
+
+
+https://loc.parclick.com/download/receipt?order=120918&provider=parclick&access_token=5c4cf89f8ce4fbd901d20a4572543eebfe30d2f515b0635e901dffa93a2992b4
+https://loc.parclick.com/download/cancel?order=120918&provider=parclick&access_token=5c4cf89f8ce4fbd901d20a4572543eebfe30d2f515b0635e901dffa93a2992b4

@@ -1,0 +1,48 @@
+CREATE TABLE `c_h` (
+   id INT PRIMARY KEY AUTO_INCREMENT
+  `option` varchar(255) DEFAULT NULL,
+  `value` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `c_h` (
+   id INT PRIMARY KEY AUTO_INCREMENT
+  `option` varchar(255) DEFAULT NULL,
+  `value` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `c_c` (
+   id INT PRIMARY KEY AUTO_INCREMENT
+  `option` varchar(255) DEFAULT NULL,
+  `value` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `divergencia_rsi` (
+   id INT PRIMARY KEY AUTO_INCREMENT
+  `option` varchar(255) DEFAULT NULL,
+  `value` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `ejecutado` (
+   id INT PRIMARY KEY AUTO_INCREMENT
+  `value` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `h_s` (
+   id INT PRIMARY KEY AUTO_INCREMENT
+  `option` varchar(255) DEFAULT NULL,
+  `value` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `h_si` (   
+   id INT PRIMARY KEY AUTO_INCREMENT
+  `option` varchar(255) DEFAULT NULL,
+  `value` double DEFAULT NULL
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

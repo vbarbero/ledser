@@ -1,0 +1,13 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: ledser
+    database_user: root
+    database_password: ledser2018
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: v.barbero.c@gmail.com
+    mailer_password: 'Sl1pkn01&_3'
+    secret: 2ff7979923f9ebd31f962b51a3a44cc91eab31b1
+    google_api_places: AIzaSyBEAg8JHKC5Pi7MV-Xf9rO94J60nk1dwE8

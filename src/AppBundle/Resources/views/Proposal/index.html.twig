@@ -1,0 +1,285 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block styles %}
+    {{ parent() }}
+    <style>
+        .glyphicon {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+    {% stylesheets
+        'css/bootstrap-datetimepicker.min.css'
+        filter='cssrewrite' output='css/compiled/app.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('../css/bootstrap-datetimepicker.min.css') }}" />
+    {#<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />#}
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-10">
+            <h2>Create Proposal</h2>
+
+        </div>
+    </div>
+    <div class="row">
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-lg-4">
+            {{ form_label(form.company) }}
+        </div>
+        <div class="col-lg-4">
+            {{ form_widget(form.company) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ form_label(form.state) }}
+        </div>
+        <div class="col-lg-4">
+            {{ form_widget(form.state) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ form_label(form.type) }}
+        </div>
+        <div class="col-lg-4">
+            {{ form_widget(form.type) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ form_label(form.finalcial) }}
+        </div>
+        <div class="col-lg-4">
+            {{ form_widget(form.finalcial) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ form_label(form.dateFrom) }}
+        </div>
+        <div class="col-lg-4">
+            <div class="input-group date" id="datetimepicker1">
+                {{ form_widget(form.dateFrom, {attr:{readonly: 'readonly'}}) }}
+                <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                <span class="input-group-addon">
+                        <span class="fa fa-calendar">
+                        </span>
+                    </span>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ form_label(form.dateTo) }}
+        </div>
+        <div class="col-lg-4">
+            <div class="input-group date" id="datetimepicker2">
+                {{ form_widget(form.dateTo, {attr:{readonly: 'readonly'}}) }}
+                <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                <span class="input-group-addon">
+                        <span class="fa fa-calendar">
+                        </span>
+                    </span>
+
+            </div>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.datediff) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.datediff) }}
+            </div>
+        </div>
+        <div id="restForm">
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.nominal) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.nominal) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.commission) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.commission) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.tae) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.tae) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.totalPercentage) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.totalPercentage) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.monthPercentage) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.monthPercentage) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.cost) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.cost) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.ingress) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.ingress) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.stamp) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.stamp) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.liquidMoney) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.liquidMoney) }}
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+        <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#restForm").hide();
+            $('#datetimepicker1').datetimepicker({useCurrent: false, startDate: new Date("2018-01-01"), format: 'yyyy-mm-dd hh:ii',  locale: 'es-ES', daysOfWeekDisabled: [0, 6],
+                disabledDates: [
+                    new Date(2013, 11 - 1, 21),
+                    "11/22/2013 00:53"
+                ],weekStart: 1, todayHighlight: true}).on('changeDate', function (ev) {
+                $('#proposal_dateTo').datepicker('setStartDate', $("#proposal_dateFrom").val());
+            });
+
+
+
+            $('#datetimepicker2').datetimepicker({useCurrent: false, startDate: new Date("2018-01-01"), format: 'yyyy-mm-dd hh:ii',  locale: 'es-ES', daysOfWeekDisabled: [0, 6],
+                disabledDates: [
+                    new Date(2013, 11 - 1, 21),
+                    "11/22/2013 00:53"
+                ],weekStart: 1, todayHighlight: true}).on('changeDate', function (ev) {
+                var start = $("#proposal_dateFrom").val();
+                var startD = new Date(start);
+                var end = $("#proposal_dateTo").val();
+                var endD = new Date(end);
+                var diff = parseInt((endD.getTime()-startD.getTime())/(24*3600*1000));
+                $("#proposal_datediff").val(diff);
+                $("#restForm").show();
+            });
+            $("#proposal_commission").on('change', function() {
+                var datediff = $("#proposal_datediff").val();
+                $("#proposal_tae").val(365/datediff * $("#proposal_commission").val());
+                $("#proposal_cost").val($("#proposal_commission").val() * $("#proposal_nominal").val());
+            });
+            $("#proposal_tae").on('change', function() {
+                var datediff = $("#proposal_datediff").val();
+                $("#proposal_commission").val(365/datediff * $("#proposal_tae").val());
+                $("#proposal_cost").val($("#proposal_commission").val() * $("#proposal_nominal").val());
+            });
+            $("#proposal_totalPercentage").on('change', function() {
+                var datediff = $("#proposal_datediff").val();
+                $("#proposal_commission").val(365/datediff * $("#proposal_tae").val());
+                $("#proposal_cost").val($("#proposal_commission").val() * $("#proposal_nominal").val());
+                $("#proposal_tae").val($(this).val()/datediff * 360);
+                $("#proposal_monthPercentage").val($(this).val()/(datediff * 30));
+            });
+            $("#proposal_monthPercentage").on('change', function() {
+                var datediff = $("#proposal_datediff").val();
+                $("#proposal_commission").val(365/datediff * $("#proposal_tae").val());
+                $("#proposal_cost").val($("#proposal_commission").val() * $("#proposal_nominal").val());
+                $("#proposal_tae").val($(this).val()/datediff * 360);
+                $("#proposal_totalPercentage").val($(this).val()/(datediff * 30));
+            });
+            $("#proposal_nominal").on('change', function() {
+                var stamp = 0;
+                if($(this).val() < 24.05) {
+                    stamp = 0.06;
+                }else if($(this).val() < 48.09) {
+                    stamp = 0.12;
+                }else if($(this).val() < 90.16) {
+                    stamp = 0.24;
+                }else if($(this).val() < 180.31) {
+                    stamp = 0.48;
+                }else if($(this).val() < 360.62) {
+                    stamp = 0.96;
+                }else if($(this).val() < 751.27) {
+                    stamp = 1.98;
+                }else if($(this).val() < 1502.54) {
+                    stamp = 4.21;
+                }else if($(this).val() < 3005.07) {
+                    stamp = 8.41;
+                }else if($(this).val() < 6010.13) {
+                    stamp = 16.83;
+                }else if($(this).val() < 12020.25) {
+                    stamp = 33.66;
+                }else if($(this).val() < 24040.49) {
+                    stamp = 67.31;
+                }else if($(this).val() < 48080.98) {
+                    stamp = 134.63;
+                }else if($(this).val() < 96161.95 ) {
+                    stamp = 269.25;
+                }else if($(this).val() < 192323.87 ) {
+                    stamp = 538.51;
+                }
+
+                $("#proposal_stamp").val(stamp);
+            });
+
+        });
+    </script>
+
+{% endblock %}

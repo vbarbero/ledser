@@ -1,0 +1,121 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block styles %}
+    {{ parent() }}
+    <style>
+        .glyphicon {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+    {% stylesheets
+        'css/bootstrap-datetimepicker.min.css'
+        filter='cssrewrite' output='css/compiled/app.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('../css/bootstrap-datetimepicker.min.css') }}" />
+    {#<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />#}
+
+{% endblock %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-10">
+            <h2>Create Report</h2>
+
+        </div>
+    </div>
+    <div class="row">
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.company) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.company) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.user) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.user) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.date) }}
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group date" data-provide="datepicker">
+                    {{ form_widget(form.date, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.action) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.action) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.done) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.done) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.report) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.report) }}
+            </div>
+        </div>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.es.min.js') }}"></script>
+    <script type="text/javascript">
+        $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+        $('.datepicker').datepicker({
+            format: 'yyyy-MM-dd',
+            startDate: '-3d'
+        });
+    </script>
+{% endblock %}
+
+{#{% block javascript %}#}
+    {#{{ parent() }}#}
+    {#{% javascripts '@AppBundle/Resources/public/js/bootstrap-datetimepicker.min.js' %}#}
+        {#<script src="{{ asset_url }}"></script>#}
+    {#{% endjavascripts %}#}
+      {#<script type="text/javascript">#}
+        {#$(function () {#}
+            {#$('#datetimepicker1').datetimepicker({format: 'yyyy-mm-dd hh:ii'});#}
+        {#});#}
+    {#</script>#}
+
+{#{% endblock %}#}

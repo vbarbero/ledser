@@ -1,0 +1,66 @@
+{#<header class="shadow">#}
+    {#<div class="row collapse">#}
+        {#<nav class="float-right hide-for-small-only">#}
+            {#<a href="{{ url('calendar') }}">{{ "Calendar"|trans }}</a>#}
+            {#<a href="{{ url('report_list') }}">{{ "Report List"|trans }}</a>#}
+            {#<a href="{{ url('create_proposal') }}">{{ "Proposals"|trans }}</a>#}
+            {#<a href="{{ url('report_create') }}">{{ "create report"|trans }}</a>#}
+            {#<a href="{{ url('send_email') }}">{{ "Send Email"|trans }}</a>#}
+            {#<a href="{{ url('create_company') }}">{{ "Create Company"|trans }}</a>#}
+            {#<a href="{{ url('list_company') }}">{{ "List company"|trans }}</a>#}
+        {#</nav>#}
+    {#</div>#}
+{#</header>#}
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    {#<a class="navbar-brand" href="#">Navbar</a>#}
+    {#<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">#}
+        {#<span class="navbar-toggler-icon"></span>#}
+    {#</button>#}
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item{% if app.request.get('_route') == 'calendar' %} active{% endif %}">
+                <a class="nav-link" href="{{ url('calendar') }}">{{ "Calendar"|trans }}</a>
+            </li>
+            <li class="nav-item dropdown{% if app.request.get('_route') == 'create_proposal' or app.request.get('_route') == 'list_proposal' %} active{% endif %}">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proposals</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="{{ url('create_proposal') }}">{{ "Create Proposals"|trans }}</a>
+                    <a class="dropdown-item" href="{{ url('list_proposal') }}">{{ "List Proposals"|trans }}</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown{% if app.request.get('_route') == 'create_company' or app.request.get('_route') == 'list_company' %} active{% endif %}">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Company</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="{{ url('create_company') }}">{{ "Create Company"|trans }}</a>
+                    <a class="dropdown-item" href="{{ url('list_company') }}">{{ "List company"|trans }}</a>
+                    <a class="dropdown-item" href="{{ url('create_contact') }}">{{ "Create Contact"|trans }}</a>
+                    <a class="dropdown-item" href="{{ url('list_client') }}">{{ "List Clients"|trans }}</a>
+
+
+                    <a class="dropdown-item" href="{{ url('list_finantial') }}">{{ "List Finantial"|trans }}</a>
+                    <a class="dropdown-item" href="{{ url('list_drawee') }}">{{ "List Drawee"|trans }}</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown{% if app.request.get('_route') == 'report_list' or app.request.get('_route') == 'report_create' %} active{% endif %}">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reports</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="{{ url('report_create') }}">{{ "Create report"|trans }}</a>
+                    <a class="dropdown-item" href="{{ url('report_list') }}">{{ "Report List"|trans }}</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Send Email</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="{{ url('fos_user_security_logout') }}">Logout</a></li>
+        </ul>
+        {#<form class="form-inline my-2 my-lg-0">#}
+            {#<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">#}
+            {#<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
+        {#</form>#}
+    </div>
+</nav>
+

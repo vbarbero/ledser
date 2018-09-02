@@ -1,0 +1,401 @@
+{% extends 'AppBundle::layout.html.twig' %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-10">
+            <h2>Create Calculator</h2>
+
+        </div>
+    </div>
+    <div class="row">
+        {{ form_start(form, {'attr': {'id' : 'form'}}) }}
+        {{ form_errors(form) }}
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.formalizacion) }}
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group date" data-provide="datepicker">
+                    {{ form_widget(form.formalizacion, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.vencimiento) }}
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group date" data-provide="datepicker">
+                    {{ form_widget(form.vencimiento, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.dias) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.dias) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.nominal) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.nominal) }}
+            </div>
+        </div>
+        <div class="row second">
+            <table>
+                <tr>
+                    <td>Honorarios</td>
+                    <td>Timbres{{ form_widget(form.existeTimbre) }}</td>
+                    <td>OMF</td>
+                    <td>Mensajeria</td>
+                    <td>Burofax</td>
+                    <td>Otros gastos</td>
+                </tr>
+                <tr>
+                    <td>{{ form_widget(form.honorarios) }}</td>
+                    <td>{{ form_widget(form.timbres) }}</td>
+                    <td>{{ form_widget(form.omf) }}</td>
+                    <td>{{ form_widget(form.mensajeria) }}</td>
+                    <td>{{ form_widget(form.burofax) }}</td>
+                    <td>{{ form_widget(form.gastos) }}</td>
+                </tr>
+            </table>
+
+            <div class="row third">
+                <div class="col-lg-4">
+                    {{ form_label(form.introduce) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.introduce) }}
+                </div>
+            </div>
+            <div class="fourth">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>Coste Financiero</td>
+                        <td>Coste Financiero + Ledser</td>
+                        <td>Coste Total</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>{{ form_widget(form.costeFinanciero.total) }}</td>
+                        <td>{{ form_widget(form.costeFinancieroLedser.total, { 'attr':{'readonly':true} }) }}</td>
+                        <td>{{ form_widget(form.costeTotal.total, { 'attr':{'readonly':true} }) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Tae</td>
+                        <td>{{ form_widget(form.costeFinanciero.tae) }}</td>
+                        <td>{{ form_widget(form.costeFinancieroLedser.tae, { 'attr':{'readonly':true} }) }}</td>
+                        <td>{{ form_widget(form.costeTotal.tae, { 'attr':{'readonly':true} }) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Mensual</td>
+                        <td>{{ form_widget(form.costeFinanciero.mensual) }}</td>
+                        <td>{{ form_widget(form.costeFinancieroLedser.mensual, { 'attr':{'readonly':true} }) }}</td>
+                        <td>{{ form_widget(form.costeTotal.mensual, { 'attr':{'readonly':true} }) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Retención</td>
+                        <td>{{ form_widget(form.costeFinanciero.retencion) }}</td>
+                        <td>{{ form_widget(form.costeFinancieroLedser.retencion, { 'attr':{'readonly':true} }) }}</td>
+                        <td>{{ form_widget(form.costeTotal.retencion, { 'attr':{'readonly':true} }) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nominal</td>
+                        <td>{{ form_widget(form.costeFinanciero.nominal, { 'attr':{'readonly':true} }) }}</td>
+                        <td>{{ form_widget(form.costeFinancieroLedser.nominal, { 'attr':{'readonly':true} }) }}</td>
+                        <td>{{ form_widget(form.costeTotal.nominal, { 'attr':{'readonly':true} }) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Coste</td>
+                        <td>{{ form_widget(form.costeFinanciero.coste) }}</td>
+                        <td>{{ form_widget(form.costeFinancieroLedser.coste, { 'attr':{'readonly':true} }) }}</td>
+                        <td>{{ form_widget(form.costeTotal.coste, { 'attr':{'readonly':true} }) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Liquido</td>
+                        <td>{{ form_widget(form.costeFinanciero.liquido, { 'attr':{'readonly':true} }) }}</td>
+                        <td>{{ form_widget(form.costeFinancieroLedser.liquido, { 'attr':{'readonly':true} }) }}</td>
+                        <td>{{ form_widget(form.costeTotal.liquido, { 'attr':{'readonly':true} }) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Retencion Total</td>
+                        <td>{{ form_widget(form.costeFinanciero.retencionTotal, { 'attr':{'readonly':true} }) }}</td>
+                        <td>{{ form_widget(form.costeFinancieroLedser.retencionTotal, { 'attr':{'readonly':true} }) }}</td>
+                        <td>{{ form_widget(form.costeTotal.retencionTotal, { 'attr':{'readonly':true} }) }}</td>
+                    </tr>
+                </table>
+                {{ form_widget(form.save, { 'attr':{'class': 'btn btn-primary btn-lg btn-block'} }) }}
+                {{ form_widget(form.saveAndAdd, { 'attr':{'class': 'btn btn-primary btn-lg btn-block'} }) }}
+                {#<button class="btn btn-primary btn-lg btn-block" type="submit">Siguiente</button>#}
+                {#<button class="btn btn-primary btn-lg btn-block" type="submit">Fin</button>#}
+
+            </div>
+
+        </div>
+
+        <div style="display: none;"> {{ form_widget(form.proposal) }}</div>
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.es.min.js') }}"></script>
+    <script type="text/javascript">
+        $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+        $('.datepicker').datepicker({
+            format: 'yyyy-MM-dd',
+            startDate: '-3d'
+        });
+    </script>
+    <script type="text/javascript">
+        $(".second").hide();
+        // $(".third").hide();
+        // $(".fourth").hide();
+        var introduces = {'tae':'tae','mensual' : 'mensual','total': 'total', 'coste' : 'coste'};
+        for (introduce in introduces) {
+            $("#calculator_costeFinanciero_" + introduce).prop('readonly', true);
+        }
+        $(function () {
+            // var formalizacion = false;
+            // var vencimiento = false;
+            var nominal = false;
+            $("#calculator_formalizacion").on('change', function() {
+                // formalizacion = true;
+                // if(formalizacion && vencimiento)
+                // {
+                calculaDias(nominal);
+                // }
+            });
+            $("#calculator_vencimiento").on('change', function() {
+                // vencimiento = true;
+                // if(formalizacion && vencimiento)
+                // {
+                calculaDias(nominal);
+                // }
+            });
+
+            $("#calculator_nominal").on('change', function() {
+                nominal = true;
+                // if(formalizacion && vencimiento)
+                // {
+                $(".second").show();
+                // }
+            });
+
+            $("#calculator_honorarios").on('change', function() {
+                calculaResultados();
+            });
+            $("#calculator_timbres").on('change', function() {
+                calculaResultados();
+            });
+            $("#calculator_omf").on('change', function() {
+                calculaResultados();
+            });
+            $("#calculator_mensajeria").on('change', function() {
+                calculaResultados();
+            });
+            $("#calculator_burofax").on('change', function() {
+                calculaResultados();
+            });
+            $("#calculator_gastos").on('change', function() {
+                calculaResultados();
+            });
+
+
+            $("#calculator_existeTimbre").on('click', function() {
+
+                if($(this).is(':checked'))
+                {
+                    if($("#calculator_nominal").val() < 24.05) {
+                        stamp = 0.06;
+                    }else if($("#calculator_nominal").val() < 48.09) {
+                        stamp = 0.12;
+                    }else if($("#calculator_nominal").val() < 90.16) {
+                        stamp = 0.24;
+                    }else if($("#calculator_nominal").val() < 180.31) {
+                        stamp = 0.48;
+                    }else if($("#calculator_nominal").val() < 360.62) {
+                        stamp = 0.96;
+                    }else if($("#calculator_nominal").val() < 751.27) {
+                        stamp = 1.98;
+                    }else if($("#calculator_nominal").val() < 1502.54) {
+                        stamp = 4.21;
+                    }else if($("#calculator_nominal").val() < 3005.07) {
+                        stamp = 8.41;
+                    }else if($("#calculator_nominal").val() < 6010.13) {
+                        stamp = 16.83;
+                    }else if($("#calculator_nominal").val() < 12020.25) {
+                        stamp = 33.66;
+                    }else if($("#calculator_nominal").val() < 24040.49) {
+                        stamp = 67.31;
+                    }else if($("#calculator_nominal").val() < 48080.98) {
+                        stamp = 134.63;
+                    }else if($("#calculator_nominal").val() < 96161.95 ) {
+                        stamp = 269.25;
+                    }else if($("#calculator_nominal").val() < 192323.87 ) {
+                        stamp = 538.51;
+                    }
+                    $("#calculator_timbres").val(stamp);
+                } else
+                {
+                    $("#calculator_timbres").val(0);
+                }
+                calculaResultados();
+
+            });
+
+
+            $("#calculator_introduce").on('change', function() {
+                $(".fourth").show();
+                var introduces = {'tae':'tae','mensual' : 'mensual','total': 'total','coste': 'coste'};
+                for (introduce in introduces) {
+                    if(introduce == $(this).val()){
+                        $("#calculator_costeFinanciero_" + introduce).prop('readonly', false);
+                    }
+                }
+            });
+
+            var porcentaje = false;
+            var retencion = false;
+
+            $("#calculator_costeFinanciero_total").on('change', function() {
+                calculaResultados();
+            });
+
+            $("#calculator_costeFinanciero_tae").on('change', function() {
+                calculaResultados();
+            });
+
+            $("#calculator_costeFinanciero_mensual").on('change', function() {
+                calculaResultados();
+            });
+
+            $("#calculator_costeFinanciero_coste").on('change', function() {
+                calculaResultados();
+            });
+
+            $("#calculator_costeFinanciero_retencion").on('change', function() {
+                calculaResultados();
+            });
+        });
+        function calculaDias(nominal) {
+            var start = $("#calculator_formalizacion").val();
+            var startD = new Date(start);
+            var end = $("#calculator_vencimiento").val();
+            var endD = new Date(end);
+            var diff = parseInt((endD.getTime()-startD.getTime())/(24*3600*1000));
+            $("#calculator_dias").val(diff);
+            if(nominal)
+            {
+                $(".second").show();
+            }
+        }
+
+        function checkThird() {
+            if(
+                $("#calculator_honorarios").val() != "" &&
+                $("#calculator_timbres").val() != "" &&
+                $("#calculator_omf").val() != "" &&
+                $("#calculator_mensajeria").val() != "" &&
+                $("#calculator_burofax").val() != "" &&
+                $("#calculator_gastos").val() != ""
+            ){
+                $(".third").show();
+                return true;
+            }
+            return false;
+
+        }
+        function rellenoTae()
+        {
+            if ($("#calculator_costeFinanciero_total").val() != "" || $("#calculator_costeFinanciero_mensual").val() != "" || $("#calculator_costeFinanciero_tae").val() != "" || $("#calculator_costeFinanciero_coste").val() != "")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        function calculaResultados()
+        {
+            if(checkThird() && rellenoTae() && $("#calculator_costeFinanciero_retencion").val() != '') {
+
+                var nominal = $("#calculator_nominal").val();
+                var retencion = $("#calculator_costeFinanciero_retencion").val();
+                $("#calculator_costeFinanciero_nominal").val(nominal - (nominal * retencion));
+                var tae, total, mensual, coste = 0.0;
+                if ('total' == $("#calculator_introduce").val()) {
+                    total = $("#calculator_costeFinanciero_total").val();
+                    tae = total / $("#calculator_dias").val() * 360;
+                    mensual = total / $("#calculator_dias").val() * 30;
+                    coste = $("#calculator_costeFinanciero_nominal").val() * total / 100;
+                }
+                else if ('tae' == $("#calculator_introduce").val()) {
+                    tae = $("#calculator_costeFinanciero_tae").val();
+                    total = tae / 360 * $("#calculator_dias").val();
+                    mensual = total / $("#calculator_dias").val() / 30;
+                    coste = $("#calculator_costeFinanciero_nominal").val() * total / 100;
+                }
+                else if ('mensual' == $("#calculator_introduce").val()) {
+                    mensual = $("#calculator_costeFinanciero_mensual").val();
+                    total = mensual * 12;
+                    tae = mensual * ($("#calculator_dias").val() / 30);
+                    coste = $("#calculator_costeFinanciero_nominal").val() * total / 100;
+                }
+                else if ('coste' == $("#calculator_introduce").val()) {
+                    coste = $("#calculator_costeFinanciero_coste").val();
+                    total = coste / nominal;
+                    tae = total / $("#calculator_dias").val() * 360;
+                    mensual = total / $("#calculator_dias").val() * 30;
+                    coste = $("#calculator_costeFinanciero_nominal").val() * total / 100;
+                }
+
+                $("#calculator_costeFinanciero_total").val(parseFloat(total).toFixed(2));
+                $("#calculator_costeFinanciero_mensual").val(parseFloat(mensual).toFixed(2));
+                $("#calculator_costeFinanciero_tae").val(parseFloat(tae).toFixed(2));
+                $("#calculator_costeFinanciero_coste").val(parseFloat(coste).toFixed(2));
+
+
+
+                $("#calculator_costeFinanciero_liquido").val($("#calculator_costeFinanciero_nominal").val() - $("#calculator_costeFinanciero_coste").val());
+                $("#calculator_costeFinanciero_retencionTotal").val(nominal * retencion / 100);
+
+                $("#calculator_costeFinancieroLedser_total").val(parseFloat((parseFloat($("#calculator_costeFinanciero_coste").val()) + parseFloat($("#calculator_honorarios").val())) / $("#calculator_costeFinanciero_nominal").val() * 100));
+                $("#calculator_costeFinancieroLedser_tae").val(parseFloat($("#calculator_costeFinancieroLedser_total").val() / $("#calculator_dias").val() * 360));
+                $("#calculator_costeFinancieroLedser_mensual").val(parseFloat($("#calculator_costeFinancieroLedser_tae").val() / 12));
+                $("#calculator_costeFinancieroLedser_retencion").val(retencion);
+                $("#calculator_costeTotal_retencion").val(retencion);
+                $("#calculator_costeFinancieroLedser_nominal").val($("#calculator_costeFinanciero_nominal").val());
+                $("#calculator_costeTotal_nominal").val($("#calculator_costeFinanciero_nominal").val());
+
+                $("#calculator_costeFinancieroLedser_coste").val(parseFloat($("#calculator_costeFinanciero_coste").val()) + parseFloat($("#calculator_honorarios").val()));
+                $("#calculator_costeTotal_coste").val(parseFloat($("#calculator_costeFinancieroLedser_coste").val()) + parseFloat($("#calculator_timbres").val()) +
+                    parseFloat($("#calculator_omf").val()) + parseFloat($("#calculator_mensajeria").val()) + parseFloat($("#calculator_burofax").val()) + parseFloat($("#calculator_gastos").val()));
+                $("#calculator_costeFinancieroLedser_liquido").val($("#calculator_costeFinancieroLedser_nominal").val() - $("#calculator_costeFinancieroLedser_coste").val());
+                $("#calculator_costeTotal_liquido").val($("#calculator_costeTotal_nominal").val() - $("#calculator_costeTotal_coste").val());
+                $("#calculator_costeFinancieroLedser_retencionTotal").val(nominal * retencion);
+                $("#calculator_costeTotal_retencionTotal").val(nominal * retencion);
+
+                $("#calculator_costeTotal_total").val(parseFloat((parseFloat($("#calculator_costeFinanciero_coste").val()) + parseFloat($("#calculator_honorarios").val()) + parseFloat($("#calculator_timbres").val()) +
+                    parseFloat($("#calculator_omf").val()) + parseFloat($("#calculator_mensajeria").val()) + parseFloat($("#calculator_burofax").val()) + parseFloat($("#calculator_gastos").val())) / $("#calculator_costeFinanciero_nominal").val() * 100));
+
+                $("#calculator_costeTotal_tae").val(parseFloat($("#calculator_costeTotal_total").val() / $("#calculator_dias").val() * 360));
+                $("#calculator_costeTotal_mensual").val(parseFloat($("#calculator_costeTotal_tae").val() / 12));
+            }
+        }
+    </script>
+{% endblock %}
