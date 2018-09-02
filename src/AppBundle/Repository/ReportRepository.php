@@ -136,7 +136,7 @@ class ReportRepository extends EntityRepository
             $qb->expr()->eq('r.user', ":user")
         );
         $qb->setParameter('user', $user);
-        $to->mofify("-1 seconds");
+        $to->modify("-1 seconds");
         $qb->setParameter('date_init', $from->format("Y-m-d H:i:s"));
         $qb->setParameter('date_fin', $to->format("Y-m-d H:i:s"));
         $reports = [];
