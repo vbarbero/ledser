@@ -116,9 +116,8 @@ class Proposal extends BaseEntity
     }
 
     /**
-     * @return Company
      */
-    public function getFinalcial(): Company
+    public function getFinalcial()
     {
         return $this->finalcial;
     }
