@@ -381,7 +381,7 @@
                 );
                 $("#calculator_costeFinancieroLedser_tae").val(parseFloat($("#calculator_costeFinancieroLedser_total").val() / $("#calculator_dias").val() * 360).toFixed(2));
                 $("#calculator_costeFinancieroLedser_mensual").val(parseFloat($("#calculator_costeFinancieroLedser_tae").val() / 12).toFixed(2));
-                $("#calculator_costeFinancieroLedser_retencion").val(nominal * retencion / 100);
+                $("#calculator_costeFinancieroLedser_retencion").val(retencion);
                 $("#calculator_costeTotal_retencion").val(retencion);
                 $("#calculator_costeFinancieroLedser_nominal").val($("#calculator_costeFinanciero_nominal").val());
                 $("#calculator_costeTotal_nominal").val($("#calculator_costeFinanciero_nominal").val());
