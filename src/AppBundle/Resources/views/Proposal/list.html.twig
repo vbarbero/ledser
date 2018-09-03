@@ -174,11 +174,11 @@
             {% set costeTTotal = costeTTotal + costeT %}
             {% set honorariosTotal = honorarios + honorariosTotal %}
             {% set costeTotal = costeTotal + coste %}
-            {% set diasT = diasT + dias %}
-            {% set nominalT = nominalT + nominal %}
-            {% set taeCFT = taeCFT + taeCF %}
-            {% set taeCLT = taeCLT + taeCL %}
-            {% set taeTT = taeTT + taeT %}
+            {% set diasT = diasT + (dias/num) %}
+            {% set nominalT = nominalT + (nominal) %}
+            {% set taeCFT = taeCFT + (taeCF/num) %}
+            {% set taeCLT = taeCLT + (taeCL/num) %}
+            {% set taeTT = taeTT + (taeT/num) %}
             <td>{% if num == 0 %}0(0){% else %}{{ (nominal )|number_format(2) }}{% endif %}</td>
             <td>{% if num == 0 %}0{% else %}{{ (dias/num)|number_format(0) }}{% endif %}</td>
             <td>{% if num == 0 %}0{% else %}{{ (taeCF/num)|number_format(2) }} <br/>({{ (coste)|number_format(2) }}){% endif %}</td>
