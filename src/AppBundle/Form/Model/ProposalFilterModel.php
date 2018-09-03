@@ -138,7 +138,7 @@ class ProposalFilterModel
     /**
      * @return Company
      */
-    public function getFinancial(): Company
+    public function getFinancial()
     {
         return $this->financial;
     }

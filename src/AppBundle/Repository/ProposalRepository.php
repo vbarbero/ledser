@@ -39,7 +39,7 @@ class ProposalRepository extends EntityRepository
         if($proposalFilterModel->getFinancial())
         {
             $qb->andWhere(
-                $qb->expr()->eq('p.financial', ":financial")
+                $qb->expr()->eq('p.finalcial', ":financial")
             );
             $qb->setParameter('financial', $proposalFilterModel->getFinancial());
         }
