@@ -14,6 +14,7 @@ use AppBundle\Form\Model\CalendarFilterModel;
 use AppBundle\Form\Model\ProposalFilterModel;
 use AppBundle\Model\ProposalModel;
 use AppBundle\Model\ReportModel;
+use AppBundle\Repository\CompanyRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
