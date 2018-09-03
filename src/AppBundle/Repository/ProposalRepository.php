@@ -36,13 +36,13 @@ class ProposalRepository extends EntityRepository
             );
             $qb->setParameter('to', $proposalFilterModel->getTo());
         }
-//        if($proposalFilterModel->getType())
-//        {
-//            $qb->andWhere(
-//                $qb->expr()->eq('p.type', ":type")
-//            );
-//            $qb->setParameter('type', $proposalFilterModel->getType());
-//        }
+        if($proposalFilterModel->getFinancial())
+        {
+            $qb->andWhere(
+                $qb->expr()->eq('p.financial', ":financial")
+            );
+            $qb->setParameter('financial', $proposalFilterModel->getFinancial());
+        }
         if($proposalFilterModel->getOperationalType())
         {
             $qb->andWhere(

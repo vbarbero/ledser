@@ -42,6 +42,11 @@ class ProposalController extends Controller
             $dateTo = new \DateTime();
             $dateTo->setTime(23,59,59);
         }
+        if($request->query->get('financial'))
+        {
+            $financial = $this->getDoctrine()->getRepository(Company::class)->find($request->query->get('financial'));
+            $proposalModel->setFinancial($financial);
+        }
         $proposalModel->setTo($dateTo);
 
         $form = $this->createForm(ProposalFilterType::class, $proposalModel);

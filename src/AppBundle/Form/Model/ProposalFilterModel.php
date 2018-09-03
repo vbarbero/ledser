@@ -35,6 +35,11 @@ class ProposalFilterModel
     protected $operationalType;
 
     /**
+     * @var Company
+     */
+    protected $financial;
+
+    /**
      * @return int
      */
     public function getStatus()
@@ -128,6 +133,22 @@ class ProposalFilterModel
     public function setTo($to)
     {
         $this->to = $to;
+    }
+
+    /**
+     * @return Company
+     */
+    public function getFinancial(): Company
+    {
+        return $this->financial;
+    }
+
+    /**
+     * @param Company $financial
+     */
+    public function setFinancial(Company $financial)
+    {
+        $this->financial = $financial;
     }
 
 
