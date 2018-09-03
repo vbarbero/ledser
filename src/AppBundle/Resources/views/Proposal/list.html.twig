@@ -168,7 +168,7 @@
                 {% set dias = calculator.dias + dias %}
                 {% set taeCF = calculator.costeFinanciero.tae + taeCF %}
                 {% set taeCL = calculator.costeFinancieroLedser.tae + taeCL %}
-                {% set taeT = calculator.costeTotal.tae %}
+                {% set taeT = calculator.costeTotal.tae +taeT %}
                 {% set nominal = calculator.nominal + nominal %}
             {% endfor %}
             {% set costeTTotal = costeTTotal + costeT %}
