@@ -31,7 +31,7 @@ class ProposalFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('status', ChoiceType::class, ['choices' => ProposalModel::getStateAsChoice(), 'placeholder' => 'Choose an option', 'required' => false]);
-        $builder->add('finalcial', EntityType::class, [
+        $builder->add('financial', EntityType::class, [
             'class' => Company::class,
             'choice_label' => 'name',
             'query_builder' => function( CompanyRepository $er ) {
