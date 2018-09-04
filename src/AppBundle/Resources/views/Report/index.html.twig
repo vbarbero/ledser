@@ -184,7 +184,7 @@
                         <td>{{ report.action | report_action }}</td>
                         <td>{{ report.company.cif }}</td>
                         <td><a href="{{ url("show_report", {id: report.id}) }}"> {{ report.company.name }}</a></td>
-                        <td>{{ report.clientType | report_client_type }}</td>
+                        <td>{{ report.company.client_type | company_type }}</td>
                         <td>{{ report.company.zip}}</td>
                         <td>{{ report.company.city}}</td>
                         <td>{{ report.company.province}}</td>
