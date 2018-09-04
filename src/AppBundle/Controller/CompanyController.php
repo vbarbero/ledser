@@ -11,6 +11,7 @@ use AppBundle\Form\Type\ContactType;
 use AppBundle\Model\CompanyModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Tests\File\UploadedFileTest;
@@ -65,7 +66,8 @@ class CompanyController extends Controller
     {
         $company = new Company();
         $form = $this->createForm(CompanyType::class, $company);
-
+        $form->add('save', SubmitType::class, array('label' => 'Save'));
+        $form->add('saveAndAdd', SubmitType::class, array('label' => 'Save and Add'));
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $company = $form->getData();
@@ -73,7 +75,12 @@ class CompanyController extends Controller
 //dump($company->getType()); die;
             $em->persist($company);
             $em->flush();
-            return $this->redirect($this->generateUrl("list_company"));
+            if ($form->getClickedButton() && 'save' === $form->getClickedButton()->getName()) {
+                return $this->redirect($this->generateUrl("list_company");
+            }
+            else {
+                return $this->redirect($this->generateUrl("create_contact");
+            }
         }
         return $this->render('AppBundle:Company:index.html.twig', ['form' => $form->createView()]);
     }
