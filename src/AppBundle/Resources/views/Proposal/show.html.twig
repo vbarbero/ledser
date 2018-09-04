@@ -97,27 +97,27 @@
             </tr>
             <tr>
                 <td>Total</td>
-                <td>{{ general.costeFinanciero.total / (calculators | length) | number_format(2)}}</td>
-                <td>{{ general.costeFinancieroLedser.total / (calculators | length) | number_format(2)}}</td>
-                <td>{{ general.costeTotal.total / (calculators | length) | number_format(2) }}</td>
+                <td>{{ (general.costeFinanciero.total / (calculators | length)) | number_format(2)}}</td>
+                <td>{{ (general.costeFinancieroLedser.total / (calculators | length)) | number_format(2)}}</td>
+                <td>{{ (general.costeTotal.total / (calculators | length)) | number_format(2) }}</td>
             </tr>
             <tr>
                 <td>Tae</td>
-                <td>{{ general.costeFinanciero.tae / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeFinancieroLedser.tae / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeTotal.tae / (calculators | length) | number_format(2) }}</td>
+                <td>{{ (general.costeFinanciero.tae / (calculators | length)) | number_format(2) }}</td>
+                <td>{{ (general.costeFinancieroLedser.tae / (calculators | length)) | number_format(2) }}</td>
+                <td>{{ (general.costeTotal.tae / (calculators | length)) | number_format(2) }}</td>
             </tr>
             <tr>
                 <td>Mensual</td>
-                <td>{{ general.costeFinanciero.mensual / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeFinancieroLedser.mensual / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeTotal.mensual / (calculators | length) | number_format(2) }}</td>
+                <td>{{ (general.costeFinanciero.mensual / (calculators | length) )| number_format(2) }}</td>
+                <td>{{ (general.costeFinancieroLedser.mensual / (calculators | length)) | number_format(2) }}</td>
+                <td>{{ (general.costeTotal.mensual / (calculators | length)) | number_format(2) }}</td>
             </tr>
             <tr>
                 <td>Retención</td>
-                <td>{{ general.costeFinanciero.retencion / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeFinancieroLedser.retencion / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeTotal.retencion / (calculators | length) | number_format(2) }}</td>
+                <td>{{ (general.costeFinanciero.retencion / (calculators | length)) | number_format(2) }}</td>
+                <td>{{ (general.costeFinancieroLedser.retencion / (calculators | length)) | number_format(2) }}</td>
+                <td>{{ (general.costeTotal.retencion / (calculators | length)) | number_format(2) }}</td>
             </tr>
             <tr>
                 <td>Nominal</td>
