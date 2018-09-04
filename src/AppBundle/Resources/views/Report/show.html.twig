@@ -131,7 +131,30 @@
 
                     </div>
                 </div>
-                
+                <div class="row" style="display: none">
+                    <div class="col-lg-4">
+                        {{ form_label(form.action) }}
+                    </div>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.action) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        {{ form_label(form.done) }}
+                    </div>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.done) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        {{ form_label(form.report) }}
+                    </div>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.report) }}
+                    </div>
+                </div>
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
 
                 {{ form_end(form) }}
