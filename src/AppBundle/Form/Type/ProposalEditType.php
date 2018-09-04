@@ -19,9 +19,27 @@ class ProposalEditType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('company', EntityType::class, ['class' => Company::class, 'choice_label' => 'name', 'query_builder' => function( CompanyRepository $er ) {
+            return $er->getCompany();
+        }]);
+        $builder->add('user', EntityType::class, ['class' => User::class, 'choice_label' => 'username']);
+        $builder->add('finalcial', EntityType::class, [
+            'class' => Company::class,
+            'choice_label' => 'name',
+            'query_builder' => function( CompanyRepository $er ) {
+                return $er->getFinantial();
+            }]);
+        $builder->add('drawee', EntityType::class, [
+            'class' => Company::class,
+            'choice_label' => 'name',
+            'query_builder' => function( CompanyRepository $er ) {
+                return $er->getDrawee();
+            }]);
         $builder->add('state', ChoiceType::class, ['choices' => ProposalModel::getStateAsChoice()]);
+        $builder->add('operationalType',ChoiceType::class, ['choices' => ProposalModel::getOperationalTypeAsChoice()]);
         $builder->add('rating', ChoiceType::class, ['choices' => ProposalModel::getRatingAsChoice()]);
         $builder->add('reason');
+
     }
 
     /**
