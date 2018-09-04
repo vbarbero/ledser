@@ -116,6 +116,28 @@ class ProposalController extends Controller
 
     }
 
+    /**
+     * @Route("/edit-calculator/{calculator}", name="edit_calculator")
+     */
+    public function editCalculatorAction($calculator, Request $request)
+    {
+        $calculator = $this->getDoctrine()->getRepository(Calculator::class)->find($calculator);
+
+        $form = $this->createForm(CalculatorType::class, $calculator);
+        $form->handleRequest($request);
+        if ( $form->isValid()) {
+            $calculator = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($calculator);
+            $em->flush();
+
+            if ($form->getClickedButton() && 'save' === $form->getClickedButton()->getName()) {
+                return $this->redirect($this->generateUrl("show_proposal",['id' => $calculator->getProposal()->getId()]));
+            }
+        }
+
+        return $this->render('AppBundle:Proposal:createCalculator.html.twig', ['form' => $form->createView()]);
+    }
 
     /**
      * @Route("/create-calculator/{proposal}", name="create_calculator")
@@ -130,6 +152,8 @@ class ProposalController extends Controller
         $calculator->setCosteFinancieroLedser(new Cost());
         $calculator->setCosteTotal(new Cost());
         $form = $this->createForm(CalculatorType::class, $calculator);
+
+        $form->add('saveAndAdd', SubmitType::class, array('label' => 'Save and Add'));
         $form->handleRequest($request);
         if ( $form->isValid()) {
             $calculator = $form->getData();

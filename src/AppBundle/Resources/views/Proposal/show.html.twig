@@ -79,12 +79,12 @@
                 <td>Otros gastos</td>
             </tr>
             <tr>
-                <td>{{ general.honorarios / (calculators | length) | number_format(2)}}</td>
-                <td>{{ general.timbres / (calculators | length) | number_format(2)}}</td>
-                <td>{{ general.omf / (calculators | length) | number_format(2)}}</td>
-                <td>{{ general.mensajeria / (calculators | length) | number_format(2)}}</td>
-                <td>{{ general.burofax / (calculators | length) | number_format(2)}}</td>
-                <td>{{ general.gastos / (calculators | length) | number_format(2)}}</td>
+                <td>{{ general.honorarios  | number_format(2)}}</td>
+                <td>{{ general.timbres | number_format(2)}}</td>
+                <td>{{ general.omf | number_format(2)}}</td>
+                <td>{{ general.mensajeria  | number_format(2)}}</td>
+                <td>{{ general.burofax | number_format(2)}}</td>
+                <td>{{ general.gastos  | number_format(2)}}</td>
             </tr>
         </table>
         <table class="table table-condensed">
@@ -121,27 +121,27 @@
             </tr>
             <tr>
                 <td>Nominal</td>
-                <td>{{ general.costeFinanciero.nominal / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeFinancieroLedser.nominal / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeTotal.nominal / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeFinanciero.nominal | number_format(2) }}</td>
+                <td>{{ general.costeFinancieroLedser.nominal  | number_format(2) }}</td>
+                <td>{{ general.costeTotal.nominal  | number_format(2) }}</td>
             </tr>
             <tr>
                 <td>Coste</td>
-                <td>{{ general.costeFinanciero.coste / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeFinancieroLedser.coste / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeTotal.coste / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeFinanciero.coste  | number_format(2) }}</td>
+                <td>{{ general.costeFinancieroLedser.coste| number_format(2) }}</td>
+                <td>{{ general.costeTotal.coste  | number_format(2) }}</td>
             </tr>
             <tr>
                 <td>Liquido</td>
-                <td>{{ general.costeFinanciero.liquido / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeFinancieroLedser.liquido / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeTotal.liquido / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeFinanciero.liquido  | number_format(2) }}</td>
+                <td>{{ general.costeFinancieroLedser.liquido  | number_format(2) }}</td>
+                <td>{{ general.costeTotal.liquido  | number_format(2) }}</td>
             </tr>
             <tr>
                 <td>Retencion Total</td>
-                <td>{{ general.costeFinanciero.retencionTotal / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeFinancieroLedser.retencionTotal / (calculators | length) | number_format(2) }}</td>
-                <td>{{ general.costeTotal.retencionTotal / (calculators | length) | number_format(2) }}</td>
+                <td>{{ general.costeFinanciero.retencionTotal  | number_format(2) }}</td>
+                <td>{{ general.costeFinancieroLedser.retencionTotal  | number_format(2) }}</td>
+                <td>{{ general.costeTotal.retencionTotal  | number_format(2) }}</td>
             </tr>
         </table>
     {% endif %}

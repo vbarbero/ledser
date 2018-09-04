@@ -137,7 +137,9 @@
                     </tr>
                 </table>
                 {{ form_widget(form.save, { 'attr':{'class': 'btn btn-primary btn-lg btn-block'} }) }}
+                {% if form.saveAndAdd is defined %}
                 {{ form_widget(form.saveAndAdd, { 'attr':{'class': 'btn btn-primary btn-lg btn-block'} }) }}
+                {% endif %}
                 {#<button class="btn btn-primary btn-lg btn-block" type="submit">Siguiente</button>#}
                 {#<button class="btn btn-primary btn-lg btn-block" type="submit">Fin</button>#}
 
