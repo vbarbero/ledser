@@ -146,8 +146,6 @@ class ReportController extends Controller
         }
         $history = $this->getDoctrine()->getRepository(Report::class)->findBy(['company' => $report->getCompany()]);
         $contacts = $this->getDoctrine()->getManager()->getRepository(Contact::class)->findBy(['company' => $report->getCompany()]);
-        dump($report, $form, $history, $contacts);
-        die;
         return $this->render('AppBundle:Report:show.html.twig', ['report' => $report, 'contacts' => $contacts, 'history' => $history, 'form' => $form->createView()]);
     }
 }
