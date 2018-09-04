@@ -67,7 +67,7 @@ class CompanyController extends Controller
         $company = new Company();
         $form = $this->createForm(CompanyType::class, $company);
         $form->add('save', SubmitType::class, array('label' => 'Save'));
-        $form->add('saveAndAdd', SubmitType::class, array('label' => 'Save and Add'));
+        $form->add('saveAndAdd', SubmitType::class, array('label' => 'Save and Add Contact'));
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $company = $form->getData();
