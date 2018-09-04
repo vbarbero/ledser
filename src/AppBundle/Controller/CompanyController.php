@@ -76,10 +76,10 @@ class CompanyController extends Controller
             $em->persist($company);
             $em->flush();
             if ($form->getClickedButton() && 'save' === $form->getClickedButton()->getName()) {
-                return $this->redirect($this->generateUrl("list_company");
+                return $this->redirect($this->generateUrl("list_company"));
             }
             else {
-                return $this->redirect($this->generateUrl("create_contact");
+                return $this->redirect($this->generateUrl("create_contact"));
             }
         }
         return $this->render('AppBundle:Company:index.html.twig', ['form' => $form->createView()]);
