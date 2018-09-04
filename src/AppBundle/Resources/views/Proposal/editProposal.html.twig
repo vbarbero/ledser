@@ -37,6 +37,14 @@
     {{ form_start(form) }}
         <div class="row">
             <div class="col-lg-4">
+                {{ form_label(form.company) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.company) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
                 {{ form_label(form.state) }}
             </div>
             <div class="col-lg-4">
@@ -49,6 +57,38 @@
             </div>
             <div class="col-lg-4">
                 {{ form_widget(form.rating) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.user) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.user) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.finalcial) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.finalcial) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.drawee) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.drawee) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.operationalType) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.operationalType) }}
             </div>
         </div>
         <div class="row">
