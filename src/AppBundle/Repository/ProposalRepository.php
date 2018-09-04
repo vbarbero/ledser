@@ -43,6 +43,13 @@ class ProposalRepository extends EntityRepository
             );
             $qb->setParameter('financial', $proposalFilterModel->getFinancial());
         }
+        if($proposalFilterModel->getCompany())
+        {
+            $qb->andWhere(
+                $qb->expr()->eq('p.company', ":company")
+            );
+            $qb->setParameter('company', $proposalFilterModel->getCompany());
+        }
         if($proposalFilterModel->getOperationalType())
         {
             $qb->andWhere(
