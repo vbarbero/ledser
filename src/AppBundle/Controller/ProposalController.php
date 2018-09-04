@@ -13,6 +13,7 @@ use AppBundle\Form\Type\ProposalFilterType;
 use AppBundle\Form\Type\ProposalType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 class ProposalController extends Controller
@@ -124,6 +125,7 @@ class ProposalController extends Controller
         $calculator = $this->getDoctrine()->getRepository(Calculator::class)->find($calculator);
 
         $form = $this->createForm(CalculatorType::class, $calculator);
+
         $form->handleRequest($request);
         if ( $form->isValid()) {
             $calculator = $form->getData();
@@ -135,7 +137,7 @@ class ProposalController extends Controller
                 return $this->redirect($this->generateUrl("show_proposal",['id' => $calculator->getProposal()->getId()]));
             }
         }
-
+        $form->get('introduce')->setData('tae');
         return $this->render('AppBundle:Proposal:createCalculator.html.twig', ['form' => $form->createView()]);
     }
 
