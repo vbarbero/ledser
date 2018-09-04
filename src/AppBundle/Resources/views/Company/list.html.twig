@@ -4,6 +4,7 @@
 
     <div class="row bg-dark text-light">
         <div class="w-100"></div>
+        <div class="col">id</div>
         <div class="col">Name</div>
         <div class="col">Cif</div>
         <div class="col">Cnae</div>
@@ -15,6 +16,7 @@
 
     {% for company in companies %}
         <div class="row {% if loop.index is odd %}bg-secondary{% endif %}">
+            <div class="col">{{ loop.index }} </div>
             <div class="col"><a href="{{ url('show_company', {id: company.id}) }}"> {{ company.name }}</a> </div>
             <div class="col">{{ company.cif }}</div>
             <div class="col">{{ company.cnae }}</div>
