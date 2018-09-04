@@ -34,6 +34,60 @@
     </div>
     <div class="row">
         {{ form_start(form) }}
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.company) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.company) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.user) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.user) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.date) }}
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group date" data-provide="datepicker">
+                    {{ form_widget(form.date, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.action) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.action) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.done) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.done) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.report) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.report) }}
+            </div>
+        </div>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
 
         {{ form_end(form) }}
     </div>
