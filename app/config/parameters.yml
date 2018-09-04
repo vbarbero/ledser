@@ -11,3 +11,4 @@ parameters:
     mailer_password: 'Sl1pkn01&_3'
     secret: 2ff7979923f9ebd31f962b51a3a44cc91eab31b1
     google_api_places: AIzaSyBEAg8JHKC5Pi7MV-Xf9rO94J60nk1dwE8
+    path: '%kernel.project_dir%/web/uploads/'
