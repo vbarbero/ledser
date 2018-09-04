@@ -4,6 +4,7 @@ namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Proposal;
+use AppBundle\Entity\User;
 use AppBundle\Model\ProposalModel;
 use AppBundle\Repository\CompanyRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
