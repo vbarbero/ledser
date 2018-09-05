@@ -117,8 +117,8 @@ class ReportController extends Controller
             $report->setCompany($this->getDoctrine()->getRepository(Company::class)->find($company));
         }
 
-        if($request->query->has("companyId")){
-            $company = $this->getDoctrine()->getManager()->getRepository(Company::class)->find($request->query->get("companyId"));
+        if($company){
+            $company = $this->getDoctrine()->getManager()->getRepository(Company::class)->find($company);
             $report->setCompany($company);
         }
         $form = $this->createForm(ReportType::class, $report);

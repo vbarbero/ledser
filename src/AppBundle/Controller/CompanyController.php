@@ -79,7 +79,7 @@ class CompanyController extends Controller
                 return $this->redirect($this->generateUrl("list_company"));
             }
             else {
-                return $this->redirect($this->generateUrl("create_contact"));
+                return $this->redirect($this->generateUrl("create_contact", ['company' => $company->getId()]));
             }
         }
         return $this->render('AppBundle:Company:index.html.twig', ['form' => $form->createView()]);
@@ -165,11 +165,16 @@ class CompanyController extends Controller
     }
 
     /**
-     * @Route("/create-contact", name="create_contact")
+     * @Route("/create-contact/{company}", name="create_contact")
      */
-    public function createContactAction(Request $request)
+    public function createContactAction($company = null, Request $request)
     {
         $contact = new Contact();
+        if($company) {
+            /** @var Company $company */
+            $company = $this->getDoctrine()->getManager()->getRepository(Company::class)->find($company);
+            $contact->setCompany($company);
+        }
         $form = $this->createForm(ContactType::class, $contact);
 
         $form->handleRequest($request);
