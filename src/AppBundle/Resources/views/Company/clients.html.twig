@@ -6,6 +6,9 @@
         <div class="w-100"></div>
         <div class="col">id</div>
         <div class="col">Name</div>
+        {% if drawee is defined %}
+        <div class="col">rating</div>
+            {% endif %}
         <div class="col">Cnae</div>
         <div class="col">Address</div>
         <div class="col">City</div>
@@ -16,6 +19,9 @@
         <div class="row {% if loop.index is odd %}bg-secondary{% endif %}">
             <div class="col">{{ loop.index }}</div>
             <div class="col"><a href="{{ url('list_files', {company: company.id}) }}"> {{ company.name }}</a> </div>
+            {% if drawee is defined %}
+                <div class="col">{{ company.rating }}</div>
+            {% endif %}
             <div class="col">{{ company.cnae }}</div>
             <div class="col">{{ company.address }}</div>
             <div class="col">{{ company.city }}</div>

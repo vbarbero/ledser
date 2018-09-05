@@ -40,7 +40,7 @@ class CompanyController extends Controller
     public function listDraweeAction(Request $request)
     {
         $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::DRAWEE]);
-        return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies]);
+        return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies, 'drawee' => true]);
     }
     /**
      * @Route("/list-finantial", name="list_finantial")
