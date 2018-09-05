@@ -146,7 +146,12 @@
             <td>{{ proposal.user.name  }}</td>
             <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
             <td>{{ proposal.finalcial.name  }}</td>
-            <td>{{ proposal.drawee.name  }}</td>
+            <td>
+                {% if proposal.calculator | length > 1 %}
+                    {{ proposal.drawee.name  }}
+                {% endif %}
+            </td>
+
             <td>{{ proposal.state | proposal_status }}{%if (proposal.state == 5)%} {{proposal.reason}}{%endif%}</td>
             <td>{{ proposal.company.rating }}</td>
             <td>{{ proposal.operationalType  }}</td>
