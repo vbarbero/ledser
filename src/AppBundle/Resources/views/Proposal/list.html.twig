@@ -191,28 +191,32 @@
 		<a class="delete" data-href="{{ url('delete_proposal' , {proposal:proposal.id}) }}">Delete</a>
             </td>
         </tr>
-        {% for calculator in proposal.calculator %}
-            <td></td>
-            <td>
-                <span style="display: block">{{ calculator.formalizacion | date("Y-m-d") }}</span> /
-                <span style="display: block">{{ calculator.vencimiento   | date("Y-m-d") }}</span>
-            </td>
-            <td>{{ proposal.user.name  }}</td>
-            <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
-            <td>{{ proposal.finalcial.name  }}</td>
-            <td>{{ proposal.drawee.name  }}</td>
-            <td>{{ proposal.state | proposal_status }}{%if (proposal.state == 5)%} {{proposal.reason}}{%endif%}</td>
-            <td>{{ proposal.company.rating }}</td>
-            <td>{{ proposal.operationalType  }}</td>
-            <td>{{ calculator.nominal|number_format(2) }}</td>
-            <td>{{ calculator.dias|number_format(0) }}</td>
-            <td>{{ calculator.costeFinanciero.tae|number_format(2) }} <br/>({{ calculator.costeFinanciero.coste |number_format(2) }})</td>
-            <td>{{ calculator.costeFinancieroLedser.tae |number_format(2) }}<br/>({{ calculator.honorarios|number_format(2) }})</td>
-            <td>{{ calculator.costeTotal.tae|number_format(2) }}<br/>({{calculator.costeTotal.coste |number_format(2) }})</td>
-            <td>
-                 <a href="{{ url('edit_calculator' , {calculator:calculator.id}) }}">Edit</a>
-            </td>
-        {% endfor %}
+        {% if proposal.calculator | length > 1 %}
+            {% for calculator in proposal.calculator %}
+                <tr>
+                <td></td>
+                <td>
+                    <span style="display: block">{{ calculator.formalizacion | date("Y-m-d") }}</span> /
+                    <span style="display: block">{{ calculator.vencimiento   | date("Y-m-d") }}</span>
+                </td>
+                <td>{{ proposal.user.name  }}</td>
+                <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
+                <td>{{ proposal.finalcial.name  }}</td>
+                <td>{{ proposal.drawee.name  }}</td>
+                <td>{{ proposal.state | proposal_status }}{%if (proposal.state == 5)%} {{proposal.reason}}{%endif%}</td>
+                <td>{{ proposal.company.rating }}</td>
+                <td>{{ proposal.operationalType  }}</td>
+                <td>{{ calculator.nominal|number_format(2) }}</td>
+                <td>{{ calculator.dias|number_format(0) }}</td>
+                <td>{{ calculator.costeFinanciero.tae|number_format(2) }} <br/>({{ calculator.costeFinanciero.coste |number_format(2) }})</td>
+                <td>{{ calculator.costeFinancieroLedser.tae |number_format(2) }}<br/>({{ calculator.honorarios|number_format(2) }})</td>
+                <td>{{ calculator.costeTotal.tae|number_format(2) }}<br/>({{calculator.costeTotal.coste |number_format(2) }})</td>
+                <td>
+                     <a href="{{ url('edit_calculator' , {calculator:calculator.id}) }}">Edit</a>
+                </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
     {% endfor %}
 
         <tr>
