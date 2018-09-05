@@ -157,7 +157,7 @@
             <td>{{ proposal.finalcial.name  }}</td>
             <td>{{ proposal.drawee.name  }}</td>
             <td>{{ proposal.state | proposal_status }}{%if (proposal.state == 5)%} {{proposal.reason}}{%endif%}</td>
-            <td>{{ proposal.rating }}</td>
+            <td>{{ proposal.company.rating }}</td>
             <td>{{ proposal.operationalType  }}</td>
             {% set coste = 0 %}
             {% set costeT = 0 %}

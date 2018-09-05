@@ -68,6 +68,13 @@ class Company extends BaseEntity
     protected $cnae;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    protected $rating;
+
+    /**
      * @var int
      *
      * @ORM\Column(type="integer", nullable=true)
@@ -156,6 +163,22 @@ class Company extends BaseEntity
     public function setZip($zip)
     {
         $this->zip = $zip;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param string $rating
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
     }
 
     /**

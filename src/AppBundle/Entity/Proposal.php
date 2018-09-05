@@ -46,12 +46,6 @@ class Proposal extends BaseEntity
      */
     protected $drawee;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
-    protected $rating;
 
     /**
      * @var string
@@ -150,22 +144,6 @@ class Proposal extends BaseEntity
     public function setDrawee(Company $drawee)
     {
         $this->drawee = $drawee;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRating()
-    {
-        return $this->rating;
-    }
-
-    /**
-     * @param string $rating
-     */
-    public function setRating($rating)
-    {
-        $this->rating = $rating;
     }
 
     /**

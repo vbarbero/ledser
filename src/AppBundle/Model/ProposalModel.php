@@ -76,16 +76,4 @@ class ProposalModel
                 'Advance' => 'Advance',
             ];
     }
-
-    public static function getRatingAsChoice()
-    {
-        return
-            [
-                'Study' => 'Study',
-                'A' => 'A',
-                'B' => 'B',
-                'C' => 'C',
-                'D' => 'D',
-            ];
-    }
 }

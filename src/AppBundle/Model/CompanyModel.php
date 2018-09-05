@@ -40,4 +40,16 @@ class CompanyModel
                 self::DRAWEE => 'DRAWEE',
             ];
     }
+
+    public static function getRatingAsChoice()
+    {
+        return
+            [
+                'Study' => 'Study',
+                'A' => 'A',
+                'B' => 'B',
+                'C' => 'C',
+                'D' => 'D',
+            ];
+    }
 }

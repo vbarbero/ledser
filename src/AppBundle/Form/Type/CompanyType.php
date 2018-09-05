@@ -31,6 +31,8 @@ class CompanyType extends AbstractType
         $builder->add('cnae');
         $builder->add('addressNumber');
         $builder->add('type', ChoiceType::class, ['choices' => CompanyModel::getTypeAsChoice()]);
+
+        $builder->add('rating', ChoiceType::class, ['choices' => CompanyModel::getRatingAsChoice()]);
     }
 
     /**

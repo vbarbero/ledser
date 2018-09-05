@@ -39,7 +39,6 @@ class ProposalType extends AbstractType
             }]);
         $builder->add('state', ChoiceType::class, ['choices' => ProposalModel::getStateAsChoice()]);
         $builder->add('operationalType',ChoiceType::class, ['choices' => ProposalModel::getOperationalTypeAsChoice()]);
-        $builder->add('rating', ChoiceType::class, ['choices' => ProposalModel::getRatingAsChoice()]);
     }
 
     /**
