@@ -60,6 +60,9 @@ class ReportController extends Controller
             if(!isset($reportsGroupBy[$report->getCompany()->getId()]))
             {
                 $reportsGroupBy[$report->getCompany()->getId()] = $report;
+            } elseif($reportsGroupBy[$report->getCompany()->getId()].getDate() > $report.getDate())
+            {
+                $reportsGroupBy[$report->getCompany()->getId()] = $report;
             }
         }
         return $this->render('AppBundle:Report:index.html.twig', ['form' => $form->createView(), 'reports' => array_values($reportsGroupBy)]);
