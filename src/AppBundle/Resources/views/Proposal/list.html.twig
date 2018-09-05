@@ -205,7 +205,7 @@
             <td>{{ proposal.state | proposal_status }}{%if (proposal.state == 5)%} {{proposal.reason}}{%endif%}</td>
             <td>{{ proposal.company.rating }}</td>
             <td>{{ proposal.operationalType  }}</td>
-            <td>{{ calculator.nominal )|number_format(2) }}</td>
+            <td>{{ calculator.nominal|number_format(2) }}</td>
             <td>{{ calculator.dias|number_format(0) }}</td>
             <td>{{ calculator.costeFinanciero.tae|number_format(2) }} <br/>({{ calculator.costeFinanciero.coste |number_format(2) }})</td>
             <td>{{ calculator.costeFinancieroLedser.tae |number_format(2) }}<br/>({{ calculator.honorarios|number_format(2) }})</td>
