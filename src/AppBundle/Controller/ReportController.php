@@ -102,9 +102,9 @@ class ReportController extends Controller
     }
 
     /**
-     * @Route("/report-create", name="report_create")
+     * @Route("/report-create/{company}", name="report_create")
      */
-    public function createAction(Request $request)
+    public function createAction($company = null, Request $request)
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
@@ -112,6 +112,10 @@ class ReportController extends Controller
         $report->setUser($user);
         $report->setDate(new \DateTime());
         $report->setDone(0);
+        if($company)
+        {
+            $report->setCompany($this->getDoctrine()->getRepository(Company::class)->find($company));
+        }
 
         if($request->query->has("companyId")){
             $company = $this->getDoctrine()->getManager()->getRepository(Company::class)->find($request->query->get("companyId"));
@@ -142,7 +146,7 @@ class ReportController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($report);
             $em->flush();
-            return $this->redirect("/report-create?companyId=");
+            return $this->redirect( $this->generateUrl('report_create', ['company' => $report->getCompany()->getId()])"/report-create?companyId=");
         }
         $history = $this->getDoctrine()->getRepository(Report::class)->findBy(['company' => $report->getCompany()], array('id' => 'DESC'));
         $contacts = $this->getDoctrine()->getManager()->getRepository(Contact::class)->findBy(['company' => $report->getCompany()]);
