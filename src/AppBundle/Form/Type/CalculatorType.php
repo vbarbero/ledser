@@ -44,6 +44,12 @@ class CalculatorType extends AbstractType
         $builder->add('proposal', EntityType::class, ['class' => Proposal::class, 'choice_label' => 'id']);
         $builder->add('proposal', EntityType::class, ['class' => Proposal::class, 'choice_label' => 'id']);
         $builder->add('save', SubmitType::class, array('label' => 'Save'));
+        $builder->add('drawee', EntityType::class, [
+            'class' => Company::class,
+            'choice_label' => 'name',
+            'query_builder' => function( CompanyRepository $er ) {
+                return $er->getDrawee();
+            }]);
     }
 
     /**

@@ -110,6 +110,13 @@ class Calculator extends BaseEntity
      */
     private $proposal;
 
+    /**
+     * @var Company
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company",cascade={"persist"}, inversedBy="proposal")
+     */
+    protected $drawee;
+
 
     /**
      * @return \DateTime
@@ -333,6 +340,22 @@ class Calculator extends BaseEntity
     public function setProposal($proposal)
     {
         $this->proposal = $proposal;
+    }
+
+    /**
+     * @return Company
+     */
+    public function getDrawee()
+    {
+        return $this->drawee;
+    }
+
+    /**
+     * @param Company $drawee
+     */
+    public function setDrawee(Company $drawee)
+    {
+        $this->drawee = $drawee;
     }
 
 

@@ -39,13 +39,6 @@ class Proposal extends BaseEntity
      */
     protected $finalcial;
 
-    /**
-     * @var Company
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company",cascade={"persist"}, inversedBy="proposal")
-     */
-    protected $drawee;
-
 
     /**
      * @var string
@@ -129,21 +122,6 @@ class Proposal extends BaseEntity
     public function setFinalcial(Company $finalcial)
     {
         $this->finalcial = $finalcial;
-    }
-
-    /**
-     */
-    public function getDrawee()
-    {
-        return $this->drawee;
-    }
-
-    /**
-     * @param Company $drawee
-     */
-    public function setDrawee(Company $drawee)
-    {
-        $this->drawee = $drawee;
     }
 
     /**
