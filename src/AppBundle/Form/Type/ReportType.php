@@ -6,6 +6,7 @@ use AppBundle\Entity\Company;
 use AppBundle\Entity\Report;
 use AppBundle\Entity\User;
 use AppBundle\Model\ReportModel;
+use AppBundle\Repository\CompanyRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
