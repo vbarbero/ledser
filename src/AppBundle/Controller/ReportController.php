@@ -146,6 +146,7 @@ class ReportController extends Controller
     public function showAction($id, Request $request)
     {
         $report = $this->getDoctrine()->getRepository(Report::class)->find($id);
+        $report->setDone(0);
         $form = $this->createForm(ReportType::class, $report);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
