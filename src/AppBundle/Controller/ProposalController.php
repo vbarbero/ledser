@@ -39,10 +39,10 @@ class ProposalController extends Controller
         }
         $proposalModel->setFrom($dateFrom);
 
-//        if($request->query->get('status'))
-//        {
-//            $proposalModel->setStatus([ProposalModel::STUDY, ProposalModel::APPROVED, ProposalModel::ISSUE]);
-//        }
+        if($request->query->get('status'))
+        {
+            $proposalModel->setStatus([ProposalModel::STUDY, ProposalModel::APPROVED, ProposalModel::ISSUE]);
+        }
         if($request->query->get('to'))
         {
             $dateTo = \DateTime::createFromFormat("d-m-Y H:i:s", $request->query->get('to') . " 23:59:59");
