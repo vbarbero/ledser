@@ -146,7 +146,7 @@ class ReportController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($report);
             $em->flush();
-            return $this->redirect( $this->generateUrl('report_create', ['company' => $report->getCompany()->getId()])"/report-create?companyId=");
+            return $this->redirect( $this->generateUrl('report_create', ['company' => $report->getCompany()->getId()]));
         }
         $history = $this->getDoctrine()->getRepository(Report::class)->findBy(['company' => $report->getCompany()], array('id' => 'DESC'));
         $contacts = $this->getDoctrine()->getManager()->getRepository(Contact::class)->findBy(['company' => $report->getCompany()]);
