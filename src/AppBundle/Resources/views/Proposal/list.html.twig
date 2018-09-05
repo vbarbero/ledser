@@ -142,7 +142,11 @@
     {% for proposal in proposals %}
         <tr class=" {% if loop.index is odd %}bg-secondary{% endif %}">
             <td>{{ loop.index  }}</td>
-            <td></td>
+            <td>
+                {% if proposal.calculator | length == 1 %}
+                    <span style="display: block">{{ calculator.formalizacion | date("Y-m-d") }}</span>
+                {% endif %}
+            </td>
             <td>{{ proposal.user.name  }}</td>
             <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
             <td>{{ proposal.finalcial.name  }}</td>
@@ -198,11 +202,10 @@
         </tr>
         {% if proposal.calculator | length > 1 %}
             {% for calculator in proposal.calculator %}
-                <tr>
+                <tr style="background-color: maroon;">
                 <td></td>
                 <td>
-                    <span style="display: block">{{ calculator.formalizacion | date("Y-m-d") }}</span> /
-                    <span style="display: block">{{ calculator.vencimiento   | date("Y-m-d") }}</span>
+                    <span style="display: block">{{ calculator.formalizacion | date("Y-m-d") }}</span>
                 </td>
                 <td>{{ proposal.user.name  }}</td>
                 <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
