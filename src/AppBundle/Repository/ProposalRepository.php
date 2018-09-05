@@ -17,7 +17,7 @@ class ProposalRepository extends EntityRepository
         if($proposalFilterModel->getStatus())
         {
             $qb->andWhere(
-                $qb->expr()->eq('p.state', ':p_state')
+                $qb->expr()->in('p.state', ':p_state')
             );
             $qb->setParameter(':p_state', $proposalFilterModel->getStatus());
 
