@@ -11,7 +11,7 @@ class ProposalFilterModel
 {
 
     /**
-     * @var ArrayCollection
+     * @var array
      */
     protected $status;
 
@@ -51,20 +51,22 @@ class ProposalFilterModel
     }
 
     /**
-     * @return ArrayCollection
+     * @return array
      */
-    public function getStatus(): ArrayCollection
+    public function getStatus(): array
     {
         return $this->status;
     }
 
     /**
-     * @param ArrayCollection $status
+     * @param array $status
      */
-    public function setStatus( $status)
+    public function setStatus(array $status)
     {
         $this->status = $status;
     }
+
+
 
     /**
      * @return Company
