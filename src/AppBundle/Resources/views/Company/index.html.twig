@@ -202,7 +202,10 @@
 
         $(function() {
             $("#company_type").on('change', function () {
-alert($(this).val());
+                if($(this).val() == 5)
+                {
+                    $("#ratingDiv").show();
+                }
             })
         });
         function initAutocomplete() {
