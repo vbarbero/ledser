@@ -169,6 +169,7 @@
     <div class="col-sm-4">
             <table class="table table-condensed">
                 <tr>
+                    <td>num</td>
                     <td>DateTime</td>
                     <td>Action</td>
                     <td>Cif</td>
@@ -180,6 +181,7 @@
                 </tr>
                 {% for report in reports %}
                     <tr>
+                        <td>{{ loop.index }}</td>
                         <td>{{ report.date|date ("Y-m-d H:i") }}</td>
                         <td>{{ report.action | report_action }}</td>
                         <td>{{ report.company.cif }}</td>
