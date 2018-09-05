@@ -5,13 +5,12 @@ namespace AppBundle\Form\Model;
 
 use AppBundle\Entity\Company;
 use AppBundle\Entity\User;
-use Doctrine\Common\Collections\ArrayCollection;
 
 class ProposalFilterModel
 {
 
     /**
-     * @var array
+     * @var int
      */
     protected $status;
 
@@ -45,28 +44,21 @@ class ProposalFilterModel
      */
     protected $company;
 
-    public function __construct()
-    {
-        $this->status = new ArrayCollection();
-    }
-
     /**
-     * @return array
+     * @return int
      */
-    public function getStatus(): array
+    public function getStatus()
     {
         return $this->status;
     }
 
     /**
-     * @param array $status
+     * @param int $status
      */
-    public function setStatus(array $status)
+    public function setStatus($status)
     {
         $this->status = $status;
     }
-
-
 
     /**
      * @return Company
