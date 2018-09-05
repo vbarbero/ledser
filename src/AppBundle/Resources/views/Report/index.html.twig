@@ -78,30 +78,19 @@
                 {#</div>#}
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-4">
-                {{ form_label(form.dateTo) }}
-            </div>
-            <div class="col-lg-4">
-                <div class="input-group date" data-provide="datepicker">
-                    {{ form_widget(form.dateTo, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
-                    <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-th"></span>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.dateTo) }}
+                </div>
+                <div class="col-lg-4">
+                    <div class="input-group date" data-provide="datepicker">
+                        {{ form_widget(form.dateTo, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-th"></span>
+                        </div>
                     </div>
                 </div>
-                {#<div class="input-group date" id="datetimepicker2">#}
-                    {#{{ form_widget(form.dateTo, {attr:{readonly: 'readonly'}}) }}#}
-                    {#<span class="input-group-addon">#}
-                        {#<span class="glyphicon glyphicon-calendar"></span>#}
-                    {#</span>#}
-                    {#<span class="input-group-addon">#}
-                        {#<span class="fa fa-calendar">#}
-                        {#</span>#}
-                    {#</span>#}
-
-                {#</div>#}
             </div>
-        </div>
         <div class="row">
             <div class="col-lg-4">
                 {{ form_label(form.done) }}
@@ -206,30 +195,5 @@
             format: 'yyyy-mm-dd',
             startDate: '-3d'
         });
-        // $('.datepicker').datepicker({
-        //     format: 'yyyy-mm-dd',
-        //     startDate: '-3d'
-        // });
     </script>
 {% endblock %}
-{#{% block javascript %}#}
-    {#{{ parent() }}#}
-    {#{% javascripts '@AppBundle/Resources/public/js/bootstrap-datetimepicker.min.js' %}#}
-        {#<script src="{{ asset_url }}"></script>#}
-    {#{% endjavascripts %}#}
-    {#<script type="text/javascript">#}
-        {#$(function () {#}
-            {#$('#datetimepicker1').datetimepicker({useCurrent: false, startDate: new Date("2018-01-01"), format: 'yyyy-mm-dd hh:ii',  locale: 'es-ES', daysOfWeekDisabled: [0, 6],#}
-                {#disabledDates: [#}
-                    {#new Date(2013, 11 - 1, 21),#}
-                    {#"11/22/2013 00:53"#}
-                {#],weekStart: 1, todayHighlight: true});#}
-            {#$('#datetimepicker2').datetimepicker({useCurrent: false, startDate: new Date("2018-01-01"), format: 'yyyy-mm-dd hh:ii',  locale: 'es-ES', daysOfWeekDisabled: [0, 6],#}
-                {#disabledDates: [#}
-                    {#new Date(2013, 11 - 1, 21),#}
-                    {#"11/22/2013 00:53"#}
-                {#],weekStart: 1, todayHighlight: true});#}
-        {#});#}
-    {#</script>#}
-
-{#{% endblock %}#}
