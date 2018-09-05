@@ -60,7 +60,7 @@ class ReportRepository extends EntityRepository
             );
             $qb->setParameter('date_fin', $calendarFilterModel->getDateTo()->format("Y-m-d") . ' 23:59:59');
         }
-        if($calendarFilterModel->isDone())
+        if(!is_null($calendarFilterModel->isDone()))
         {
             $qb->andWhere(
                 $qb->expr()->eq('r.done', ":done")
