@@ -131,6 +131,15 @@
             </div>
         </div>
 
+        <div class="row" style="display: none" id="ratingDiv">
+            <div class="col-lg-4">
+                {{ form_label(form.rating) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.rating) }}
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-lg-4">
                 <label for="address-autocomplete">Dirección:</label>
@@ -174,15 +183,6 @@
 
         <div class="row">
             <div class="col-lg-4">
-                {{ form_label(form.rating) }}
-            </div>
-            <div class="col-lg-4">
-                {{ form_widget(form.rating) }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-4">
                 {{ form_label(form.province) }}
             </div>
             <div class="col-lg-4">
@@ -199,6 +199,12 @@
 {% block javascript %}
     {{ parent() }}
     <script>
+
+        $(function() {
+            $("#company_rating").on('change', function () {
+alert($(this).val());
+            })
+        });
         function initAutocomplete() {
             var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address-autocomplete'));
             autocomplete.addListener('place_changed', function() {
