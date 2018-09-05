@@ -3,7 +3,9 @@
 namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\Calculator;
+use AppBundle\Entity\Company;
 use AppBundle\Entity\Proposal;
+use AppBundle\Repository\CompanyRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
