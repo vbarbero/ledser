@@ -61,7 +61,7 @@ class ProposalFilterModel
     /**
      * @param ArrayCollection $status
      */
-    public function setStatus(ArrayCollection $status)
+    public function setStatus( $status)
     {
         $this->status = $status;
     }

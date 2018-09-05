@@ -41,10 +41,6 @@ class ProposalController extends Controller
 
         if($request->query->get('status'))
         {
-//            $status = new ArrayCollection();
-//            $status->add(ProposalModel::STUDY);
-//            $status->add(ProposalModel::APPROVED);
-//            $status->add(ProposalModel::ISSUE);
             $proposalModel->setStatus([ProposalModel::STUDY, ProposalModel::APPROVED, ProposalModel::ISSUE]);
         }
         if($request->query->get('to'))
