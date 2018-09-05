@@ -91,6 +91,8 @@ class CompanyController extends Controller
     public function editAction(Company $company, Request $request)
     {
         $form = $this->createForm(CompanyType::class, $company);
+        $form->add('save', SubmitType::class, array('label' => 'Save'));
+        $form->add('saveAndAdd', SubmitType::class, array('label' => 'Save and Add Contact'));
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
