@@ -29,6 +29,10 @@ class ReportController extends Controller
 
         $calendarModel = new CalendarFilterModel();
         $calendarModel->setUser($user);
+        if(!$request->query->get('done'))
+        {
+            $calendarModel->setDone(0);
+        }
 
         if($request->query->get('dayForm'))
         {

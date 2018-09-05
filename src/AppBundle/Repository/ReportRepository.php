@@ -124,6 +124,8 @@ class ReportRepository extends EntityRepository
             $qb->setParameter('zip', $calendarFilterModel->getZip());
         }
 
+        $qb->orderBy('date', 'DESC');
+
         return $qb->getQuery()->getResult();
     }
 
