@@ -11,6 +11,8 @@ use AppBundle\Form\Type\CalculatorType;
 use AppBundle\Form\Type\ProposalEditType;
 use AppBundle\Form\Type\ProposalFilterType;
 use AppBundle\Form\Type\ProposalType;
+use AppBundle\Model\ProposalModel;
+use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -36,6 +38,15 @@ class ProposalController extends Controller
             $dateFrom->modify("-30 days");
         }
         $proposalModel->setFrom($dateFrom);
+
+        if($request->query->get('status'))
+        {
+            $status = new ArrayCollection();
+            $status->add(ProposalModel::STUDY);
+            $status->add(ProposalModel::APPROVED);
+            $status->add(ProposalModel::ISSUE);
+            $proposalModel->setStatus($status);
+        }
         if($request->query->get('to'))
         {
             $dateTo = \DateTime::createFromFormat("d-m-Y H:i:s", $request->query->get('to') . " 23:59:59");
