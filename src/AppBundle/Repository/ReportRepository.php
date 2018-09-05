@@ -123,6 +123,7 @@ class ReportRepository extends EntityRepository
             $company = true;
             $qb->setParameter('zip', $calendarFilterModel->getZip());
         }
+
         return $qb->getQuery()->getResult();
     }
 

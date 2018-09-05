@@ -144,7 +144,7 @@ class ReportController extends Controller
             $em->flush();
             return $this->redirect("/report-create?companyId=");
         }
-        $history = $this->getDoctrine()->getRepository(Report::class)->findBy(['company' => $report->getCompany()]);
+        $history = $this->getDoctrine()->getRepository(Report::class)->findBy(['company' => $report->getCompany()], array('id' => 'DESC'));
         $contacts = $this->getDoctrine()->getManager()->getRepository(Contact::class)->findBy(['company' => $report->getCompany()]);
         return $this->render('AppBundle:Report:show.html.twig', ['report' => $report, 'contacts' => $contacts, 'history' => $history, 'form' => $form->createView()]);
     }
