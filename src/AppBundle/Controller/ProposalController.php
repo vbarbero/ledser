@@ -39,7 +39,7 @@ class ProposalController extends Controller
         }
         $proposalModel->setFrom($dateFrom);
 
-        if($request->query->get('status'))
+        if(!$request->query->get('status'))
         {
             $proposalModel->setStatus([ProposalModel::STUDY, ProposalModel::APPROVED, ProposalModel::ISSUE]);
         }
