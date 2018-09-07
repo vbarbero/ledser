@@ -23,7 +23,7 @@ class CompanyController extends Controller
      */
     public function listAction(Request $request)
     {
-        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findAll();
+        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->getCompanies();
         return $this->render('AppBundle:Company:list.html.twig', ['companies' => $companies]);
     }
     /**
@@ -31,7 +31,7 @@ class CompanyController extends Controller
      */
     public function listClientAction(Request $request)
     {
-        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::CLIENT]);
+        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::CLIENT], ['name' => 'ASC']);
         return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies]);
     }
     /**
@@ -39,7 +39,7 @@ class CompanyController extends Controller
      */
     public function listDraweeAction(Request $request)
     {
-        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::DRAWEE]);
+        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::DRAWEE], ['name' => 'ASC']);
         return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies, 'drawee' => true]);
     }
     /**
@@ -47,7 +47,7 @@ class CompanyController extends Controller
      */
     public function listFinantialAction(Request $request)
     {
-        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::FINANTIAL]);
+        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::FINANTIAL], ['name' => 'ASC']);
         return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies]);
     }
     /**

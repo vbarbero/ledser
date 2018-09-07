@@ -31,13 +31,21 @@ class CompanyRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('c');
         $qb->where(
-                $qb->expr()->neq('c.type', ":type_drawee")
-            );
+            $qb->expr()->neq('c.type', ":type_drawee")
+        );
         $qb->andWhere(
-                $qb->expr()->neq('c.type', ":type_finantial")
-            );
+            $qb->expr()->neq('c.type', ":type_finantial")
+        );
         $qb->setParameter('type_drawee', CompanyModel::DRAWEE);
         $qb->setParameter('type_finantial', CompanyModel::FINANTIAL);
+        $qb->orderBy('c.name', 'ASC');
+        return $qb;
+    }
+
+
+    public function getCompanies()
+    {
+        $qb = $this->createQueryBuilder('c');
         $qb->orderBy('c.name', 'ASC');
         return $qb;
     }
