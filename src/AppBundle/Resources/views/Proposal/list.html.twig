@@ -197,7 +197,7 @@
             <td>
                 <a href="{{ url('create_calculator', {proposal:proposal.id}) }}">Añadir calculadora</a>
                 <a href="{{ url('edit_proposal' , {proposal:proposal.id}) }}">Edit</a>
-                {% if proposal.calculator | length > 1 %}
+                {% if proposal.calculator | length == 1 %}
                     <a href="{{ url('edit_calculator' , {calculator:calculator.first.id}) }}">Edit calculator</a>
                 {% endif %}
 		<a class="delete" data-href="{{ url('delete_proposal' , {proposal:proposal.id}) }}">Delete</a>
