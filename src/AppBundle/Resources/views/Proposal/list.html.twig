@@ -252,10 +252,8 @@
 //            startDate: '-3d'
 //        });
 $(function() {
-    alert('1');
 	$(".delete").on('click', function(){
-        alert('2');
-		if(confirm('Are you suere you want to delete it?'))
+        if(confirm('Are you suere you want to delete it?'))
 		{
 			document.location = $(this).attr('data-href');
 			return true;
