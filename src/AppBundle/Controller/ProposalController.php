@@ -132,7 +132,7 @@ class ProposalController extends Controller
         $calculator = $this->getDoctrine()->getRepository(Calculator::class)->find($calculator);
 
         $form = $this->createForm(CalculatorType::class, $calculator);
-
+        $form->add('saveAndAdd', SubmitType::class, array('label' => 'Save and Add'));
         $form->handleRequest($request);
         if ( $form->isValid()) {
             $calculator = $form->getData();
