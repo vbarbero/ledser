@@ -140,11 +140,12 @@
         </tr>
 
     {% for proposal in proposals %}
+        {% set miCalculadora = proposal.calculator | first %}
         <tr class=" {% if loop.index is odd %}bg-secondary{% endif %}">
             <td>{{ loop.index  }}</td>
             <td>
                 {% if proposal.calculator | length == 1 %}
-                    <span style="display: block">{{ calculator.formalizacion | date("Y-m-d") }}</span>
+                    <span style="display: block">{{ miCalculadora.formalizacion | date("Y-m-d") }}</span>
                 {% endif %}
             </td>
             <td>{{ proposal.user.name  }}</td>
