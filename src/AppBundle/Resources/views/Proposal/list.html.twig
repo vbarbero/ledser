@@ -150,7 +150,10 @@
             </td>
             <td>{{ proposal.user.name  }}</td>
             <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
-            <td>{{ proposal.finalcial.name  }}</td>
+            <td>
+                <a href="{{ url('add_file', {company: proposal.finalcial.id}) }}">{{ proposal.finalcial.name  }}</a>
+
+            </td>
             <td>
                 {% if proposal.calculator | length == 1 %}
                     {% set miCalculadora = proposal.calculator | first %}
