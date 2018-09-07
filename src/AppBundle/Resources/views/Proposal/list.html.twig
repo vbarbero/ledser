@@ -154,6 +154,7 @@
                 {{ proposal.calculator | length }} **
                 {% if proposal.calculator | length > 1 %}
                     {% set miCalculadora = proposal.calculator | first %}
+                    {{ miCalculadora.id  }}**
                     {{ miCalculadora.drawee.name  }}
                 {% endif %}
             </td>
