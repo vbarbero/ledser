@@ -253,8 +253,6 @@
 //        });
 $(function() {
 	$(".delete").on('click', function(){
-        console.log('axo21');
-        var value = confirm( "Click 'OK' if you don't want pop-up again");
         if(confirm('Are you suere you want to delete it?'))
 		{
 			document.location = $(this).attr('data-href');
@@ -262,7 +260,6 @@ $(function() {
 		} else {
 			return false;
 		}
-		console.log('axo');
 	});
 });
     </script>
