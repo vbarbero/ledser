@@ -199,7 +199,7 @@
                 <a href="{{ url('edit_proposal' , {proposal:proposal.id}) }}">Edit</a>
                 {% if proposal.calculator | length == 1 %}
                     {% set miCalculadora = proposal.calculator | first %}
-                    <a href="{{ url('edit_calculator' , {miCalculadora.id}) }}">Edit calculator</a>
+                    <a href="{{ url('edit_calculator' , {calculator: miCalculadora.id}) }}">Edit calculator</a>
                 {% endif %}
 		<a class="delete" data-href="{{ url('delete_proposal' , {proposal:proposal.id}) }}">Delete</a>
             </td>
