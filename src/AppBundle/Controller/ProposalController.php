@@ -6,6 +6,7 @@ use AppBundle\Entity\Calculator;
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Cost;
 use AppBundle\Entity\Proposal;
+use AppBundle\Entity\User;
 use AppBundle\Form\Model\ProposalFilterModel;
 use AppBundle\Form\Type\CalculatorType;
 use AppBundle\Form\Type\ProposalEditType;
@@ -54,6 +55,11 @@ class ProposalController extends Controller
         {
             $financial = $this->getDoctrine()->getRepository(Company::class)->find($request->query->get('financial'));
             $proposalModel->setFinancial($financial);
+        }
+        if($request->query->get('user'))
+        {
+            $user = $this->getDoctrine()->getRepository(User::class)->find($request->query->get('user'));
+            $proposalModel->setFinancial($user);
         }
         $proposalModel->setTo($dateTo);
 

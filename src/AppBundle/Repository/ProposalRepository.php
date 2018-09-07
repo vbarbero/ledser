@@ -57,6 +57,13 @@ class ProposalRepository extends EntityRepository
             );
             $qb->setParameter('operationalType', $proposalFilterModel->getOperationalType());
         }
+        if($proposalFilterModel->getUser())
+        {
+            $qb->andWhere(
+                $qb->expr()->eq('p.user', ":user")
+            );
+            $qb->setParameter('user', $proposalFilterModel->getUser());
+        }
 	    $qb->orderBy('c.formalizacion', 'ASC');
         return $qb->getQuery()->getResult();
     }

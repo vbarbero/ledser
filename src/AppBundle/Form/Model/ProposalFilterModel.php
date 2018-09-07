@@ -45,6 +45,11 @@ class ProposalFilterModel
     protected $company;
 
     /**
+     * @var User
+     */
+    protected $user;
+
+    /**
      * @return int
      */
     public function getStatus()
@@ -170,6 +175,22 @@ class ProposalFilterModel
     public function setFinancial(Company $financial)
     {
         $this->financial = $financial;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
     }
 
 
