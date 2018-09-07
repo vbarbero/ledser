@@ -151,8 +151,10 @@
             <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
             <td>{{ proposal.finalcial.name  }}</td>
             <td>
+                {{ proposal.calculator | length }} ** 
                 {% if proposal.calculator | length > 1 %}
-                    {{ proposal.drawee.name  }}
+                    {% set miCalculadora = proposal.calculator | first %}
+                    {{ miCalculadora.drawee.name  }}
                 {% endif %}
             </td>
 
