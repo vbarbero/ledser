@@ -145,7 +145,7 @@ class ProposalController extends Controller
             }
         }
         $form->get('introduce')->setData('tae');
-        return $this->render('AppBundle:Proposal:createCalculator.html.twig', ['form' => $form->createView()]);
+        return $this->render('AppBundle:Proposal:createCalculator.html.twig', ['form' => $form->createView(), 'edit' => true]);
     }
 
     /**

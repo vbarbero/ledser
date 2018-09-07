@@ -173,6 +173,7 @@
         });
     </script>
     <script type="text/javascript">
+        {% if edit is defined %}$(".second").show();{% endif %}
         calculaDias(false);
         $(".second").hide();
         // $(".third").hide();
