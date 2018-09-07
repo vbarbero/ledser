@@ -149,7 +149,7 @@
 
     {% for proposal in proposals %}
         {% set miCalculadora = proposal.calculator | first %}
-        <tr class=" {% if proposal.state == 7 %}background-color: red{% elseif loop.index is odd %} bg-secondary{% endif %}">
+        <tr class=" {% if proposal.state == 7 %}background-color: #red{% elseif loop.index is odd %} bg-secondary{% endif %}">
             <td>{{ loop.index  }}</td>
             <td>
                 {% if proposal.calculator | length == 1 %}
