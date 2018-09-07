@@ -149,7 +149,7 @@
 
     {% for proposal in proposals %}
         {% set miCalculadora = proposal.calculator | first %}
-        <tr class=" {% if loop.index is odd %}bg-secondary{% endif %}">
+        <tr class=" {% if proposal.status == 7 %}background-color: red{% elseif loop.index is odd %} bg-secondary{% endif %}">
             <td>{{ loop.index  }}</td>
             <td>
                 {% if proposal.calculator | length == 1 %}
@@ -194,14 +194,16 @@
                 {% set taeT = calculator.costeTotal.tae +taeT %}
                 {% set nominal = calculator.nominal + nominal %}
             {% endfor %}
-            {% set costeTTotal = costeTTotal + costeT %}
-            {% set honorariosTotal = honorarios + honorariosTotal %}
-            {% set costeTotal = costeTotal + coste %}
-            {% set diasT = diasT + (dias/num) %}
-            {% set nominalT = nominalT + (nominal) %}
-            {% set taeCFT = taeCFT + (taeCF/num) %}
-            {% set taeCLT = taeCLT + (taeCL/num) %}
-            {% set taeTT = taeTT + (taeT/num) %}
+            {% if proposal.status != 7 %}
+                {% set costeTTotal = costeTTotal + costeT %}
+                {% set honorariosTotal = honorarios + honorariosTotal %}
+                {% set costeTotal = costeTotal + coste %}
+                {% set diasT = diasT + (dias/num) %}
+                {% set nominalT = nominalT + (nominal) %}
+                {% set taeCFT = taeCFT + (taeCF/num) %}
+                {% set taeCLT = taeCLT + (taeCL/num) %}
+                {% set taeTT = taeTT + (taeT/num) %}
+            {% endif %}
             <td>{% if num == 0 %}0(0){% else %}{{ (nominal )|number_format(2) }}{% endif %}</td>
             <td>{% if num == 0 %}0{% else %}{{ (dias/num)|number_format(0) }}{% endif %}</td>
             <td>{% if num == 0 %}0{% else %}{{ (taeCF/num)|number_format(2) }} <br/>({{ (coste)|number_format(2) }}){% endif %}</td>

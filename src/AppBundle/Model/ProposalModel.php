@@ -20,6 +20,7 @@ class ProposalModel
     const CLOSE = 4;
     const LOST = 5;
     const DENY = 6;
+    const UNPAID = 7;
 
 
     public static function getTypeAsChoice()
@@ -52,6 +53,7 @@ class ProposalModel
                 'Issued contract' => self::ISSUE,
                 'CLose' => self::CLOSE,
                 'Lost' => self::LOST,
+                'Unpaid' => self::UNPAID,
             ];
     }
 
@@ -65,6 +67,7 @@ class ProposalModel
                 self::ISSUE => 'Issued contract',
                 self::CLOSE => 'CLose',
                 self::LOST => 'Lost',
+                self::UNPAID => 'UNpaid',
             ];
     }
 
