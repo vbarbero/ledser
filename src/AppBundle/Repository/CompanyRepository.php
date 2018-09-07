@@ -47,7 +47,7 @@ class CompanyRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('c');
         $qb->orderBy('c.name', 'ASC');
-        return $qb;
+        return $qb->getQuery()->getResult();
     }
 }
 
