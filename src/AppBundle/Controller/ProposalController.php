@@ -132,7 +132,6 @@ class ProposalController extends Controller
         $calculator = $this->getDoctrine()->getRepository(Calculator::class)->find($calculator);
 
         $form = $this->createForm(CalculatorType::class, $calculator);
-        $form->add('saveAndAdd', SubmitType::class, array('label' => 'Save and Add'));
         $form->handleRequest($request);
         if ( $form->isValid()) {
             $calculator = $form->getData();
@@ -142,6 +141,9 @@ class ProposalController extends Controller
 
             if ($form->getClickedButton() && 'save' === $form->getClickedButton()->getName()) {
                 return $this->redirect($this->generateUrl("show_proposal",['id' => $calculator->getProposal()->getId()]));
+            }
+            else {
+                return $this->redirect($this->generateUrl("create_calculator",['proposal' => $calculator->getProposal()->getId()]));
             }
         }
         $form->get('introduce')->setData('tae');
@@ -162,7 +164,6 @@ class ProposalController extends Controller
         $calculator->setCosteTotal(new Cost());
         $form = $this->createForm(CalculatorType::class, $calculator);
 
-        $form->add('saveAndAdd', SubmitType::class, array('label' => 'Save and Add'));
         $form->handleRequest($request);
         if ( $form->isValid()) {
             $calculator = $form->getData();
