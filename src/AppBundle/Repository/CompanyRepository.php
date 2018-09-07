@@ -49,5 +49,11 @@ class CompanyRepository extends EntityRepository
         $qb->orderBy('c.name', 'ASC');
         return $qb->getQuery()->getResult();
     }
+    public function getCompaniesSorted()
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->orderBy('c.name', 'ASC');
+        return $qb;
+    }
 }
 
