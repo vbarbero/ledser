@@ -247,7 +247,6 @@
 {% block javascript %}
     {{ parent() }}
     <script type="text/javascript">
-        $.fn.datepicker.defaults.format = "yyyy-mm-dd";
         $('.datepicker').datepicker({
             format: 'yyyy-mm-dd',
             startDate: '-3d'
