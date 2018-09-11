@@ -162,6 +162,12 @@ class ProposalController extends Controller
     public function createCalculatorAction($proposal, Request $request)
     {
         $calculator = new Calculator();
+        $calculator->setHonorarios(0);
+        $calculator->setTimbres(0);
+        $calculator->setOmf(0);
+        $calculator->setMensajeria(0);
+        $calculator->setBurofax(0);
+        $calculator->setGastos(0);
         $calculator->setProposal($this->getDoctrine()->getRepository(Proposal::class)->find($proposal));
         $calculator->setFormalizacion(new \DateTime());
         $calculator->setVencimiento(new \DateTime("+1 day"));
