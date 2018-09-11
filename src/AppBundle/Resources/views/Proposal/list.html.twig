@@ -150,7 +150,12 @@
     {% for proposal in proposals %}
         {% set miCalculadora = proposal.calculator | first %}
         <tr  {% if proposal.state == 7 %}style="background-color: brown"{% elseif proposal.operationalType == 'Advance' %}style="background-color: darkgreen"{% elseif loop.index is odd %} class="bg-secondary"{% endif %}>
-            <td>{{ loop.index  }}</td>
+            <td>
+                {{ loop.index  }}
+                {% for file in proposal.company.files %}
+                    <a href="{{ asset('uploads/' ~ file.source ) }}">{{ file.name }} </a>
+                {% endfor %}
+            </td>
             <td>
                 {% if proposal.calculator | length == 1 %}
                     <span style="display: block">{{ miCalculadora.formalizacion | date("Y-m-d") }}</span>
@@ -159,7 +164,7 @@
             <td>{{ proposal.user.name  }}</td>
             <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
             <td>
-                <a href="{{ url('add_file', {company: proposal.finalcial.id}) }}">{{ proposal.finalcial.name  }}</a>
+                {{ proposal.finalcial.name  }}
 
             </td>
             <td>
@@ -216,7 +221,8 @@
                     {% set miCalculadora = proposal.calculator | first %}
                     <a href="{{ url('edit_calculator' , {calculator: miCalculadora.id}) }}">Edit calculator</a>
                 {% endif %}
-		<a class="delete" data-href="{{ url('delete_proposal' , {proposal:proposal.id}) }}">Delete</a>
+		        <a class="delete" data-href="{{ url('delete_proposal' , {proposal:proposal.id}) }}">Delete</a>
+                <a href="{{ url('add_file', {company: proposal.finalcial.id}) }}">Add file</a>
             </td>
         </tr>
         {% if proposal.calculator | length > 1 %}
