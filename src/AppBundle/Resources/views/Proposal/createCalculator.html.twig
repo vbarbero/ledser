@@ -394,7 +394,9 @@
                 $("#calculator_costeFinancieroLedser_nominal").val($("#calculator_costeFinanciero_nominal").val());
                 $("#calculator_costeTotal_nominal").val($("#calculator_costeFinanciero_nominal").val());
 
-                $("#calculator_costeFinancieroLedser_coste").val(parseFloat(parseFloat($("#calculator_costeFinanciero_coste").val()) + parseFloat($("#calculator_honorarios").val())).toFixed(2));
+                $("#calculator_costeFinancieroLedser_coste").val(
+                    parseFloat(parseFloat($("#calculator_costeFinanciero_coste").val()) + parseFloat($("#calculator_honorarios").val())).toFixed(2)
+                );
 
                 $("#calculator_costeTotal_coste").val(parseFloat(parseFloat($("#calculator_costeFinancieroLedser_coste").val()) + parseFloat($("#calculator_timbres").val()) +
                     parseFloat($("#calculator_omf").val()) + parseFloat($("#calculator_mensajeria").val()) + parseFloat($("#calculator_burofax").val()) + parseFloat($("#calculator_gastos").val())).toFixed(2));
