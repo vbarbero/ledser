@@ -153,6 +153,8 @@
             <td>
                 {{ loop.index  }}| {{ proposal.company.files | length }}|
                 {% for file in proposal.company.files %}
+                    |{{ file.source }}|
+                    |{{ dump(file) }}|
                     <a href="{{ asset('uploads/' ~ file.source ) }}">{{ file.name }} </a>
                 {% endfor %}
             </td>
