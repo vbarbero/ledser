@@ -66,6 +66,12 @@ class Cost extends BaseEntity
      */
     protected $retencionTotal;
 
+
+    public function __construct()
+    {
+      $this->setRetencion(0);
+    }
+
     /**
      * @return float
      */

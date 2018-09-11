@@ -162,7 +162,6 @@ class ProposalController extends Controller
     public function createCalculatorAction($proposal, Request $request)
     {
         $calculator = new Calculator();
-        $calculator->setHonorarios(0);
         $calculator->setTimbres(0);
         $calculator->setOmf(0);
         $calculator->setMensajeria(0);
