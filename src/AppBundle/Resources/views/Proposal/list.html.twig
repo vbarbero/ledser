@@ -151,7 +151,7 @@
         {% set miCalculadora = proposal.calculator | first %}
         <tr  {% if proposal.state == 7 %}style="background-color: brown"{% elseif proposal.operationalType == 'Advance' %}style="background-color: darkgreen"{% elseif loop.index is odd %} class="bg-secondary"{% endif %}>
             <td>
-                {{ loop.index  }}
+                {{ loop.index  }}| {{ proposal.company.files | length }}|
                 {% for file in proposal.company.files %}
                     <a href="{{ asset('uploads/' ~ file.source ) }}">{{ file.name }} </a>
                 {% endfor %}
