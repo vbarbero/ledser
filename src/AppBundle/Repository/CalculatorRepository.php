@@ -38,14 +38,19 @@ class CalculatorRepository extends EntityRepository
         $qb->innerJoin('c.proposal', 'p');
         $qb->where($qb->expr()->eq('p.state', ':state'));
         $qb->setParameter('state', ProposalModel::CLOSE);
-        $qb->andWhere($qb->expr()->eq('c.drawee', ':drawee'));
-        $qb->setParameter('drawee', $draweeRiskFilterModel->getDrawee());
         if($draweeRiskFilterModel->getFinancial())
         {
             $qb->andWhere(
                 $qb->expr()->eq('p.finalcial', ":financial")
             );
             $qb->setParameter('financial', $draweeRiskFilterModel->getFinancial());
+        }
+        if($draweeRiskFilterModel->getDrawee())
+        {
+            $qb->andWhere(
+                $qb->expr()->eq('c.drawee', ":drawee")
+            );
+            $qb->setParameter('drawee', $draweeRiskFilterModel->getDrawee());
         }
         $qb->orderBy("c.vencimiento", 'DESC');
         return $qb->getQuery()->getResult();
