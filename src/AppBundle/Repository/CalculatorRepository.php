@@ -5,6 +5,7 @@ namespace AppBundle\Repository;
 use AppBundle\Entity\Calculator;
 use AppBundle\Entity\Report;
 use AppBundle\Form\Model\CalendarFilterModel;
+use AppBundle\Form\Model\DraweeRiskFilterModel;
 use AppBundle\Model\ProposalModel;
 use Doctrine\ORM\EntityRepository;
 
@@ -30,5 +31,20 @@ class CalculatorRepository extends EntityRepository
             $calculators[$calculator->getVencimiento()->format('j')][] = $calculator;
         }
         return $calculators;
+    }
+    public function getCalculatorsByFilters(DraweeRiskFilterModel $draweeRiskFilterModel)
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->innerJoin('c.proposal', 'p');
+        $qb->where($qb->expr()->eq('p.state', ':state'));
+        $qb->setParameter('state', ProposalModel::CLOSE);
+        if($draweeRiskFilterModel->getFinancial())
+        {
+            $qb->andWhere(
+                $qb->expr()->eq('p.finalcial', ":financial")
+            );
+            $qb->setParameter('financial', $draweeRiskFilterModel->getFinancial());
+        }
+        return $qb->getQuery()->getResult();
     }
 }

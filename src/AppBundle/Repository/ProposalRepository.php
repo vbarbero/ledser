@@ -4,7 +4,9 @@ namespace AppBundle\Repository;
 
 use AppBundle\Entity\Report;
 use AppBundle\Form\Model\CalendarFilterModel;
+use AppBundle\Form\Model\DraweeRiskFilterModel;
 use AppBundle\Form\Model\ProposalFilterModel;
+use AppBundle\Model\ProposalModel;
 use Doctrine\ORM\EntityRepository;
 
 class ProposalRepository extends EntityRepository
@@ -64,6 +66,27 @@ class ProposalRepository extends EntityRepository
             );
             $qb->setParameter('user', $proposalFilterModel->getUser());
         }
+	    $qb->orderBy('c.formalizacion', 'ASC');
+        return $qb->getQuery()->getResult();
+    }
+    public function getProposalByFilters(DraweeRiskFilterModel $draweeRiskFilterModel)
+    {
+        $qb = $this->createQueryBuilder('p');
+	    $qb->innerJoin('p.calculator', 'c');
+        $qb->andWhere(
+            $qb->expr()->eq('c.drawee', ":drawee")
+        );
+        $qb->setParameter('drawee', $draweeRiskFilterModel->getDrawee());
+        if($draweeRiskFilterModel->getFinancial())
+        {
+            $qb->andWhere(
+                $qb->expr()->eq('p.finalcial', ":financial")
+            );
+            $qb->setParameter('financial', $draweeRiskFilterModel->getFinancial());
+        }
+
+        $qb->where("p.status", ':p_status');
+        $qb->setParameter('p_status', ProposalModel::CLOSE);
 	    $qb->orderBy('c.formalizacion', 'ASC');
         return $qb->getQuery()->getResult();
     }

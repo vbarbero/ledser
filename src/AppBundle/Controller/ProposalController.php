@@ -7,8 +7,10 @@ use AppBundle\Entity\Company;
 use AppBundle\Entity\Cost;
 use AppBundle\Entity\Proposal;
 use AppBundle\Entity\User;
+use AppBundle\Form\Model\DraweeRiskFilterModel;
 use AppBundle\Form\Model\ProposalFilterModel;
 use AppBundle\Form\Type\CalculatorType;
+use AppBundle\Form\Type\DraweeRiskFilterType;
 use AppBundle\Form\Type\ProposalEditType;
 use AppBundle\Form\Type\ProposalFilterType;
 use AppBundle\Form\Type\ProposalType;
@@ -191,6 +193,32 @@ class ProposalController extends Controller
         }
 
         return $this->render('AppBundle:Proposal:createCalculator.html.twig', ['form' => $form->createView()]);
+    }
+
+    /**
+     * @Route("/drawee-rist", name="drawee_rist")
+     */
+    public function draweeRiskAction($id, Request $request)
+    {
+        $days = $this->getDoctrine()->getRepository(Proposal::class);
+
+        $draweeRiskModel = new DraweeRiskFilterModel();
+        $form = $this->createForm(DraweeRiskFilterType::class, $draweeRiskModel);
+        $form->handleRequest($request);
+        $calculatorGroup = [];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $draweeRiskModel = $form->getData();
+            $calculators = $this->getDoctrine()->getRepository(Calculator::class)->getCalculatorsByFilters($draweeRiskModel);
+            $now = new \DateTime();
+            /** @var Calculator $calculator */
+            foreach ($calculator as $calculators)
+            {
+                $group = $now < $calculator->getVencimiento()?1:-1;
+                $calculatorGroup[$group][] = $calculator;
+            }
+        }
+
+        return $this->render('AppBundle:Proposal:draweeRisk.html.twig', ['form' => $form->createView(), 'calculators' => $calculatorGroup]);
     }
 
     /**

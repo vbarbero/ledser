@@ -1,0 +1,154 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block styles %}
+    {{ parent() }}
+    <style>
+        .glyphicon {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+    {% stylesheets
+        'css/bootstrap-datetimepicker.min.css'
+        filter='cssrewrite' output='css/compiled/app.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('../css/bootstrap-datetimepicker.min.css') }}" />
+    {#<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />#}
+
+{% endblock %}
+
+{% block content %}
+
+
+<td class="row">
+    <div class="col-sm-4" style="border: 1px solid">
+
+        {{ form_start(form) }}
+
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.drawee) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.drawee) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.financial) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.financial) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.from) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.from) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.from) }}
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group date" data-provide="datepicker">
+                    {{ form_widget(form.from, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.to) }}
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group date" data-provide="datepicker">
+                    {{ form_widget(form.to, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">{{ "Filter" | trans }}</button>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% if calculators | length > 0 %}
+    <table class="table bg-dark text-light">
+        {#<div class="w-100"></div>#}
+        <tr>
+            <td colspan="4">Riesgo muerto</td>
+        </tr>
+        <tr>
+            <td>cliente</td>
+            <td>importe</td>
+            <td>vencimiento</td>
+            <td>financiera</td>
+        </tr>
+    {% set total = 0 %}
+    {% for calculator in calculators[-1] %}
+        <tr>
+            {%  set total = total + calculator.nominal %}
+            <td>{{ calculator.proposal.company.name }}</td>
+            <td>{{ calculator.nominal }}</td>
+            <td>{{ calculator.vencimiento | date("Y-m-d") }}</td>
+            <td>{{ calculator.finantial.name }}</td>
+        </tr>
+    {% endfor %}
+        <tr><td colspan="3">Total</td><td>{{ total }}</td></tr>
+    </table>
+    {% set total = 0 %}
+    <table class="table bg-dark text-light">
+        {#<div class="w-100"></div>#}
+        <tr>
+            <td colspan="4">Riesgo vivo</td>
+        </tr>
+        <tr>
+            <td>cliente</td>
+            <td>importe</td>
+            <td>vencimiento</td>
+            <td>financiera</td>
+        </tr>
+
+    {% for calculator in calculators[1] %}
+        {%  set total = total + calculator.nominal %}
+        <tr>
+            <td>{{ calculator.proposal.company.name }}</td>
+            <td>{{ calculator.nominal }}</td>
+            <td>{{ calculator.vencimiento | date("Y-m-d") }}</td>
+            <td>{{ calculator.finantial.name }}</td>
+        </tr>
+    {% endfor %}
+        <tr><td colspan="3">Total</td><td>{{ total }}</td></tr>
+    </table>
+{% endif %}
+
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript">
+//        $('.datepicker').datepicker({
+//            format: 'yyyy-mm-dd',
+//            startDate: '-3d'
+//        });
+    </script>
+{% endblock %}
