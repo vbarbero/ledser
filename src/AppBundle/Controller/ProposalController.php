@@ -198,7 +198,7 @@ class ProposalController extends Controller
     /**
      * @Route("/drawee-rist", name="drawee_rist")
      */
-    public function draweeRiskAction($id, Request $request)
+    public function draweeRiskAction(Request $request)
     {
         $days = $this->getDoctrine()->getRepository(Proposal::class);
 
