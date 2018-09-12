@@ -70,53 +70,59 @@
         </div>
     </div>
 {% if calculators | length > 0 %}
-    <table class="table bg-dark text-light">
-        {#<div class="w-100"></div>#}
-        <tr>
-            <td colspan="4">Riesgo muerto</td>
-        </tr>
-        <tr>
-            <td>cliente</td>
-            <td>importe</td>
-            <td>vencimiento</td>
-            <td>financiera</td>
-        </tr>
     {% set total = 0 %}
-    {% for calculator in calculators['-'] %}
-        <tr>
-            {%  set total = total + calculator.nominal %}
-            <td>{{ calculator.proposal.company.name }}</td>
-            <td>{{ calculator.nominal }}</td>
-            <td>{{ calculator.vencimiento | date("Y-m-d") }}</td>
-            <td>{{ calculator.finantial.name }}</td>
-        </tr>
-    {% endfor %}
-        <tr><td colspan="3">Total</td><td>{{ total }}</td></tr>
-    </table>
-    {% set total = 0 %}
-    <table class="table bg-dark text-light">
-        {#<div class="w-100"></div>#}
-        <tr>
-            <td colspan="4">Riesgo vivo</td>
-        </tr>
-        <tr>
-            <td>cliente</td>
-            <td>importe</td>
-            <td>vencimiento</td>
-            <td>financiera</td>
-        </tr>
+    <div style="float: right">
+        <table class="table bg-dark text-light">
+            {#<div class="w-100"></div>#}
+            <tr>
+                <td colspan="4">Riesgo vivo</td>
+            </tr>
+            <tr>
+                <td>cliente</td>
+                <td>importe</td>
+                <td>vencimiento</td>
+                <td>financiera</td>
+            </tr>
 
-    {% for calculator in calculators['+'] %}
-        {%  set total = total + calculator.nominal %}
-        <tr>
-            <td>{{ calculator.proposal.company.name }}</td>
-            <td>{{ calculator.nominal }}</td>
-            <td>{{ calculator.vencimiento | date("Y-m-d") }}</td>
-            <td>{{ calculator.finantial.name }}</td>
-        </tr>
-    {% endfor %}
-        <tr><td colspan="3">Total</td><td>{{ total }}</td></tr>
-    </table>
+        {% for calculator in calculators['+'] %}
+            {%  set total = total + calculator.nominal %}
+            <tr>
+                <td>{{ calculator.proposal.company.name }}</td>
+                <td>{{ calculator.nominal }}</td>
+                <td>{{ calculator.vencimiento | date("Y-m-d") }}</td>
+                <td>{{ calculator.finantial.name }}</td>
+            </tr>
+        {% endfor %}
+            <tr><td colspan="3">Total</td><td>{{ total }}</td></tr>
+        </table>
+    </div>
+
+    <div style="float: right">
+        <table class="table bg-dark text-light">
+            {#<div class="w-100"></div>#}
+            <tr>
+                <td colspan="4">Riesgo muerto</td>
+            </tr>
+            <tr>
+                <td>cliente</td>
+                <td>importe</td>
+                <td>vencimiento</td>
+                <td>financiera</td>
+            </tr>
+            {% set total = 0 %}
+            {% for calculator in calculators['-'] %}
+                <tr>
+                    {%  set total = total + calculator.nominal %}
+                    <td>{{ calculator.proposal.company.name }}</td>
+                    <td>{{ calculator.nominal }}</td>
+                    <td>{{ calculator.vencimiento | date("Y-m-d") }}</td>
+                    <td>{{ calculator.finantial.name }}</td>
+                </tr>
+            {% endfor %}
+            <tr><td colspan="3">Total</td><td>{{ total }}</td></tr>
+        </table>
+    </div>
+    <div style="float: none"></div>
 {% endif %}
 
 {% endblock %}
