@@ -210,6 +210,7 @@ class ProposalController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $draweeRiskModel = $form->getData();
             $calculators = $this->getDoctrine()->getRepository(Calculator::class)->getCalculatorsByFilters($draweeRiskModel);
+            dump($calculators);
             $now = new \DateTime();
             /** @var Calculator $calculator */
             foreach ($calculator as $calculators)
