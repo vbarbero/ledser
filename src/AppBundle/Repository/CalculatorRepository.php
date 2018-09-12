@@ -52,6 +52,13 @@ class CalculatorRepository extends EntityRepository
             );
             $qb->setParameter('drawee', $draweeRiskFilterModel->getDrawee());
         }
+        if($draweeRiskFilterModel->getCompany())
+        {
+            $qb->andWhere(
+                $qb->expr()->eq('p.company', ":company")
+            );
+            $qb->setParameter('company', $draweeRiskFilterModel->getCompany());
+        }
         $qb->orderBy("c.vencimiento", 'DESC');
         return $qb->getQuery()->getResult();
     }

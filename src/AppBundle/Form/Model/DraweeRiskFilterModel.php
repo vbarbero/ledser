@@ -21,6 +21,11 @@ class DraweeRiskFilterModel
     /**
      * @var Company
      */
+    protected $company;
+
+    /**
+     * @var Company
+     */
     protected $drawee;
 
     /**
@@ -39,7 +44,21 @@ class DraweeRiskFilterModel
         $this->date = $date;
     }
 
+    /**
+     * @return Company
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
 
+    /**
+     * @param Company $company
+     */
+    public function setCompany(Company $company)
+    {
+        $this->company = $company;
+    }
 
     /**
      * @return Company

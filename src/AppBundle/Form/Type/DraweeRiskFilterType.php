@@ -45,6 +45,13 @@ class DraweeRiskFilterType extends AbstractType
             'query_builder' => function( CompanyRepository $er ) {
                 return $er->getDrawee();
             }]);
+        $builder->add('company', EntityType::class, [
+            'class' => Company::class,
+            'required' => false,
+            'choice_label' => 'name',
+            'query_builder' => function( CompanyRepository $er ) {
+                return $er->getCompaniesSorted();
+            }]);
         $builder->add('date', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd', 'required' => false]);
     }
 
