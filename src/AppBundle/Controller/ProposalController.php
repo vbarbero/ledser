@@ -210,16 +210,13 @@ class ProposalController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $draweeRiskModel = $form->getData();
             $calculators = $this->getDoctrine()->getRepository(Calculator::class)->getCalculatorsByFilters($draweeRiskModel);
-            dump($calculators);
             $now = new \DateTime();
             /** @var Calculator $calculator */
-            foreach ($calculator as $calculators)
+            foreach ($calculators as $calculator)
             {
-                dump('|');
                 $group = $now < $calculator->getVencimiento()?'+':'-';
                 $calculatorGroup[$group][] = $calculator;
             }
-            dump($calculatorGroup);die;
         }
 
         return $this->render('AppBundle:Proposal:draweeRisk.html.twig', ['form' => $form->createView(), 'calculators' => $calculatorGroup]);
