@@ -110,7 +110,7 @@
                 <td>financiera</td>
             </tr>
             {% set total = 0 %}
-            {% for calculator in calculators['-'] %}
+            {% for calculator in calculators['-']|reverse %}
                 <tr>
                     {%  set total = total + calculator.nominal %}
                     <td>{{ calculator.proposal.company.name }}</td>

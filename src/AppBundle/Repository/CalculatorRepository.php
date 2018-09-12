@@ -47,6 +47,7 @@ class CalculatorRepository extends EntityRepository
             );
             $qb->setParameter('financial', $draweeRiskFilterModel->getFinancial());
         }
+        $qb->orderBy("c.vencimiento", 'DESC');
         return $qb->getQuery()->getResult();
     }
 }
