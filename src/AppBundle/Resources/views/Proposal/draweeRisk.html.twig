@@ -59,31 +59,17 @@
         </div>
         <div class="row">
             <div class="col-lg-4">
-                {{ form_label(form.from) }}
+                {{ form_label(form.date) }}
             </div>
             <div class="col-lg-4">
                 <div class="input-group date" data-provide="datepicker">
-                    {{ form_widget(form.from, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                    {{ form_widget(form.date, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-th"></span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-4">
-                {{ form_label(form.to) }}
-            </div>
-            <div class="col-lg-4">
-                <div class="input-group date" data-provide="datepicker">
-                    {{ form_widget(form.to, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
-                    <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-th"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="row">
 
             <button class="btn btn-primary btn-lg btn-block" type="submit">{{ "Filter" | trans }}</button>

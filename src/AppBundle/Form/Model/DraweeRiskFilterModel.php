@@ -11,12 +11,7 @@ class DraweeRiskFilterModel
     /**
      * @var \DateTime
      */
-    protected $from;
-
-    /**
-     * @var \DateTime
-     */
-    protected $to;
+    protected $date;
 
     /**
      * @var Company
@@ -31,34 +26,20 @@ class DraweeRiskFilterModel
     /**
      * @return \DateTime
      */
-    public function getFrom(): \DateTime
+    public function getDate()
     {
-        return $this->from;
+        return $this->date;
     }
 
     /**
-     * @param \DateTime $from
+     * @param \DateTime $date
      */
-    public function setFrom(\DateTime $from)
+    public function setDate(\DateTime $date)
     {
-        $this->from = $from;
+        $this->date = $date;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getTo(): \DateTime
-    {
-        return $this->to;
-    }
 
-    /**
-     * @param \DateTime $to
-     */
-    public function setTo(\DateTime $to)
-    {
-        $this->to = $to;
-    }
 
     /**
      * @return Company
