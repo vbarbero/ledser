@@ -215,7 +215,8 @@ class ProposalController extends Controller
             /** @var Calculator $calculator */
             foreach ($calculator as $calculators)
             {
-                $group = $now < $calculator->getVencimiento()?1:-1;
+                dump('|');
+                $group = $now < $calculator->getVencimiento()?'+':'-';
                 $calculatorGroup[$group][] = $calculator;
             }
             dump($calculatorGroup);die;
