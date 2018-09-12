@@ -203,6 +203,7 @@ class ProposalController extends Controller
         $days = $this->getDoctrine()->getRepository(Proposal::class);
 
         $draweeRiskModel = new DraweeRiskFilterModel();
+        $draweeRiskModel->setDate(new \DateTime());
         $form = $this->createForm(DraweeRiskFilterType::class, $draweeRiskModel);
         $form->handleRequest($request);
         $calculatorGroup = [];
