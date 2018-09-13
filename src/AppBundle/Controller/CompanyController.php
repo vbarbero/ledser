@@ -88,7 +88,6 @@ class CompanyController extends Controller
 
 
         }
-        dump(count($proposalGroup));die;
         //$companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::DRAWEE], ['name' => 'ASC']);
         return $this->render('AppBundle:Company:clients.html.twig', ['proposalGroup' => $proposalGroup, 'drawee' => true]);
     }
