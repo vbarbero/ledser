@@ -11,6 +11,7 @@ namespace AppBundle\Form\Type;
 use AppBundle\Entity\Company;
 use AppBundle\Entity\User;
 use AppBundle\Form\Model\CalendarFilterModel;
+use AppBundle\Form\Model\ContactFilterModel;
 use AppBundle\Form\Model\ProposalFilterModel;
 use AppBundle\Model\ProposalModel;
 use AppBundle\Model\ReportModel;
@@ -45,7 +46,7 @@ class ContactFilterType extends AbstractType
         $resolver
             ->setDefaults(
                 [
-                    'data_class'         => ContactFilterType::class,
+                    'data_class'         => ContactFilterModel::class,
                 ]
             );
     }
