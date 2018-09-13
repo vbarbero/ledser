@@ -69,6 +69,7 @@ class ProposalRepository extends EntityRepository
 	    $qb->orderBy('c.formalizacion', 'ASC');
         return $qb->getQuery()->getResult();
     }
+
     public function getProposalByFilters(DraweeRiskFilterModel $draweeRiskFilterModel)
     {
         $qb = $this->createQueryBuilder('p');

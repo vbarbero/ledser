@@ -2,15 +2,18 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Calculator;
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Contact;
 use AppBundle\Entity\File;
+use AppBundle\Entity\Proposal;
 use AppBundle\Form\Model\ContactFilterModel;
 use AppBundle\Form\Type\AddFileType;
 use AppBundle\Form\Type\CompanyType;
 use AppBundle\Form\Type\ContactFilterType;
 use AppBundle\Form\Type\ContactType;
 use AppBundle\Model\CompanyModel;
+use AppBundle\Model\ProposalModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -41,8 +44,50 @@ class CompanyController extends Controller
      */
     public function listDraweeAction(Request $request)
     {
-        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::DRAWEE], ['name' => 'ASC']);
-        return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies, 'drawee' => true]);
+        $calculators = $this->getDoctrine()->getRepository(Calculator::class)->findAll();
+        $proposalGroup = [];
+        $now = new \DateTime();
+        /** @var Calculator $calculator */
+        foreach ($calculators as $calculator)
+        {
+
+            if(!$calculator->getDrawee()) {
+                continue;
+            }
+
+            if(!$calculator->getProposal()->getState() !== ProposalModel::CLOSE) {
+                continue;
+            }
+            if(!isset($proposalGroup[$calculator->getDrawee()->getId()])) {
+                $proposalGroup[$calculator->getDrawee()->getId()] = [
+                    'id' => $calculator->getDrawee()->getId(),
+                    'rating' => $calculator->getDrawee()->getRating(),
+                    'name' => $calculator->getDrawee()->getName(),
+                    'nominal' => 0,
+                    'vivo' => 0,
+                    'muerto' => 0,
+                    'ingreso' => 0,
+                    'honorarios' => 0,
+                    'num' => 0,
+                    'dias' => 0,
+                    'tae' => 0,
+                    'total' => 0,
+                ];
+            }
+            $proposalGroup[$calculator->getDrawee()->getId()]['nominal'] += $calculator->getNominal();
+            $proposalGroup[$calculator->getDrawee()->getId()]['vivo'] += $calculator->getVencimiento() > $now?$calculator->getNominal():0;
+            $proposalGroup[$calculator->getDrawee()->getId()]['muerto'] += $calculator->getVencimiento() <= $now?$calculator->getNominal():0;
+            $proposalGroup[$calculator->getDrawee()->getId()]['ingreso'] += $calculator->getCosteFinanciero()->getCoste();
+            $proposalGroup[$calculator->getDrawee()->getId()]['honorarios'] += $calculator->getHonorarios();
+            $proposalGroup[$calculator->getDrawee()->getId()]['num'] += 1;
+            $proposalGroup[$calculator->getDrawee()->getId()]['dias'] += $calculator->getDias();
+            $proposalGroup[$calculator->getDrawee()->getId()]['tae'] += $calculator->getCosteFinanciero()->getTae();
+            $proposalGroup[$calculator->getDrawee()->getId()]['total'] += $calculator->getCosteTotal()->getTotal();
+
+
+        }
+        //$companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::DRAWEE], ['name' => 'ASC']);
+        return $this->render('AppBundle:Company:clients.html.twig', ['proposalGroup' => $proposalGroup, 'drawee' => true]);
     }
 
     /**
@@ -60,7 +105,7 @@ class CompanyController extends Controller
     public function listFreedAction(Request $request)
     {
         $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::FREED], ['name' => 'ASC']);
-        return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies]);
+        return $this->render('AppBundle:Company:list.html.twig', ['companies' => $companies]);
     }
 
     /**
@@ -69,7 +114,7 @@ class CompanyController extends Controller
     public function listProponentAction(Request $request)
     {
         $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::PROPONENT], ['name' => 'ASC']);
-        return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies]);
+        return $this->render('AppBundle:Company:list.html.twig', ['companies' => $companies]);
     }
 
     /**
