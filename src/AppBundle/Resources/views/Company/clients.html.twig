@@ -16,6 +16,7 @@
         <div class="col">honorarios</div>
         <div class="col">dias</div>
         <div class="col">tae</div>
+        <div class="col">tae ledser</div>
         <div class="col">total</div>
         <div class="col">action</div>
     </div>
@@ -33,6 +34,7 @@
         <div class="col">{{ company.honorarios }}</div>
         <div class="col">{{ (company.dias / company.num) | number_format(2) }}</div>
         <div class="col">{{ (company.tae / company.num) | number_format(2) }}</div>
+        <div class="col">{{ (company.taeLedser / company.num) | number_format(2) }}</div>
         <div class="col">{{ (company.total / company.num) | number_format(2) }}</div>
         <div class="col">
             <a href="{{ url('add_file', {company: company.id}) }}">Add file</a>

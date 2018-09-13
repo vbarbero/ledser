@@ -47,6 +47,7 @@ class CompanyController extends Controller
         $calculators = $this->getDoctrine()->getRepository(Calculator::class)->findAll();
         $proposalGroup = [];
         $now = new \DateTime();
+        dump(count($calculators));die;
         /** @var Calculator $calculator */
         foreach ($calculators as $calculator)
         {
@@ -71,6 +72,7 @@ class CompanyController extends Controller
                     'num' => 0,
                     'dias' => 0,
                     'tae' => 0,
+                    'taeLedser' => 0,
                     'total' => 0,
                 ];
             }
@@ -82,6 +84,7 @@ class CompanyController extends Controller
             $proposalGroup[$calculator->getDrawee()->getId()]['num'] += 1;
             $proposalGroup[$calculator->getDrawee()->getId()]['dias'] += $calculator->getDias();
             $proposalGroup[$calculator->getDrawee()->getId()]['tae'] += $calculator->getCosteFinanciero()->getTae();
+            $proposalGroup[$calculator->getDrawee()->getId()]['taeLedser'] += $calculator->getCosteFinancieroLedser()->getTae();
             $proposalGroup[$calculator->getDrawee()->getId()]['total'] += $calculator->getCosteTotal()->getTotal();
 
 
