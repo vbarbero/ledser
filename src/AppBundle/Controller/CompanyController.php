@@ -44,6 +44,7 @@ class CompanyController extends Controller
         $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::DRAWEE], ['name' => 'ASC']);
         return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies, 'drawee' => true]);
     }
+
     /**
      * @Route("/list-finantial", name="list_finantial")
      */
@@ -52,6 +53,25 @@ class CompanyController extends Controller
         $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::FINANTIAL], ['name' => 'ASC']);
         return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies]);
     }
+
+    /**
+     * @Route("/list-freed", name="list_freed")
+     */
+    public function listFreedAction(Request $request)
+    {
+        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::FREED], ['name' => 'ASC']);
+        return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies]);
+    }
+
+    /**
+     * @Route("/list-proponent", name="list_proponent")
+     */
+    public function listProponentAction(Request $request)
+    {
+        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::PROPONENT], ['name' => 'ASC']);
+        return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies]);
+    }
+
     /**
      * @Route("/list-files/{company}", name="list_files")
      */
