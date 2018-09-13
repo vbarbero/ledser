@@ -55,7 +55,7 @@ class CompanyController extends Controller
                 continue;
             }
 
-            if(!$calculator->getProposal()->getState() !== ProposalModel::CLOSE) {
+            if($calculator->getProposal()->getState() !== ProposalModel::CLOSE) {
                 continue;
             }
             if(!isset($proposalGroup[$calculator->getDrawee()->getId()])) {
