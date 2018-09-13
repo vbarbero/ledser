@@ -73,9 +73,6 @@ class CompanyController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $contactFilterModel = $form->getData();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($contactFilterModel);
-            $em->flush();
             $contacts = $this->getDoctrine()->getManager()->getRepository(Contact::class)->findBy(['company' => $contactFilterModel->getCompany()]);
         } else
         {
