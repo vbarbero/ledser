@@ -47,7 +47,6 @@ class CompanyController extends Controller
         $calculators = $this->getDoctrine()->getRepository(Calculator::class)->findAll();
         $proposalGroup = [];
         $now = new \DateTime();
-        dump(count($calculators));die;
         /** @var Calculator $calculator */
         foreach ($calculators as $calculator)
         {
@@ -89,6 +88,7 @@ class CompanyController extends Controller
 
 
         }
+        dump(count($proposalGroup));die;
         //$companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::DRAWEE], ['name' => 'ASC']);
         return $this->render('AppBundle:Company:clients.html.twig', ['proposalGroup' => $proposalGroup, 'drawee' => true]);
     }
