@@ -87,6 +87,7 @@
             </tr>
             <tr>
                 <td>cliente</td>
+                <td>drawee</td>
                 <td>importe</td>
                 <td>vencimiento</td>
                 <td>financiera</td>
@@ -96,6 +97,7 @@
             {%  set total = total + calculator.nominal %}
             <tr>
                 <td>{{ calculator.proposal.company.name }}</td>
+                <td>{{ calculator.drawee.name }}</td>
                 <td>{{ calculator.nominal }}</td>
                 <td>{{ calculator.vencimiento | date("Y-m-d") }}</td>
                 <td>{{ calculator.proposal.finalcial.name }}</td>
@@ -109,10 +111,11 @@
         <table class="table bg-dark text-light">
             {#<div class="w-100"></div>#}
             <tr>
-                <td colspan="4">Riesgo muerto</td>
+                <td colspan="4">Riesgo vencido</td>
             </tr>
             <tr>
                 <td>cliente</td>
+                <td>drawee</td>
                 <td>importe</td>
                 <td>vencimiento</td>
                 <td>financiera</td>
@@ -122,6 +125,7 @@
                 <tr>
                     {%  set total = total + calculator.nominal %}
                     <td>{{ calculator.proposal.company.name }}</td>
+                    <td>{{ calculator.drawee.name }}</td>
                     <td>{{ calculator.nominal }}</td>
                     <td>{{ calculator.vencimiento | date("Y-m-d") }}</td>
                     <td>{{ calculator.proposal.finalcial.name }}</td>
