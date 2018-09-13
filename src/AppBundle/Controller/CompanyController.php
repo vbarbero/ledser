@@ -63,6 +63,18 @@ class CompanyController extends Controller
 
 
     /**
+     * @Route("/delete-contact/{contact}", name="delete_contact")
+     */
+    public function deleteContactAction(Contact $contact, Request $request)
+    {
+        $this->getDoctrine()->getManager()->remove($contact);
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirect($this->generateUrl("list_contact"));
+    }
+
+
+    /**
      * @Route("/list-contact", name="list_contact")
      */
     public function listContactAction(Request $request)
@@ -81,6 +93,9 @@ class CompanyController extends Controller
         }
         return $this->render('AppBundle:Company:contact.html.twig', ['contacts' => $contacts, 'form' => $form->createView()]);
     }
+
+
+
 
     /**
      * @Route("/create-company", name="create_company")
@@ -207,6 +222,24 @@ class CompanyController extends Controller
             $em->persist($contact);
             $em->flush();
             return $this->redirect("show-company/" . $contact->getCompany()->getId());
+        }
+        return $this->render('AppBundle:Company:createContact.html.twig', ['form' => $form->createView()]);
+    }
+
+    /**
+    @Route("/edit-contact/{contact}", name="edit_contact")
+     */
+    public function editContactAction(Contact $contact, Request $request)
+    {
+        $form = $this->createForm(ContactType::class, $contact);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contact = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contact);
+            $em->flush();
+            return $this->redirect($this->generateUrl("list_contact"));
         }
         return $this->render('AppBundle:Company:createContact.html.twig', ['form' => $form->createView()]);
     }
