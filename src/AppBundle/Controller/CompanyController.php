@@ -5,8 +5,10 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Contact;
 use AppBundle\Entity\File;
+use AppBundle\Form\Model\ContactFilterModel;
 use AppBundle\Form\Type\AddFileType;
 use AppBundle\Form\Type\CompanyType;
+use AppBundle\Form\Type\ContactFilterType;
 use AppBundle\Form\Type\ContactType;
 use AppBundle\Model\CompanyModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -57,6 +59,30 @@ class CompanyController extends Controller
     {
         $files = $this->getDoctrine()->getManager()->getRepository(File::class)->findBy(['company' => $company]);
         return $this->render('AppBundle:Company:files.html.twig', ['company' => $company, 'files' => $files]);
+    }
+
+
+    /**
+     * @Route("/list-contact", name="list_contact")
+     */
+    public function listContactAction(Request $request)
+    {
+        $contactFilterModel = new ContactFilterModel();
+        $form = $this->createForm(ContactFilterType::class, $contactFilterModel);
+        $form->add('save', SubmitType::class, array('label' => 'Save'));
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contactFilterModel = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contactFilterModel);
+            $em->flush();
+            $contacts = $this->getDoctrine()->getManager()->getRepository(Contact::class)->findBy(['company' => $contactFilterModel->getCompany()]);
+        } else
+        {
+            $contacts = $this->getDoctrine()->getManager()->getRepository(Contact::class)->findAll();
+
+        }
+        return $this->render('AppBundle:Company:contact.html.twig', ['contacts' => $contacts, 'form' => $form->createView()]);
     }
 
     /**

@@ -1,0 +1,40 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-lg-4">
+            {{ form_label(form.company) }}
+        </div>
+        <div class="col-lg-4">
+            {{ form_widget(form.company) }}
+        </div>
+    </div>
+
+    <div class="row">
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit">{{ "Filter" | trans }}</button>
+
+    </div>
+    {{ form_end(form) }}
+    <div class="row bg-dark text-light">
+        <div class="col">Nª</div>
+        <div class="col">Name</div>
+        <div class="col">Email</div>
+        <div class="col">Phone</div>
+        <div class="col">Action</div>
+    </div>
+
+    {% for contact in contacts %}
+        <div class="row {% if loop.index is odd %}bg-secondary{% endif %}">
+            <div class="col">{{ loop.index }}</div>
+            <div class="col">{{ contact.name }}</div>
+            <div class="col">{{ contact.email }}</div>
+            <div class="col">{{ contact.phone }}</div>
+            <div class="col">
+                {#<a href="{{ url('edit_contact', {contact: contact.id}) }}">edit</a>#}
+                {#<a href="{{ url('delete_contact', {contact: contact.id}) }}">delete</a>#}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
