@@ -13,7 +13,7 @@ class Contact extends BaseEntity
     /**
      * @var Company
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", cascade={"remove"}, inversedBy="contact")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", inversedBy="contact")
      */
     private $company;
 
