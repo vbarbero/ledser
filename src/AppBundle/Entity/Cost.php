@@ -70,6 +70,7 @@ class Cost extends BaseEntity
     public function __construct()
     {
       $this->setRetencion(0);
+      parent::__construct();
     }
 
     /**
