@@ -22,7 +22,7 @@ class CompanyModel
         return
             [
                 'PROPONENT' => self::PROPONENT,
-                'FREED' => self::FREED,
+                'NO CLIENT' => self::FREED,
                 'CLIENT' => self::CLIENT,
                 'FINANTIAL' => self::FINANTIAL,
                 'DRAWEE' => self::DRAWEE,
@@ -34,7 +34,7 @@ class CompanyModel
         return
             [
                 self::PROPONENT => 'PROPONENT',
-                self::FREED =>'FREED',
+                self::FREED =>'NO CLIENT',
                 self::CLIENT => 'CLIENT',
                 self::FINANTIAL => 'FINANTIAL',
                 self::DRAWEE => 'DRAWEE',
