@@ -35,11 +35,11 @@ class CompanyType extends AbstractType
         $builder->add('rating', ChoiceType::class, ['choices' => CompanyModel::getRatingAsChoice()]);
         $builder->add('facturacion', ChoiceType::class, ['choices' => CompanyModel::getFacturacionAsChoice()]);
         $builder->add('tipoClientes', ChoiceType::class, ['choices' => CompanyModel::getClienteAsChoice()]);
-        $builder->add('tipoClientesTexto', TextType::class);
+        $builder->add('tipoClientesTexto', TextType::class, ['required'   => false]);
         $builder->add('banco', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice()]);
         $builder->add('saturan', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice()]);
         $builder->add('competencia', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice()]);
-        $builder->add('competenciaTexto', TextType::class);
+        $builder->add('competenciaTexto', TextType::class, ['required'   => false]);
         $builder->add('plazo', ChoiceType::class, ['choices' => CompanyModel::getPlazoAsChoice()]);
         $builder->add('medioCobro', ChoiceType::class, ['choices' => CompanyModel::getMEdioCobroAsChoice(), 'multiple' => true]);
         $builder->add('lineaDescuento', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice()]);
