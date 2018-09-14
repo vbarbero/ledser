@@ -424,7 +424,7 @@ class Company extends BaseEntity
     /**
      * @return int
      */
-    public function getFacturacion(): int
+    public function getFacturacion()
     {
         return $this->facturacion;
     }
@@ -440,7 +440,7 @@ class Company extends BaseEntity
     /**
      * @return int
      */
-    public function getTipoClientes(): int
+    public function getTipoClientes()
     {
         return $this->tipoClientes;
     }
@@ -456,7 +456,7 @@ class Company extends BaseEntity
     /**
      * @return string
      */
-    public function getTipoClientesTexto(): string
+    public function getTipoClientesTexto()
     {
         return $this->tipoClientesTexto;
     }
@@ -472,7 +472,7 @@ class Company extends BaseEntity
     /**
      * @return int
      */
-    public function getBanco(): int
+    public function getBanco()
     {
         return $this->banco;
     }
@@ -488,7 +488,7 @@ class Company extends BaseEntity
     /**
      * @return int
      */
-    public function getSaturan(): int
+    public function getSaturan()
     {
         return $this->saturan;
     }
@@ -504,7 +504,7 @@ class Company extends BaseEntity
     /**
      * @return int
      */
-    public function getCompetencia(): int
+    public function getCompetencia()
     {
         return $this->competencia;
     }
@@ -520,7 +520,7 @@ class Company extends BaseEntity
     /**
      * @return string
      */
-    public function getCompetenciaTexto(): string
+    public function getCompetenciaTexto()
     {
         return $this->competenciaTexto;
     }
@@ -536,7 +536,7 @@ class Company extends BaseEntity
     /**
      * @return int
      */
-    public function getPlazo(): int
+    public function getPlazo()
     {
         return $this->plazo;
     }
@@ -552,7 +552,7 @@ class Company extends BaseEntity
     /**
      * @return int
      */
-    public function getMedioCobro(): int
+    public function getMedioCobro()
     {
         return $this->medioCobro;
     }
@@ -568,7 +568,7 @@ class Company extends BaseEntity
     /**
      * @return int
      */
-    public function getLineaDescuento(): int
+    public function getLineaDescuento()
     {
         return $this->lineaDescuento;
     }
