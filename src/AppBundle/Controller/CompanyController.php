@@ -36,8 +36,48 @@ class CompanyController extends Controller
      */
     public function listClientAction(Request $request)
     {
-        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::CLIENT], ['name' => 'ASC']);
-        return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies]);
+        $calculators = $this->getDoctrine()->getRepository(Calculator::class)->findAll();
+        $proposalGroup = [];
+        $now = new \DateTime();
+        /** @var Calculator $calculator */
+        foreach ($calculators as $calculator)
+        {
+
+            if(!$calculator->getProposal()->getCompany()) {
+                continue;
+            }
+
+            if($calculator->getProposal()->getState() !== ProposalModel::CLOSE) {
+                continue;
+            }
+            if(!isset($proposalGroup[$calculator->getProposal()->getCompany()->getId()])) {
+                $proposalGroup[$calculator->getProposal()->getCompany()->getId()] = [
+                    'id' => $calculator->getProposal()->getCompany()->getId(),
+                    'name' => $calculator->getProposal()->getCompany()->getName(),
+                    'nominal' => 0,
+                    'vivo' => 0,
+                    'muerto' => 0,
+                    'ingreso' => 0,
+                    'honorarios' => 0,
+                    'num' => 0,
+                    'dias' => 0,
+                    'tae' => 0,
+                    'taeLedser' => 0,
+                    'total' => 0,
+                ];
+            }
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['nominal'] += $calculator->getNominal();
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['vivo'] += $calculator->getVencimiento() > $now?$calculator->getNominal():0;
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['muerto'] += $calculator->getVencimiento() <= $now?$calculator->getNominal():0;
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['ingreso'] += $calculator->getCosteFinanciero()->getCoste();
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['honorarios'] += $calculator->getHonorarios();
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['num'] += 1;
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['dias'] += $calculator->getDias();
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['tae'] += $calculator->getCosteFinanciero()->getTae();
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['taeLedser'] += $calculator->getCosteFinancieroLedser()->getTae();
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['total'] += $calculator->getCosteTotal()->getTotal();
+        }
+        return $this->render('AppBundle:Company:clients.html.twig', ['proposalGroup' => $proposalGroup]);
     }
     /**
      * @Route("/list-drawee", name="list_drawee")
