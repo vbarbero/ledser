@@ -42,7 +42,7 @@ class CompanyType extends AbstractType
         $builder->add('competenciaTexto', TextType::class);
         $builder->add('plazo', ChoiceType::class, ['choices' => CompanyModel::getPlazoAsChoice()]);
         $builder->add('medioCobro', ChoiceType::class, ['choices' => CompanyModel::getMEdioCobroAsChoice(), 'multiple' => true]);
-        $builder->add('lineaDescuento', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice(), 'multiple' => true]);
+        $builder->add('lineaDescuento', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice()]);
 
     }
 
