@@ -81,25 +81,58 @@ class CompanyModel
     {
         return
             [
+                '<1' =>  self::FACTURACION_LESS_1,
+              '1-5'=> self::FACTURACION_1_5,
+               '5-10'=>self::FACTURACION_5_10,
+               '10-20'=>  self::FACTURACION_10_20,
+               '20>'  => self::FACTURACION_PLUS_20
+            ];
+    }
+
+    public static function getFacturacion($facturacion)
+    {
+        $ff =
+            [
                 self::FACTURACION_LESS_1 => '<1',
                 self::FACTURACION_1_5 => '1-5',
                 self::FACTURACION_5_10 => '5-10',
                 self::FACTURACION_10_20 => '10-20',
                 self::FACTURACION_PLUS_20 => '20>',
             ];
+        return $ff[$facturacion];
     }
 
     public static function getClienteAsChoice()
     {
         return
             [
+                'Publico' => self::CLIENTE_PUBLICO ,
+                'Privado' => self::CLIENTE_PRIVADOS   ,
+                'Ambos'  =>  self::CLIENTE_AMBOS   ,
+             ];
+       }
+
+    public static function getCliente($cliente)
+    {
+        $cc =
+            [
                 self::CLIENTE_PUBLICO => 'Publico',
                 self::CLIENTE_PRIVADOS => 'Privado',
                 self::CLIENTE_AMBOS => 'Ambos',
             ];
+        return $cc[$cliente];
     }
 
     public static function getSiNoAsChoice()
+    {
+        return
+            [
+                 'Si' =>  self::SI,
+                 'NO' =>  self::NO,
+            ];
+    }
+
+    public static function getSiNo()
     {
         return
             [
@@ -112,20 +145,48 @@ class CompanyModel
     {
         return
             [
-                self::PLAZO_0 => '0',
-                self::PLAZO_30 => '30',
-                self::PLAZO_60 => '60',
-                self::PLAZO_90 => '90',
-                self::PLAZO_120 => '120',
-                self::PLAZO_150 => '150',
-                self::PLAZO_180 => '180',
-                self::PLAZO_210 => '210',
+                '0'  =>  self::PLAZO_0  ,
+                '30' =>  self::PLAZO_30 ,
+                '60' =>  self::PLAZO_60 ,
+                '90' =>  self::PLAZO_90 ,
+                '120'=>  self::PLAZO_120,
+                '150'=>  self::PLAZO_150,
+                '180'=>  self::PLAZO_180,
+                '210'=>  self::PLAZO_210,
             ];
+    }
+
+    public static function getPlazo($plazo)
+    {
+        $p =[
+            self::PLAZO_0 => '0',
+            self::PLAZO_30 => '30',
+            self::PLAZO_60 => '60',
+            self::PLAZO_90 => '90',
+            self::PLAZO_120 => '120',
+            self::PLAZO_150 => '150',
+            self::PLAZO_180 => '180',
+            self::PLAZO_210 => '210',
+        ];
+
+        return $p[$plazo] ;
     }
 
     public static function getMEdioCobroAsChoice()
     {
         return
+            [
+                'Transferencia'=> self::MEDIO_COBRO_TRANSFER  ,
+                'pagares'      => self::MEDIO_COBRO_PAGARES   ,
+                'confirming'   => self::MEDIO_COBRO_CONFIRMING,
+                'contado'      => self::MEDIO_COBRO_CONTADO   ,
+                'otros'        => self::MEDIO_COBRO_OTROS     ,
+            ];
+    }
+
+    public static function getMEdioCobro($medioCobro)
+    {
+        $mm =
             [
                 self::MEDIO_COBRO_TRANSFER => 'Transferencia',
                 self::MEDIO_COBRO_PAGARES => 'pagares',
@@ -133,5 +194,6 @@ class CompanyModel
                 self::MEDIO_COBRO_CONTADO => 'contado',
                 self::MEDIO_COBRO_OTROS => 'otros',
             ];
+        return $mm[$medioCobro];
     }
 }

@@ -32,16 +32,16 @@ class CompanyType extends AbstractType
         $builder->add('addressNumber');
         $builder->add('type', ChoiceType::class, ['choices' => CompanyModel::getTypeAsChoice()]);
 
-        $builder->add('rating', ChoiceType::class, ['choices' => CompanyModel::getRatingAsChoice(),'choices_as_values'         => false]);
-        $builder->add('facturacion', ChoiceType::class, ['choices' => CompanyModel::getFacturacionAsChoice(),'choices_as_values'         => false]);
-        $builder->add('tipoClientes', ChoiceType::class, ['choices' => CompanyModel::getClienteAsChoice(),'choices_as_values'         => false]);
+        $builder->add('rating', ChoiceType::class, ['choices' => CompanyModel::getRatingAsChoice()]);
+        $builder->add('facturacion', ChoiceType::class, ['choices' => CompanyModel::getFacturacionAsChoice()]);
+        $builder->add('tipoClientes', ChoiceType::class, ['choices' => CompanyModel::getClienteAsChoice()]);
         $builder->add('tipoClientesTexto', TextType::class);
-        $builder->add('banco', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice(),'choices_as_values'         => false]);
-        $builder->add('saturan', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice(),'choices_as_values'         => false]);
-        $builder->add('competencia', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice(),'choices_as_values'         => false]);
+        $builder->add('banco', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice()]);
+        $builder->add('saturan', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice()]);
+        $builder->add('competencia', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice()]);
         $builder->add('competenciaTexto', TextType::class);
-        $builder->add('plazo', ChoiceType::class, ['choices' => CompanyModel::getPlazoAsChoice(),'choices_as_values'         => false]);
-        $builder->add('medioCobro', ChoiceType::class, ['choices' => CompanyModel::getMEdioCobroAsChoice(),'choices_as_values'         => false, 'multiple' => true]);
+        $builder->add('plazo', ChoiceType::class, ['choices' => CompanyModel::getPlazoAsChoice()]);
+        $builder->add('medioCobro', ChoiceType::class, ['choices' => CompanyModel::getMEdioCobroAsChoice(), 'multiple' => true]);
 
     }
 
