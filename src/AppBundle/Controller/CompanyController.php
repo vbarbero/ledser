@@ -97,8 +97,48 @@ class CompanyController extends Controller
      */
     public function listFinantialAction(Request $request)
     {
-        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::FINANTIAL], ['name' => 'ASC']);
-        return $this->render('AppBundle:Company:clients.html.twig', ['companies' => $companies]);
+        $calculators = $this->getDoctrine()->getRepository(Calculator::class)->findAll();
+        $proposalGroup = [];
+        $now = new \DateTime();
+        /** @var Calculator $calculator */
+        foreach ($calculators as $calculator)
+        {
+
+            if(!$calculator->getProposal()->getFinalcial()) {
+                continue;
+            }
+
+            if($calculator->getProposal()->getState() !== ProposalModel::CLOSE) {
+                continue;
+            }
+            if(!isset($proposalGroup[$calculator->getProposal()->getFinalcial()->getId()])) {
+                $proposalGroup[$calculator->getProposal()->getFinalcial()->getId()] = [
+                    'id' => $calculator->getProposal()->getFinalcial()->getId(),
+                    'name' => $calculator->getProposal()->getFinalcial()->getName(),
+                    'nominal' => 0,
+                    'vivo' => 0,
+                    'muerto' => 0,
+                    'ingreso' => 0,
+                    'honorarios' => 0,
+                    'num' => 0,
+                    'dias' => 0,
+                    'tae' => 0,
+                    'taeLedser' => 0,
+                    'total' => 0,
+                ];
+            }
+            $proposalGroup[$calculator->getDrawee()->getId()]['nominal'] += $calculator->getNominal();
+            $proposalGroup[$calculator->getDrawee()->getId()]['vivo'] += $calculator->getVencimiento() > $now?$calculator->getNominal():0;
+            $proposalGroup[$calculator->getDrawee()->getId()]['muerto'] += $calculator->getVencimiento() <= $now?$calculator->getNominal():0;
+            $proposalGroup[$calculator->getDrawee()->getId()]['ingreso'] += $calculator->getCosteFinanciero()->getCoste();
+            $proposalGroup[$calculator->getDrawee()->getId()]['honorarios'] += $calculator->getHonorarios();
+            $proposalGroup[$calculator->getDrawee()->getId()]['num'] += 1;
+            $proposalGroup[$calculator->getDrawee()->getId()]['dias'] += $calculator->getDias();
+            $proposalGroup[$calculator->getDrawee()->getId()]['tae'] += $calculator->getCosteFinanciero()->getTae();
+            $proposalGroup[$calculator->getDrawee()->getId()]['taeLedser'] += $calculator->getCosteFinancieroLedser()->getTae();
+            $proposalGroup[$calculator->getDrawee()->getId()]['total'] += $calculator->getCosteTotal()->getTotal();
+        }
+        return $this->render('AppBundle:Company:clients.html.twig', ['proposalGroup' => $proposalGroup]);
     }
 
     /**
