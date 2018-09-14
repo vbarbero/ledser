@@ -82,6 +82,76 @@ class Company extends BaseEntity
     protected $type;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $facturacion;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $tipoClientes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $tipoClientesTexto;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $banco;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $saturan;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $competencia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $competenciaTexto;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $plazo;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $medioCobro;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $lineaDescuento;
+
+    /**
      * @var Contact
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact",cascade={"remove"}, mappedBy="company")
@@ -111,9 +181,9 @@ class Company extends BaseEntity
 
     public function __construct()
     {
-	parent::__construct();
+	    parent::__construct();
         $this->files = new ArrayCollection();
-	$this->zip = 0;
+	    $this->zip = 0;
     }
 
 
@@ -349,6 +419,166 @@ class Company extends BaseEntity
     public function setReport($report)
     {
         $this->report = $report;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFacturacion(): int
+    {
+        return $this->facturacion;
+    }
+
+    /**
+     * @param int $facturacion
+     */
+    public function setFacturacion(int $facturacion)
+    {
+        $this->facturacion = $facturacion;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTipoClientes(): int
+    {
+        return $this->tipoClientes;
+    }
+
+    /**
+     * @param int $tipoClientes
+     */
+    public function setTipoClientes(int $tipoClientes)
+    {
+        $this->tipoClientes = $tipoClientes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTipoClientesTexto(): string
+    {
+        return $this->tipoClientesTexto;
+    }
+
+    /**
+     * @param string $tipoClientesTexto
+     */
+    public function setTipoClientesTexto(string $tipoClientesTexto)
+    {
+        $this->tipoClientesTexto = $tipoClientesTexto;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBanco(): int
+    {
+        return $this->banco;
+    }
+
+    /**
+     * @param int $banco
+     */
+    public function setBanco(int $banco)
+    {
+        $this->banco = $banco;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSaturan(): int
+    {
+        return $this->saturan;
+    }
+
+    /**
+     * @param int $saturan
+     */
+    public function setSaturan(int $saturan)
+    {
+        $this->saturan = $saturan;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCompetencia(): int
+    {
+        return $this->competencia;
+    }
+
+    /**
+     * @param int $competencia
+     */
+    public function setCompetencia(int $competencia)
+    {
+        $this->competencia = $competencia;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCompetenciaTexto(): string
+    {
+        return $this->competenciaTexto;
+    }
+
+    /**
+     * @param string $competenciaTexto
+     */
+    public function setCompetenciaTexto(string $competenciaTexto)
+    {
+        $this->competenciaTexto = $competenciaTexto;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPlazo(): int
+    {
+        return $this->plazo;
+    }
+
+    /**
+     * @param int $plazo
+     */
+    public function setPlazo(int $plazo)
+    {
+        $this->plazo = $plazo;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMedioCobro(): int
+    {
+        return $this->medioCobro;
+    }
+
+    /**
+     * @param int $medioCobro
+     */
+    public function setMedioCobro(int $medioCobro)
+    {
+        $this->medioCobro = $medioCobro;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLineaDescuento(): int
+    {
+        return $this->lineaDescuento;
+    }
+
+    /**
+     * @param int $lineaDescuento
+     */
+    public function setLineaDescuento(int $lineaDescuento)
+    {
+        $this->lineaDescuento = $lineaDescuento;
     }
 
 
