@@ -29,8 +29,7 @@ class CompanyExtension extends \Twig_Extension
     }
     public function getType($type)
     {
-        $types = CompanyModel::getType();
-        return $types[$type];
+        return  CompanyModel::getType($type);
     }
     public function getFacturacion($type)
     {
