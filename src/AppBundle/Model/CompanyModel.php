@@ -53,9 +53,9 @@ class CompanyModel
             ];
     }
 
-    public static function getType()
+    public static function getType($type)
     {
-        return
+        $t =
             [
                 self::PROPONENT => 'PROPONENT',
                 self::FREED =>'NO CLIENT',
@@ -63,6 +63,7 @@ class CompanyModel
                 self::FINANTIAL => 'FINANTIAL',
                 self::DRAWEE => 'DRAWEE',
             ];
+        return $t[$type];
     }
 
     public static function getRatingAsChoice()
@@ -132,13 +133,14 @@ class CompanyModel
             ];
     }
 
-    public static function getSiNo()
+    public static function getSiNo($tt)
     {
-        return
+        $t =
             [
                 self::SI => 'Si',
                 self::NO => 'NO',
             ];
+        return $t[$tt];
     }
 
     public static function getPlazoAsChoice()
@@ -184,7 +186,7 @@ class CompanyModel
             ];
     }
 
-    public static function getMEdioCobro($medioCobro)
+    public static function getMedioCobro($medioCobro)
     {
         $mm =
             [

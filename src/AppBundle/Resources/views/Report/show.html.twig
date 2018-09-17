@@ -164,7 +164,7 @@
                     facturacion
                 </div>
                 <div class="col-lg-4">
-                    {{ report.company.facturacion }}
+                    {{ report.company.facturacion | company_facturacion }}
                 </div>
             </div>
             <div class="row">
@@ -172,7 +172,7 @@
                     tipoClientes
                 </div>
                 <div class="col-lg-4">
-                    {{ report.company.tipoClientes }}
+                    {{ report.company.tipoClientes | company_cliente }}
                 </div>
             </div>
             <div class="row">
@@ -188,7 +188,15 @@
                     banco
                 </div>
                 <div class="col-lg-4">
-                    {{ report.company.banco }}
+                    {{ report.company.banco | company_si_no }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    lineaDescuento
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.lineaDescuento | company_si_no }}
                 </div>
             </div>
             <div class="row">
@@ -196,7 +204,7 @@
                     saturan
                 </div>
                 <div class="col-lg-4">
-                    {{ report.company.saturan }}
+                    {{ report.company.saturan | company_si_no }}
                 </div>
             </div>
             <div class="row">
@@ -204,7 +212,7 @@
                     competencia
                 </div>
                 <div class="col-lg-4">
-                    {{ report.company.competencia }}
+                    {{ report.company.competencia | company_si_no }}
                 </div>
             </div>
             <div class="row">
@@ -220,7 +228,7 @@
                     plazo
                 </div>
                 <div class="col-lg-4">
-                    {{ report.company.plazo }}
+                    {{ report.company.plazo | company_plazo }}
                 </div>
             </div>
             <div class="row">
@@ -228,15 +236,7 @@
                     medioCobro
                 </div>
                 <div class="col-lg-4">
-                    {{ report.company.medioCobro }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    lineaDescuento
-                </div>
-                <div class="col-lg-4">
-                    {{ report.company.lineaDescuento }}
+                    {{ report.company.medioCobro | getMedioCobro }}
                 </div>
             </div>
         </div>
