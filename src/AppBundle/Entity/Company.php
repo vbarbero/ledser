@@ -145,9 +145,9 @@ class Company extends BaseEntity
     protected $medioCobro;
 
     /**
-     * @var int
+     * @var array
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="array", nullable=true)
      */
     protected $lineaDescuento;
 

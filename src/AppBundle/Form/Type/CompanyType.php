@@ -33,16 +33,16 @@ class CompanyType extends AbstractType
         $builder->add('type', ChoiceType::class, ['choices' => CompanyModel::getTypeAsChoice()]);
 
         $builder->add('rating', ChoiceType::class, ['choices' => CompanyModel::getRatingAsChoice()]);
-        $builder->add('facturacion', ChoiceType::class, ['choices' => CompanyModel::getFacturacionAsChoice()]);
-        $builder->add('tipoClientes', ChoiceType::class, ['choices' => CompanyModel::getClienteAsChoice()]);
+        $builder->add('facturacion', ChoiceType::class, ['choices' => CompanyModel::getFacturacionAsChoice()], 'required'   => false);
+        $builder->add('tipoClientes', ChoiceType::class, ['choices' => CompanyModel::getClienteAsChoice(), 'required'   => false]);
         $builder->add('tipoClientesTexto', TextType::class, ['required'   => false]);
-        $builder->add('banco', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice()]);
-        $builder->add('saturan', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice()]);
-        $builder->add('competencia', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice()]);
+        $builder->add('banco', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice(), 'required'   => false]);
+        $builder->add('saturan', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice(), 'required'   => false]);
+        $builder->add('competencia', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice(), 'required'   => false]);
         $builder->add('competenciaTexto', TextType::class, ['required'   => false]);
         $builder->add('plazo', ChoiceType::class, ['choices' => CompanyModel::getPlazoAsChoice()]);
-        $builder->add('medioCobro', ChoiceType::class, ['choices' => CompanyModel::getMEdioCobroAsChoice()]);
-        $builder->add('lineaDescuento', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice()]);
+        $builder->add('medioCobro', ChoiceType::class, ['choices' => CompanyModel::getMEdioCobroAsChoice(), 'required'   => false, 'multiple' => true]);
+        $builder->add('lineaDescuento', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice(), 'required'   => false]);
 
     }
 

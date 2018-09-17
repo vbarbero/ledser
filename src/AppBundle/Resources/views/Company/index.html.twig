@@ -225,6 +225,14 @@
         </div>
         <div class="row">
             <div class="col-lg-4">
+                {{ form_label(form.lineaDescuento) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.lineaDescuento) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
                 {{ form_label(form.saturan) }}
             </div>
             <div class="col-lg-4">
@@ -249,14 +257,6 @@
         </div>
         <div class="row">
             <div class="col-lg-4">
-                {{ form_label(form.plazo) }}
-            </div>
-            <div class="col-lg-4">
-                {{ form_widget(form.plazo) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
                 {{ form_label(form.medioCobro) }}
             </div>
             <div class="col-lg-4">
@@ -265,10 +265,10 @@
         </div>
         <div class="row">
             <div class="col-lg-4">
-                {{ form_label(form.lineaDescuento) }}
+                {{ form_label(form.plazo) }}
             </div>
             <div class="col-lg-4">
-                {{ form_widget(form.lineaDescuento) }}
+                {{ form_widget(form.plazo) }}
             </div>
         </div>
         {{ form_widget(form.save, { 'attr':{'class': 'btn btn-primary btn-lg btn-block'} }) }}
