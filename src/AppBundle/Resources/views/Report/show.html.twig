@@ -9,7 +9,7 @@
                     {{ 'Company Name' | trans }}:
                 </div>
                 <div class="col-lg-4">
-                    <a href="{{ url('edit_company', {'company': report.company}) }}"> {{ report.company.name }}</a>
+                    <a href="{{ url('edit_company', {'company': report.company.id}) }}"> {{ report.company.name }}</a>
                 </div>
             </div>
             <div class="row">
