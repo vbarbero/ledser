@@ -161,24 +161,24 @@
                     <td>num</td>
                     <td>DateTime</td>
                     <td>Action</td>
-                    <td>Cif</td>
                     <td>Company Name</td>
                     <td>Client Type</td>
-                    <td>Zip</td>
                     <td>City</td>
-                    <td>Province</td>
+                    <td>contacts</td>
                 </tr>
                 {% for report in reports %}
                     <tr>
                         <td>{{ loop.index }}</td>
                         <td>{{ report.date|date ("Y-m-d H:i") }}</td>
                         <td>{{ report.action | report_action }}</td>
-                        <td>{{ report.company.cif }}</td>
                         <td><a href="{{ url("show_report", {id: report.id}) }}"> {{ report.company.name }}</a></td>
                         <td>{{ report.company.type | company_type }}</td>
-                        <td>{{ report.company.zip}}</td>
                         <td>{{ report.company.city}}</td>
-                        <td>{{ report.company.province}}</td>
+                        <td>
+                            {% for contact in report.company.contact %}
+                                {{ contact.name}} {{ contact.phone}} {{ contact.email}},
+                            {% endfor %}
+                        </td>
                     </tr>
                 {% endfor %}
             </table>
