@@ -49,7 +49,7 @@ class CalculatorRepository extends EntityRepository
         /** @var Calculator $calculator */
         foreach ($qb->getQuery()->getResult() as $calculator)
         {
-            $calculators[$calculator->getFormalizacion()->format('j')][] = $calculator;
+            $calculators[$calculator->getFormalizacion()->format('j')][$calculator->getProposal()->getId()] = $calculator;
         }
         return $calculators;
     }
