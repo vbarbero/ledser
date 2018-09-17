@@ -159,7 +159,100 @@
 
                 {{ form_end(form) }}
             </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    rating
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.rating }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    facturacion
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.facturacion }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    tipoClientes
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.tipoClientes }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    tipoClientesTexto
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.tipoClientesTexto }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    banco
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.banco }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    saturan
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.saturan }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    competencia
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.competencia }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    competenciaTexto
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.competenciaTexto }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    plazo
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.plazo }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    medioCobro
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.medioCobro }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    lineaDescuento
+                </div>
+                <div class="col-lg-4">
+                    {{ report.company.lineaDescuento }}
+                </div>
+            </div>
         </div>
+
+        $builder->add('', TextType::class, ['required'   => false]);
+        $builder->add('', ChoiceType::class, ['choices' => CompanyModel::getPlazoAsChoice()]);
+        $builder->add('', ChoiceType::class, ['choices' => CompanyModel::getMEdioCobroAsChoice(), 'required'   => false, 'multiple' => true]);
+        $builder->add('', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice(), 'required'   => false]);
         <div class="col-sm-4">  <table class="table table-condensed">
                 <tr>
                     <td>{{ "Date" | trans }}</td>
