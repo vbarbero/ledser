@@ -236,7 +236,9 @@
                     medioCobro
                 </div>
                 <div class="col-lg-4">
-                    {{ report.company.medioCobro | getMedioCobro }}
+                    {% for medio in report.company.medioCobro %}
+                        {{ medio | getMedioCobro }},
+                    {% endfor %}
                 </div>
             </div>
         </div>
