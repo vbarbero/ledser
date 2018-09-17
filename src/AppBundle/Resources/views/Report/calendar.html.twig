@@ -69,7 +69,7 @@
                         {% endfor %}
                     {% endif %}
                     {% if clients[day] is defined %}
-                        {% for calculator in calculators[day] %}
+                        {% for calculator in clients[day] %}
                             <span style="color: {% if calculator.getProposal.operationalType == 'Discount' %}darkred{% else %} green{% endif %}"><a href="{{ url('show_proposal', {id : calculator.getProposal.id }) }}"> {{ calculator.getProposal.getCompany.name }}</a></span>
                         {% endfor %}
                     {% endif %}
