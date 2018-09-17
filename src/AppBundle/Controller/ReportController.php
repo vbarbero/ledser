@@ -164,7 +164,7 @@ class ReportController extends Controller
     /**
      * @Route("/delete-report/{company}", name="delete_report")
      */
-    public function showAction($company, Request $request)
+    public function deleteAction($company, Request $request)
     {
         $company = $this->getDoctrine()->getRepository(Company::class)->find($company);
         $reports = $this->getDoctrine()->getRepository(Report::class)->findBy(['company' => $company]);
