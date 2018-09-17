@@ -160,4 +160,20 @@ class ReportController extends Controller
         $contacts = $this->getDoctrine()->getManager()->getRepository(Contact::class)->findBy(['company' => $report->getCompany()]);
         return $this->render('AppBundle:Report:show.html.twig', ['report' => $report, 'contacts' => $contacts, 'history' => $history, 'form' => $form->createView()]);
     }
+
+    /**
+     * @Route("/delete-report/{company}", name="delete_report")
+     */
+    public function showAction($company, Request $request)
+    {
+        $company = $this->getDoctrine()->getRepository(Company::class)->find($company);
+        $reports = $this->getDoctrine()->getRepository(Report::class)->findBy(['company' => $company]);
+        foreach ($reports as $report)
+        {
+            $this->getDoctrine()->getManager()->remove($report);
+        }
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirect($this->generateUrl("report_list"));
+    }
 }
