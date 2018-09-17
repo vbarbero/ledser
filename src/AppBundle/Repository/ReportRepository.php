@@ -141,7 +141,7 @@ class ReportRepository extends EntityRepository
         $qb->andWhere(
             $qb->expr()->eq('r.done', ":done")
         );
-        $qb->setParameter('done', 0);
+        $qb->setParameter('done', false);
 
         $to = clone $to;
         $to->modify("-1 seconds");
