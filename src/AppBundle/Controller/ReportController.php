@@ -8,7 +8,9 @@ use AppBundle\Entity\Contact;
 use AppBundle\Entity\Proposal;
 use AppBundle\Entity\Report;
 use AppBundle\Form\Model\CalendarFilterModel;
+use AppBundle\Form\Model\CalendarModel;
 use AppBundle\Form\Type\CalendarFilterType;
+use AppBundle\Form\Type\CalendarType;
 use AppBundle\Form\Type\ReportType;
 use AppBundle\Repository\CalculatorRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -91,10 +93,33 @@ class ReportController extends Controller
         $beforeMonth = clone $thisMonth;
         $beforeMonth->modify("-1 month");
 
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        $reports = $this->getDoctrine()->getRepository(Report::class)->getReportToCalendar($user, $thisMonth, $nextMonth);
-        $calculators = $this->getDoctrine()->getRepository(Calculator::class)->getReportToCalendar($thisMonth, $nextMonth);
+        $calendarModel = new CalendarModel();
+        $form = $this->createForm(CalendarType::class, $calendarModel);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $calendarModel = $form->getData();
 
+        }
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $reports = $calculators = $clients = [];
+        if($calendarModel->getClientType() === 1 || is_null($calendarModel->getClientType()))
+        {
+            $reports = $this->getDoctrine()->getRepository(Report::class)->getReportToCalendar($user, $thisMonth, $nextMonth);
+        }
+        if($calendarModel->getClientType() === 2 || is_null($calendarModel->getClientType()))
+        {
+            $clients = $this->getDoctrine()->getRepository(Calculator::class)->getReportToCalendarCliente(
+                $thisMonth,
+                $nextMonth
+            );
+        }
+        if($calendarModel->getClientType() === 3 || is_null($calendarModel->getClientType()))
+        {
+            $calculators = $this->getDoctrine()->getRepository(Calculator::class)->getReportToCalendar(
+                $thisMonth,
+                $nextMonth
+            );
+        }
         return $this->render('AppBundle:Report:calendar.html.twig',
             [
                 'days_in_month' => $days_in_month,
@@ -104,7 +129,8 @@ class ReportController extends Controller
                 'beforeMonth' => $beforeMonth,
                 'thisMonth' => $thisMonth,
                 'reports' => $reports,
-                'calculators' => $calculators
+                'calculators' => $calculators,
+                'clients' => $clients,
             ]);
     }
 

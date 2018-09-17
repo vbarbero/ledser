@@ -32,6 +32,27 @@ class CalculatorRepository extends EntityRepository
         }
         return $calculators;
     }
+    public function getReportToCalendarCliente($from, $to)
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->innerJoin('c.proposal', 'p');
+        $qb->where(
+            $qb->expr()->between('c.formalizacion', ':date_init', ':date_fin')
+        );
+        $qb->andWhere($qb->expr()->eq('p.state', ':state'));
+        $to = clone $to;
+        $to->modify("-1 seconds");
+        $qb->setParameter('date_init', $from->format("Y-m-d H:i:s"));
+        $qb->setParameter('date_fin', $to->format("Y-m-d H:i:s"));
+        $qb->setParameter('state', ProposalModel::CLOSE);
+        $calculators = [];
+        /** @var Calculator $calculator */
+        foreach ($qb->getQuery()->getResult() as $calculator)
+        {
+            $calculators[$calculator->getFormalizacion()->format('j')][] = $calculator;
+        }
+        return $calculators;
+    }
     public function getCalculatorsByFilters(DraweeRiskFilterModel $draweeRiskFilterModel)
     {
         $qb = $this->createQueryBuilder('c');
