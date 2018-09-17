@@ -28,7 +28,7 @@ class CalendarType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('clientType', ChoiceType::class, ['choices' => ['Report' => 1, 'Clients' => 2, 'Drawee'], 'placeholder' => 'Choose an option', 'required' => false]);
+        $builder->add('clientType', ChoiceType::class, ['choices' => ['Report' => 1, 'Clients' => 2, 'Drawee' => 3 ], 'placeholder' => 'Choose an option', 'required' => false]);
 
     }
 
