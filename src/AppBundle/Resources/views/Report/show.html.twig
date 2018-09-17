@@ -248,11 +248,6 @@
                 </div>
             </div>
         </div>
-
-        $builder->add('', TextType::class, ['required'   => false]);
-        $builder->add('', ChoiceType::class, ['choices' => CompanyModel::getPlazoAsChoice()]);
-        $builder->add('', ChoiceType::class, ['choices' => CompanyModel::getMEdioCobroAsChoice(), 'required'   => false, 'multiple' => true]);
-        $builder->add('', ChoiceType::class, ['choices' => CompanyModel::getSiNoAsChoice(), 'required'   => false]);
         <div class="col-sm-4">  <table class="table table-condensed">
                 <tr>
                     <td>{{ "Date" | trans }}</td>
