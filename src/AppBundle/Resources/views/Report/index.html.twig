@@ -188,7 +188,7 @@
                         </td>
                         <td>
                             {% for contact in report.company.contact %}
-                                {{ contact.email}},
+                                <A HREF="mailto:{{ contact.email }}">{{ contact.email }}</A>,
                             {% endfor %}
                         </td>
                     </tr>
