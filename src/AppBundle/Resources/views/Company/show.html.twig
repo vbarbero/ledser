@@ -84,4 +84,86 @@
             {% endfor %}
         </table>
     </div>
+    <div class="row">
+        <div class="col-lg-4">
+            Facturacion
+        </div>
+        <div class="col-lg-4">
+            {{ company.facturacion | company_facturacion }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            Tipo Clientes
+        </div>
+        <div class="col-lg-4">
+            {{ company.tipoClientes | company_cliente }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            Clientes:
+        </div>
+        <div class="col-lg-4">
+            {{ company.tipoClientesTexto }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            Banco
+        </div>
+        <div class="col-lg-4">
+            {{ company.banco | company_si_no }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            Linea Descuento
+        </div>
+        <div class="col-lg-4">
+            {{ company.lineaDescuento | company_si_no }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            Saturan
+        </div>
+        <div class="col-lg-4">
+            {{ company.saturan | company_si_no }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            Competencia
+        </div>
+        <div class="col-lg-4">
+            {{ company.competencia | company_si_no }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            Cual:
+        </div>
+        <div class="col-lg-4">
+            {{ company.competenciaTexto }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            Medio Cobro
+        </div>
+        <div class="col-lg-4">
+            {% for medio in company.medioCobro %}
+                {{ medio | company_medio_cobro }},
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            Plazo
+        </div>
+        <div class="col-lg-4">
+            {{ company.plazo | company_plazo }}
+        </div>
+    </div>
 {% endblock %}
