@@ -164,7 +164,9 @@
                     <td>Company Name</td>
                     <td>Client Type</td>
                     <td>City</td>
-                    <td>contacts</td>
+                    <td>contacts name</td>
+                    <td>contacts phone</td>
+                    <td>contacts email</td>
                 </tr>
                 {% for report in reports %}
                     <tr>
@@ -176,7 +178,17 @@
                         <td>{{ report.company.city}}</td>
                         <td>
                             {% for contact in report.company.contact %}
-                                {{ contact.name}} {{ contact.phone}} {{ contact.email}},
+                                {{ contact.name}},
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for contact in report.company.contact %}
+                                {{ contact.phone}},
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for contact in report.company.contact %}
+                                {{ contact.email}},
                             {% endfor %}
                         </td>
                     </tr>
