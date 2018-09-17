@@ -138,6 +138,8 @@ class ReportRepository extends EntityRepository
         $qb->andWhere(
             $qb->expr()->eq('r.user', ":user")
         );
+        $qb->setParameter('user', $user);
+
         $qb->andWhere(
             $qb->expr()->eq('r.done', ":done")
         );
