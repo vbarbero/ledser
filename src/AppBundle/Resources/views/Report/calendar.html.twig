@@ -70,7 +70,7 @@
                     {% endif %}
                     {% if clients[day] is defined %}
                         {% for calculator in clients[day] %}
-                            <span style="color: {% if calculator.getProposal.operationalType == 'Discount' %}darkred{% else %} green{% endif %}"><a href="{{ url('show_proposal', {id : calculator.getProposal.id }) }}"> {{ calculator.getProposal.getCompany.name }}</a></span>
+                            <span><a style="color: {% if calculator.getProposal.operationalType == 'Discount' %}darkred{% else %} green{% endif %}" href="{{ url('show_proposal', {id : calculator.getProposal.id }) }}"> {{ calculator.getProposal.getCompany.name }}</a></span>
                         {% endfor %}
                     {% endif %}
                     {{ reports[day] |length }}
