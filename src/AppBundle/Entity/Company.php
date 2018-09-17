@@ -138,16 +138,16 @@ class Company extends BaseEntity
     protected $plazo;
 
     /**
-     * @var int
+     * @var array
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="array", nullable=true)
      */
     protected $medioCobro;
 
     /**
-     * @var array
+     * @var int
      *
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $lineaDescuento;
 
@@ -550,7 +550,7 @@ class Company extends BaseEntity
     }
 
     /**
-     * @return int
+     * @return array
      */
     public function getMedioCobro()
     {
@@ -558,12 +558,15 @@ class Company extends BaseEntity
     }
 
     /**
-     * @param int $medioCobro
+     * @param array $medioCobro
      */
-    public function setMedioCobro(int $medioCobro)
+    public function setMedioCobro(array $medioCobro)
     {
         $this->medioCobro = $medioCobro;
     }
+
+
+
 
     /**
      * @return int
