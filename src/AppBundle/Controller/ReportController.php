@@ -131,6 +131,7 @@ class ReportController extends Controller
                 'reports' => $reports,
                 'calculators' => $calculators,
                 'clients' => $clients,
+                'form' => $form->createView()
             ]);
     }
 

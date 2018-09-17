@@ -16,7 +16,7 @@ class CalendarModel
     /**
      * @return int
      */
-    public function getClientType(): int
+    public function getClientType()
     {
         return $this->clientType;
     }

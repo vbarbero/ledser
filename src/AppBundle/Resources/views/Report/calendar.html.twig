@@ -16,6 +16,27 @@
     </style>
 {% endblock %}
 {% block content %}
+    <div class="row">
+    <div class="col-sm-4" style="border: 1px solid">
+
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-lg-4">
+            {{ form_label(form.clientType) }}
+        </div>
+        <div class="col-lg-4">
+            {{ form_widget(form.clientType) }}
+        </div>
+    </div>
+        <div class="row">
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">{{ "Filter" | trans }}</button>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+    </div>
+
     <table cellpadding="0" cellspacing="0" class="calendar">
         <tr class="calendar-row">
             <td>
