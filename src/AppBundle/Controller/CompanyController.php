@@ -40,7 +40,7 @@ class CompanyController extends Controller
         {
             $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->getCompanies();
         }
-        return $this->render('AppBundle:Company:list.html.twig', ['companies' => $companies]);
+        return $this->render('AppBundle:Company:list.html.twig', ['companies' => $companies, 'form' => $form->createView()]);
     }
     /**
      * @Route("/list-client", name="list_client")
