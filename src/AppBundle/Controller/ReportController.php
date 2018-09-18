@@ -104,20 +104,22 @@ class ReportController extends Controller
         $reports = $calculators = $clients = [];
         if($calendarModel->getClientType() === 1 || is_null($calendarModel->getClientType()))
         {
-            $reports = $this->getDoctrine()->getRepository(Report::class)->getReportToCalendar($user, $thisMonth, $nextMonth);
+            $reports = $this->getDoctrine()->getRepository(Report::class)->getReportToCalendar($calendarModel->getUser(), $thisMonth, $nextMonth);
         }
         if($calendarModel->getClientType() === 2 || is_null($calendarModel->getClientType()))
         {
             $clients = $this->getDoctrine()->getRepository(Calculator::class)->getReportToCalendarCliente(
                 $thisMonth,
-                $nextMonth
+                $nextMonth,
+                $calendarModel->getUser()
             );
         }
         if($calendarModel->getClientType() === 3 || is_null($calendarModel->getClientType()))
         {
             $calculators = $this->getDoctrine()->getRepository(Calculator::class)->getReportToCalendar(
                 $thisMonth,
-                $nextMonth
+                $nextMonth,
+                $calendarModel->getUser()
             );
         }
         return $this->render('AppBundle:Report:calendar.html.twig',

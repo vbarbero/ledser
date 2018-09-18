@@ -14,6 +14,11 @@ class CalendarModel
     protected $clientType;
 
     /**
+     * @var User
+     */
+    protected $user;
+
+    /**
      * @return int
      */
     public function getClientType()
@@ -27,6 +32,22 @@ class CalendarModel
     public function setClientType(int $clientType)
     {
         $this->clientType = $clientType;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
     }
 
 

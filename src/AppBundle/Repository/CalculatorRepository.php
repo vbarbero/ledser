@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityRepository;
 
 class CalculatorRepository extends EntityRepository
 {
-    public function getReportToCalendar($from, $to)
+    public function getReportToCalendar($from, $to, $user)
     {
         $qb = $this->createQueryBuilder('c');
         $qb->innerJoin('c.proposal', 'p');
@@ -19,6 +19,12 @@ class CalculatorRepository extends EntityRepository
             $qb->expr()->between('c.vencimiento', ':date_init', ':date_fin')
         );
         $qb->andWhere($qb->expr()->eq('p.state', ':state'));
+        if($user)
+        {
+            $qb->andWhere($qb->expr()->eq('p.user', ':user'));
+            $qb->setParameter('user', $user);
+
+        }
         $to = clone $to;
         $to->modify("-1 seconds");
         $qb->setParameter('date_init', $from->format("Y-m-d H:i:s"));
@@ -32,13 +38,19 @@ class CalculatorRepository extends EntityRepository
         }
         return $calculators;
     }
-    public function getReportToCalendarCliente($from, $to)
+    public function getReportToCalendarCliente($from, $to, $user)
     {
         $qb = $this->createQueryBuilder('c');
         $qb->innerJoin('c.proposal', 'p');
         $qb->where(
             $qb->expr()->between('c.formalizacion', ':date_init', ':date_fin')
         );
+        if($user)
+        {
+            $qb->andWhere($qb->expr()->eq('p.user', ':user'));
+            $qb->setParameter('user', $user);
+
+        }
         $qb->andWhere($qb->expr()->eq('p.state', ':state'));
         $to = clone $to;
         $to->modify("-1 seconds");
