@@ -61,7 +61,7 @@ class ProposalController extends Controller
         if($request->query->get('user'))
         {
             $user = $this->getDoctrine()->getRepository(User::class)->find($request->query->get('user'));
-            $proposalModel->setFinancial($user);
+            $proposalModel->setUser($user);
         }
         $proposalModel->setTo($dateTo);
 

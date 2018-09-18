@@ -41,6 +41,13 @@ class ProposalFilterType extends AbstractType
             'query_builder' => function( CompanyRepository $er ) {
                 return $er->getFinantial();
             }]);
+        $builder->add('drawee', EntityType::class, [
+            'class' => Company::class,
+            'required' => false,
+            'choice_label' => 'name',
+            'query_builder' => function( CompanyRepository $er ) {
+                return $er->getDrawee();
+            }]);
         $builder->add('user', EntityType::class, ['class' => User::class, 'choice_label' => 'username', 'placeholder' => 'Choose an option', 'required' => false, 'empty_data' => null,]);
         $builder->add('from', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd', 'required' => false]);
         $builder->add('to', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd', 'required' => false]);

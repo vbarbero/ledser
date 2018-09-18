@@ -9,15 +9,12 @@
 namespace AppBundle\Model;
 
 
-class ProposalModel
+class CalculatorModel
 {
-    const STUDY= 1;
-    const APPROVED = 2;
-    const ISSUE = 3;
-    const CLOSE = 4;
-    const LOST = 5;
-    const DENY = 6;
-    const UNPAID = 7;
+    const PROPONENT = 1;
+    const FREED = 2;
+    const CLIENT = 3;
+
 
     public static function getStateAsChoice()
     {

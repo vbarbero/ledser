@@ -26,13 +26,6 @@ class Proposal extends BaseEntity
     private $user;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(type="integer")
-     */
-    protected $state;
-
-    /**
      * @var Company
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company",cascade={"persist"}, inversedBy="proposal")
@@ -75,22 +68,6 @@ class Proposal extends BaseEntity
     public function setCompany($company)
     {
         $this->company = $company;
-    }
-
-    /**
-     * @return int
-     */
-    public function getState()
-    {
-        return $this->state;
-    }
-
-    /**
-     * @param int $state
-     */
-    public function setState($state)
-    {
-        $this->state = $state;
     }
 
     /**

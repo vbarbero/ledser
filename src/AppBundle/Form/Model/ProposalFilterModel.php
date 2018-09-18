@@ -39,6 +39,12 @@ class ProposalFilterModel
      */
     protected $financial;
 
+
+    /**
+     * @var Company
+     */
+    protected $drawee;
+
     /**
      * @var Company
      */
@@ -191,6 +197,22 @@ class ProposalFilterModel
     public function setUser(User $user)
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return Company
+     */
+    public function getDrawee()
+    {
+        return $this->drawee;
+    }
+
+    /**
+     * @param Company $drawee
+     */
+    public function setDrawee(Company $drawee)
+    {
+        $this->drawee = $drawee;
     }
 
 

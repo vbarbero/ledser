@@ -31,7 +31,6 @@ class ProposalType extends AbstractType
             'query_builder' => function( CompanyRepository $er ) {
                    return $er->getFinantial();
             }]);
-        $builder->add('state', ChoiceType::class, ['choices' => ProposalModel::getStateAsChoice()]);
         $builder->add('operationalType',ChoiceType::class, ['choices' => ProposalModel::getOperationalTypeAsChoice()]);
     }
 

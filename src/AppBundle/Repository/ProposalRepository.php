@@ -45,6 +45,13 @@ class ProposalRepository extends EntityRepository
             );
             $qb->setParameter('financial', $proposalFilterModel->getFinancial());
         }
+        if($proposalFilterModel->getDrawee())
+        {
+            $qb->andWhere(
+                $qb->expr()->eq('c.drawee', ":drawee")
+            );
+            $qb->setParameter('drawee', $proposalFilterModel->getDrawee());
+        }
         if($proposalFilterModel->getCompany())
         {
             $qb->andWhere(

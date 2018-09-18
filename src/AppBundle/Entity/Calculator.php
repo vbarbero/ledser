@@ -12,6 +12,13 @@ class Calculator extends BaseEntity
 {
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $state;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
@@ -356,6 +363,22 @@ class Calculator extends BaseEntity
     public function setDrawee(Company $drawee)
     {
         $this->drawee = $drawee;
+    }
+
+    /**
+     * @return int
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param int $state
+     */
+    public function setState(int $state)
+    {
+        $this->state = $state;
     }
 
 
