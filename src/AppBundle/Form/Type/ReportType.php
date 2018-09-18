@@ -28,7 +28,7 @@ class ReportType extends AbstractType
             return $er->getCompaniesSorted();
         }]);
         $builder->add('user', EntityType::class, ['class' => User::class, 'choice_label' => 'username', 'placeholder' => 'Choose an option', 'required' => false, 'empty_data' => null,]);
-        $builder->add('date', DateTimeType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd HH:mm', 'data' => new \DateTime()]);
+        $builder->add('date', DateTimeType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd HH:mm']);
         $builder->add('action', ChoiceType::class, ['choices' => ReportModel::getActionAsChoice()]);
         $builder->add('done', ChoiceType::class, ['choices' => ReportModel::getDoneAsChoice()]);
         $builder->add('report', TextareaType::class);

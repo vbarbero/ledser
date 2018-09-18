@@ -148,7 +148,11 @@ class ReportController extends Controller
 
         $report = new Report();
         $report->setUser($user);
-        $report->setDate(new \DateTime());
+        $now = new \DateTime();
+
+        $now->setTimeZone(new \DateTimeZone("Europe/Madrid"));
+        $now->setTime(9,0);
+        $report->setDate($now);
         $report->setDone(0);
         if($company)
         {
