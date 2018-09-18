@@ -80,11 +80,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <script type="text/javascript">
-                                $(function () {
-                                    $('#datetimepicker1').datetimepicker();
-                                });
-                            </script>
+
                         </div>
                     </div>
             </div>
@@ -142,6 +138,11 @@
 
 {% block javascript %}
     {{ parent() }}
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+    </script>
     {#<script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>#}
     {#<script src="{{ asset('js/bootstrap-datepicker.es.min.js') }}"></script>#}
     {#<script type="text/javascript">#}
