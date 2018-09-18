@@ -151,7 +151,7 @@ class ReportController extends Controller
         $now = new \DateTime();
 
         $now->setTimeZone(new \DateTimeZone("Europe/Madrid"));
-        $now->setTime(9,0);
+        $now->setTime(11,0);
         $report->setDate($now);
         $report->setDone(0);
         if($company)
