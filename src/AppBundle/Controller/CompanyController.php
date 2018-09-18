@@ -7,8 +7,10 @@ use AppBundle\Entity\Company;
 use AppBundle\Entity\Contact;
 use AppBundle\Entity\File;
 use AppBundle\Entity\Proposal;
+use AppBundle\Form\Model\CompanyFilterModel;
 use AppBundle\Form\Model\ContactFilterModel;
 use AppBundle\Form\Type\AddFileType;
+use AppBundle\Form\Type\CompanyFilterType;
 use AppBundle\Form\Type\CompanyType;
 use AppBundle\Form\Type\ContactFilterType;
 use AppBundle\Form\Type\ContactType;
@@ -28,7 +30,16 @@ class CompanyController extends Controller
      */
     public function listAction(Request $request)
     {
-        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->getCompanies();
+        $companyFilterModel = new CompanyFilterModel();
+        $form = $this->createForm(CompanyFilterType::class, $companyFilterModel);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $companyFilterModel = $form->getData();
+            $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->getCompanies($companyFilterModel->getType());
+        } else
+        {
+            $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->getCompanies();
+        }
         return $this->render('AppBundle:Company:list.html.twig', ['companies' => $companies]);
     }
     /**

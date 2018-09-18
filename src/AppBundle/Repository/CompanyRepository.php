@@ -43,9 +43,16 @@ class CompanyRepository extends EntityRepository
     }
 
 
-    public function getCompanies()
+    public function getCompanies($type = null)
     {
         $qb = $this->createQueryBuilder('c');
+        if($type)
+        {
+            $qb->where(
+                $qb->expr()->neq('c.type', ":type")
+            );
+            $qb->setParameter('type', $type);
+        }
         $qb->orderBy('c.name', 'ASC');
         return $qb->getQuery()->getResult();
     }

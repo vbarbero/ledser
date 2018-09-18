@@ -1,7 +1,26 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
 {% block content %}
+    <div class="row">
+        <div class="col-sm-4" style="border: 1px solid">
 
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.type) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.type) }}
+                </div>
+            </div>
+            <div class="row">
+
+                <button class="btn btn-primary btn-lg btn-block" type="submit">{{ "Filter" | trans }}</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
     <div class="row bg-dark text-light">
         <div class="w-100"></div>
         <div class="col">id</div>
