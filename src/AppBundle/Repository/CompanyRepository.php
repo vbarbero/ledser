@@ -48,6 +48,7 @@ class CompanyRepository extends EntityRepository
         $qb = $this->createQueryBuilder('c');
         if($type)
         {
+            echo '|'.$type.'|';
             $qb->where(
                 $qb->expr()->neq('c.type', ":type")
             );
