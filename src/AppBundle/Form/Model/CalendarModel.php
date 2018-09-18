@@ -37,7 +37,7 @@ class CalendarModel
     /**
      * @return User
      */
-    public function getUser(): User
+    public function getUser()
     {
         return $this->user;
     }
