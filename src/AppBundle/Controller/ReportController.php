@@ -94,13 +94,14 @@ class ReportController extends Controller
         $beforeMonth->modify("-1 month");
 
         $calendarModel = new CalendarModel();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $calendarModel->setUser($user);
         $form = $this->createForm(CalendarType::class, $calendarModel);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $calendarModel = $form->getData();
 
         }
-        $user = $this->get('security.token_storage')->getToken()->getUser();
         $reports = $calculators = $clients = [];
         if($calendarModel->getClientType() === 1 || is_null($calendarModel->getClientType()))
         {
