@@ -34,12 +34,11 @@ class CompanyController extends Controller
         $form = $this->createForm(CompanyFilterType::class, $companyFilterModel);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            echo 1;
             $companyFilterModel = $form->getData();
+            echo $companyFilterModel->getType();
             $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->getCompanies($companyFilterModel->getType());
         } else
         {
-            echo 2;
             $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->getCompanies();
         }
         return $this->render('AppBundle:Company:list.html.twig', ['companies' => $companies, 'form' => $form->createView()]);
