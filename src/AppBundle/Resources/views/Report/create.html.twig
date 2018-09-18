@@ -140,8 +140,8 @@
 
 {% endblock %}
 
-{#{% block javascript %}#}
-    {#{{ parent() }}#}
+{% block javascript %}
+    {{ parent() }}
     {#<script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>#}
     {#<script src="{{ asset('js/bootstrap-datepicker.es.min.js') }}"></script>#}
     {#<script type="text/javascript">#}
@@ -151,7 +151,7 @@
             {#startDate: '-3d'#}
         {#});#}
     {#</script>#}
-{#{% endblock %}#}
+{% endblock %}
 
 {#{% block javascript %}#}
     {#{{ parent() }}#}
