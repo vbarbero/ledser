@@ -28,6 +28,14 @@
             {{ form_widget(form.clientType) }}
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ form_label(form.user) }}
+        </div>
+        <div class="col-lg-4">
+            {{ form_widget(form.user) }}
+        </div>
+    </div>
         <div class="row">
 
             <button class="btn btn-primary btn-lg btn-block" type="submit">{{ "Filter" | trans }}</button>
