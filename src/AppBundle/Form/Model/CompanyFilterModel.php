@@ -16,7 +16,7 @@ class CompanyFilterModel
     /**
      * @return int
      */
-    public function getType(): int
+    public function getType()
     {
         return $this->type;
     }
