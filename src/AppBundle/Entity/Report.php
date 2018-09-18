@@ -13,7 +13,7 @@ class Report extends BaseEntity
     /**
      * @var Company
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", cascade={"remove", "persist"}, inversedBy="report")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", inversedBy="report")
      * @ORM\JoinColumn(referencedColumnName="id", nullable=true)
      */
     private $company;
