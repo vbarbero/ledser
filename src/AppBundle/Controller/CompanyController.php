@@ -144,7 +144,12 @@ class CompanyController extends Controller
             $proposalGroup[$calculator->getDrawee()->getId()]['taeLedser'] += $calculator->getCosteFinancieroLedser()->getTae();
             $proposalGroup[$calculator->getDrawee()->getId()]['total'] += $calculator->getCosteTotal()->getTotal();
 
-
+            uksort($proposalGroup, function ($ak, $bk) use ($proposalGroup) {
+                $a = $proposalGroup[$ak];
+                $b = $proposalGroup[$bk];
+                if ($a['nominal'] === $b['nominal']) return $ak - $bk;
+                return $a['nominal'] > $b['nominal'] ? 1 : -1;
+            });
         }
         //$companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->findBy(['type' => CompanyModel::DRAWEE], ['name' => 'ASC']);
         return $this->render('AppBundle:Company:clients.html.twig', ['proposalGroup' => $proposalGroup, 'drawee' => true]);
@@ -195,6 +200,12 @@ class CompanyController extends Controller
             $proposalGroup[$calculator->getProposal()->getFinalcial()->getId()]['tae'] += $calculator->getCosteFinanciero()->getTae();
             $proposalGroup[$calculator->getProposal()->getFinalcial()->getId()]['taeLedser'] += $calculator->getCosteFinancieroLedser()->getTae();
             $proposalGroup[$calculator->getProposal()->getFinalcial()->getId()]['total'] += $calculator->getCosteTotal()->getTotal();
+            uksort($proposalGroup, function ($ak, $bk) use ($proposalGroup) {
+                $a = $proposalGroup[$ak];
+                $b = $proposalGroup[$bk];
+                if ($a['honorarios'] === $b['honorarios']) return $ak - $bk;
+                return $a['honorarios'] > $b['honorarios'] ? 1 : -1;
+            });
         }
         return $this->render('AppBundle:Company:clients.html.twig', ['proposalGroup' => $proposalGroup]);
     }

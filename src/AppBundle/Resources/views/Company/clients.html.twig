@@ -20,7 +20,7 @@
         <td>total</td>
         <td>action</td>
         </tr>
-    {% for company in proposalGroup %}
+    {% for company in proposalGroup | reverse %}
     <tr class="{% if loop.index is odd %}bg-secondary{% endif %}">
         <td>{{ loop.index }}</td>
         <td><a href="{{ url('list_files', {company: company.id}) }}"> {{ company.name }}</a> </td>
