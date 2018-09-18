@@ -23,43 +23,43 @@
     </div>
     <table>
         <tr>
-        <td class="col">id</td>
-        <td class="col">Name</td>
-        <td class="col">Cif</td>
-        <td class="col">Cnae</td>
-        <td class="col">Type</td>
-        <td class="col">Address</td>
-        <td class="col">City</td>
-        <td class="col">contacts name</td>
-        <td class="col">contacts phone</td>
-        <td class="col">contacts email</td>
-        <td class="col">Action</td>
+        <td>id</td>
+        <td>Name</td>
+        <td>Cif</td>
+        <td>Cnae</td>
+        <td>Type</td>
+        <td>Address</td>
+        <td>City</td>
+        <td>contacts name</td>
+        <td>contacts phone</td>
+        <td>contacts email</td>
+        <td>Action</td>
         </tr>
     {% for company in companies %}
-        <tr class="row {% if loop.index is odd %}bg-secondary{% endif %}">
-            <td class="col">{{ loop.index }} </td>
-            <td class="col"><a href="{{ url('show_company', {id: company.id}) }}"> {{ company.name }}</a> </td>
-            <td class="col">{{ company.cif }}</td>
-            <td class="col">{{ company.cnae }}</td>
-            <td class="col">{{ company.type | company_type }}</td>
-            <td class="col">{{ company.address }}</td>
-            <td class="col">{{ company.city }}</td>
-            <td class="col">
+        <tr class="{% if loop.index is odd %}bg-secondary{% endif %}">
+            <td>{{ loop.index }} </td>
+            <td><a href="{{ url('show_company', {id: company.id}) }}"> {{ company.name }}</a> </td>
+            <td>{{ company.cif }}</td>
+            <td>{{ company.cnae }}</td>
+            <td>{{ company.type | company_type }}</td>
+            <td>{{ company.address }}</td>
+            <td>{{ company.city }}</td>
+            <td>
                 {% for contact in company.contact %}
                     {{ contact.name}},
                 {% endfor %}
             </td>
-            <td class="col">
+            <td>
                 {% for contact in company.contact %}
                     {{ contact.phone}},
                 {% endfor %}
             </td>
-            <td class="col">
+            <td>
                 {% for contact in company.contact %}
                     <A HREF="mailto:{{ contact.email }}">{{ contact.email }}</A>,
                 {% endfor %}
             </td>
-            <td class="col">
+            <td>
                 <a href="{{ url('edit_company', {company: company.id}) }}">Edit</a>
                 <a data-href="{{ url('delete_company', {company: company.id}) }}" class="delete">Delete</a>
             </td>
