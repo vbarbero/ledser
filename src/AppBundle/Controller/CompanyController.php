@@ -35,7 +35,6 @@ class CompanyController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $companyFilterModel = $form->getData();
-            echo $companyFilterModel->getType();
             $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->getCompanies($companyFilterModel->getType());
         } else
         {
