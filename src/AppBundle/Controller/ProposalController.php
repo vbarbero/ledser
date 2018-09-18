@@ -123,12 +123,11 @@ class ProposalController extends Controller
      */
     public function deleteAction($proposal, Request $request)
     {
-	$proposalObj = $this->getDoctrine()->getRepository(Proposal::class)->find($proposal);
-	$this->getDoctrine()->getManager()->remove($proposalObj);
-//dump($proposal, $proposalObj);die;
-	$this->getDoctrine()->getManager()->flush();
+        $proposalObj = $this->getDoctrine()->getRepository(Proposal::class)->find($proposal);
+        $this->getDoctrine()->getManager()->remove($proposalObj);
+        $this->getDoctrine()->getManager()->flush();
 
-	return $this->redirect($this->generateUrl('list_proposal'));
+        return $this->redirect($this->generateUrl('list_proposal'));
 
     }
 

@@ -10,6 +10,7 @@ use AppBundle\Repository\CompanyRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,7 +28,7 @@ class ReportType extends AbstractType
             return $er->getCompaniesSorted();
         }]);
         $builder->add('user', EntityType::class, ['class' => User::class, 'choice_label' => 'username', 'placeholder' => 'Choose an option', 'required' => false, 'empty_data' => null,]);
-        $builder->add('date', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
+        $builder->add('date', DateTimeType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd HH:ii']);
         $builder->add('action', ChoiceType::class, ['choices' => ReportModel::getActionAsChoice()]);
         $builder->add('done', ChoiceType::class, ['choices' => ReportModel::getDoneAsChoice()]);
         $builder->add('report', TextareaType::class);
