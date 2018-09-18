@@ -140,6 +140,16 @@
     {{ parent() }}
     <script type="text/javascript">
         $(function () {
+            var d = new Date();
+
+            var month = d.getMonth()+1;
+            var day = d.getDate();
+
+            var output = d.getFullYear() + '/' +
+                (month<10 ? '0' : '') + month + '/' +
+                (day<10 ? '0' : '') + day;
+
+            $("#datetimepicker1").val(output + " 09:00:00");
             $('#datetimepicker1').datetimepicker();
         });
     </script>
