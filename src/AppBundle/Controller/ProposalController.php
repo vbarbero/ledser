@@ -132,6 +132,21 @@ class ProposalController extends Controller
 
     }
 
+
+    /**
+     * @Route("/delete-calculator/{calculator}", name="delete_calculator")
+     */
+    public function deleteCalculatorAction($calculator, Request $request)
+    {
+        $calculatorObj = $this->getDoctrine()->getRepository(Calculator::class)->find($calculator);
+        $this->getDoctrine()->getManager()->remove($calculatorObj);
+    //dump($proposal, $proposalObj);die;
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirect($this->generateUrl('list_proposal'));
+
+    }
+
     /**
      * @Route("/edit-calculator/{calculator}", name="edit_calculator")
      */

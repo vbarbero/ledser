@@ -243,6 +243,7 @@
                 <td>{{ calculator.costeTotal.tae|number_format(2) }}<br/>({{calculator.costeTotal.coste |number_format(2) }})</td>
                 <td>
                      <a href="{{ url('edit_calculator' , {calculator:calculator.id}) }}">Edit</a>
+                     <a data-href="{{ url('delete_calculator' , {calculator:calculator.id}) }}">Delete</a>
                 </td>
                 </tr>
             {% endfor %}
