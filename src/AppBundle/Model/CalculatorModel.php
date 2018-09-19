@@ -11,9 +11,13 @@ namespace AppBundle\Model;
 
 class CalculatorModel
 {
-    const PROPONENT = 1;
-    const FREED = 2;
-    const CLIENT = 3;
+    const STUDY= 1;
+    const APPROVED = 2;
+    const ISSUE = 3;
+    const CLOSE = 4;
+    const LOST = 5;
+    const DENY = 6;
+    const UNPAID = 7;
 
 
     public static function getStateAsChoice()
@@ -41,15 +45,6 @@ class CalculatorModel
                 self::CLOSE => 'CLose',
                 self::LOST => 'Lost',
                 self::UNPAID => 'UNpaid',
-            ];
-    }
-
-    public static function getOperationalTypeAsChoice()
-    {
-        return
-            [
-                'Discount' => 'Discount',
-                'Advance' => 'Advance',
             ];
     }
 }
