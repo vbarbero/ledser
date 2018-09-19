@@ -71,7 +71,7 @@ class CalculatorRepository extends EntityRepository
         $qb = $this->createQueryBuilder('c');
         $qb->innerJoin('c.proposal', 'p');
         $qb->where($qb->expr()->eq('c.state', ':state'));
-        $qb->setParameter('state', ProposalModel::CLOSE);
+        $qb->setParameter('state', CalculatorModel::CLOSE);
         if($draweeRiskFilterModel->getFinancial())
         {
             $qb->andWhere(
