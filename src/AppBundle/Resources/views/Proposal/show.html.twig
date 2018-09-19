@@ -20,14 +20,6 @@
     </div>
     <div class="row">
         <div class="col-lg-4">
-            {{ 'state' | trans }}:
-        </div>
-        <div class="col-lg-4">
-            {{ proposal.state | proposal_status }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4">
             {{ 'type' | trans }}:
         </div>
         <div class="col-lg-4">
@@ -50,6 +42,15 @@
             </div>
             <div class="col-lg-4">
                 {{ general.dias / (calculators | length) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                {{ 'state' | trans }}:
+            </div>
+            <div class="col-lg-4">
+                {{ general.state | calculator_status }}
             </div>
         </div>
         <div class="row">

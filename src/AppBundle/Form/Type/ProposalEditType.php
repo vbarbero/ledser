@@ -32,7 +32,6 @@ class ProposalEditType extends AbstractType
                 return $er->getFinantial();
             }]);
         $builder->add('operationalType',ChoiceType::class, ['choices' => ProposalModel::getOperationalTypeAsChoice()]);
-        $builder->add('reason');
 
     }
 

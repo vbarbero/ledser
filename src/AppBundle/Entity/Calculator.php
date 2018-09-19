@@ -124,6 +124,13 @@ class Calculator extends BaseEntity
      */
     protected $drawee;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $reason;
+
 
     /**
      * @return \DateTime
@@ -381,5 +388,21 @@ class Calculator extends BaseEntity
         $this->state = $state;
     }
 
+
+    /**
+     * @return string
+     */
+    public function getReason()
+    {
+        return $this->reason;
+    }
+
+    /**
+     * @param string $reason
+     */
+    public function setReason($reason)
+    {
+        $this->reason = $reason;
+    }
 
 }

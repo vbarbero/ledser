@@ -157,7 +157,14 @@
 
     {% for proposal in proposals %}
         {% set miCalculadora = proposal.calculator | first %}
-        <tr  {% if proposal.state == 7 %}style="background-color: brown"{% elseif proposal.operationalType == 'Advance' %}style="background-color: darkgreen"{% elseif loop.index is odd %} class="bg-secondary"{% endif %}>
+        {% set closed = false %}
+        {% for calculator in proposal.calculator %}
+                {% if calculator.state == 7 %}
+
+                     {% set closed = false %}
+                {% endif %}
+            {% endfor %}
+        <tr  {% if closed %}style="background-color: brown"{% elseif proposal.operationalType == 'Advance' %}style="background-color: darkgreen"{% elseif loop.index is odd %} class="bg-secondary"{% endif %}>
             <td>
                 {{ loop.index  }}
             </td>
@@ -179,7 +186,7 @@
                 {% endif %}
             </td>
 
-            <td>{{ proposal.state | proposal_status }}{%if (proposal.state == 5)%} {{proposal.reason}}{%endif%}</td>
+            <td></td>
             <td>{{ proposal.company.rating }}</td>
             <td>{{ proposal.operationalType  }}</td>
             {% set coste = 0 %}
@@ -204,7 +211,7 @@
                 {% set taeT = calculator.costeTotal.tae +taeT %}
                 {% set nominal = calculator.nominal + nominal %}
             {% endfor %}
-            {% if proposal.state != 7 %}
+
                 {% set costeTTotal = costeTTotal + costeT %}
                 {% set honorariosTotal = honorarios + honorariosTotal %}
                 {% set costeTotal = costeTotal + coste %}
@@ -213,7 +220,7 @@
                 {% set taeCFT = taeCFT + (taeCF/num) %}
                 {% set taeCLT = taeCLT + (taeCL/num) %}
                 {% set taeTT = taeTT + (taeT/num) %}
-            {% endif %}
+
             <td>{% if num == 0 %}0(0){% else %}{{ (nominal )|number_format(2) }}{% endif %}</td>
             <td>{% if num == 0 %}0{% else %}{{ (dias/num)|number_format(0) }}{% endif %}</td>
             <td>{% if num == 0 %}0{% else %}{{ (taeCF/num)|number_format(2) }} <br/>({{ (coste)|number_format(2) }}){% endif %}</td>
@@ -241,7 +248,7 @@
                 <td><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
                 <td>{{ proposal.finalcial.name  }}</td>
                 <td>{{ proposal.drawee.name  }}</td>
-                <td>{{ proposal.state | proposal_status }}{%if (proposal.state == 5)%} {{proposal.reason}}{%endif%}</td>
+                <td>{{ calculator.state | calculator_status }}{%if (calculator.state == 5)%} {{calculator.reason}}{%endif%}</td>
                 <td>{{ proposal.company.rating }}</td>
                 <td>{{ proposal.operationalType  }}</td>
                 <td>{{ calculator.nominal|number_format(2) }}</td>

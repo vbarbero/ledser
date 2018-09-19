@@ -41,13 +41,6 @@ class Proposal extends BaseEntity
     protected $operationalType;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $reason;
-
-    /**
      * @var Calculator
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Calculator",cascade={"remove"}, mappedBy="proposal")
@@ -147,22 +140,6 @@ class Proposal extends BaseEntity
     public function setCalculator($calculator)
     {
         $this->calculator = $calculator;
-    }
-
-    /**
-     * @return string
-     */
-    public function getReason()
-    {
-        return $this->reason;
-    }
-
-    /**
-     * @param string $reason
-     */
-    public function setReason($reason)
-    {
-        $this->reason = $reason;
     }
 
 

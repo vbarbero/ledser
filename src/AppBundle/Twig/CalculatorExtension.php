@@ -2,6 +2,7 @@
 
 namespace AppBundle\Twig;
 
+use AppBundle\Model\CalculatorModel;
 use AppBundle\Model\ProposalModel;
 use JMS\DiExtraBundle\Annotation as DI;
 
@@ -9,7 +10,7 @@ use JMS\DiExtraBundle\Annotation as DI;
  * @DI\Service
  * @DI\Tag("twig.extension")
  */
-class ProposalExtension extends \Twig_Extension
+class CalculatorExtension extends \Twig_Extension
 {
     /**
      * @return array
@@ -17,22 +18,22 @@ class ProposalExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('proposal_type', [$this, 'getType']),
+            new \Twig_SimpleFilter('calculator_status', [$this, 'getStatus']),
         ];
     }
 
-
-    public function getType($type)
+    public function getStatus($status)
     {
-        $types = ProposalModel::getType();
-        return $types[$type];
+        $states = CalculatorModel::getState();
+        return $states[$status];
     }
+
 
     /**
      * @return string
      */
     public function getName()
     {
-        return 'app_proposal_extension';
+        return 'app_calculator_extension';
     }
 }
