@@ -33,6 +33,7 @@ class ProposalFilterType extends AbstractType
         $builder->add('company', EntityType::class, ['class' => Company::class, 'choice_label' => 'name', 'required' => false, 'query_builder' => function( CompanyRepository $er ) {
             return $er->getCompany();
         }]);
+        $builder->add('status', ChoiceType::class, ['choices' => ProposalModel::getStateAsChoice(), 'placeholder' => 'Choose an option', 'required' => false, 'multiple' => true]);
         $builder->add('financial', EntityType::class, [
             'class' => Company::class,
             'required' => false,
