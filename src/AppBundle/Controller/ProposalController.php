@@ -44,7 +44,7 @@ class ProposalController extends Controller
 
         if(!$request->query->get('status'))
         {
-            $proposalModel->setStatus([ProposalModel::STUDY, ProposalModel::APPROVED, ProposalModel::ISSUE]);
+            $proposalModel->setStatus([CalculatorModel::STUDY, CalculatorModel::APPROVED, CalculatorModel::ISSUE]);
         }
         if($request->query->get('to'))
         {

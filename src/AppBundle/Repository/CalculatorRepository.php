@@ -6,6 +6,7 @@ use AppBundle\Entity\Calculator;
 use AppBundle\Entity\Report;
 use AppBundle\Form\Model\CalendarFilterModel;
 use AppBundle\Form\Model\DraweeRiskFilterModel;
+use AppBundle\Model\CalculatorModel;
 use AppBundle\Model\ProposalModel;
 use Doctrine\ORM\EntityRepository;
 
@@ -18,7 +19,7 @@ class CalculatorRepository extends EntityRepository
         $qb->where(
             $qb->expr()->between('c.vencimiento', ':date_init', ':date_fin')
         );
-        $qb->andWhere($qb->expr()->eq('p.state', ':state'));
+        $qb->andWhere($qb->expr()->eq('c.state', ':state'));
         if($user)
         {
             $qb->andWhere($qb->expr()->eq('p.user', ':user'));
@@ -29,7 +30,7 @@ class CalculatorRepository extends EntityRepository
         $to->modify("-1 seconds");
         $qb->setParameter('date_init', $from->format("Y-m-d H:i:s"));
         $qb->setParameter('date_fin', $to->format("Y-m-d H:i:s"));
-        $qb->setParameter('state', ProposalModel::CLOSE);
+        $qb->setParameter('state', CalculatorModel::CLOSE);
         $calculators = [];
         /** @var Calculator $calculator */
         foreach ($qb->getQuery()->getResult() as $calculator)
@@ -51,12 +52,12 @@ class CalculatorRepository extends EntityRepository
             $qb->setParameter('user', $user);
 
         }
-        $qb->andWhere($qb->expr()->eq('p.state', ':state'));
+        $qb->andWhere($qb->expr()->eq('c.state', ':state'));
         $to = clone $to;
         $to->modify("-1 seconds");
         $qb->setParameter('date_init', $from->format("Y-m-d H:i:s"));
         $qb->setParameter('date_fin', $to->format("Y-m-d H:i:s"));
-        $qb->setParameter('state', ProposalModel::CLOSE);
+        $qb->setParameter('state', CalculatorModel::CLOSE);
         $calculators = [];
         /** @var Calculator $calculator */
         foreach ($qb->getQuery()->getResult() as $calculator)
@@ -69,7 +70,7 @@ class CalculatorRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('c');
         $qb->innerJoin('c.proposal', 'p');
-        $qb->where($qb->expr()->eq('p.state', ':state'));
+        $qb->where($qb->expr()->eq('c.state', ':state'));
         $qb->setParameter('state', ProposalModel::CLOSE);
         if($draweeRiskFilterModel->getFinancial())
         {

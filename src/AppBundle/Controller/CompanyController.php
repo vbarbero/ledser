@@ -14,6 +14,7 @@ use AppBundle\Form\Type\CompanyFilterType;
 use AppBundle\Form\Type\CompanyType;
 use AppBundle\Form\Type\ContactFilterType;
 use AppBundle\Form\Type\ContactType;
+use AppBundle\Model\CalculatorModel;
 use AppBundle\Model\CompanyModel;
 use AppBundle\Model\ProposalModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -58,7 +59,7 @@ class CompanyController extends Controller
                 continue;
             }
 
-            if($calculator->getProposal()->getState() !== ProposalModel::CLOSE) {
+            if($calculator->getState() !== CalculatorModel::CLOSE) {
                 continue;
             }
             if(!isset($proposalGroup[$calculator->getProposal()->getCompany()->getId()])) {
@@ -113,7 +114,7 @@ class CompanyController extends Controller
                 continue;
             }
 
-            if($calculator->getProposal()->getState() !== ProposalModel::CLOSE) {
+            if($calculator->getState() !== CalculatorModel::CLOSE) {
                 continue;
             }
             if(!isset($proposalGroup[$calculator->getDrawee()->getId()])) {
@@ -171,7 +172,7 @@ class CompanyController extends Controller
                 continue;
             }
 
-            if($calculator->getProposal()->getState() !== ProposalModel::CLOSE) {
+            if($calculator->getState() !== CalculatorModel::CLOSE) {
                 continue;
             }
             if(!isset($proposalGroup[$calculator->getProposal()->getFinalcial()->getId()])) {

@@ -5,6 +5,7 @@ namespace AppBundle\Form\Type;
 use AppBundle\Entity\Calculator;
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Proposal;
+use AppBundle\Model\CalculatorModel;
 use AppBundle\Repository\CompanyRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -26,7 +27,7 @@ class CalculatorType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('state', ChoiceType::class, ['choices' => ProposalModel::getStateAsChoice()]);
+        $builder->add('state', ChoiceType::class, ['choices' => CalculatorModel::getStateAsChoice()]);
         $builder->add('formalizacion', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
         $builder->add('vencimiento', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
         $builder->add('dias', IntegerType::class, ['data' => 1, 'attr' => ['readonly' => true]]);
