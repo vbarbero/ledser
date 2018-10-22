@@ -100,17 +100,17 @@ class ReportController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $calendarModel = $form->getData();
-            dump($calendarModel->getClientType());
-            dump($request->request->get('clientType'));
-            dump($request->request->all());
+//            dump($calendarModel->getClientType());
+//            dump($request->request->get('clientType'));
+//            dump($request->request->all());
             //$calendarModel->setClientType($request->request->get('clientType'));
         } else
         {
             dump($form->getErrors(true));
         }
         $reports = $calculators = $clients = [];
-        $calendarModel->setClientType(1);
-        dump($calendarModel->getClientType());
+//        $calendarModel->setClientType(1);
+//        dump($calendarModel->getClientType());
         if($calendarModel->getClientType() === 1 || is_null($calendarModel->getClientType()))
         {
             $reports = $this->getDoctrine()->getRepository(Report::class)->getReportToCalendar($calendarModel->getUser(), $thisMonth, $nextMonth);
