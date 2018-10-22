@@ -104,6 +104,7 @@ class ReportController extends Controller
         }
         $reports = $calculators = $clients = [];
         $calendarModel->setClientType(1);
+        dump($calendarModel->getClientType());die;
         if($calendarModel->getClientType() === 1 || is_null($calendarModel->getClientType()))
         {
             $reports = $this->getDoctrine()->getRepository(Report::class)->getReportToCalendar($calendarModel->getUser(), $thisMonth, $nextMonth);
