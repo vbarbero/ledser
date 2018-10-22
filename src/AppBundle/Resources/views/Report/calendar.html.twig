@@ -64,6 +64,7 @@
         <tr class="calendar-row">
             {% set day_of_week = 0 %}
             {% for day in 1..running_day-1 %}
+                <td>{{ day }}</td>
                 <td class="calendar-day-np"> </td>
                 {% set day_of_week = day_of_week +1 %}
             {% endfor %}

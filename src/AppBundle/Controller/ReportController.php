@@ -82,7 +82,6 @@ class ReportController extends Controller
         $month = (int)$request->query->get('month', date('m'));
         $year = $request->query->get('year', date('Y'));
         $running_day = date('w',mktime(0,0,1,$month,1,$year));
-        dump($running_day);die;
         $days_in_month = date('t',mktime(0,0,0,$month,1,$year));
         $thisMonth = new \DateTime();
         $thisMonth->setDate($year,$month, 1);
