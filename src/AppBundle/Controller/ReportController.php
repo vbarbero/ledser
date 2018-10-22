@@ -108,7 +108,7 @@ class ReportController extends Controller
         {
             $reports = $this->getDoctrine()->getRepository(Report::class)->getReportToCalendar($calendarModel->getUser(), $thisMonth, $nextMonth);
         }
-        if($calendarModel->getClientType() === 2 || is_null($calendarModel->getClientType()))
+        if($calendarModel->getClientType() === 2)
         {
             $clients = $this->getDoctrine()->getRepository(Calculator::class)->getReportToCalendarCliente(
                 $thisMonth,
@@ -116,9 +116,9 @@ class ReportController extends Controller
                 $calendarModel->getUser()
             );
         }
-        if($calendarModel->getClientType() === 3 || is_null($calendarModel->getClientType()))
+        if($calendarModel->getClientType() === 3)
         {
-            $calculators = $this->getDoctrine()->getRepository(Calculator::class)->getReportToCalendar(
+                $calculators = $this->getDoctrine()->getRepository(Calculator::class)->getReportToCalendar(
                 $thisMonth,
                 $nextMonth,
                 $calendarModel->getUser()
