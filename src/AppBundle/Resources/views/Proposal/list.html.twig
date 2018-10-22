@@ -270,9 +270,19 @@
             <td colspan="8"></td>
             <td>{{ (nominalT)|number_format(2) }}</td>
             <td>{{ (diasT / proposals| length)|number_format(2) }}</td>
-            <td>{{ (taeCFT / proposals| length)|number_format(2) }} ({{ costeTotal |number_format(2) }})</td>
-            <td>{{ (taeCLT / proposals| length)|number_format(2) }} ({{ (honorariosTotal)|number_format(2) }})</td>
-            <td>{{ (taeTT / proposals| length)|number_format(2) }} ({{ (costeTTotal)|number_format(2) }})</td>
+            <td> {{ (costeTotal * 360 * 100 / (nominalT * diasT)) }}
+                {{ (taeCFT / proposals| length)|number_format(2)|number_format(2) }}
+                ({{ costeTotal |number_format(2) }})</td>
+            <td>
+                {{ ((honorariosTotal + costeTotal) * 360 * 100 / (nominalT * diasT ))|number_format(2) }}
+                {{ (taeCLT / proposals| length)|number_format(2) }}
+                ({{ (honorariosTotal)|number_format(2) }})
+            </td>
+            <td>
+                {{ (costeTTotal * 360 * 100 / (nominalT * diasT ))|number_format(2) }}
+                {{ (taeTT / proposals| length)|number_format(2) }}
+                ({{ (costeTTotal)|number_format(2) }})
+            </td>
         </tr>
     </table>
 {% endblock %}
