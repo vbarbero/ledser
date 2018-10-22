@@ -100,9 +100,6 @@ class ReportController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $calendarModel = $form->getData();
-        } else
-        {
-            dump($form->getErrors(true));
         }
         $reports = $calculators = $clients = [];
         if($calendarModel->getClientType() === 1 || is_null($calendarModel->getClientType()))
