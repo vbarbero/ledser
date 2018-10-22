@@ -44,7 +44,10 @@ class CalendarModel
 
     public function setUser( $user)
     {
-        $this->user = $user;
+        if($user instanceof User)
+        {
+            $this->user = $user;
+        }
     }
 
 
