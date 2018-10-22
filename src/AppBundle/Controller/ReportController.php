@@ -102,7 +102,7 @@ class ReportController extends Controller
             $calendarModel = $form->getData();
             dump($calendarModel->getClientType());
             dump($request->request->get('clientType'));
-            dump($request->request->all();
+            dump($request->request->all());
             //$calendarModel->setClientType($request->request->get('clientType'));
         } else
         {
