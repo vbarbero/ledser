@@ -54,6 +54,6 @@ class CalendarType extends AbstractType
      */
     public function getName()
     {
-        return 'calendar';
+        return '';
     }
 }
