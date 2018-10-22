@@ -124,10 +124,6 @@ class ReportController extends Controller
                 $nextMonth,
                 $calendarModel->getUser()
             );
-                dump($calculators, $thisMonth,
-                    $nextMonth,
-                    $calendarModel->getUser());
-                die;
         }
         return $this->render('AppBundle:Report:calendar.html.twig',
             [
