@@ -63,11 +63,12 @@
         </tr>
         <tr class="calendar-row">
             {% set day_of_week = 0 %}
-            {% for day in 1..running_day-1 %}
-                <td>{{ day }}</td>
-                <td class="calendar-day-np"> </td>
-                {% set day_of_week = day_of_week +1 %}
-            {% endfor %}
+            {% if running_day != 1 %}
+                {% for day in 1..running_day-1 %}
+                    <td class="calendar-day-np"> </td>
+                    {% set day_of_week = day_of_week +1 %}
+                {% endfor %}
+            {% endif %}
 
             {% for day in 1..days_in_month %}
                 <td class="calendar-day" {% if today|date("Y-m-j") == thisMonth|date("Y-m-") ~ day %}style="background-color: aqua" {% endif %}>
