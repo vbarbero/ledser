@@ -83,11 +83,12 @@
                             <span><a style="color: {% if calculator.getProposal.operationalType == 'Discount' %}darkred{% else %} green{% endif %}" href="{{ url('show_proposal', {id : calculator.getProposal.id }) }}"> {{ calculator.getProposal.getCompany.name }}</a></span>
                         {% endfor %}
                     {% endif %}
-                    {% if reports[day] is defined %}
-                        {% for report in reports[day] %}
-                            <a href="{{ url('show_report', {id : report.id}) }}"> <span >Report</span></a>
-                        {% endfor %}
-                    {% endif %}
+                    {{ reports[day] |length }}
+                    {#{% if reports[day] is defined %}#}
+                        {#{% for report in reports[day] %}#}
+                            {#<a href="{{ url('show_report', {id : report.id}) }}"> <span >Report</span></a>#}
+                        {#{% endfor %}#}
+                    {#{% endif %}#}
                 </td>
                 {% set day_of_week = day_of_week +1 %}
 
