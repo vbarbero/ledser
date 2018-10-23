@@ -225,10 +225,7 @@
 
             <td>
                 {% if num == 0 %}0{% else %}
-                    {{ coste }} * 360 * 100 * {{ num}} / ({{ nominal}} * {{ dias}} )
-
                     {{ ((coste) * 360 * 100 * num / (nominal * dias ))|number_format(2) }}
-                    {{  (taeCF/num)|number_format(2) }}
                     <br/>
                     ({{ (coste)|number_format(2) }})
                 {% endif %}
@@ -236,13 +233,11 @@
             <td>
                 {% if num == 0 %}0{% else %}
                     {{ ((honorarios + coste) * 360 * 100 * num / (nominal * dias ))|number_format(2) }}
-                    {{ (taeCL/num)|number_format(2) }}
                     <br/>({{ (honorarios)|number_format(2) }}){% endif %}
             </td>
             <td>
                 {% if num == 0 %}0{% else %}
                     {{ ((costeT) * 360 * 100 * num / (nominal * dias ))|number_format(2) }}
-                    {{ (taeT/num)|number_format(2) }}
                     <br/>({{ (costeT)|number_format(2) }}){% endif %}
             </td>
             <td>
