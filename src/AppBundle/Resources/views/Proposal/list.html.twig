@@ -26,8 +26,6 @@
 {% endblock %}
 
 {% block content %}
-
-
 <td class="row">
     <div class="col-sm-4" style="border: 1px solid">
 
@@ -228,7 +226,7 @@
             <td>
                 {% if num == 0 %}0{% else %}
                     {{ ((coste) * 360 * 100 * num / (nominal * dias ))|number_format(2) }}
-                    { (taeCF/num)|number_format(2) }}
+                    {{  (taeCF/num)|number_format(2) }}
                     <br/>
                     ({{ (coste)|number_format(2) }})
                 {% endif %}
