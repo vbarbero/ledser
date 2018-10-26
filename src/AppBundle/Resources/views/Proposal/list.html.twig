@@ -163,7 +163,7 @@
             {% endfor %}
         <tr
 
-            {% if operationalType == 'Discount' %}
+            {% if proposal.operationalType == 'Discount' %}
                 {% set styles ="background-color: white; color: black;" %}
             {% elseif proposal.operationalType == 'Advance' %}
                 {% set styles ="background-color: darkgreen;" %}
