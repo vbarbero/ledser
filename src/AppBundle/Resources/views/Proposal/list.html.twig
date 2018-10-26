@@ -263,7 +263,7 @@
                 <td>{{ proposal.finalcial.name  }}</td>
                 <td>{{ proposal.drawee.name  }}</td>
                 <td>{{ calculator.state | calculator_status }}{%if (calculator.state == 5)%} {{calculator.reason}}{%endif%}</td>
-                <td>{{ proposal.company.rating }}</td>
+                <td>{{ calculator.drawee.rating }}</td>
                 <td>{{ proposal.operationalType  }}</td>
                 <td>{{ calculator.nominal|number_format(2) }}</td>
                 <td>{{ calculator.dias|number_format(0) }}</td>
