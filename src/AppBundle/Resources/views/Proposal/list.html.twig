@@ -185,7 +185,7 @@
             </td>
 
             <td></td>
-            <td>{{ proposal.company.rating }}</td>
+            <td>{% if proposal.calculator | length == 1 %}{{ miCalculadora.drawee.rating }}{% endif %}</td>
             <td>{{ proposal.operationalType  }}</td>
             {% set coste = 0 %}
             {% set costeT = 0 %}
