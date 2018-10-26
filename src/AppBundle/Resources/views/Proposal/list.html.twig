@@ -157,12 +157,29 @@
         {% set miCalculadora = proposal.calculator | first %}
         {% set closed = false %}
         {% for calculator in proposal.calculator %}
-                {% if calculator.state == 7 %}
-
+                {% if calculator.state > 4 %}
                      {% set closed = false %}
                 {% endif %}
             {% endfor %}
-        <tr  {% if closed %}style="background-color: brown"{% elseif proposal.operationalType == 'Advance' %}style="background-color: darkgreen"{% elseif loop.index is odd %} class="bg-secondary"{% endif %}>
+        <tr
+
+            {% if operationalType == 'Discount' %}
+                {% set styles ="background-color: white; color: black;" %}
+            {% elseif proposal.operationalType == 'Advance' %}
+                {% set styles ="background-color: darkgreen;" %}
+
+            {#{% elseif loop.index is odd %} class="bg-secondary"#}
+            {% endif %}>
+            {% if proposal.calculator | length == 1 %}
+                {% if miCalculadora.state == 5 %}
+                    {% set styles ="background-color: brown; color: white;"  %}
+                {% elseif miCalculadora.state == 6 %}
+                    {% set styles ="background-color: yellow; color: white;"  %}
+                {% elseif miCalculadora.state == 7 %}
+                    {% set styles ="background-color: red; color: white;"  %}
+                {% endif %}
+            {% endif %}
+            style="{{ styles }}">
             <td>
                 {{ loop.index  }}
             </td>
