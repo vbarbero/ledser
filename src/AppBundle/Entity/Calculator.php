@@ -113,7 +113,7 @@ class Calculator extends BaseEntity
     /**
      * @var Proposal
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Proposal", inversedBy="calculator", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Proposal", inversedBy="calculator")
      */
     private $proposal;
 
