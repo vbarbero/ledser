@@ -167,6 +167,8 @@
                 {% set styles ="background-color: white; color: black;" %}
             {% elseif proposal.operationalType == 'Advance' %}
                 {% set styles ="background-color: darkgreen;" %}
+            {% elseif proposal.operationalType == 'Loan' %}
+                {% set styles ="background-color: blue; color: white;" %}
 
             {#{% elseif loop.index is odd %} class="bg-secondary"#}
             {% endif %}
@@ -179,6 +181,7 @@
                     {% set styles ="background-color: red; color: white;"  %}
                 {% endif %}
             {% endif %}
+
             style="{{ styles }}">
             <td>
                 {{ loop.index  }}
