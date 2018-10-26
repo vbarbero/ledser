@@ -135,22 +135,22 @@
     <table class="table bg-dark text-light">
         {#<div class="w-100"></div>#}
         <tr>
-            <td style="border: 3px solid black;">id</td>
-            <td style="border: 3px solid black;">Proposal From</td>
-            <td style="border: 3px solid black;">User</td>
-            <td style="border: 3px solid black;">company</td>
-            <td style="border: 3px solid black;">Finalcial</td>
-            <td style="border: 3px solid black;">Drawee</td>
-            <td style="border: 3px solid black;">state</td>
-            <td style="border: 3px solid black;">Rating</td>
-            {#<td style="border: 3px solid black;">Type</td>#}
-            <td style="border: 3px solid black;">Nominal</td>
-            <td style="border: 3px solid black;">Date diff</td>
-            <td style="border: 3px solid black;">Tae coste financiero (coste)</td>
-            <td style="border: 3px solid black;">Tae coste + ledser (honorarios)</td>
-            <td style="border: 3px solid black;">Tae coste total (coste)</td>
+            <td style="border-top: 3px solid black;">id</td>
+            <td style="border-top: 3px solid black;">Proposal From</td>
+            <td style="border-top: 3px solid black;">User</td>
+            <td style="border-top: 3px solid black;">company</td>
+            <td style="border-top: 3px solid black;">Finalcial</td>
+            <td style="border-top: 3px solid black;">Drawee</td>
+            <td style="border-top: 3px solid black;">state</td>
+            <td style="border-top: 3px solid black;">Rating</td>
+            {#<td style="border-top: 3px solid black;">Type</td>#}
+            <td style="border-top: 3px solid black;">Nominal</td>
+            <td style="border-top: 3px solid black;">Date diff</td>
+            <td style="border-top: 3px solid black;">Tae coste financiero (coste)</td>
+            <td style="border-top: 3px solid black;">Tae coste + ledser (honorarios)</td>
+            <td style="border-top: 3px solid black;">Tae coste total (coste)</td>
             {#<div class="col">Tipo operacion</div>#}
-            <td style="border: 3px solid black;">Acción</td>
+            <td style="border-top: 3px solid black;">Acción</td>
         </tr>
 
     {% for proposal in proposals %}
@@ -183,30 +183,30 @@
             {% endif %}
 
             style="{{ styles }}border: 3px solid black;">
-            <td style="border: 3px solid black;">
+            <td style="border-top: 3px solid black;">
                 {{ loop.index  }}
             </td>
-            <td style="border: 3px solid black;">
+            <td style="border-top: 3px solid black;">
                 {% if proposal.calculator | length == 1 %}
                     <span style="display: block">{{ miCalculadora.formalizacion | date("Y-m-d") }}</span>
                 {% endif %}
             </td>
-            <td style="border: 3px solid black;">{{ proposal.user.name  }}</td>
-            <td style="border: 3px solid black;"><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
-            <td style="border: 3px solid black;">
+            <td style="border-top: 3px solid black;">{{ proposal.user.name  }}</td>
+            <td style="border-top: 3px solid black;"><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
+            <td style="border-top: 3px solid black;">
                 {{ proposal.finalcial.name  }}
 
             </td>
-            <td style="border: 3px solid black;">
+            <td style="border-top: 3px solid black;">
                 {% if proposal.calculator | length == 1 %}
                     {% set miCalculadora = proposal.calculator | first %}
                     {{ miCalculadora.drawee.name  }}
                 {% endif %}
             </td>
 
-            <td style="border: 3px solid black;">{% if proposal.calculator | length == 1 %}{{ miCalculadora.state | calculator_status  }}{% endif %}</td>
-            <td style="border: 3px solid black;">{% if proposal.calculator | length == 1 %}{{ miCalculadora.drawee.rating }}{% endif %}</td>
-            {#<td style="border: 3px solid black;">{{ proposal.operationalType  }}</td>#}
+            <td style="border-top: 3px solid black;">{% if proposal.calculator | length == 1 %}{{ miCalculadora.state | calculator_status  }}{% endif %}</td>
+            <td style="border-top: 3px solid black;">{% if proposal.calculator | length == 1 %}{{ miCalculadora.drawee.rating }}{% endif %}</td>
+            {#<td style="border-top: 3px solid black;">{{ proposal.operationalType  }}</td>#}
             {% set coste = 0 %}
             {% set costeT = 0 %}
             {% set honorarios = 0 %}
@@ -239,28 +239,28 @@
                 {% set taeCLT = taeCLT + (taeCL/num) %}
                 {% set taeTT = taeTT + (taeT/num) %}
 
-            <td style="border: 3px solid black;">{% if num == 0 %}0(0){% else %}{{ (nominal )|number_format(2) }}{% endif %}</td>
-            <td style="border: 3px solid black;">{% if num == 0 %}0{% else %}{{ (dias/num)|number_format(0) }}{% endif %}</td>
+            <td style="border-top: 3px solid black;">{% if num == 0 %}0(0){% else %}{{ (nominal )|number_format(2) }}{% endif %}</td>
+            <td style="border-top: 3px solid black;">{% if num == 0 %}0{% else %}{{ (dias/num)|number_format(0) }}{% endif %}</td>
 
 
-            <td style="border: 3px solid black;">
+            <td style="border-top: 3px solid black;">
                 {% if num == 0 %}0{% else %}
                     {{ ((coste) * 360 * 100 * num / (nominal * dias ))|number_format(2) }}
                     <br/>
                     ({{ (coste)|number_format(2) }})
                 {% endif %}
             </td>
-            <td style="border: 3px solid black;">
+            <td style="border-top: 3px solid black;">
                 {% if num == 0 %}0{% else %}
                     {{ ((honorarios + coste) * 360 * 100 * num / (nominal * dias ))|number_format(2) }}
                     <br/>({{ (honorarios)|number_format(2) }}){% endif %}
             </td>
-            <td style="border: 3px solid black;">
+            <td style="border-top: 3px solid black;">
                 {% if num == 0 %}0{% else %}
                     {{ ((costeT) * 360 * 100 * num / (nominal * dias ))|number_format(2) }}
                     <br/>({{ (costeT)|number_format(2) }}){% endif %}
             </td>
-            <td style="border: 3px solid black;">
+            <td style="border-top: 3px solid black;">
                 <a href="{{ url('create_calculator', {proposal:proposal.id}) }}">Añadir calculadora</a>
                 <a href="{{ url('edit_proposal' , {proposal:proposal.id}) }}">Edit</a>
                 {% if proposal.calculator | length == 1 %}
@@ -274,23 +274,23 @@
         {% if proposal.calculator | length > 1 %}
             {% for calculator in proposal.calculator %}
                 <tr style="background-color: #117a8b;">
-                <td style="border: 3px solid black;"></td>
-                <td style="border: 3px solid black;">
+                <td style="border-top: 3px solid black;"></td>
+                <td style="border-top: 3px solid black;">
                     <span style="display: block">{{ calculator.formalizacion | date("Y-m-d") }}</span>
                 </td>
-                <td style="border: 3px solid black;">{{ proposal.user.name  }}</td>
-                <td style="border: 3px solid black;"><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
-                <td style="border: 3px solid black;">{{ proposal.finalcial.name  }}</td>
-                <td style="border: 3px solid black;">{{ calculator.drawee.name  }}</td>
-                <td style="border: 3px solid black;">{{ calculator.state | calculator_status }}{%if (calculator.state == 5)%} {{calculator.reason}}{%endif%}</td>
-                <td style="border: 3px solid black;">{{ calculator.drawee.rating }}</td>
-                {#<td style="border: 3px solid black;">{{ proposal.operationalType  }}</td>#}
-                <td style="border: 3px solid black;">{{ calculator.nominal|number_format(2) }}</td>
-                <td style="border: 3px solid black;">{{ calculator.dias|number_format(0) }}</td>
-                <td style="border: 3px solid black;">{{ calculator.costeFinanciero.tae|number_format(2) }} <br/>({{ calculator.costeFinanciero.coste |number_format(2) }})</td>
-                <td style="border: 3px solid black;">{{ calculator.costeFinancieroLedser.tae |number_format(2) }}<br/>({{ calculator.honorarios|number_format(2) }})</td>
-                <td style="border: 3px solid black;">{{ calculator.costeTotal.tae|number_format(2) }}<br/>({{calculator.costeTotal.coste |number_format(2) }})</td>
-                <td style="border: 3px solid black;">
+                <td style="border-top: 3px solid black;">{{ proposal.user.name  }}</td>
+                <td style="border-top: 3px solid black;"><a href="{{ url('show_proposal', {id: proposal.id}) }}"> {{ proposal.company.name }}</a></td>
+                <td style="border-top: 3px solid black;">{{ proposal.finalcial.name  }}</td>
+                <td style="border-top: 3px solid black;">{{ calculator.drawee.name  }}</td>
+                <td style="border-top: 3px solid black;">{{ calculator.state | calculator_status }}{%if (calculator.state == 5)%} {{calculator.reason}}{%endif%}</td>
+                <td style="border-top: 3px solid black;">{{ calculator.drawee.rating }}</td>
+                {#<td style="border-top: 3px solid black;">{{ proposal.operationalType  }}</td>#}
+                <td style="border-top: 3px solid black;">{{ calculator.nominal|number_format(2) }}</td>
+                <td style="border-top: 3px solid black;">{{ calculator.dias|number_format(0) }}</td>
+                <td style="border-top: 3px solid black;">{{ calculator.costeFinanciero.tae|number_format(2) }} <br/>({{ calculator.costeFinanciero.coste |number_format(2) }})</td>
+                <td style="border-top: 3px solid black;">{{ calculator.costeFinancieroLedser.tae |number_format(2) }}<br/>({{ calculator.honorarios|number_format(2) }})</td>
+                <td style="border-top: 3px solid black;">{{ calculator.costeTotal.tae|number_format(2) }}<br/>({{calculator.costeTotal.coste |number_format(2) }})</td>
+                <td style="border-top: 3px solid black;">
                      <a href="{{ url('edit_calculator' , {calculator:calculator.id}) }}">Edit</a>
                      <a data-href="{{ url('delete_calculator' , {calculator:calculator.id}) }}" class="delete">Delete</a>
                 </td>
@@ -300,17 +300,17 @@
     {% endfor %}
 
         <tr>
-            <td style="border: 3px solid black;">TOTAL</td>
+            <td style="border-top: 3px solid black;">TOTAL</td>
             <td colspan="8"></td>
-            <td style="border: 3px solid black;">{{ (nominalT)|number_format(2) }}</td>
-            <td style="border: 3px solid black;">{{ (diasT / proposals| length)|number_format(2) }}</td>
-            <td style="border: 3px solid black;">{{ (costeTotal * 360 * 100 * proposals| length / (nominalT * diasT))|number_format(2) }}
+            <td style="border-top: 3px solid black;">{{ (nominalT)|number_format(2) }}</td>
+            <td style="border-top: 3px solid black;">{{ (diasT / proposals| length)|number_format(2) }}</td>
+            <td style="border-top: 3px solid black;">{{ (costeTotal * 360 * 100 * proposals| length / (nominalT * diasT))|number_format(2) }}
                 ({{ costeTotal |number_format(2) }})</td>
-            <td style="border: 3px solid black;">
+            <td style="border-top: 3px solid black;">
                 {{ ((honorariosTotal + costeTotal) * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
                 ({{ (honorariosTotal)|number_format(2) }})
             </td>
-            <td style="border: 3px solid black;">
+            <td style="border-top: 3px solid black;">
                 {{ (costeTTotal * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
                 ({{ (costeTTotal)|number_format(2) }})
             </td>
