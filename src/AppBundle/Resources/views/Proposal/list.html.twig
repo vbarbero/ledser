@@ -143,7 +143,7 @@
             <td>Drawee</td>
             <td>state</td>
             <td>Rating</td>
-            <td>Type</td>
+            {#<td>Type</td>#}
             <td>Nominal</td>
             <td>Date diff</td>
             <td>Tae coste financiero (coste)</td>
@@ -186,7 +186,7 @@
 
             <td>{% if proposal.calculator | length == 1 %}{{ miCalculadora.state | calculator_status  }}{% endif %}</td>
             <td>{% if proposal.calculator | length == 1 %}{{ miCalculadora.drawee.rating }}{% endif %}</td>
-            <td>{{ proposal.operationalType  }}</td>
+            {#<td>{{ proposal.operationalType  }}</td>#}
             {% set coste = 0 %}
             {% set costeT = 0 %}
             {% set honorarios = 0 %}
@@ -264,7 +264,7 @@
                 <td>{{ calculator.drawee.name  }}</td>
                 <td>{{ calculator.state | calculator_status }}{%if (calculator.state == 5)%} {{calculator.reason}}{%endif%}</td>
                 <td>{{ calculator.drawee.rating }}</td>
-                <td>{{ proposal.operationalType  }}</td>
+                {#<td>{{ proposal.operationalType  }}</td>#}
                 <td>{{ calculator.nominal|number_format(2) }}</td>
                 <td>{{ calculator.dias|number_format(0) }}</td>
                 <td>{{ calculator.costeFinanciero.tae|number_format(2) }} <br/>({{ calculator.costeFinanciero.coste |number_format(2) }})</td>
