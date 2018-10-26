@@ -42,6 +42,7 @@ class ProposalModel
             [
                 'Discount' => 'Discount',
                 'Advance' => 'Advance',
+                'Loan' => 'Loan',
             ];
     }
 }
