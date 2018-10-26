@@ -39,7 +39,7 @@ class CalculatorModel
         return
             [
                 self::STUDY => 'Study',
-                self::APPROVED => 'Approved/deny',
+                self::APPROVED => 'Approved',
                 self::DENY => 'deny',
                 self::ISSUE => 'Issued contract',
                 self::CLOSE => 'CLose',
