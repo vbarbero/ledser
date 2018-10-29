@@ -104,7 +104,8 @@ class ReportController extends Controller
             dump($request->query->all());
             dump($request->request->all());
             dump($request->request->get('calendar'));
-            dump($request->request->get('calendar["user"]'));
+            $params = $request->request->get('calendar');
+            dump($params["user"]);
         } else {
 
         }
