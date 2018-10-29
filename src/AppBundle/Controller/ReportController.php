@@ -103,6 +103,7 @@ class ReportController extends Controller
             dump($calendarModel->getUser());
             dump($request->query->all());
             dump($request->request->all());
+            dump($request->request->get('calendar'));
         } else {
 
         }
