@@ -100,11 +100,9 @@ class ReportController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $calendarModel = $form->getData();
-            dump($calendarModel->getUser());
-            dump($request->query->all());
-            dump($request->request->all());
             dump($request->request->get('calendar'));
             $params = $request->request->get('calendar');
+            dump($params);
             dump($params["user"]);
         } else {
 
