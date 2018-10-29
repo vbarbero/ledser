@@ -102,11 +102,14 @@ class ReportController extends Controller
             $calendarModel = $form->getData();
             $params = $request->request->get('calendar');
             dump($params["user"]);
+            dump($calendarModel->getUser());
             if($params["user"] && empty($params["user"]))
             {
+
                 dump($params["user"]);
                 $calendarModel->setUser(null);
             }
+            dump($calendarModel->getUser());
         } else {
             dump($form->getErrors(true));
         }
