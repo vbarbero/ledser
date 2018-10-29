@@ -135,10 +135,12 @@ class ReportRepository extends EntityRepository
         $qb->where(
             $qb->expr()->between('r.date', ':date_init', ':date_fin')
         );
-        $qb->andWhere(
-            $qb->expr()->eq('r.user', ":user")
-        );
-        $qb->setParameter('user', $user);
+        if($user) {
+            $qb->andWhere(
+                $qb->expr()->eq('r.user', ":user")
+            );
+            $qb->setParameter('user', $user);
+        }
 
         $qb->andWhere(
             $qb->expr()->eq('r.done', ":done")
