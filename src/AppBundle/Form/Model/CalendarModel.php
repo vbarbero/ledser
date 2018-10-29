@@ -50,5 +50,10 @@ class CalendarModel
         }
     }
 
+    public function setUserNull( )
+    {
+        $this->user = null;
+    }
+
 
 }
