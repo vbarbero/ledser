@@ -103,9 +103,10 @@ class ReportController extends Controller
             $params = $request->request->get('calendar');
             if($params["user"] && empty($params["user"]))
             {
+                dump($params["user"]);
                 $calendarModel->setUser(null);
             }
-        } 
+        }
         $reports = $calculators = $clients = [];
         if($calendarModel->getClientType() === 1 || is_null($calendarModel->getClientType()))
         {
