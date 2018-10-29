@@ -103,7 +103,7 @@ class ReportController extends Controller
             $params = $request->request->get('calendar');
             dump($params["user"]);
             dump($calendarModel->getUser());
-            if($params["user"] && empty($params["user"]))
+            if(isset($params["user"]) && empty($params["user"]))
             {
 
                 dump($params["user"]);
