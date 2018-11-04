@@ -115,7 +115,7 @@
 
         <div class="row">
 
-            <button class="btn btn-primary btn-lg btn-block" type="submit">{{ "Filter" | trans }}</button>
+            <button class="btn btn-primary btn-lg btn-block" style="background-color: #A90500 !important;" type="submit">{{ "Filter" | trans }}</button>
 
             {{ form_end(form) }}
         </div>
@@ -132,7 +132,7 @@
     {% set taeTT = 0 %}
     {% set nominalT = 0 %}
 
-    <table class="table bg-dark text-light">
+    <table class="table text-light" style="background-color: #a90500 !important;">
         {#<div class="w-100"></div>#}
         <tr>
             <td style="border-top: 3px solid black;">id</td>
@@ -168,7 +168,7 @@
             {% elseif proposal.operationalType == 'Advance' %}
                 {% set styles ="background-color: darkgreen;" %}
             {% elseif proposal.operationalType == 'Loan' %}
-                {% set styles ="background-color: blue; color: white;" %}
+                {% set styles ="background-color: #1e4294; color: white;" %}
 
             {#{% elseif loop.index is odd %} class="bg-secondary"#}
             {% endif %}
@@ -176,7 +176,7 @@
                 {% if miCalculadora.state == 5 %}
                     {% set styles ="background-color: brown; color: white;"  %}
                 {% elseif miCalculadora.state == 6 %}
-                    {% set styles ="background-color: yellow; color: white;"  %}
+                    {% set styles ="background-color: #ca9828; color: white;"  %}
                 {% elseif miCalculadora.state == 7 %}
                     {% set styles ="background-color: red; color: white;"  %}
                 {% endif %}
