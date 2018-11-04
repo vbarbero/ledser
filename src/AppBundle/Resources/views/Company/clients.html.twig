@@ -20,6 +20,16 @@
         <td>total</td>
         <td>action</td>
         </tr>
+        {% set nominal = 0 %}
+        {% set vivo =  0 %}
+        {% set muerto = 0 %}
+        {% set ingreso = 0 %}
+        {% set honorarios = 0 %}
+        {% set dias =  0 %}
+        {% set coste =  0 %}
+        {% set costeLedser =  0 %}
+        {% set total =  0 %}
+        {% set num = num + 1 %}
     {% for company in proposalGroup | reverse %}
     <tr class="{% if loop.index is odd %}bg-secondary{% endif %}">
         <td>{{ loop.index }}</td>
@@ -27,6 +37,16 @@
         {% if drawee is defined %}
             <td>{{ company.rating }}</td>
         {% endif %}
+  {% set nominal = company.nominal + nominal %}
+  {% set vivo = company.vivo + vivo %}
+  {% set muerto = company.muerto + muerto %}
+  {% set ingreso = company.ingreso + ingreso %}
+  {% set honorarios = company.honorarios + honorarios %}
+  {% set dias = company.dias + dias %}
+  {% set coste = company.coste + coste %}
+  {% set costeLedser = company.costeLedser + costeLedser %}
+  {% set total = company.total + total %}
+  {% set num = num + 1 %}
         <td>{{ company.nominal }}</td>
         <td>{{ company.vivo }}</td>
         <td>{{ company.muerto }}</td>
@@ -44,6 +64,17 @@
         </td>
         </tr>
     {% endfor %}
+        <tr>
+            <td colspan="3">Total</td>
+            <td>{{ nominal }}</td>
+            <td>{{ vivo }}</td>
+            <td>{{ muerto }}</td>
+            <td>{{ ingreso }}</td>
+            <td>{{ (dias / num) | number_format(2) }}</td>
+            <td>{{ (coste * 360 * 100 / (nominal * dias / num)) | number_format(2) }}</td>
+            <td>{{ (costeLedser * 360 * 100 / (nominal * dias / num)) | number_format(2) }}</td>
+            <td>{{ total }}</td>
+        </tr>
     </table>
 {% endblock %}
 
