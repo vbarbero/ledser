@@ -35,7 +35,7 @@
         <td>{{ (company.dias / company.num) | number_format(2) }}</td>
         <td>{{ (company.coste * 360 * 100 / (company.nominal * company.dias / company.num)) | number_format(2) }}</td>
         {#<td>{{ (company.tae / company.num) | number_format(2) }}</td>#}
-        <td>{{ (company.taeLedser / company.num) | number_format(2) }}</td>
+        <td>{{ (company.costeLedser * 360 * 100 / (company.nominal * company.dias / company.num)) | number_format(2) }}</td>
         <td>{{ (company.total / company.num) | number_format(2) }}</td>
         <td>
             <a href="{{ url('add_file', {company: company.id}) }}">Add file</a>
