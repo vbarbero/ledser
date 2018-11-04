@@ -86,8 +86,8 @@ class CompanyController extends Controller
             $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['num'] += 1;
             $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['dias'] += $calculator->getDias();
             $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['tae'] += $calculator->getCosteFinanciero()->getTae();
-            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['coste'] += $calculator->getCosteFinanciero()->getCoste();
             $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['taeLedser'] += $calculator->getCosteFinancieroLedser()->getTae();
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['coste'] += $calculator->getCosteFinanciero()->getCoste();
             $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['costeLedser'] += $calculator->getCosteFinancieroLedser()->getCoste();
             $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['total'] += $calculator->getCosteTotal()->getTotal();
             uksort($proposalGroup, function ($ak, $bk) use ($proposalGroup) {
@@ -146,6 +146,8 @@ class CompanyController extends Controller
             $proposalGroup[$calculator->getDrawee()->getId()]['tae'] += $calculator->getCosteFinanciero()->getTae();
             $proposalGroup[$calculator->getDrawee()->getId()]['taeLedser'] += $calculator->getCosteFinancieroLedser()->getTae();
             $proposalGroup[$calculator->getDrawee()->getId()]['total'] += $calculator->getCosteTotal()->getTotal();
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['coste'] += $calculator->getCosteFinanciero()->getCoste();
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['costeLedser'] += $calculator->getCosteFinancieroLedser()->getCoste();
 
             uksort($proposalGroup, function ($ak, $bk) use ($proposalGroup) {
                 $a = $proposalGroup[$ak];
@@ -203,6 +205,8 @@ class CompanyController extends Controller
             $proposalGroup[$calculator->getProposal()->getFinalcial()->getId()]['tae'] += $calculator->getCosteFinanciero()->getTae();
             $proposalGroup[$calculator->getProposal()->getFinalcial()->getId()]['taeLedser'] += $calculator->getCosteFinancieroLedser()->getTae();
             $proposalGroup[$calculator->getProposal()->getFinalcial()->getId()]['total'] += $calculator->getCosteTotal()->getTotal();
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['coste'] += $calculator->getCosteFinanciero()->getCoste();
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['costeLedser'] += $calculator->getCosteFinancieroLedser()->getCoste();
             uksort($proposalGroup, function ($ak, $bk) use ($proposalGroup) {
                 $a = $proposalGroup[$ak];
                 $b = $proposalGroup[$bk];
