@@ -86,6 +86,7 @@ class CompanyController extends Controller
             $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['num'] += 1;
             $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['dias'] += $calculator->getDias();
             $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['tae'] += $calculator->getCosteFinanciero()->getTae();
+            $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['coste'] += $calculator->getCosteFinanciero()->getCoste();
             $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['taeLedser'] += $calculator->getCosteFinancieroLedser()->getTae();
             $proposalGroup[$calculator->getProposal()->getCompany()->getId()]['total'] += $calculator->getCosteTotal()->getTotal();
             uksort($proposalGroup, function ($ak, $bk) use ($proposalGroup) {
