@@ -52,7 +52,7 @@
   {% set dias = company.dias / company.num + dias %}
   {% set coste = company.coste + coste %}
   {% set costeLedser = company.costeLedser + costeLedser %}
-  {% set total = company.total + total %}
+  {% set total = company.total / company.num + total %}
   {% set num = num + 1 %}
         <td>{{ company.nominal }}</td>
         <td>{{ company.vivo }}</td>
