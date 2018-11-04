@@ -49,7 +49,7 @@
   {% set muerto = company.muerto + muerto %}
   {% set ingreso = company.ingreso + ingreso %}
   {% set honorarios = company.honorarios + honorarios %}
-  {% set dias = company.dias + dias %}
+  {% set dias = company.dias / company.num + dias %}
   {% set coste = company.coste + coste %}
   {% set costeLedser = company.costeLedser + costeLedser %}
   {% set total = company.total + total %}
