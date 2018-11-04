@@ -1,5 +1,12 @@
 {% extends 'AppBundle::layout.html.twig' %}
-
+{% block styles %}
+    {{ parent() }}
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+{% endblock %}
 {% block content %}
 
     <table class=" bg-dark text-light">
