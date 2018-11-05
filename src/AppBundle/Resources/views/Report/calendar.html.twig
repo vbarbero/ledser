@@ -83,7 +83,7 @@
                             <span><a style="color: {% if calculator.getProposal.operationalType == 'Discount' %}darkred{% else %} green{% endif %}" href="{{ url('show_proposal', {id : calculator.getProposal.id }) }}"> {{ calculator.getProposal.getCompany.name }}</a></span>
                         {% endfor %}
                     {% endif %}
-                    {% if clientType === 1 %}
+                    {% if clientType == 1 %}
                         {{ reports[day] |length }}
                     {% endif %}
                     {#{% if reports[day] is defined %}#}
