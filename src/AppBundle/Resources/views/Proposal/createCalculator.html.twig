@@ -179,7 +179,7 @@
         });
     </script>
     <script type="text/javascript">
-
+        
         calculaDias(false);
         // $(".third").hide();
         // $(".fourth").hide();
@@ -188,6 +188,7 @@
             $("#calculator_costeFinanciero_" + introduce).prop('readonly', true);
         }
         $(function () {
+            reloadDates();
             // var formalizacion = false;
             // var vencimiento = false;
             var nominal = false;
@@ -422,6 +423,11 @@
                 $("#calculator_costeTotal_tae").val(parseFloat($("#calculator_costeTotal_total").val() / $("#calculator_dias").val() * 360).toFixed(2));
                 $("#calculator_costeTotal_mensual").val(parseFloat($("#calculator_costeTotal_tae").val() / 12).toFixed(2));
             }
+        }
+        function  reloadDates() {
+            $("#calculator_dias").on('change', function() {
+                alert($("#calculator_dias").val());
+            });
         }
     </script>
 {% endblock %}
