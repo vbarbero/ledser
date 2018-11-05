@@ -116,6 +116,7 @@
                 <td colspan="4">Riesgo vencido</td>
             </tr>
             <tr>
+                <td>formalizacion</td>
                 <td>cliente</td>
                 <td>drawee</td>
                 <td>importe</td>
@@ -126,6 +127,7 @@
             {% for calculator in calculators['-'] %}
                 <tr>
                     {%  set total = total + calculator.nominal %}
+                    <td>{{ calculator.formalizacion| date("Y-m-d") }}</td>
                     <td>{{ calculator.proposal.company.name }}</td>
                     <td>{{ calculator.drawee.name }}</td>
                     <td>{{ calculator.nominal }}</td>
