@@ -190,7 +190,9 @@ class ProposalController extends Controller
         $calculator->setCosteFinanciero(new Cost());
         $calculator->setCosteFinancieroLedser(new Cost());
         $calculator->setCosteTotal(new Cost());
-        dump($request->query->get('drawee'), $request->query->all());
+        $calculator->setDrawee($this->getDoctrine()->getRepository(Company::class)->find($request->query->get('drawee')));
+        $calculator->setState($request->query->get('state'));
+
         $form = $this->createForm(CalculatorType::class, $calculator);
 
 
