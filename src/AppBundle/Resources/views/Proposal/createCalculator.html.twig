@@ -435,6 +435,7 @@
                 console.log(finishD.getDate());
 
                 finishD.setDate(finishD.getDate() + $("#calculator_dias").val());
+                console.log(finishD.getDate());
                 var nd = new Date(finishD);
                 var dateString = nd.getUTCDate() +"/"+ (nd.getUTCMonth()+1) +"/"+ nd.getUTCFullYear() ;
                 console.log(dateString);
