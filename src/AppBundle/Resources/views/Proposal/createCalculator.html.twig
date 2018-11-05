@@ -433,7 +433,7 @@
 
                 finishD.setDate(finishD.getDate() + $("#calculator_dias").val());
                 var nd = new Date(finishD);
-                var dateString = nd.getUTCFullYear() +"/"+ (nd.getUTCMonth()+1) +"/"+ nd.getUTCDate() ;
+                var dateString = nd.getUTCDate() +"/"+ (nd.getUTCMonth()+1) +"/"+ nd.getUTCFullYear() ;
                 $("#calculator_vencimiento").val(dateString);
 
             });
