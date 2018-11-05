@@ -440,7 +440,8 @@
                 var nd = new Date(finishD);
                 var day = ("0" + nd.getDate()).slice(-2);
                 var month = ("0" + (nd.getMonth() + 1)).slice(-2);
-                var dateString = day +"/"+ month +"/"+ nd.getUTCFullYear() ;
+//                var dateString = day +"/"+ month +"/"+ nd.getUTCFullYear() ;
+                var dateString = nd.getUTCFullYear() +"-"+ month +"-"+ day;
                 console.log(dateString);
 
                 $("#calculator_vencimiento").val(dateString);
