@@ -427,6 +427,15 @@
         function  reloadDates() {
             $("#calculator_dias").on('change', function() {
                 alert($("#calculator_dias").val());
+                var start = $("#calculator_formalizacion").val();
+                var startD = new Date(start);
+                var finishD = new Date(start);
+
+
+                finishD.setDate(finishD.getDate() + $("#calculator_dias").val());
+                var nd = new Date(finishD);
+                $("#calculator_vencimiento").val(nd);
+
             });
         }
     </script>
