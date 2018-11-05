@@ -429,7 +429,8 @@
                 var start = $("#calculator_formalizacion").val();
                 var startD = new Date(start);
                 var finishD = new Date(start);
-
+                var dateString = finishD.getUTCDate() +"/"+ (finishD.getUTCMonth()+1) +"/"+ finishD.getUTCFullYear() ;
+                console.log(dateString);
 
                 finishD.setDate(finishD.getDate() + $("#calculator_dias").val());
                 var nd = new Date(finishD);
