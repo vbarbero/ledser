@@ -73,11 +73,11 @@
     {% endfor %}
         <tr>
             <td colspan="2">Total</td>
-            <td>{{ nominal }}</td>
-            <td>{{ vivo }}</td>
-            <td>{{ muerto }}</td>
-            <td>{{ ingreso }}</td>
-            <td>{{ honorarios }}</td>
+            <td>{{ nominal|number_format(2) }}</td>
+            <td>{{ vivo |number_format(2)}}</td>
+            <td>{{ muerto |number_format(2)}}</td>
+            <td>{{ ingreso |number_format(2)}}</td>
+            <td>{{ honorarios |number_format(2)}}</td>
             <td>{{ (dias / num) | number_format(2) }}</td>
             <td>{{ (coste * 360 * 100 / (nominal * dias / num)) | number_format(2) }}</td>
             <td>{{ (costeLedser * 360 * 100 / (nominal * dias / num)) | number_format(2) }}</td>
