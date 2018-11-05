@@ -190,7 +190,9 @@ class ProposalController extends Controller
         $calculator->setCosteFinanciero(new Cost());
         $calculator->setCosteFinancieroLedser(new Cost());
         $calculator->setCosteTotal(new Cost());
+        dump($request->query->get('drawee'), $request->query->all());
         $form = $this->createForm(CalculatorType::class, $calculator);
+
 
         $form->handleRequest($request);
         if ( $form->isValid()) {
@@ -203,7 +205,7 @@ class ProposalController extends Controller
                 return $this->redirect($this->generateUrl("show_proposal",['id' => $calculator->getProposal()->getId()]));
             }
         else {
-            return $this->redirect($this->generateUrl("create_calculator",['proposal' => $calculator->getProposal()->getId()]));
+            return $this->redirect($this->generateUrl("create_calculator",['proposal' => $calculator->getProposal()->getId(), 'drawee' => $calculator->getDrawee()->getId(), 'state' => $calculator->getState() ]));
             }
         }
 
