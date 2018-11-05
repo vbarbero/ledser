@@ -30,7 +30,7 @@ class CalculatorType extends AbstractType
         $builder->add('state', ChoiceType::class, ['choices' => CalculatorModel::getStateAsChoice()]);
         $builder->add('formalizacion', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
         $builder->add('vencimiento', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
-        $builder->add('dias', IntegerType::class, ['data' => 1, 'attr' => ['readonly' => true]]);
+        $builder->add('dias', IntegerType::class, ['data' => 1]); //, 'attr' => ['readonly' => true]
         $builder->add('nominal');
         $builder->add('honorarios');
         $builder->add('timbres');
