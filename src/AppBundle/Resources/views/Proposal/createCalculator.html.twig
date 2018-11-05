@@ -439,8 +439,7 @@
                 var nd = new Date(finishD);
                 var dateString = nd.getUTCDate() +"/"+ (nd.getUTCMonth()+1) +"/"+ nd.getUTCFullYear() ;
                 console.log(dateString);
-                $("#calculator_vencimiento").val(dateString);
-
+                $("#calculator_vencimiento").innerHTML(dateString);
             });
         }
     </script>
