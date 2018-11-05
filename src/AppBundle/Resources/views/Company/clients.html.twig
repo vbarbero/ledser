@@ -54,11 +54,11 @@
   {% set costeLedser = company.costeLedser + costeLedser %}
   {% set total = company.total / company.num + total %}
   {% set num = num + 1 %}
-        <td>{{ company.nominal }}</td>
-        <td>{{ company.vivo }}</td>
-        <td>{{ company.muerto }}</td>
-        <td>{{ company.ingreso }}</td>
-        <td>{{ company.honorarios }}</td>
+        <td>{{ company.nominal|number_format(2) }}</td>
+        <td>{{ company.vivo|number_format(2) }}</td>
+        <td>{{ company.muerto|number_format(2) }}</td>
+        <td>{{ company.ingreso|number_format(2) }}</td>
+        <td>{{ company.honorarios|number_format(2) }}</td>
         <td>{{ (company.dias / company.num) | number_format(2) }}</td>
         <td>{{ (company.coste * 360 * 100 / (company.nominal * company.dias / company.num)) | number_format(2) }}</td>
         {#<td>{{ (company.tae / company.num) | number_format(2) }}</td>#}
