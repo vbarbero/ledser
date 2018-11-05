@@ -436,9 +436,13 @@
 
                 finishD.setDate(finishD.getDate() + parseInt($("#calculator_dias").val()));
                 console.log(finishD.getDate());
+
                 var nd = new Date(finishD);
-                var dateString = nd.getUTCDate() +"/"+ (nd.getUTCMonth()+1) +"/"+ nd.getUTCFullYear() ;
+                var day = ("0" + nd.getDate()).slice(-2);
+                var month = ("0" + (nd.getMonth() + 1)).slice(-2);
+                var dateString = day +"/"+ month +"/"+ nd.getUTCFullYear() ;
                 console.log(dateString);
+
                 $("#calculator_vencimiento").innerHTML(dateString);
             });
         }
