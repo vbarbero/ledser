@@ -129,6 +129,7 @@ class ReportController extends Controller
         }
         return $this->render('AppBundle:Report:calendar.html.twig',
             [
+                'clientType' => $calendarModel->getClientType(),
                 'days_in_month' => $days_in_month,
                 'running_day' => $running_day,
                 'today' => $today,
