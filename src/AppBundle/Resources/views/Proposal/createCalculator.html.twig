@@ -103,6 +103,14 @@
                     {{ form_widget(form.introduce) }}
                 </div>
             </div>
+            <div class="row third">
+                <div class="col-lg-4">
+                    {{ form_label(form.introduce2) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.introduce2) }}
+                </div>
+            </div>
             <div class="fourth">
                 <table>
                     <tr>
@@ -113,25 +121,25 @@
                     </tr>
                     <tr>
                         <td>Total</td>
-                        <td>{{ form_widget(form.costeFinanciero.total) }}</td>
+                        <td>{{ form_widget(form.costeFinanciero.total, { 'attr':{'readonly':true} }) }}</td>
                         <td>{{ form_widget(form.costeFinancieroLedser.total, { 'attr':{'readonly':true} }) }}</td>
                         <td>{{ form_widget(form.costeTotal.total, { 'attr':{'readonly':true} }) }}</td>
                     </tr>
                     <tr>
                         <td>Tae</td>
-                        <td>{{ form_widget(form.costeFinanciero.tae) }}</td>
+                        <td>{{ form_widget(form.costeFinanciero.tae, { 'attr':{'readonly':true} }) }}</td>
                         <td>{{ form_widget(form.costeFinancieroLedser.tae, { 'attr':{'readonly':true} }) }}</td>
                         <td>{{ form_widget(form.costeTotal.tae, { 'attr':{'readonly':true} }) }}</td>
                     </tr>
                     <tr>
                         <td>Mensual</td>
-                        <td>{{ form_widget(form.costeFinanciero.mensual) }}</td>
+                        <td>{{ form_widget(form.costeFinanciero.mensual, { 'attr':{'readonly':true} }) }}</td>
                         <td>{{ form_widget(form.costeFinancieroLedser.mensual, { 'attr':{'readonly':true} }) }}</td>
                         <td>{{ form_widget(form.costeTotal.mensual, { 'attr':{'readonly':true} }) }}</td>
                     </tr>
                     <tr>
                         <td>Retención</td>
-                        <td>{{ form_widget(form.costeFinanciero.retencion) }}</td>
+                        <td>{{ form_widget(form.costeFinanciero.retencion, { 'attr':{'readonly':true} }) }}</td>
                         <td>{{ form_widget(form.costeFinancieroLedser.retencion, { 'attr':{'readonly':true} }) }}</td>
                         <td>{{ form_widget(form.costeTotal.retencion, { 'attr':{'readonly':true} }) }}</td>
                     </tr>
@@ -143,7 +151,7 @@
                     </tr>
                     <tr>
                         <td>Coste</td>
-                        <td>{{ form_widget(form.costeFinanciero.coste) }}</td>
+                        <td>{{ form_widget(form.costeFinanciero.coste, { 'attr':{'readonly':true} }) }}</td>
                         <td>{{ form_widget(form.costeFinancieroLedser.coste, { 'attr':{'readonly':true} }) }}</td>
                         <td>{{ form_widget(form.costeTotal.coste, { 'attr':{'readonly':true} }) }}</td>
                     </tr>
@@ -187,15 +195,28 @@
         });
     </script>
     <script type="text/javascript">
-        $(".reason").hide();
+
         calculaDias(false);
         // $(".third").hide();
         // $(".fourth").hide();
-        var introduces = {'tae':'tae','mensual' : 'mensual','total': 'total', 'coste' : 'coste'};
-        for (introduce in introduces) {
-            $("#calculator_costeFinanciero_" + introduce).prop('readonly', true);
-        }
+//        var introduces2 = {'financiero':'financiero','financieroLedser' : 'Financiero + Ledser','total': 'total'};
+//        var introduces = {'tae':'tae','mensual' : 'mensual','total': 'total', 'coste' : 'coste'};
+//        for (introduce in introduces) {
+//            $("#calculator_costeFinanciero_" + introduce).prop('readonly', true);
+//        }
         $(function () {
+//            $("#calculator_state").on('change', function () {
+//                if ($("#calculator_state").val() == 5) {
+//                    $(".reason").show();
+//                } else {
+//                    $(".reason").hide();
+//                }
+//            });
+            if ($("#calculator_state").val() == 5) {
+                $(".reason").show();
+            } else {
+                $(".reason").hide();
+            }
             $("#calculator_state").on('change', function () {
                 if ($("#calculator_state").val() == 5) {
                     $(".reason").show();
