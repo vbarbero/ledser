@@ -187,7 +187,7 @@
         });
     </script>
     <script type="text/javascript">
-        $("#calculator_reason").hide();
+        $(".reason").hide();
         calculaDias(false);
         // $(".third").hide();
         // $(".fourth").hide();
@@ -198,9 +198,9 @@
         $(function () {
             $("#calculator_state").on('change', function () {
                 if ($("#calculator_state").val() == 5) {
-                    $("#calculator_reason").show();
+                    $(".reason").show();
                 } else {
-                    $("#calculator_reason").hide();
+                    $(".reason").hide();
                 }
             });
             reloadDates();
