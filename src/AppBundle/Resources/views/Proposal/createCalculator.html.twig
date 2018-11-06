@@ -313,18 +313,11 @@
 
 
 
-            $("#calculator_introduce, #calculator_introduce").on('change', function() {
-                $(".fourth").show();
-                var introduces2 = {'costeFinanciero':'costeFinanciero','costeFinancieroLedser' : 'costeFinancieroLedser','costeTotal': 'costeTotal'};
-                var introduces = {'tae':'tae','mensual' : 'mensual','total': 'total','coste': 'coste'};
-                for (introduce2 in introduces2) {
-                    for (introduce in introduces) {
-//                        if(introduce == $(this).val()){
-                            $("#calculator_" + introduce2 +"_" + introduce).prop('readonly', 'readonly');
-//                        }
-                    }
-                }
-                $("#calculator_" + $("#calculator_introduce2").val() +"_" + $("#calculator_introduce").val()).prop('readonly', false);
+            $("#calculator_introduce").on('change', function() {
+                introduce ();
+            });
+            $("#calculator_introduce").on('change', function() {
+                introduce ();
             });
 
             var porcentaje = false;
@@ -476,6 +469,21 @@
                 var dateString = nd.getUTCFullYear() +"-"+ month +"-"+ day;
                 $("#calculator_vencimiento").val(dateString);
             });
+        }
+        function introduce ()
+        {
+            $(".fourth").show();
+            var introduces2 = {'costeFinanciero':'costeFinanciero','costeFinancieroLedser' : 'costeFinancieroLedser','costeTotal': 'costeTotal'};
+            var introduces = {'tae':'tae','mensual' : 'mensual','total': 'total','coste': 'coste'};
+            for (introduce2 in introduces2) {
+                for (introduce in introduces) {
+                    //                        if(introduce == $(this).val()){
+                    $("#calculator_" + introduce2 +"_" + introduce).prop('readonly', 'readonly');
+                    //                        }
+                }
+            }
+            $("#calculator_" + $("#calculator_introduce2").val() +"_" + $("#calculator_introduce").val()).prop('readonly', false);
+            console.log("#calculator_" + $("#calculator_introduce2").val() +"_" + $("#calculator_introduce").val());
         }
     </script>
 {% endblock %}
