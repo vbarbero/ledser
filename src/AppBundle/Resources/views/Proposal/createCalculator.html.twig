@@ -51,6 +51,14 @@
                 {{ form_widget(form.state) }}
             </div>
         </div>
+        <div class="row reason">
+            <div class="col-lg-4">
+                {{ form_label(form.reason) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.reason) }}
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-4">
                 {{ form_label(form.drawee) }}
@@ -188,6 +196,9 @@
             $("#calculator_costeFinanciero_" + introduce).prop('readonly', true);
         }
         $(function () {
+            $("#calculator_state").on('change', function () {
+                console.log($("#calculator_state").val());
+            });
             reloadDates();
             // var formalizacion = false;
             // var vencimiento = false;

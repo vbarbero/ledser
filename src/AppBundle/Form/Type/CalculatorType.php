@@ -38,6 +38,7 @@ class CalculatorType extends AbstractType
         $builder->add('mensajeria');
         $builder->add('burofax');
         $builder->add('gastos');
+        $builder->add('reason');
         $builder->add('introduce', ChoiceType::class, ['choices' => ['' => '', 'tae' => 'tae', 'mensual' => 'mensual', 'total' => 'total', 'coste' => 'coste'], 'mapped' => false]);
         $builder->add('existeTimbre', CheckboxType::class, ['mapped' => false, 'required' => false ]);
         $builder->add('boton', HiddenType::class, ['mapped' => false, 'required' => false ]);
