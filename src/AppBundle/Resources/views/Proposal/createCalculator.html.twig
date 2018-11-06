@@ -314,10 +314,10 @@
 
 
             $("#calculator_introduce").on('change', function() {
-                introduce ();
+                introduceChange ();
             });
             $("#calculator_introduce").on('change', function() {
-                introduce ();
+                introduceChange ();
             });
 
             var porcentaje = false;
@@ -470,7 +470,7 @@
                 $("#calculator_vencimiento").val(dateString);
             });
         }
-        function introduce ()
+        function introduceChange ()
         {
             $(".fourth").show();
             var introduces2 = {'costeFinanciero':'costeFinanciero','costeFinancieroLedser' : 'costeFinancieroLedser','costeTotal': 'costeTotal'};
