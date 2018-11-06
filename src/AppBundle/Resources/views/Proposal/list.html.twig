@@ -204,7 +204,7 @@
                 {% endif %}
             </td>
 
-            <td style="border-top: 3px solid black;">{% if proposal.calculator | length == 1 %}{{ miCalculadora.state | calculator_status  }}{% endif %}</td>
+            <td style="border-top: 3px solid black;">{% if proposal.calculator | length == 1 %}{{ miCalculadora.state | calculator_status  }}{%if (miCalculadora.state == 5)%} {{calculator.reason}}{%endif%{% endif %}</td>
             <td style="border-top: 3px solid black;">{% if proposal.calculator | length == 1 %}{{ miCalculadora.drawee.rating }}{% endif %}</td>
             {#<td style="border-top: 3px solid black;">{{ proposal.operationalType  }}</td>#}
             {% set coste = 0 %}
