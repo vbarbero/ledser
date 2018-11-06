@@ -94,6 +94,14 @@
                     <td>{{ form_widget(form.gastos) }}</td>
                 </tr>
             </table>
+            <div class="row third">
+                <div class="col-lg-4">
+                    {{ form_label(form.introduce2) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.introduce2) }}
+                </div>
+            </div>
 
             <div class="row third">
                 <div class="col-lg-4">
@@ -101,14 +109,6 @@
                 </div>
                 <div class="col-lg-4">
                     {{ form_widget(form.introduce) }}
-                </div>
-            </div>
-            <div class="row third">
-                <div class="col-lg-4">
-                    {{ form_label(form.introduce2) }}
-                </div>
-                <div class="col-lg-4">
-                    {{ form_widget(form.introduce2) }}
                 </div>
             </div>
             <div class="fourth">
@@ -199,19 +199,17 @@
         calculaDias(false);
         // $(".third").hide();
         // $(".fourth").hide();
-//        var introduces2 = {'financiero':'financiero','financieroLedser' : 'Financiero + Ledser','total': 'total'};
+//        'costeFinanciero' =>'costeFinanciero','costeFinancieroLedser' => 'costeFinancieroLedser','costeTotal'=> 'costeTotal'
+//        var introduces2 = {'costeFinanciero':'costeFinanciero','costeFinancieroLedser' : 'costeFinancieroLedser','costeTotal': 'costeTotal'};
 //        var introduces = {'tae':'tae','mensual' : 'mensual','total': 'total', 'coste' : 'coste'};
 //        for (introduce in introduces) {
 //            $("#calculator_costeFinanciero_" + introduce).prop('readonly', true);
 //        }
         $(function () {
-//            $("#calculator_state").on('change', function () {
-//                if ($("#calculator_state").val() == 5) {
-//                    $(".reason").show();
-//                } else {
-//                    $(".reason").hide();
-//                }
-//            });
+            $('#calculator_introduce').prop('disabled', 'disabled');
+            $("#calculator_introduce2").on('change', function () {
+                $('#calculator_introduce').prop('disabled', false);
+            });
             if ($("#calculator_state").val() == 5) {
                 $(".reason").show();
             } else {
@@ -314,14 +312,19 @@
             });
 
 
-            $("#calculator_introduce").on('change', function() {
+
+            $("#calculator_introduce, #calculator_introduce").on('change', function() {
                 $(".fourth").show();
+                var introduces2 = {'costeFinanciero':'costeFinanciero','costeFinancieroLedser' : 'costeFinancieroLedser','costeTotal': 'costeTotal'};
                 var introduces = {'tae':'tae','mensual' : 'mensual','total': 'total','coste': 'coste'};
-                for (introduce in introduces) {
-                    if(introduce == $(this).val()){
-                        $("#calculator_costeFinanciero_" + introduce).prop('readonly', false);
+                for (introduce2 in introduces2) {
+                    for (introduce in introduces) {
+//                        if(introduce == $(this).val()){
+                            $("#calculator_" + introduce2 +"_" + introduce).prop('readonly', 'readonly');
+//                        }
                     }
                 }
+                $("#calculator_" + $("#calculator_introduce2").val() +"_" + $("#calculator_introduce").val()).prop('readonly', false);
             });
 
             var porcentaje = false;
