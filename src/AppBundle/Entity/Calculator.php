@@ -412,9 +412,6 @@ class Calculator extends BaseEntity
         $this->reason = $reason;
     }
 
-    /**
-     * @return null|\DateTime
-     */
     public function getEmision()
     {
         return $this->emision;
