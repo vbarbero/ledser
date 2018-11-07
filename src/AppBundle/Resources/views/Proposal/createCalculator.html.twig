@@ -124,6 +124,14 @@
                     {{ form_widget(form.introduce) }}
                 </div>
             </div>
+            <div class="row third">
+                <div class="col-lg-4">
+                    {{ form_label(form.porcentaje) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.porcentaje) }}
+                </div>
+            </div>
             <div class="fourth">
                 <table>
                     <tr>
@@ -219,6 +227,7 @@
 //            $("#calculator_costeFinanciero_" + introduce).prop('readonly', true);
 //        }
         $(function () {
+            $("#calculator_porcentaje").hidden();
             $('#calculator_introduce').prop('disabled', 'disabled');
             $("#calculator_introduce2").on('change', function () {
                 $('#calculator_introduce').prop('disabled', false);
@@ -476,6 +485,7 @@
             }
             else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'coste')
             {
+                honorarios = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) * parseFloat($("#calculator_porcentaje").val()) / 100;
                 coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - honorarios;
             }
             else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'coste')
@@ -603,7 +613,15 @@
             $(".fourth").show();
             var introduces2 = {'costeFinanciero':'costeFinanciero','costeFinancieroLedser' : 'costeFinancieroLedser','costeTotal': 'costeTotal'};
             var introduces = {'tae':'tae','mensual' : 'mensual','total': 'total','coste': 'coste'};
-            for (introduce2 in introduces2) {
+            if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'coste')
+            {
+                $("#calculator_porcentaje").show();
+            }
+            else
+            {
+                $("#calculator_porcentaje").hidden();
+            }
+        for (introduce2 in introduces2) {
                 for (introduce in introduces) {
                     //                        if(introduce == $(this).val()){
                     $("#calculator_" + introduce2 +"_" + introduce).prop('readonly', 'readonly');
