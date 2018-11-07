@@ -398,8 +398,7 @@
 
         function calculaResultados()
         {
-//            var introduces2 = {'costeFinanciero':'costeFinanciero','costeFinancieroLedser' : 'costeFinancieroLedser','costeTotal': 'costeTotal'};
-//            var introduces = {'tae':'tae','mensual' : 'mensual','total': 'total','coste': 'coste'};
+            console.log($("#calculator_introduce").val() );
             var nominal = parseFloat($("#calculator_nominal").val().replace(",", "."));
             var retencion = parseFloat($("#calculator_costeFinanciero_retencion").val().replace(",", "."));
             var dias = parseInt($("#calculator_dias").val());
