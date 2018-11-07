@@ -485,7 +485,9 @@
             }
             else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'coste')
             {
-                $("#calculator_honorarios").val(parseFloat($("#calculator_costeFinancieroLedser_coste").val()) * parseFloat($("#calculator_porcentaje").val()) / 100);
+                honorarios = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) * parseFloat($("#calculator_porcentaje").val()) / 100;
+                $("#calculator_honorarios").val(honorarios);
+
                 coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - honorarios;
             }
             else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'coste')
