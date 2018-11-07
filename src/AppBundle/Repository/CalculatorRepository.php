@@ -44,7 +44,7 @@ class CalculatorRepository extends EntityRepository
         $qb = $this->createQueryBuilder('c');
         $qb->innerJoin('c.proposal', 'p');
         $qb->where(
-            $qb->expr()->between('c.formalizacion', ':date_init', ':date_fin')
+            $qb->expr()->between('c.emision', ':date_init', ':date_fin')
         );
         if($user)
         {
@@ -62,7 +62,7 @@ class CalculatorRepository extends EntityRepository
         /** @var Calculator $calculator */
         foreach ($qb->getQuery()->getResult() as $calculator)
         {
-            $calculators[$calculator->getFormalizacion()->format('j')][$calculator->getProposal()->getId()] = $calculator;
+            $calculators[$calculator->getEmision()->format('j')][$calculator->getProposal()->getId()] = $calculator;
         }
         return $calculators;
     }
