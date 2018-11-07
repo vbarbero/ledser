@@ -185,6 +185,7 @@ class ProposalController extends Controller
         $calculator->setBurofax(0);
         $calculator->setGastos(0);
         $calculator->setProposal($this->getDoctrine()->getRepository(Proposal::class)->find($proposal));
+        $calculator->setEmision(new \DateTime());
         $calculator->setFormalizacion(new \DateTime());
         $calculator->setVencimiento(new \DateTime("+1 day"));
         $calculator->setCosteFinanciero(new Cost());
