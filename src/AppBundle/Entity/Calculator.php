@@ -415,7 +415,7 @@ class Calculator extends BaseEntity
     /**
      * @return null|\DateTime
      */
-    public function getEmision(): ?\DateTime
+    public function getEmision()
     {
         return $this->emision;
     }
