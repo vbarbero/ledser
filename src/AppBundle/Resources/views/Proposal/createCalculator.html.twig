@@ -398,7 +398,46 @@
 
         function calculaResultados()
         {
-            console.log($("#calculator_introduce").val() );
+            if ($("#calculator_introduce").val() == '' )
+            {
+                return;
+            }
+            if ($("#calculator_introduce2").val() == '' )
+            {
+                return;
+            }
+            if ($("#calculator_" + $("#calculator_introduce").val() + "_" + $("#calculator_introduce").val()).val() == '' )
+            {
+                return;
+            }
+            if ($("#calculator_nominal").val() == '' )
+            {
+                return;
+            }
+            if ($("#calculator_gastos").val() == '' )
+            {
+                return;
+            }
+            if ($("#calculator_burofax").val() == '' )
+            {
+                return;
+            }
+            if ($("#calculator_mensajeria").val() == '' )
+            {
+                return;
+            }
+            if ($("#calculator_omf").val() == '' )
+            {
+                return;
+            }
+            if ($("#calculator_timbres").val() == '' )
+            {
+                return;
+            }
+            if ($("#calculator_honorarios").val() == '' )
+            {
+                return;
+            }
             var nominal = parseFloat($("#calculator_nominal").val().replace(",", "."));
             var retencion = parseFloat($("#calculator_costeFinanciero_retencion").val().replace(",", "."));
             var dias = parseInt($("#calculator_dias").val());
