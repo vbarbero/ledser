@@ -27,14 +27,14 @@ class ProposalRepository extends EntityRepository
         if($proposalFilterModel->getFrom())
         {
             $qb->andWhere(
-                $qb->expr()->gte('c.formalizacion', ":from")
+                $qb->expr()->gte('c.emision', ":from")
             );
             $qb->setParameter('from', $proposalFilterModel->getFrom());
         }
         if($proposalFilterModel->getTo())
         {
             $qb->andWhere(
-                $qb->expr()->lte('c.formalizacion', ":to")
+                $qb->expr()->lte('c.emision', ":to")
             );
             $qb->setParameter('to', $proposalFilterModel->getTo());
         }
@@ -73,7 +73,7 @@ class ProposalRepository extends EntityRepository
             );
             $qb->setParameter('user', $proposalFilterModel->getUser());
         }
-	    $qb->orderBy('c.formalizacion', 'ASC');
+	    $qb->orderBy('c.emision', 'ASC');
         return $qb->getQuery()->getResult();
     }
 

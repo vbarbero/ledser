@@ -23,6 +23,13 @@ class Calculator extends BaseEntity
      *
      * @ORM\Column(type="datetime")
      */
+    protected $emision;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
     protected $formalizacion;
 
     /**
@@ -404,5 +411,25 @@ class Calculator extends BaseEntity
     {
         $this->reason = $reason;
     }
+
+    /**
+     * @return null|\DateTime
+     */
+    public function getEmision(): ?\DateTime
+    {
+        return $this->emision;
+    }
+
+    /**
+     * @param \DateTime $emision
+     *
+     * @return void
+     */
+    public function setEmision(\DateTime $emision)
+    {
+        $this->emision = $emision;
+    }
+
+
 
 }

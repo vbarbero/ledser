@@ -11,6 +11,19 @@
         {{ form_errors(form) }}
         <div class="row">
             <div class="col-lg-4">
+                {{ form_label(form.emision) }}
+            </div>
+            <div class="col-lg-4">
+                <div class="input-group date" data-provide="datepicker">
+                    {{ form_widget(form.emision, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
                 {{ form_label(form.formalizacion) }}
             </div>
             <div class="col-lg-4">
@@ -412,6 +425,8 @@
                     tae = total / $("#calculator_dias").val() * 360;
                     mensual = total / $("#calculator_dias").val() * 30;
                 }
+
+
 
                 $("#calculator_costeFinanciero_total").val(parseFloat(total).toFixed(2));
                 $("#calculator_costeFinanciero_mensual").val(parseFloat(mensual).toFixed(2));

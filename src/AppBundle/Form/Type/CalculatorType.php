@@ -28,6 +28,7 @@ class CalculatorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('state', ChoiceType::class, ['choices' => CalculatorModel::getStateAsChoice()]);
+        $builder->add('emision', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
         $builder->add('formalizacion', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
         $builder->add('vencimiento', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
         $builder->add('dias', IntegerType::class, ['data' => 1]); //, 'attr' => ['readonly' => true]
