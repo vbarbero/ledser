@@ -115,15 +115,11 @@
                 </div>
                 <div class="col-lg-4">
                     {{ form_widget(form.honorarios, { 'attr':{'class': 'campito'} }) }}
-                    {{ form_widget(form.ConPorcentaje) }}
+                    {{ form_label(form.ConPorcentaje) }}{{ form_widget(form.ConPorcentaje) }}
 
                     <div class="row ConPorcentaje">
-                        <div class="col-lg-4">
-                            {{ form_label(form.porcentaje) }}
-                        </div>
-                        <div class="col-lg-4">
-                            {{ form_widget(form.porcentaje) }}
-                        </div>
+                        {{ form_label(form.porcentaje) }}
+                        {{ form_widget(form.porcentaje) }}
                     </div>
                 </div>
             </div>
@@ -629,7 +625,7 @@
 
                 $("#calculator_costeFinancieroCoste").val($("#calculator_costeFinanciero_coste").val());
                 $("#calculator_costeFinancieroLedserCoste").val(parseFloat($("#calculator_costeFinancieroLedser_coste").val()) + parseFloat(extra));
-                $("#calculator_costeTotalCoste").val(parseFloat($("#calculator_costeTotae_coste").val()) + parseFloat(extra));
+                $("#calculator_costeTotalCoste").val(parseFloat($("#calculator_costeTotal_coste").val()) + parseFloat(extra));
 //            }
         }
         function  reloadDates() {
