@@ -229,7 +229,7 @@
 //            $("#calculator_costeFinanciero_" + introduce).prop('readonly', true);
 //        }
         $(function () {
-            $("#calculator_porcentaje").hide();
+            //$("#calculator_porcentaje").hide();
             $('#calculator_introduce').prop('disabled', 'disabled');
             $("#calculator_introduce2").on('change', function () {
                 $('#calculator_introduce').prop('disabled', false);
@@ -493,15 +493,13 @@
             }
             else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'coste')
             {
-                //TODOOOO:
-            //     honorarios = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) * parseFloat($("#calculator_porcentaje").val()) / 100;
-            //     $("#calculator_honorarios").val(honorarios.toFixed(2));
-            //
-            //     coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - honorarios.toFixed(2);
-            // }
-            // else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'coste')
-            // {
-            //     coste = parseFloat($("#calculator_costeTotal_coste").val()) - honorarios.toFixed(2) - timbres - omf - mensajeria - burofax - gastos;
+                honorarios = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) * parseFloat($("#calculator_porcentaje").val()) / 100;
+                $("#calculator_honorarios").val(honorarios.toFixed(2));
+                coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - honorarios.toFixed(2);
+            }
+            else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'coste')
+            {
+                coste = parseFloat($("#calculator_costeTotal_coste").val()) - honorarios.toFixed(2) - timbres - omf - mensajeria - burofax - gastos;
             }
 
 
@@ -642,7 +640,5 @@
             $("#calculator_" + $("#calculator_introduce2").val() +"_" + $("#calculator_introduce").val()).prop('readonly', false);
             console.log("#calculator_" + $("#calculator_introduce2").val() +"_" + $("#calculator_introduce").val());
         }
-
-
     </script>
 {% endblock %}
