@@ -35,15 +35,16 @@ class CalculatorType extends AbstractType
         $builder->add('dias', IntegerType::class, ['data' => 1]); //, 'attr' => ['readonly' => true]
         $builder->add('nominal');
         $builder->add('honorarios');
+        $builder->add('extra');
         $builder->add('timbres');
         $builder->add('omf');
         $builder->add('mensajeria');
         $builder->add('burofax');
         $builder->add('gastos');
         $builder->add('reason');
-        $builder->add('porcentaje', TextType::class, ['mapped' => false, 'required' => false ]);
-        $builder->add('introduce', ChoiceType::class, ['choices' => ['' => '', 'tae' => 'tae', 'mensual' => 'mensual', 'total' => 'total', 'coste' => 'coste'], 'mapped' => false]);
-        $builder->add('introduce2', ChoiceType::class, ['choices' => ['' => '', 'costeFinanciero' =>'costeFinanciero','costeFinancieroLedser' => 'costeFinancieroLedser','costeTotal'=> 'costeTotal'], 'mapped' => false]);
+        $builder->add('porcentaje', TextType::class, ['required' => false ]);
+        $builder->add('introduce', ChoiceType::class, ['choices' => ['' => '', 'tae' => 'tae', 'mensual' => 'mensual', 'total' => 'total', 'coste' => 'coste']]);
+        $builder->add('introduce2', ChoiceType::class, ['choices' => ['' => '', 'costeFinanciero' =>'costeFinanciero','costeFinancieroLedser' => 'costeFinancieroLedser','costeTotal'=> 'costeTotal']]);
         $builder->add('existeTimbre', CheckboxType::class, ['mapped' => false, 'required' => false ]);
         $builder->add('boton', HiddenType::class, ['mapped' => false, 'required' => false ]);
         $builder->add('costeFinanciero', CostType::class);
@@ -57,6 +58,7 @@ class CalculatorType extends AbstractType
         $builder->add('drawee', EntityType::class, [
             'class' => Company::class,
             'choice_label' => 'name',
+            'required' => false,
             'query_builder' => function( CompanyRepository $er ) {
                 return $er->getDrawee();
             }]);

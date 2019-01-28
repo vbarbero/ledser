@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Calculator extends BaseEntity
 {
-
     /**
      * @var int
      *
@@ -59,6 +58,13 @@ class Calculator extends BaseEntity
      * @ORM\Column(type="float")
      */
     protected $honorarios;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(type="float")
+     */
+    protected $extra;
 
     /**
      * @var float
@@ -127,6 +133,7 @@ class Calculator extends BaseEntity
     /**
      * @var Company
      *
+     * @ORM\JoinColumn(nullable=true)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company",cascade={"persist"}, inversedBy="proposal")
      */
     protected $drawee;
@@ -137,6 +144,27 @@ class Calculator extends BaseEntity
      * @ORM\Column(type="string", nullable=true)
      */
     protected $reason;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $introduce2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $introduce;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(type="float")
+     */
+    protected $porcentaje;
 
 
     /**
@@ -427,6 +455,67 @@ class Calculator extends BaseEntity
         $this->emision = $emision;
     }
 
+    /**
+     * @return float
+     */
+    public function getExtra()
+    {
+        return $this->extra;
+    }
 
+    /**
+     * @param float $extra
+     */
+    public function setExtra($extra)
+    {
+        $this->extra = $extra;
+    }
 
+    /**
+     * @return string
+     */
+    public function getIntroduce2()
+    {
+        return $this->introduce2;
+    }
+
+    /**
+     * @param string $introduce2
+     */
+    public function setIntroduce2($introduce2)
+    {
+        $this->introduce2 = $introduce2;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIntroduce()
+    {
+        return $this->introduce;
+    }
+
+    /**
+     * @param string $introduce
+     */
+    public function setIntroduce($introduce)
+    {
+        $this->introduce = $introduce;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPorcentaje()
+    {
+        return $this->porcentaje;
+    }
+
+    /**
+     * @param float $porcentaje
+     */
+    public function setPorcentaje($porcentaje)
+    {
+        $this->porcentaje = $porcentaje;
+    }
 }

@@ -184,18 +184,34 @@ class ProposalController extends Controller
         $calculator->setMensajeria(0);
         $calculator->setBurofax(0);
         $calculator->setGastos(0);
+        $calculator->setHonorarios(0);
+        $calculator->setExtra(0);
+        $calculator->setPorcentaje(0);
         $calculator->setProposal($this->getDoctrine()->getRepository(Proposal::class)->find($proposal));
         $calculator->setEmision(new \DateTime());
         $calculator->setFormalizacion(new \DateTime());
         $calculator->setVencimiento(new \DateTime("+1 day"));
         $calculator->setCosteFinanciero(new Cost());
         $calculator->setCosteFinancieroLedser(new Cost());
+        $calculator->setState(CalculatorModel::CLOSE);
         $calculator->setCosteTotal(new Cost());
         if($request->query->has('drawee')) {
             $calculator->setDrawee($this->getDoctrine()->getRepository(Company::class)->find($request->query->get('drawee')));
         }
         if($request->query->has('state')) {
             $calculator->setState($request->query->get('state'));
+        }
+
+        if($request->query->has('formalizacion')) {
+            $calculator->setFormalizacion($request->query->get('formalizacion'));
+        }
+
+        if($request->query->has('emision')) {
+            $calculator->setEmision($request->query->get('emision'));
+        }
+
+        if($request->query->has('vencimiento')) {
+            $calculator->setVencimiento($request->query->get('vencimiento'));
         }
 
         $form = $this->createForm(CalculatorType::class, $calculator);
@@ -212,7 +228,7 @@ class ProposalController extends Controller
                 return $this->redirect($this->generateUrl("show_proposal",['id' => $calculator->getProposal()->getId()]));
             }
         else {
-            return $this->redirect($this->generateUrl("create_calculator",['proposal' => $calculator->getProposal()->getId(), 'drawee' => $calculator->getDrawee()->getId(), 'state' => $calculator->getState() ]));
+            return $this->redirect($this->generateUrl("create_calculator",['proposal' => $calculator->getProposal()->getId(), 'drawee' => $calculator->getDrawee()->getId(), 'state' => $calculator->getState(), 'vencimiento' => $calculator->getVencimiento(), 'formalizacion' => $calculator->getFormalizacion(), 'emision' => $calculator->getEmision()]));
             }
         }
 
