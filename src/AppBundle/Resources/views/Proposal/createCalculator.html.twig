@@ -91,7 +91,6 @@
         <div class="row second">
             <table>
                 <tr>
-                    <td>Honorarios</td>
                     <td>Extra</td>
                     <td>Timbres{{ form_widget(form.existeTimbre) }}</td>
                     <td>OMF</td>
@@ -100,7 +99,7 @@
                     <td>Otros gastos</td>
                 </tr>
                 <tr>
-                    <td>{{ form_widget(form.honorarios, { 'attr':{'class': 'campito'} }) }}</td>
+
                     <td>{{ form_widget(form.extra, { 'attr':{'class': 'campito'} }) }}</td>
                     <td>{{ form_widget(form.timbres, { 'attr':{'class': 'campito'} }) }}</td>
                     <td>{{ form_widget(form.omf, { 'attr':{'class': 'campito'} }) }}</td>
@@ -109,6 +108,25 @@
                     <td>{{ form_widget(form.gastos, { 'attr':{'class': 'campito'} }) }}</td>
                 </tr>
             </table>
+
+            <div class="row third">
+                <div class="col-lg-4">
+                    Honorarios
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.honorarios, { 'attr':{'class': 'campito'} }) }}
+                    {{ form_widget(form.ConPorcentaje) }}
+
+                    <div class="row ConPorcentaje">
+                        <div class="col-lg-4">
+                            {{ form_label(form.porcentaje) }}
+                        </div>
+                        <div class="col-lg-4">
+                            {{ form_widget(form.porcentaje) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row third">
                 <div class="col-lg-4">
                     {{ form_label(form.introduce2) }}
@@ -124,14 +142,6 @@
                 </div>
                 <div class="col-lg-4">
                     {{ form_widget(form.introduce) }}
-                </div>
-            </div>
-            <div class="row third">
-                <div class="col-lg-4">
-                    {{ form_label(form.porcentaje) }}
-                </div>
-                <div class="col-lg-4">
-                    {{ form_widget(form.porcentaje) }}
                 </div>
             </div>
             <div class="fourth">
@@ -235,6 +245,7 @@
 //            $("#calculator_costeFinanciero_" + introduce).prop('readonly', true);
 //        }
         $(function () {
+            alert($("#calculator_ConPorcentaje").val());
             //$("#calculator_porcentaje").hide();
             $('#calculator_introduce').prop('disabled', 'disabled');
             $("#calculator_introduce2").on('change', function () {
@@ -356,25 +367,33 @@
             var porcentaje = false;
             var retencion = false;
 
-//            $("#calculator_costeFinanciero_total").on('change', function() {
-//                calculaResultados();
-//            });
-//
-//            $("#calculator_costeFinanciero_tae").on('change', function() {
-//                calculaResultados();
-//            });
-//
-//            $("#calculator_costeFinanciero_mensual").on('change', function() {
-//                calculaResultados();
-//            });
-//
-//            $("#calculator_costeFinanciero_coste").on('change', function() {
-//                calculaResultados();
-//            });
-//
-//            $("#calculator_costeFinanciero_retencion").on('change', function() {
-//                calculaResultados();
-//            });
+           $("#calculator_honorarios").on('change', function() {
+               calculaResultados();
+           });
+
+           $("#calculator_extra").on('change', function() {
+               calculaResultados();
+           });
+
+           $("#calculator_timbres").on('change', function() {
+               calculaResultados();
+           });
+
+           $("#calculator_omf").on('change', function() {
+               calculaResultados();
+           });
+
+           $("#calculator_mensajeria").on('change', function() {
+               calculaResultados();
+           });
+
+           $("#calculator_burofax").on('change', function() {
+               calculaResultados();
+           });
+
+           $("#calculator_gastos").on('change', function() {
+               calculaResultados();
+           });
         });
         function calculaDias(nominal) {
             var start = $("#calculator_formalizacion").val();
@@ -609,8 +628,8 @@
                 $("#calculator_costeTotal_mensual").val(parseFloat($("#calculator_costeTotal_tae").val() / 12).toFixed(2));
 
                 $("#calculator_costeFinancieroCoste").val($("#calculator_costeFinanciero_coste").val());
-                $("#calculator_costeFinancieroLedserCoste").val($("#calculator_costeFinancieroLedser_coste").val() + extra);
-                $("#calculator_costeTotalCoste").val($("#calculator_costeTotal_coste").val() + extra);
+                $("#calculator_costeFinancieroLedserCoste").val(parseFloat($("#calculator_costeFinancieroLedser_coste").val()) + parseFloat(extra));
+                $("#calculator_costeTotalCoste").val(parseFloat($("#calculator_costeTotae_coste").val()) + parseFloat(extra));
 //            }
         }
         function  reloadDates() {
