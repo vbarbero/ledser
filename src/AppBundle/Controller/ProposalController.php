@@ -186,7 +186,7 @@ class ProposalController extends Controller
         $calculator->setGastos(0);
         $calculator->setHonorarios(0);
         $calculator->setExtra(0);
-        $calculator->setPorcentaje(0);
+        $calculator->setPorcentaje(100);
         $calculator->setProposal($this->getDoctrine()->getRepository(Proposal::class)->find($proposal));
         $calculator->setEmision(new \DateTime());
         $calculator->setFormalizacion(new \DateTime());
