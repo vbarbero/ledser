@@ -490,38 +490,37 @@
 
             if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'tae')
             {
-                coste = parseFloat($("#calculator_costeFinancieroLedser_tae").val()) * nominal * dias / 36000 - (honorarios + extra);
+                coste = parseFloat($("#calculator_costeFinancieroLedser_tae").val()) * nominal * dias / 36000 - honorarios;
             }
             else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'tae')
             {
-                coste = parseFloat($("#calculator_costeTotal_tae").val()) * nominal * dias / 36000 - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
+                coste = parseFloat($("#calculator_costeTotal_tae").val()) * nominal * dias / 36000 - honorarios - timbres - omf - mensajeria - burofax - gastos;
             }
             else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'total')
             {
-                coste = parseFloat($("#calculator_costeFinancieroLedser_total").val()) / 100 * nominal - (honorarios + extra);
+                coste = parseFloat($("#calculator_costeFinancieroLedser_total").val()) / 100 * nominal - honorarios;
             }
             else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'total')
             {
-                coste = parseFloat($("#calculator_costeTotal_total").val()) * nominal / 100 - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
+                coste = parseFloat($("#calculator_costeTotal_total").val()) * nominal / 100 - honorarios - timbres - omf - mensajeria - burofax - gastos;
             }
             else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'mensual')
             {
-                coste = parseFloat($("#calculator_costeFinancieroLedser_mensual").val()) * 12 * nominal * dias / 36000 - (honorarios + extra);
+                coste = parseFloat($("#calculator_costeFinancieroLedser_mensual").val()) * 12 * nominal * dias / 36000 - honorarios;
             }
             else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'mensual')
             {
-                coste = parseFloat($("#calculator_costeTotal_mensual").val()) * nominal * 12 * dias / 36000 - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
+                coste = parseFloat($("#calculator_costeTotal_mensual").val()) * nominal * 12 * dias / 36000 - honorarios - timbres - omf - mensajeria - burofax - gastos;
             }
             else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'coste')
             {
                 //honorarios = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) * parseFloat($("#calculator_porcentaje").val()) / 100;
                 //$("#calculator_honorarios").val(honorarios.toFixed(2));
-                //coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - honorarios.toFixed(2);
-                coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - (honorarios + extra)
+                coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - honorarios.toFixed(2);
             }
             else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'coste')
             {
-                coste = parseFloat($("#calculator_costeTotal_coste").val()) - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
+                coste = parseFloat($("#calculator_costeTotal_coste").val()) - honorarios.toFixed(2) - timbres - omf - mensajeria - burofax - gastos;
             }
 
 
@@ -594,7 +593,7 @@
 
                 $("#calculator_costeFinancieroLedser_total").val(
                     parseFloat(
-                     (parseFloat($("#calculator_costeFinanciero_coste").val()) + (parseFloat($("#calculator_honorarios").val()) + parseFloat($("#calculator_extra").val()))) / $("#calculator_costeFinanciero_nominal").val() * 100
+                     (parseFloat($("#calculator_costeFinanciero_coste").val()) + parseFloat($("#calculator_honorarios").val())) / $("#calculator_costeFinanciero_nominal").val() * 100
                     ).toFixed(2)
                 );
                 $("#calculator_costeFinancieroLedser_tae").val(parseFloat($("#calculator_costeFinancieroLedser_total").val() / $("#calculator_dias").val() * 360).toFixed(2));
@@ -605,7 +604,7 @@
                 $("#calculator_costeTotal_nominal").val($("#calculator_costeFinanciero_nominal").val());
 
                 $("#calculator_costeFinancieroLedser_coste").val(
-                    parseFloat(parseFloat($("#calculator_costeFinanciero_coste").val()) + (parseFloat($("#calculator_honorarios").val()) + parseFloat($("#calculator_extra").val()))).toFixed(2)
+                    parseFloat(parseFloat($("#calculator_costeFinanciero_coste").val()) + parseFloat($("#calculator_honorarios").val())).toFixed(2)
                 );
 
                 $("#calculator_costeTotal_coste").val(parseFloat(parseFloat($("#calculator_costeFinancieroLedser_coste").val()) + parseFloat($("#calculator_timbres").val()) +
@@ -618,7 +617,7 @@
                 $("#calculator_costeFinancieroLedser_retencionTotal").val(nominal * retencion / 100);
                 $("#calculator_costeTotal_retencionTotal").val(nominal * retencion / 100);
 
-                $("#calculator_costeTotal_total").val(parseFloat((parseFloat($("#calculator_costeFinanciero_coste").val()) + (parseFloat($("#calculator_honorarios").val()) + parseFloat($("#calculator_extra").val())) + parseFloat($("#calculator_timbres").val()) +
+                $("#calculator_costeTotal_total").val(parseFloat((parseFloat($("#calculator_costeFinanciero_coste").val()) + parseFloat($("#calculator_honorarios").val()) + parseFloat($("#calculator_timbres").val()) +
                     parseFloat($("#calculator_omf").val()) + parseFloat($("#calculator_mensajeria").val()) + parseFloat($("#calculator_burofax").val()) + parseFloat($("#calculator_gastos").val())) / $("#calculator_costeFinanciero_nominal").val() * 100).toFixed(2));
 
                 $("#calculator_costeTotal_tae").val(parseFloat($("#calculator_costeTotal_total").val() / $("#calculator_dias").val() * 360).toFixed(2));
