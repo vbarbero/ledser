@@ -490,37 +490,38 @@
 
             if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'tae')
             {
-                coste = parseFloat($("#calculator_costeFinancieroLedser_tae").val()) * nominal * dias / 36000 - honorarios;
+                coste = parseFloat($("#calculator_costeFinancieroLedser_tae").val()) * nominal * dias / 36000 - (honorarios + extra);
             }
             else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'tae')
             {
-                coste = parseFloat($("#calculator_costeTotal_tae").val()) * nominal * dias / 36000 - honorarios - timbres - omf - mensajeria - burofax - gastos;
+                coste = parseFloat($("#calculator_costeTotal_tae").val()) * nominal * dias / 36000 - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
             }
             else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'total')
             {
-                coste = parseFloat($("#calculator_costeFinancieroLedser_total").val()) / 100 * nominal - honorarios;
+                coste = parseFloat($("#calculator_costeFinancieroLedser_total").val()) / 100 * nominal - (honorarios + extra);
             }
             else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'total')
             {
-                coste = parseFloat($("#calculator_costeTotal_total").val()) * nominal / 100 - honorarios - timbres - omf - mensajeria - burofax - gastos;
+                coste = parseFloat($("#calculator_costeTotal_total").val()) * nominal / 100 - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
             }
             else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'mensual')
             {
-                coste = parseFloat($("#calculator_costeFinancieroLedser_mensual").val()) * 12 * nominal * dias / 36000 - honorarios;
+                coste = parseFloat($("#calculator_costeFinancieroLedser_mensual").val()) * 12 * nominal * dias / 36000 - (honorarios + extra);
             }
             else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'mensual')
             {
-                coste = parseFloat($("#calculator_costeTotal_mensual").val()) * nominal * 12 * dias / 36000 - honorarios - timbres - omf - mensajeria - burofax - gastos;
+                coste = parseFloat($("#calculator_costeTotal_mensual").val()) * nominal * 12 * dias / 36000 - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
             }
             else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'coste')
             {
-                honorarios = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) * parseFloat($("#calculator_porcentaje").val()) / 100;
-                $("#calculator_honorarios").val(honorarios.toFixed(2));
-                coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - honorarios.toFixed(2);
+                //honorarios = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) * parseFloat($("#calculator_porcentaje").val()) / 100;
+                //$("#calculator_honorarios").val(honorarios.toFixed(2));
+                //coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - honorarios.toFixed(2);
+                coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - (honorarios + extra)
             }
             else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'coste')
             {
-                coste = parseFloat($("#calculator_costeTotal_coste").val()) - honorarios.toFixed(2) - timbres - omf - mensajeria - burofax - gastos;
+                coste = parseFloat($("#calculator_costeTotal_coste").val()) - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
             }
 
 
