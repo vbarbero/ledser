@@ -233,8 +233,9 @@
 
         calculaDias(false);
         // $(".third").hide();
+         $(".ConPorcentaje").hide();
         // $(".fourth").hide();
-//        'costeFinanciero' =>'costeFinanciero','costeFinancieroLedser' => 'costeFinancieroLedser','costeTotal'=> 'costeTotal'
+
 //        var introduces2 = {'costeFinanciero':'costeFinanciero','costeFinancieroLedser' : 'costeFinancieroLedser','costeTotal': 'costeTotal'};
 //        var introduces = {'tae':'tae','mensual' : 'mensual','total': 'total', 'coste' : 'coste'};
 //        for (introduce in introduces) {
@@ -242,6 +243,15 @@
 //        }
         $(function () {
             console.log(alert($("#calculator_ConPorcentaje").val()));
+            if (($("#calculator_introduce2").val() == 'costeFinancieroLedser' || $("#calculator_introduce2").val() == 'costeTotal') && $("#calculator_introduce").val() == 'coste')
+            {
+                $(".ConPorcentaje").show();
+            }
+            else
+            {
+                $(".ConPorcentaje").hide();
+            }
+
             //$("#calculator_porcentaje").hide();
             $('#calculator_introduce').prop('disabled', 'disabled');
             $("#calculator_introduce2").on('change', function () {
@@ -514,17 +524,16 @@
             }
             else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'coste')
             {
-                //honorarios = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) * parseFloat($("#calculator_porcentaje").val()) / 100;
-                //$("#calculator_honorarios").val(honorarios.toFixed(2));
-                //coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - honorarios.toFixed(2);
-                coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - (honorarios + extra)
+                honorarios = (parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - extra) * parseFloat($("#calculator_porcentaje").val()) / 100;
+                $("#calculator_honorarios").val(honorarios.toFixed(2));
+                coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - honorarios.toFixed(2) - extra;
             }
             else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'coste')
             {
-                coste = parseFloat($("#calculator_costeTotal_coste").val()) - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
+                honorarios = (parseFloat($("#calculator_costeTotal_coste").val()) - extra - timbres - omf - mensajeria - burofax - gastos) * parseFloat($("#calculator_porcentaje").val()) / 100;
+                $("#calculator_honorarios").val(honorarios.toFixed(2));
+                coste = parseFloat($("#calculator_costeTotal_coste").val()) - honorarios - extra - timbres - omf - mensajeria - burofax - gastos;
             }
-
-
             else if ($("#calculator_introduce2").val() == 'costeFinanciero' && $("#calculator_introduce").val() == 'tae')
             {
                 tae = parseFloat($("#calculator_costeFinanciero_tae").val());
@@ -648,14 +657,14 @@
             $(".fourth").show();
             var introduces2 = {'costeFinanciero':'costeFinanciero','costeFinancieroLedser' : 'costeFinancieroLedser','costeTotal': 'costeTotal'};
             var introduces = {'tae':'tae','mensual' : 'mensual','total': 'total','coste': 'coste'};
-            // if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'coste')
-            // {
-            //     $("#calculator_porcentaje").show();
-            // }
-            // else
-            // {
-            //     $("#calculator_porcentaje").hide();
-            // }
+            if (($("#calculator_introduce2").val() == 'costeFinancieroLedser' || $("#calculator_introduce2").val() == 'costeTotal') && $("#calculator_introduce").val() == 'coste')
+            {
+                $(".ConPorcentaje").show();
+            }
+            else
+            {
+                $(".ConPorcentaje").hide();p
+            }
         for (introduce2 in introduces2) {
                 for (introduce in introduces) {
                     //                        if(introduce == $(this).val()){
