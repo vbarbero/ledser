@@ -203,15 +203,15 @@ class ProposalController extends Controller
         }
 
         if($request->query->has('formalizacion')) {
-            $calculator->setFormalizacion($request->query->get('formalizacion'));
+            $calculator->setFormalizacion(new \DateTime($request->query->get('formalizacion')));
         }
 
         if($request->query->has('emision')) {
-            $calculator->setEmision($request->query->get('emision'));
+            $calculator->setEmision(new \DateTime($request->query->get('emision')));
         }
 
         if($request->query->has('vencimiento')) {
-            $calculator->setVencimiento($request->query->get('vencimiento'));
+            $calculator->setVencimiento(new \DateTime($request->query->get('vencimiento')));
         }
 
         $form = $this->createForm(CalculatorType::class, $calculator);
