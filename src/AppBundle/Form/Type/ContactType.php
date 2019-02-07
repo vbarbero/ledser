@@ -18,7 +18,7 @@ class ContactType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('company', EntityType::class, ['class' => Company::class, 'choice_label' => 'name', 'query_builder' => function( CompanyRepository $er ) {
+        $builder->add('company', EntityType::class, ['required' => false, 'class' => Company::class, 'choice_label' => 'name', 'query_builder' => function( CompanyRepository $er ) {
             return $er->getCompaniesSorted();
         }]);
         $builder->add('name');
