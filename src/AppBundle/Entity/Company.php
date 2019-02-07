@@ -161,7 +161,7 @@ class Company extends BaseEntity
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact",cascade={"remove"}, mappedBy="company")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\File",cascade={"remove"}, mappedBy="company")
      */
     protected $files;
 

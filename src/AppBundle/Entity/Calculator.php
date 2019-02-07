@@ -118,7 +118,7 @@ class Calculator extends BaseEntity
     /**
      * @var Cost
      *
-     *
+     *w
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Cost",cascade={"persist", "remove"})
      */
     protected $costeTotal;
@@ -134,7 +134,7 @@ class Calculator extends BaseEntity
      * @var Company
      *
      * @ORM\JoinColumn(nullable=true)
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company",cascade={"persist"}, inversedBy="proposal")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company",cascade={"persist"}, inversedBy="calculator")
      */
     protected $drawee;
 

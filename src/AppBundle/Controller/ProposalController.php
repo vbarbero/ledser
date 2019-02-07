@@ -227,8 +227,9 @@ class ProposalController extends Controller
             if ($form->getClickedButton() && 'save' === $form->getClickedButton()->getName()) {
                 return $this->redirect($this->generateUrl("show_proposal",['id' => $calculator->getProposal()->getId()]));
             }
-        else {
-            return $this->redirect($this->generateUrl("create_calculator",['proposal' => $calculator->getProposal()->getId(), 'drawee' => $calculator->getDrawee()->getId(), 'state' => $calculator->getState(), 'vencimiento' => $calculator->getVencimiento()->format("Y-m-d H:i:s"), 'formalizacion' => $calculator->getFormalizacion()->format("Y-m-d H:i:s"), 'emision' => $calculator->getEmision()->format("Y-m-d H:i:s")]));
+            else {
+
+                return $this->redirect($this->generateUrl("create_calculator",['proposal' => $calculator->getProposal()->getId(), 'drawee' => $calculator->getDrawee()->getId(), 'state' => $calculator->getState(), 'vencimiento' => $calculator->getVencimiento()->format("Y-m-d H:i:s"), 'formalizacion' => $calculator->getFormalizacion()->format("Y-m-d H:i:s"), 'emision' => $calculator->getEmision()->format("Y-m-d H:i:s")]));
             }
         }
 

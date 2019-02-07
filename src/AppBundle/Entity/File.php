@@ -27,7 +27,7 @@ class File extends BaseEntity
     /**
      * @var Company
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", inversedBy="file")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", inversedBy="files")
      */
     private $company;
 
