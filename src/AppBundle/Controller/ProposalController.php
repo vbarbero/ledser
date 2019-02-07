@@ -153,7 +153,6 @@ class ProposalController extends Controller
     public function editCalculatorAction($calculator, Request $request)
     {
         $calculator = $this->getDoctrine()->getRepository(Calculator::class)->find($calculator);
-die($calculator->getIntroduce());
         $form = $this->createForm(CalculatorType::class, $calculator);
         $form->handleRequest($request);
         if ( $form->isValid()) {
