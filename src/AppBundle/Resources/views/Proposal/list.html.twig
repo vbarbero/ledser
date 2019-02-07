@@ -226,9 +226,9 @@
             {% for calculator in proposal.calculator %}
                 {% set num = num + 1 %}
                 {% set coste = coste + calculator.costeFinanciero.coste %}
-                {% set costeT =  calculator.costeTotal.coste + costeT %}
                 {% set honorarios = honorarios + calculator.honorarios %}
                 {% set extra = extra + calculator.extra %}
+                {% set costeT =  calculator.costeTotal.coste + costeT %}
 
                 {% set dias = calculator.dias + dias %}
                 {% set taeCF = calculator.costeFinanciero.tae + taeCF %}
@@ -316,11 +316,11 @@
                 ({{ costeTotal |number_format(2) }})</td>
             <td style="border-top: 3px solid black;">
                 {{ ((honorariosTotal + extraT + costeTotal) * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
-                ({{ (honorariosTotal + extraT )|number_format(2) }})
+                ({{ (honorariosTotal + extraT  + costeTotal)|number_format(2) }})
             </td>
             <td style="border-top: 3px solid black;">
-                {{ (costeTTotal * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
-                ({{ (costeTTotal)|number_format(2) }})
+                {{ ((costeTTotal + honorariosT + extraT) * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
+                ({{ (costeTTotal + honorariosT + extraT)|number_format(2) }})
             </td>
         </tr>
     </table>
