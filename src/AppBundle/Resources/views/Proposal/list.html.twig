@@ -186,11 +186,6 @@
             style="{{ styles }}border: 3px solid black;">
             <td style="border-top: 3px solid black;">
                 {{ loop.index  }}
-                {% for file in  proposal.company.files  %}
-
-                    <a href="{{ asset('uploads/' ~ file.source ) }}">{{ file.name }} </a>
-                {% endfor %}
-
             </td>
             <td style="border-top: 3px solid black;">
                 {% if proposal.calculator | length == 1 %}
