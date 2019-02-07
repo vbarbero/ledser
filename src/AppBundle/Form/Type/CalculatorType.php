@@ -62,7 +62,7 @@ class CalculatorType extends AbstractType
         $builder->add('drawee', EntityType::class, [
             'class' => Company::class,
             'choice_label' => 'name',
-            'required' => true,
+            'required' => false,
             'query_builder' => function( CompanyRepository $er ) {
                 return $er->getDrawee();
             }]);
