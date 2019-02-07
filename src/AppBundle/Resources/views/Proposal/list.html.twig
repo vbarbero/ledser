@@ -147,7 +147,7 @@
             <td style="border-top: 3px solid black;">Nominal</td>
             <td style="border-top: 3px solid black;">Date diff</td>
             <td style="border-top: 3px solid black;">Tae coste financiero (coste)</td>
-            <td style="border-top: 3px solid black;">Tae coste + ledser (honorarios)</td>
+            <td style="border-top: 3px solid black;">Tae coste + ledser (honorarios + extra)</td>
             <td style="border-top: 3px solid black;">Tae coste total (coste)</td>
             {#<div class="col">Tipo operacion</div>#}
             <td style="border-top: 3px solid black;">Acción</td>
@@ -219,6 +219,8 @@
             {% set taeCF = 0 %}
             {% set taeCL = 0 %}
             {% set taeT = 0 %}
+            {% set extra = 0 %}
+            {% set extraT = 0 %}
 
             {% set num = 0 %}
             {% for calculator in proposal.calculator %}
@@ -226,6 +228,7 @@
                 {% set coste = coste + calculator.costeFinanciero.coste %}
                 {% set costeT =  calculator.costeTotal.coste + costeT %}
                 {% set honorarios = honorarios + calculator.honorarios %}
+                {% set extra = extra + calculator.extra %}
 
                 {% set dias = calculator.dias + dias %}
                 {% set taeCF = calculator.costeFinanciero.tae + taeCF %}
@@ -234,14 +237,15 @@
                 {% set nominal = calculator.nominal + nominal %}
             {% endfor %}
 
-                {% set costeTTotal = costeTTotal + costeT %}
-                {% set honorariosTotal = honorarios + honorariosTotal %}
-                {% set costeTotal = costeTotal + coste %}
-                {% set diasT = diasT + (dias/num) %}
-                {% set nominalT = nominalT + (nominal) %}
-                {% set taeCFT = taeCFT + (taeCF/num) %}
-                {% set taeCLT = taeCLT + (taeCL/num) %}
-                {% set taeTT = taeTT + (taeT/num) %}
+            {% set costeTTotal = costeTTotal + costeT %}
+            {% set honorariosTotal = honorarios + honorariosTotal %}
+            {% set extraT = extra + extraT %}
+            {% set costeTotal = costeTotal + coste %}
+            {% set diasT = diasT + (dias/num) %}
+            {% set nominalT = nominalT + (nominal) %}
+            {% set taeCFT = taeCFT + (taeCF/num) %}
+            {% set taeCLT = taeCLT + (taeCL/num) %}
+            {% set taeTT = taeTT + (taeT/num) %}
 
             <td style="border-top: 3px solid black;">{% if num == 0 %}0(0){% else %}{{ (nominal )|number_format(2) }}{% endif %}</td>
             <td style="border-top: 3px solid black;">{% if num == 0 %}0{% else %}{{ (dias/num)|number_format(0) }}{% endif %}</td>
@@ -256,8 +260,8 @@
             </td>
             <td style="border-top: 3px solid black;">
                 {% if num == 0 %}0{% else %}
-                    {{ ((honorarios + coste) * 360 * 100 * num / (nominal * dias ))|number_format(2) }}
-                    <br/>({{ (honorarios)|number_format(2) }}){% endif %}
+                    {{ ((honorarios + extra + coste) * 360 * 100 * num / (nominal * dias ))|number_format(2) }}
+                    <br/>({{ (honorarios + extra)|number_format(2) }}){% endif %}
             </td>
             <td style="border-top: 3px solid black;">
                 {% if num == 0 %}0{% else %}
@@ -292,7 +296,7 @@
                 <td style="border-top: 3px solid black;">{{ calculator.nominal|number_format(2) }}</td>
                 <td style="border-top: 3px solid black;">{{ calculator.dias|number_format(0) }}</td>
                 <td style="border-top: 3px solid black;">{{ calculator.costeFinanciero.tae|number_format(2) }} <br/>({{ calculator.costeFinanciero.coste |number_format(2) }})</td>
-                <td style="border-top: 3px solid black;">{{ calculator.costeFinancieroLedser.tae |number_format(2) }}<br/>({{ calculator.honorarios|number_format(2) }})</td>
+                <td style="border-top: 3px solid black;">{{ calculator.costeFinancieroLedser.tae |number_format(2) }}<br/>({{ (calculator.honorarios + calculator.extra)|number_format(2) }})</td>
                 <td style="border-top: 3px solid black;">{{ calculator.costeTotal.tae|number_format(2) }}<br/>({{calculator.costeTotal.coste |number_format(2) }})</td>
                 <td style="border-top: 3px solid black;">
                      <a href="{{ url('edit_calculator' , {calculator:calculator.id}) }}">Edit</a>
@@ -311,8 +315,8 @@
             <td style="border-top: 3px solid black;">{{ (costeTotal * 360 * 100 * proposals| length / (nominalT * diasT))|number_format(2) }}
                 ({{ costeTotal |number_format(2) }})</td>
             <td style="border-top: 3px solid black;">
-                {{ ((honorariosTotal + costeTotal) * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
-                ({{ (honorariosTotal)|number_format(2) }})
+                {{ ((honorariosTotal + extraT + costeTotal) * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
+                ({{ (honorariosTotal + extraT )|number_format(2) }})
             </td>
             <td style="border-top: 3px solid black;">
                 {{ (costeTTotal * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
