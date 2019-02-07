@@ -242,7 +242,6 @@
 //            $("#calculator_costeFinanciero_" + introduce).prop('readonly', true);
 //        }
         $(function () {
-            console.log($("#calculator_ConPorcentaje").val());
             if (($("#calculator_introduce2").val() == 'costeFinancieroLedser' || $("#calculator_introduce2").val() == 'costeTotal') && $("#calculator_introduce").val() == 'coste')
             {
                 $(".ConPorcentaje").show();
@@ -524,6 +523,7 @@
             }
             else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'coste')
             {
+                alert($("#calculator_ConPorcentaje").is(':checked'));
                 honorarios = (parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - extra) * parseFloat($("#calculator_porcentaje").val()) / 100;
                 $("#calculator_honorarios").val(honorarios.toFixed(2));
                 coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - honorarios.toFixed(2) - extra;

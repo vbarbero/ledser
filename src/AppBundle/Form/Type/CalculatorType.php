@@ -36,7 +36,7 @@ class CalculatorType extends AbstractType
         $builder->add('costeFinancieroCoste', TextType::class, ['mapped' => false, 'attr' => ['readonly' => true]]); //, 'attr' => ['readonly' => true]
         $builder->add('costeFinancieroLedserCoste', TextType::class, ['mapped' => false, 'attr' => ['readonly' => true]]); //, 'attr' => ['readonly' => true]
         $builder->add('costeTotalCoste', TextType::class, ['mapped' => false, 'attr' => ['readonly' => true]]); //, 'attr' => ['readonly' => true]
-        $builder->add('ConPorcentaje', CheckboxType::class, ['mapped' => false]);
+        $builder->add('ConPorcentaje', CheckboxType::class, ['mapped' => false, 'required' => false]);
         $builder->add('nominal');
         $builder->add('honorarios');
         $builder->add('extra');
