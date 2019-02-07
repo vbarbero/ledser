@@ -39,7 +39,7 @@ class ProposalController extends Controller
         } else {
             $dateFrom = new \DateTime();
             $dateFrom->setTime(0,0,0);
-            $dateFrom->modify("-30 days");
+            $dateFrom->modify("first day of this month");
         }
         $proposalModel->setFrom($dateFrom);
 
@@ -53,6 +53,7 @@ class ProposalController extends Controller
         }else {
             $dateTo = new \DateTime();
             $dateTo->setTime(23,59,59);
+            $dateTo->modify("last day of this month");
         }
         if($request->query->get('financial'))
         {
