@@ -523,15 +523,18 @@
             }
             else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'coste')
             {
-                alert($("#calculator_ConPorcentaje").is(':checked'));
-                honorarios = (parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - extra) * parseFloat($("#calculator_porcentaje").val()) / 100;
-                $("#calculator_honorarios").val(honorarios.toFixed(2));
+                if($("#calculator_ConPorcentaje").is(':checked')) {
+                    honorarios = (parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - extra) * parseFloat($("#calculator_porcentaje").val()) / 100;
+                    $("#calculator_honorarios").val(honorarios.toFixed(2));
+                }
                 coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - honorarios.toFixed(2) - extra;
             }
             else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'coste')
             {
-                honorarios = (parseFloat($("#calculator_costeTotal_coste").val()) - extra - timbres - omf - mensajeria - burofax - gastos) * parseFloat($("#calculator_porcentaje").val()) / 100;
-                $("#calculator_honorarios").val(honorarios.toFixed(2));
+                if($("#calculator_ConPorcentaje").is(':checked')) {
+                    honorarios = (parseFloat($("#calculator_costeTotal_coste").val()) - extra - timbres - omf - mensajeria - burofax - gastos) * parseFloat($("#calculator_porcentaje").val()) / 100;
+                    $("#calculator_honorarios").val(honorarios.toFixed(2));
+                }
                 coste = parseFloat($("#calculator_costeTotal_coste").val()) - honorarios - extra - timbres - omf - mensajeria - burofax - gastos;
             }
             else if ($("#calculator_introduce2").val() == 'costeFinanciero' && $("#calculator_introduce").val() == 'tae')
