@@ -126,6 +126,7 @@
     {% set costeTotal = 0 %}
     {% set costeTTotal = 0 %}
     {% set honorariosTotal = 0 %}
+    {% set extraTotal = 0 %}
     {% set diasT = 0 %}
     {% set taeCFT = 0 %}
     {% set taeCLT = 0 %}
@@ -220,7 +221,6 @@
             {% set taeCL = 0 %}
             {% set taeT = 0 %}
             {% set extra = 0 %}
-            {% set extraT = 0 %}
 
             {% set num = 0 %}
             {% for calculator in proposal.calculator %}
@@ -239,7 +239,7 @@
 
             {% set costeTTotal = costeTTotal + costeT %}
             {% set honorariosTotal = honorarios + honorariosTotal %}
-            {% set extraT = extra + extraT %}
+            {% set extraTotal = extra + extraTotal %}
             {% set costeTotal = costeTotal + coste %}
             {% set diasT = diasT + (dias/num) %}
             {% set nominalT = nominalT + (nominal) %}
@@ -315,12 +315,12 @@
             <td style="border-top: 3px solid black;">{{ (costeTotal * 360 * 100 * proposals| length / (nominalT * diasT))|number_format(2) }}
                 ({{ costeTotal |number_format(2) }})</td>
             <td style="border-top: 3px solid black;">
-                {{ ((honorariosTotal + extraT + costeTotal) * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
-                ({{ (honorariosTotal + extraT)|number_format(2) }})
+                {{ ((honorariosTotal + extraTotal + costeTotal) * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
+                ({{ (honorariosTotal + extraTotal)|number_format(2) }})
             </td>
             <td style="border-top: 3px solid black;">
-                {{ ((costeTTotal + honorariosT + extraT) * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
-                ({{ (costeTTotal + honorariosT + extraT)|number_format(2) }})
+                {{ ((costeTTotal + honorariosT + extraTotal) * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
+                ({{ (costeTTotal + honorariosT + extraTotal)|number_format(2) }})
             </td>
         </tr>
     </table>
