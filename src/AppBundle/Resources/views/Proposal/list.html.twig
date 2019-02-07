@@ -188,7 +188,7 @@
                 {{ loop.index  }}
                 {% for file in  proposal.company.files  %}
 
-                    <div class="col"><a href="{{ asset('uploads/' ~ file.source ) }}">{{ file.name }} </a>
+                    <a href="{{ asset('uploads/' ~ file.source ) }}">{{ file.name }} </a>
                 {% endfor %}
 
             </td>
