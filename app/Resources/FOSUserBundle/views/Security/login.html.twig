@@ -114,6 +114,7 @@
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
             <div class="login-container">
                 <h1>Login to Your Account</h1><br>
+                <img src="{{ asset('img/ledser.jpg') }}" style="padding-right: 20px;"/>
                 <form>
                     <label for="username">{{ 'security.login.username'|trans }}</label>
                     <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
