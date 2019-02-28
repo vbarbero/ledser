@@ -307,18 +307,18 @@
         {% endif %}
     {% endfor %}
 
-        <tr style="color:black;">
-            <td style="border: 3px solid black;">TOTAL</td>
+        <tr style="color:black;background-color=#red">
+            <td style="border: 1px solid black;">TOTAL</td>
             <td colspan="8"></td>
-            <td style="border-top: 3px solid black;">{{ (nominalT)|number_format(2) }}</td>
-            <td style="border-top: 3px solid black;">{{ (diasT / proposals| length)|number_format(2) }}</td>
-            <td style="border-top: 3px solid black;">{{ (costeTotal * 360 * 100 * proposals| length / (nominalT * diasT))|number_format(2) }}
+            <td style="border: 1px solid black;">{{ (nominalT)|number_format(2) }}</td>
+            <td style="border: 1px solid black;">{{ (diasT / proposals| length)|number_format(2) }}</td>
+            <td style="border: 1px solid black;">{{ (costeTotal * 360 * 100 * proposals| length / (nominalT * diasT))|number_format(2) }}
                 ({{ costeTotal |number_format(2) }})</td>
-            <td style="border-top: 3px solid black;">
+            <td style="border: 1px solid black;">
                 {{ ((honorariosTotal + extraTotal + costeTotal) * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
                 ({{ (honorariosTotal + extraTotal)|number_format(2) }})
             </td>
-            <td style="border-top: 3px solid black;">
+            <td style="border: 1px solid black;">
                 {{ ((costeTTotal) * 360 * 100 * proposals| length / (nominalT * diasT ))|number_format(2) }}
                 ({{ (costeTTotal)|number_format(2) }})
             </td>
