@@ -74,6 +74,12 @@ class Agent extends BaseEntity
      */
     protected $files;
 
+    /**
+     * @var Proposal
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Proposal", inversedBy="agent")
+     */
+    protected $proposal;
 
     public function __construct()
     {
@@ -238,7 +244,7 @@ class Agent extends BaseEntity
 
 
     /**
-     * @return Contact
+     * @return Proposal
      */
     public function getProposal()
     {
@@ -246,7 +252,7 @@ class Agent extends BaseEntity
     }
 
     /**
-     * @param Contact $proposal
+     * @param Proposal $proposal
      */
     public function setProposal($proposal)
     {
