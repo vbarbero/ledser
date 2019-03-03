@@ -91,7 +91,6 @@ class ProposalController extends Controller
         $proposal->setUser($user);
         $form = $this->createForm(ProposalType::class, $proposal);
 
-        echo 1;die;
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $proposal = $form->getData();
@@ -100,7 +99,6 @@ class ProposalController extends Controller
             $em->flush();
             return $this->redirect("create-calculator/". $proposal->getId());
         }
-        echo 1;die;
         return $this->render('AppBundle:Proposal:createProposal.html.twig', ['form' => $form->createView()]);
     }
     /**
