@@ -81,6 +81,10 @@ class Agent extends BaseEntity
         $this->files = new ArrayCollection();
 	    $this->zip = 0;
     }
+    public function __toString()
+    {
+        return '';  
+    } 
 
 
     /**
