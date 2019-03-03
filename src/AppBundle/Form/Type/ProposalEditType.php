@@ -28,7 +28,7 @@ class ProposalEditType extends AbstractType
         }]);
         
         $builder->add('agent', EntityType::class, ['class' => Agent::class, 'choice_label' => 'name', 'required' => false, 'query_builder' => function( AgentRepository $er ) {
-            return $er->findAll();
+            return $er->getAgents();
         }]);
         $builder->add('user', EntityType::class, ['class' => User::class, 'choice_label' => 'username']);
         $builder->add('finalcial', EntityType::class, [
