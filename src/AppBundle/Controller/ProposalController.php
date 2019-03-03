@@ -87,11 +87,11 @@ class ProposalController extends Controller
     {
         $proposal = new Proposal();
 
-        echo 1;die;
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $proposal->setUser($user);
         $form = $this->createForm(ProposalType::class, $proposal);
 
+        echo 1;die;
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $proposal = $form->getData();
