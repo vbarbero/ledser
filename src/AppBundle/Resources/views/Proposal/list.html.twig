@@ -163,8 +163,10 @@
                 {% endif %}
             {% endfor %}
         <tr
+            {% if proposal.agent is not null %}
+                {% set styles ="background-color: yellow; color: black;" %}
 
-            {% if proposal.operationalType == 'Discount' %}
+            {% elseif proposal.operationalType == 'Discount' %}
                 {% set styles ="background-color: white; color: black;" %}
             {% elseif proposal.operationalType == 'Advance' %}
                 {% set styles ="background-color: darkgreen;" %}
