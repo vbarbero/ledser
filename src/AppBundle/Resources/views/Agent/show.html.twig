@@ -1,0 +1,70 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'Id' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ agent.id }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'Name' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ agent.name }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'last name' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ agent.cnae }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'dni' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ agent.dni }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'Address' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ agent.address }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'City' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ agent.city }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'Zip' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ agent.zip }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'Province' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ agent.province }}
+        </div>
+    </div><
+/div>
+{% endblock %}

@@ -56,6 +56,26 @@
                 {{ form_widget(form.dias, { 'attr':{'class': 'campito'} }) }}
             </div>
         </div>
+
+
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.notice) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.notice, { 'attr':{'class': 'campito'} }) }}
+            </div>
+        </div>
+
+        <div class="row messageNotice">
+            <div class="col-lg-4">
+                {{ form_label(form.noticeMessage) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.noticeMessage, { 'attr':{'class': 'campito'} }) }}
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-lg-4">
                 {{ form_label(form.state) }}
@@ -242,6 +262,17 @@
 //            $("#calculator_costeFinanciero_" + introduce).prop('readonly', true);
 //        }
         $(function () {
+if(!$("#calculator_notice").prop('checked') ) {
+            $(".messageNotice").hide();
+}
+            $("#calculator_notice").on("click", function() {
+		if($("#calculator_notice").prop('checked') ) {
+                    $(".messageNotice").show();
+                } else {
+$(".messageNotice").hide();
+}
+            });
+
             if (($("#calculator_introduce2").val() == 'costeFinancieroLedser' || $("#calculator_introduce2").val() == 'costeTotal') && $("#calculator_introduce").val() == 'coste')
             {
                 $(".ConPorcentaje").show();

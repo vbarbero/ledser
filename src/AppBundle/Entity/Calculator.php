@@ -168,6 +168,22 @@ class Calculator extends BaseEntity
 
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $notice;
+
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $noticeMessage;
+
+    /**
      * @return \DateTime
      */
     public function getFormalizacion()
@@ -518,4 +534,38 @@ class Calculator extends BaseEntity
     {
         $this->porcentaje = $porcentaje;
     }
+
+
+    /**
+     * @return string
+     */
+    public function getNoticeMessage()
+    {
+        return $this->noticeMessage;
+    }
+
+    /**
+     * @param string $noticeMessage
+     */
+    public function setNoticeMessage($noticeMessage)
+    {
+        $this->noticeMessage = $noticeMessage;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getNotice()
+    {
+        return $this->notice;
+    }
+
+    /**
+     * @param bool $notice
+     */
+    public function setNotice($notice)
+    {
+        $this->notice = $notice;
+    }
+
 }

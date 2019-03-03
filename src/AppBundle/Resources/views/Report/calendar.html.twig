@@ -78,6 +78,12 @@
                             <span style="color: green"> <a style="color: {% if calculator.getProposal.operationalType == 'Discount' %}darkred{% else %} green{% endif %}" href="{{ url('show_proposal', {id : calculator.getProposal.id }) }}">{{ calculator.drawee.name }}</a></span>
                         {% endfor %}
                     {% endif %}
+
+                    {% if notice[day] is defined %}
+                        {% for calculator in notice[day] %}
+                            <span><a style="color: brown" href="{{ url('edit_calculator', {calculator : calculator.id }) }}"> {{ calculator.getProposal.getCompany.name }}</a></span>
+                        {% endfor %}
+                    {% endif %}
                     {% if clients[day] is defined %}
                         {% for calculator in clients[day] %}
                             <span><a style="color: {% if calculator.getProposal.operationalType == 'Discount' %}darkred{% else %} green{% endif %}" href="{{ url('show_proposal', {id : calculator.getProposal.id }) }}"> {{ calculator.getProposal.getCompany.name }}</a></span>

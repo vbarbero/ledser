@@ -1,0 +1,39 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+<h2>{{ agent.name }}</h2>
+    <div class="row bg-dark text-light">
+        <div class="w-100"></div>
+        <div class="col">Name</div>
+
+        <div class="col">file</div>
+        <div class="col">Action</div>
+    </div>
+
+    {% for file in files %}
+        <div class="row {% if loop.index is odd %}bg-secondary{% endif %}">
+            <div class="col">{{ file.name }}</div>
+            <div class="col"><a href="{{ asset('uploads/' ~ file.source ) }}">View </a></div>
+            <div class="col">
+                <a data-href="{{ url('delete_file_agent', {file: file.id}) }}" class="delete">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(function () {
+            $(".delete").on('click', function() {
+                if (confirm('Are you sure you want to delete it?')) {
+                    document.location = $(this).attr('data-href');
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        });
+    </script>
+{% endblock %}

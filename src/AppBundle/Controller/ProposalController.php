@@ -220,9 +220,11 @@ class ProposalController extends Controller
         $form->handleRequest($request);
         if ( $form->isValid()) {
             $calculator = $form->getData();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($calculator);
             $em->flush();
+
 
             if ($form->getClickedButton() && 'save' === $form->getClickedButton()->getName()) {
                 return $this->redirect($this->generateUrl("show_proposal",['id' => $calculator->getProposal()->getId()]));

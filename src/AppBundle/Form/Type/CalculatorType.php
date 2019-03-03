@@ -50,6 +50,8 @@ class CalculatorType extends AbstractType
         $builder->add('introduce', ChoiceType::class, ['choices' => ['' => '', 'tae' => 'tae', 'mensual' => 'mensual', 'total' => 'total', 'coste' => 'coste']]);
         $builder->add('introduce2', ChoiceType::class, ['choices' => ['' => '', 'costeFinanciero' =>'costeFinanciero','costeFinancieroLedser' => 'costeFinancieroLedser','costeTotal'=> 'costeTotal']]);
         $builder->add('existeTimbre', CheckboxType::class, ['mapped' => false, 'required' => false ]);
+        $builder->add('notice', CheckboxType::class, ['required' => false ]);
+        $builder->add('noticeMessage', TextType::class, ['required' => false]); //, 'attr' => ['readonly' => true]
         $builder->add('boton', HiddenType::class, ['mapped' => false, 'required' => false ]);
         $builder->add('costeFinanciero', CostType::class);
         $builder->add('costeFinancieroLedser', CostType::class);

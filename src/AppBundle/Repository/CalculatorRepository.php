@@ -39,6 +39,39 @@ class CalculatorRepository extends EntityRepository
         }
         return $calculators;
     }
+
+
+    public function getNotices($user, $from, $to)
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->innerJoin('c.proposal', 'p');
+        $qb->where(
+            $qb->expr()->between('c.emision', ':date_init', ':date_fin')
+        );
+        if($user)
+        {
+            $qb->andWhere($qb->expr()->eq('p.user', ':user'));
+            $qb->setParameter('user', $user);
+
+        }
+        $qb->andWhere($qb->expr()->eq('c.state', ':state'));
+        $qb->andWhere($qb->expr()->eq('c.notice', ':notice'));
+        $to = clone $to;
+        $to->modify("-1 seconds");
+        $qb->setParameter('date_init', $from->format("Y-m-d H:i:s"));
+        $qb->setParameter('date_fin', $to->format("Y-m-d H:i:s"));
+        $qb->setParameter('state', CalculatorModel::CLOSE);
+       $qb->setParameter('notice', 1);
+        $calculators = [];
+        /** @var Calculator $calculator */
+        foreach ($qb->getQuery()->getResult() as $calculator)
+        {
+            $calculators[$calculator->getVencimiento()->format('j')][$calculator->getId()] = $calculator;
+        }
+        return $calculators;
+    }
+
+
     public function getReportToCalendarCliente($from, $to, $user)
     {
         $qb = $this->createQueryBuilder('c');
