@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
 
 class AgentRepository extends EntityRepository
 {
+    public function getAgents()
+    {
+        $qb = $this->createQueryBuilder('a');
+        $qb->orderBy('a.name', 'ASC');
+        return $qb;
+    }
+    
 }
