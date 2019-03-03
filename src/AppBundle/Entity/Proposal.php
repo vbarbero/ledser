@@ -70,6 +70,23 @@ class Proposal extends BaseEntity
         $this->company = $company;
     }
 
+
+    /**
+     * @return Agent
+     */
+    public function getAgent()
+    {
+        return $this->agent;
+    }
+
+    /**
+     * @param Agent $agent
+     */
+    public function setAgent($agent)
+    {
+        $this->agent = $agent;
+    }
+
     /**
      * @return int
      */
