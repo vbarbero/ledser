@@ -74,12 +74,6 @@ class Agent extends BaseEntity
      */
     protected $files;
 
-    /**
-     * @var Contact
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Proposal", mappedBy="agent")
-     */
-    protected $proposal;
 
     public function __construct()
     {
