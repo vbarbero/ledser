@@ -83,7 +83,7 @@ class Agent extends BaseEntity
     }
     public function __toString()
     {
-        return $this->getId();  
+        return "" . $this->getId();  
     } 
 
 
