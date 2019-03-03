@@ -184,7 +184,7 @@
                         </td>
                         <td>
                             {% for contact in report.company.contact %}
-                                {{ contact.phone}},
+                                <a href="tel:{{ contact.phone}}">{{ contact.phone}}</a>,
                             {% endfor %}
                         </td>
                         <td>

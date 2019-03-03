@@ -30,7 +30,7 @@
             <div class="col">{{ loop.index }}</div>
             <div class="col">{{ contact.name }}</div>
             <div class="col">{{ contact.email }}</div>
-            <div class="col">{{ contact.phone }}</div>
+            <div class="col"><a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></div>
             <div class="col">
                 <a href="{{ url('edit_contact', {contact: contact.id}) }}">edit</a>
                 <a href="{{ url('delete_contact', {contact: contact.id}) }}">delete</a>
