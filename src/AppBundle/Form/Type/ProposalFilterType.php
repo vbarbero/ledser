@@ -16,12 +16,14 @@ use AppBundle\Model\CalculatorModel;
 use AppBundle\Model\ProposalModel;
 use AppBundle\Model\ReportModel;
 use AppBundle\Repository\CompanyRepository;
+use AppBundle\Repository\AgentRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use AppBundle\Entity\Agent;
 
 class ProposalFilterType extends AbstractType
 {
@@ -33,6 +35,10 @@ class ProposalFilterType extends AbstractType
     {
         $builder->add('company', EntityType::class, ['class' => Company::class, 'choice_label' => 'name', 'required' => false, 'query_builder' => function( CompanyRepository $er ) {
             return $er->getCompany();
+        }]);
+        
+        $builder->add('agent', EntityType::class, ['class' => Agent::class, 'choice_label' => 'name', 'required' => false, 'query_builder' => function( AgentRepository $er ) {
+            return $er->findAll();
         }]);
         $builder->add('status', ChoiceType::class, ['choices' => CalculatorModel::getStateAsChoice(), 'placeholder' => 'Choose an option', 'required' => false, 'multiple' => true]);
         $builder->add('financial', EntityType::class, [

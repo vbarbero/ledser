@@ -70,14 +70,14 @@ class Agent extends BaseEntity
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\File",cascade={"remove"}, mappedBy="company")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\File",cascade={"remove"}, mappedBy="agent")
      */
     protected $files;
 
     /**
      * @var Contact
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Proposal",cascade={"remove"}, mappedBy="company")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Proposal", mappedBy="agent")
      */
     protected $proposal;
 

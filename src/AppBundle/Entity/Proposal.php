@@ -19,6 +19,13 @@ class Proposal extends BaseEntity
     private $company;
 
     /**
+     * @var Company
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Agent", inversedBy="proposal")
+     */
+    private $agent;
+
+    /**
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="proposal")

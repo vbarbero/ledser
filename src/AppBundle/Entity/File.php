@@ -32,6 +32,13 @@ class File extends BaseEntity
     private $company;
 
     /**
+     * @var Agent
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Agent", inversedBy="files")
+     */
+    private $agent;
+
+    /**
      * @return string
      */
     public function getName()
