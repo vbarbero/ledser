@@ -15,9 +15,19 @@
       var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
+          center: {lat: 40.4214106, lng: 3.6764945},
           zoom: 8
         });
+        var lat = 40.4214106;
+        var lon = 3.6764945;
+
+        for (var i = 0; i < 4; i++) {
+          var latLng = new google.maps.LatLng( lat + (i*0.00001),lon(i*0.00001));
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+        }
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ google_api_places }}&callback=initMap"
