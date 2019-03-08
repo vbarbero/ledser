@@ -20,14 +20,15 @@
         });
         var lat = 40.4214106;
         var lon = 3.6764945;
-
+        var markers = array();
         for (var i = 0; i < 4; i++) {
           var latLng = new google.maps.LatLng( lat + (i*0.00001),lon + (i*0.00001));
-          var marker = new google.maps.Marker({
+          markers[i] = new google.maps.Marker({
             position: latLng,
             map: map,
             title: 'Hello World!' + i
           });
+          markers[i].setMap(map);
         }
       }
     </script>
