@@ -21,7 +21,7 @@
         var lat = 40.4214106;
         var lon = 3.6764945;
         var markers = [];
-        77for (var i = 0; i < 4; i++) {
+        //for (var i = 0; i < 4; i++) {
           var latLng = new google.maps.LatLng( 40.4214106,3.6761945);
           markers[i] = new google.maps.Marker({
             position: latLng,
@@ -43,7 +43,7 @@
             title: 'Hello World!' + i
           });
           markers[i].setMap(map);
-       77 }
+       // }
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ google_api_places }}&callback=initMap"
