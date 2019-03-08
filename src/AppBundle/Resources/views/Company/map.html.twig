@@ -22,7 +22,7 @@
         var lon = 3.6764945;
 
         for (var i = 0; i < 4; i++) {
-          var latLng = new google.maps.LatLng( lat + (i*0.00001),lon(i*0.00001));
+          var latLng = new google.maps.LatLng( lat + (i*0.00001),lon + (i*0.00001));
           var marker = new google.maps.Marker({
             position: latLng,
             map: map
