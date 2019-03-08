@@ -43,6 +43,7 @@
                     {#<a class="dropdown-item" style="color: black;" href="{{ url('list_freed') }}">{{ "List no client"|trans }}</a>#}
                     <a class="dropdown-item" style="color: black;" href="{{ url('create_contact') }}">{{ "Create Contact"|trans }}</a>
                     <a class="dropdown-item" style="color: black;" href="{{ url('list_contact') }}">{{ "List contact"|trans }}</a>
+                    <a class="dropdown-item" style="color: black;" href="{{ url('map') }}">{{ "map"|trans }}</a>
                 </div>
             </li>
             <li class="nav-item dropdown{% if app.request.get('_route') == 'report_list' or app.request.get('_route') == 'report_create' %} active{% endif %}">

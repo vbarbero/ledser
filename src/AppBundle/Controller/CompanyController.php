@@ -26,6 +26,7 @@ use Symfony\Component\HttpFoundation\Tests\File\UploadedFileTest;
 
 class CompanyController extends Controller
 {
+
     /**
      * @Route("/list-company", name="list_company")
      */
@@ -43,6 +44,18 @@ class CompanyController extends Controller
         }
         return $this->render('AppBundle:Company:list.html.twig', ['companies' => $companies, 'form' => $form->createView()]);
     }
+
+
+    /**
+     * @Route("/map", name="mapa")
+     */
+    public function mapaAction(Request $request)
+    {
+        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->getCompanies();
+        
+        return $this->render('AppBundle:Company:map.html.twig', ['companies' => $companies, 'form' => $form->createView()]);
+    }
+
     /**
      * @Route("/list-client", name="list_client")
      */
