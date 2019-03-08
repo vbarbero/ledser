@@ -47,7 +47,7 @@ class CompanyController extends Controller
 
 
     /**
-     * @Route("/map", name="mapa")
+     * @Route("/map", name="map")
      */
     public function mapaAction(Request $request)
     {
