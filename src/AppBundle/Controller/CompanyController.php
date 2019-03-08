@@ -53,7 +53,7 @@ class CompanyController extends Controller
     {
         $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->getCompanies();
         
-        return $this->render('AppBundle:Company:map.html.twig', ['companies' => $companies, 'form' => $form->createView()]);
+        return $this->render('AppBundle:Company:map.html.twig', ['companies' => $companies]);
     }
 
     /**
