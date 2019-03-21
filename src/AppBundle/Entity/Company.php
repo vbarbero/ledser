@@ -60,6 +60,29 @@ class Company extends BaseEntity
      */
     protected $province;
 
+   /**
+     * @var float
+     *
+     * @ORM\Column(type="decimal", scale="2" , nullable=true)
+     */
+    protected $latitude
+    /**
+     * @var float
+     *
+     * @ORM\Column(type="decimal", scale="2" , nullable=true)
+     */
+    protected $latitude;
+
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(type="decimal", scale="2" , nullable=true)
+     */
+    protected $longitude;
+
+
+
     /**
      * @var string
      *
@@ -583,7 +606,39 @@ class Company extends BaseEntity
     {
         $this->lineaDescuento = $lineaDescuento;
     }
+/**
+     * @return float
+     */
+    public function getLatitude()
+    {
+        return $this->latidude;
+    }
 
+    /**
+     * @param float $latitude
+     */
+    public function setLatitude(float $latidude)
+    {
+        $this->latitude = $latidude;
+    }
+
+
+
+    /**
+     * @return float
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * @param float $longitude
+     */
+    public function setLongitude(float $longitude)
+    {
+        $this->longitude = $longitude;
+    }
 
 
 }
