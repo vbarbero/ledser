@@ -77,7 +77,7 @@ class Agent extends BaseEntity
     /**
      * @var Proposal
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Proposal", inversedBy="agent")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Proposal", mappedBy="agent")
      */
     protected $proposal;
 

@@ -20,7 +20,7 @@ class Proposal extends BaseEntity
 
     /**
      * @var Agent
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Agent", mappedBy="proposal")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Agent", inversedBy="proposal")
      */
     private $agent;
 
