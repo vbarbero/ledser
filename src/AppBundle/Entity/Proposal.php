@@ -19,18 +19,6 @@ class Proposal extends BaseEntity
     private $company;
 
     /**
-     * @var Agent
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Agent", mappedBy="proposal")
-     */
-    private $agenty;
-
-    /**
-     * @var Agent
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Agent", mappedBy="proposal")
-     */
-    private $agent;
-
-    /**
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="proposal")
@@ -73,39 +61,6 @@ class Proposal extends BaseEntity
     public function setCompany($company)
     {
         $this->company = $company;
-    }
-
-
-    /**
-     * @return Agent
-     */
-    public function getAgent()
-    {
-        return $this->agent;
-    }
-
-    /**
-     * @param Agent $agent
-     */
-    public function setAgent($agent)
-    {
-        $this->agent = $agent;
-    }
-    
-    /**
-     * @return Agent
-     */
-    public function getAgenty()
-    {
-        return $this->agenty;
-    }
-
-    /**
-     * @param Agent $agenty
-     */
-    public function setAgenty($agenty)
-    {
-        $this->agenty = $agenty;
     }
 
     /**
