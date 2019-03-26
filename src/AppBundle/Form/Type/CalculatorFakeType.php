@@ -37,6 +37,7 @@ class CalculatorFakeType extends AbstractType
         $builder->add('ConPorcentaje', CheckboxType::class, ['mapped' => false, 'required' => false]);
         $builder->add('nominal');
         $builder->add('honorarios');
+        $builder->add('extra');
         $builder->add('timbres');
         $builder->add('omf');
         $builder->add('mensajeria');

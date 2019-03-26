@@ -45,7 +45,6 @@
         </div>
 
 
-
         <div class="row reason">
             <div class="col-lg-4">
                 {{ form_label(form.reason) }}
@@ -237,14 +236,7 @@ $(".messageNotice").hide();
             $("#calculator_introduce2").on('change', function () {
                 $('#calculator_introduce').prop('disabled', false);
             });*/
-         
-            $("#calculator_state").on('change', function () {
-                if ($("#calculator_state").val() == 5) {
-                    $(".reason").show();
-                } else {
-                    $(".reason").hide();
-                }
-            });
+          
             reloadDates();
             // var formalizacion = false;
             // var vencimiento = false;
