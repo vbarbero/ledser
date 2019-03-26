@@ -22,7 +22,7 @@ class Proposal extends BaseEntity
      * @var Agent
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Agent", mappedBy="proposal")
      */
-    private $agent;
+    private $agenty;
 
     /**
      * @var User
