@@ -3,7 +3,7 @@
 {% block content %}
 
     <div class="row">
-        <div id="map" style="height: 100%; position: static !important; overflow: hidden; width: 100%;"></div>        
+        <div id="map" style="height: 400px; position: static !important; width: 100%;"></div>        
     </div>
 
 {% endblock %}
@@ -15,15 +15,13 @@
       var map;
       function initMap() {
        var  map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 40.4214106, lng: 3.6764945},
-          zoom: 8
+          center: {lat: 40.4213845, lng: -3.6775698},
+          zoom: 13
         });
         var locations = [
-            ['Bondi Beach', -33.890542, 151.274856, 4],
-            ['Coogee Beach', -33.923036, 151.259052, 5],
-            ['Cronulla Beach', -34.028249, 151.157507, 3],
-            ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-            ['Maroubra Beach', -33.950198, 151.259302, 1]
+{% for company in companies %}
+            ['{{ company.latitude }}', {{ company.latitude }}, {{ company.longitude }}, {{ loop.index }}]{% if not loop.last %},{% endif %}
+{% endfor %}
         ];
         var infowindow = new google.maps.InfoWindow();
 
@@ -42,6 +40,7 @@
                 }
             })(marker, i));
         }
+$("#map").css("position","static !important");
      }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ google_api_places }}&callback=initMap"

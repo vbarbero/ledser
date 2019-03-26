@@ -27,8 +27,9 @@ class CompanyType extends AbstractType
         $builder->add('city', TextType::class, ['attr' => ['readonly' => true]]);
         $builder->add('province', TextType::class, ['attr' => ['readonly' => true]]);
         $builder->add('zip', TextType::class, ['attr' => ['readonly' => true]]);
-
-        $builder->add('cnae');
+	$builder->add('latitude', TextType::class, ['attr' => ['readonly' => true]]);
+        $builder->add('longitude', TextType::class, ['attr' => ['readonly' => true]]);
+	$builder->add('cnae');
         $builder->add('addressNumber');
         $builder->add('type', ChoiceType::class, ['choices' => CompanyModel::getTypeAsChoice()]);
 

@@ -180,6 +180,24 @@
                 {{ form_widget(form.zip,  { 'id': 'address-zip'}) }}
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.latitude) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.latitude,  { 'id': 'address-latitude'}) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_label(form.longitude) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_widget(form.longitude,  { 'id': 'address-longitude'}) }}
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="col-lg-4">
@@ -303,6 +321,8 @@
                 var province;
                 var zip;
 
+		document.getElementById('address-latitude').value = place.geometry.location.lat();
+		document.getElementById('address-longitude').value = place.geometry.location.lng();
                 for (var i = 0; i < place.address_components.length; i++) {
                     for (var j = 0; j < place.address_components[i].types.length; j++) {
                         if(place.address_components[i].types[j] == 'street_number'){

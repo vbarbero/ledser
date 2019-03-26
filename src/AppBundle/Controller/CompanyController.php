@@ -51,8 +51,11 @@ class CompanyController extends Controller
      */
     public function mapaAction(Request $request)
     {
-        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->getCompanies();
-        
+        $companies = $this->getDoctrine()->getManager()->getRepository(Company::class)->getCompaniesMap();
+/*foreach($companies as $company ){
+	echo $company->getLatitude(). '_ ';
+}
+die;*/
         return $this->render('AppBundle:Company:map.html.twig', ['companies' => $companies]);
     }
 
@@ -331,6 +334,10 @@ class CompanyController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $company = $form->getData();
+var_dump($company);
+var_dump($request->request);
+die;
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($company);
             $em->flush();

@@ -63,21 +63,14 @@ class Company extends BaseEntity
    /**
      * @var float
      *
-     * @ORM\Column(type="decimal", scale="2" , nullable=true)
-     */
-    protected $latitude
-    /**
-     * @var float
-     *
-     * @ORM\Column(type="decimal", scale="2" , nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=7, nullable=true)
      */
     protected $latitude;
 
-
     /**
      * @var float
      *
-     * @ORM\Column(type="decimal", scale="2" , nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=7, nullable=true)
      */
     protected $longitude;
 
