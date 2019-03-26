@@ -43,7 +43,6 @@ class CalculatorFakeType extends AbstractType
         $builder->add('mensajeria');
         $builder->add('burofax');
         $builder->add('gastos');
-        $builder->add('reason');
         $builder->add('porcentaje', TextType::class, ['required' => false ]);
         $builder->add('introduce', ChoiceType::class, ['choices' => ['' => '', 'tae' => 'tae', 'mensual' => 'mensual', 'total' => 'total', 'coste' => 'coste']]);
         $builder->add('introduce2', ChoiceType::class, ['choices' => ['' => '', 'costeFinanciero' =>'costeFinanciero','costeFinancieroLedser' => 'costeFinancieroLedser','costeTotal'=> 'costeTotal']]);
