@@ -334,10 +334,6 @@ die;*/
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $company = $form->getData();
-var_dump($company);
-var_dump($request->request);
-die;
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($company);
             $em->flush();
