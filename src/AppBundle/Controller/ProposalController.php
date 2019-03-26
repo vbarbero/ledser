@@ -94,7 +94,6 @@ class ProposalController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $proposal = $form->getData();
-            $proposal->setAgent();
             $em = $this->getDoctrine()->getManager();
             $em->persist($proposal);
             $em->flush();
