@@ -21,6 +21,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Form\Type\CalculatorFakeType;
 
 class ProposalController extends Controller
 {
@@ -236,6 +237,15 @@ class ProposalController extends Controller
         }
 
         return $this->render('AppBundle:Proposal:createCalculator.html.twig', ['form' => $form->createView()]);
+    }
+
+    /**
+     * @Route("/calculator", name="calculator_fake")
+     */
+    public function calculatorAction(Request $request)
+    {
+        $form = $this->createForm(CalculatorFakeType::class);
+        return $this->render('AppBundle:Proposal:calculator.html.twig', ['form' => $form->createView()]);
     }
 
     /**

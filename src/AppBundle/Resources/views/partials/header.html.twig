@@ -29,6 +29,7 @@
                     <a class="dropdown-item" style="color: black;" href="{{ url('create_proposal') }}">{{ "Create Proposals"|trans }}</a>
                     <a class="dropdown-item" style="color: black;" href="{{ url('list_proposal') }}">{{ "List Proposals"|trans }}</a>
                     <a class="dropdown-item" style="color: black;" href="{{ url('drawee_rist') }}">{{ "Drawee risk"|trans }}</a>
+                    <a class="dropdown-item" style="color: black;" href="{{ url('calculator_fake') }}">{{ "Calculator"|trans }}</a>
                 </div>
             </li>
             <li class="nav-item dropdown{% if app.request.get('_route') == 'create_company' or app.request.get('_route') == 'list_company' %} active{% endif %}">
