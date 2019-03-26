@@ -40,7 +40,7 @@
     {% for company in proposalGroup | reverse %}
     <tr class="{% if loop.index is odd %}bg-secondary{% endif %}">
         <td>{{ loop.index }}</td>
-        <td><a href="{{ url('list_files', {company: company.id}) }}"> {{ company.name }}</a> </td>
+        <td><a href="{{ url('show_company', { id: company.id }) }}"> {{ company.name }}</a> </td>
         {% if drawee is defined %}
             <td>{{ company.rating }}</td>
         {% endif %}
