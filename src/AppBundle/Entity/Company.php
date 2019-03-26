@@ -604,7 +604,7 @@ class Company extends BaseEntity
      */
     public function getLatitude()
     {
-        return $this->latidude;
+        return $this->latitude;
     }
 
     /**
@@ -612,10 +612,8 @@ class Company extends BaseEntity
      */
     public function setLatitude(float $latidude)
     {
-        $this->latitude = $latidude;
+        $this->latitude = $latitude;
     }
-
-
 
     /**
      * @return float
