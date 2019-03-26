@@ -28,8 +28,6 @@ class CalculatorFakeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('state', ChoiceType::class, ['choices' => CalculatorModel::getStateAsChoice()]);
-        $builder->add('emision', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
         $builder->add('formalizacion', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
         $builder->add('vencimiento', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
         $builder->add('dias', IntegerType::class, ['data' => 1]); //, 'attr' => ['readonly' => true]
@@ -39,7 +37,6 @@ class CalculatorFakeType extends AbstractType
         $builder->add('ConPorcentaje', CheckboxType::class, ['mapped' => false, 'required' => false]);
         $builder->add('nominal');
         $builder->add('honorarios');
-        $builder->add('extra');
         $builder->add('timbres');
         $builder->add('omf');
         $builder->add('mensajeria');
@@ -50,8 +47,6 @@ class CalculatorFakeType extends AbstractType
         $builder->add('introduce', ChoiceType::class, ['choices' => ['' => '', 'tae' => 'tae', 'mensual' => 'mensual', 'total' => 'total', 'coste' => 'coste']]);
         $builder->add('introduce2', ChoiceType::class, ['choices' => ['' => '', 'costeFinanciero' =>'costeFinanciero','costeFinancieroLedser' => 'costeFinancieroLedser','costeTotal'=> 'costeTotal']]);
         $builder->add('existeTimbre', CheckboxType::class, ['mapped' => false, 'required' => false ]);
-        $builder->add('notice', CheckboxType::class, ['required' => false ]);
-        $builder->add('noticeMessage', TextType::class, ['required' => false]); //, 'attr' => ['readonly' => true]
         $builder->add('boton', HiddenType::class, ['mapped' => false, 'required' => false ]);
         $builder->add('costeFinanciero', CostType::class);
         $builder->add('costeFinancieroLedser', CostType::class);
@@ -59,13 +54,6 @@ class CalculatorFakeType extends AbstractType
         $builder->add('proposal', EntityType::class, ['class' => Proposal::class, 'choice_label' => 'id']);
         $builder->add('proposal', EntityType::class, ['class' => Proposal::class, 'choice_label' => 'id']);
         $builder->add('proposal', EntityType::class, ['class' => Proposal::class, 'choice_label' => 'id']);
-        $builder->add('drawee', EntityType::class, [
-            'class' => Company::class,
-            'choice_label' => 'name',
-            'required' => false,
-            'query_builder' => function( CompanyRepository $er ) {
-                return $er->getDrawee();
-            }]);
     }
 
     /**

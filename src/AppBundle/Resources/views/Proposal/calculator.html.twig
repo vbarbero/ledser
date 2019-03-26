@@ -11,19 +11,6 @@
         {{ form_errors(form) }}
         <div class="row">
             <div class="col-lg-4">
-                {{ form_label(form.emision) }}
-            </div>
-            <div class="col-lg-4">
-                <div class="input-group date" data-provide="datepicker">
-                    {{ form_widget(form.emision, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
-                    <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-th"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
                 {{ form_label(form.formalizacion) }}
             </div>
             <div class="col-lg-4">
@@ -58,23 +45,6 @@
         </div>
 
 
-        <div class="row">
-            <div class="col-lg-4">
-                {{ form_label(form.notice) }}
-            </div>
-            <div class="col-lg-4">
-                {{ form_widget(form.notice, { 'attr':{'class': 'campito'} }) }}
-            </div>
-        </div>
-
-        <div class="row messageNotice">
-            <div class="col-lg-4">
-                {{ form_label(form.noticeMessage) }}
-            </div>
-            <div class="col-lg-4">
-                {{ form_widget(form.noticeMessage, { 'attr':{'class': 'campito'} }) }}
-            </div>
-        </div>
 
         <div class="row">
             <div class="col-lg-4">
@@ -90,14 +60,6 @@
             </div>
             <div class="col-lg-4">
                 {{ form_widget(form.reason) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                {{ form_label(form.drawee) }}
-            </div>
-            <div class="col-lg-4">
-                {{ form_widget(form.drawee) }}
             </div>
         </div>
         <div class="row">
@@ -283,11 +245,7 @@ $(".messageNotice").hide();
             $("#calculator_introduce2").on('change', function () {
                 $('#calculator_introduce').prop('disabled', false);
             });*/
-            if ($("#calculator_state").val() == 5) {
-                $(".reason").show();
-            } else {
-                $(".reason").hide();
-            }
+         
             $("#calculator_state").on('change', function () {
                 if ($("#calculator_state").val() == 5) {
                     $(".reason").show();
