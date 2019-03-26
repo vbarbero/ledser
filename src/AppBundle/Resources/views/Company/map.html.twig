@@ -20,7 +20,7 @@
         });
         var locations = [
 {% for company in companies %}
-            ['{{ company.latitude }}', {{ company.name }}, {{ company.longitude }}, {{ loop.index }}]{% if not loop.last %},{% endif %}
+            ['{{ company.name }}', {{ company.latitude }}, {{ company.longitude }}, {{ loop.index }}]{% if not loop.last %},{% endif %}
 {% endfor %}
         ];
         var infowindow = new google.maps.InfoWindow();
