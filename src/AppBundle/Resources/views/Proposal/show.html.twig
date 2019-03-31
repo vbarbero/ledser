@@ -28,6 +28,24 @@
     </div>
     <div class="row">
         <div class="col-lg-4">
+            {{ 'user' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ proposal.user.email }}
+        </div>
+    </div>
+    {% if proposal.agent %}
+    <div class="row">
+        <div class="col-lg-4">
+            {{ 'agente' | trans }}:
+        </div>
+        <div class="col-lg-4">
+            {{ proposal.agent.name }}
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-lg-4">
             {{ 'finalcial' | trans }}:
         </div>
         <div class="col-lg-4">
@@ -150,6 +168,14 @@
         </div>
         <div class="row">
             <div class="col-lg-4">
+                emision
+            </div>
+            <div class="col-lg-4">
+                {{ calculator.emision | date("Y-m-d") }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
                 formalizacion
             </div>
             <div class="col-lg-4">
@@ -188,10 +214,27 @@
                 {{ calculator.nominal }}
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-4">
+                notice
+            </div>
+            <div class="col-lg-4">
+                {{ calculator.notice }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                state
+            </div>
+            <div class="col-lg-4">
+                {{ calculator.state | calculator_status }}
+            </div>
+        </div>
         <table class="table table-condensed">
 
     <tr>
                     <td>Honorarios</td>
+                    <td>extra</td>
                     <td>Timbres</td>
                     <td>OMF</td>
                     <td>Mensajeria</td>
@@ -200,6 +243,7 @@
                 </tr>
                 <tr>
                     <td>{{ calculator.honorarios | number_format(2)}}</td>
+                    <td>{{ calculator.extra | number_format(2)}}</td>
                     <td>{{ calculator.timbres | number_format(2)}}</td>
                     <td>{{ calculator.omf | number_format(2)}}</td>
                     <td>{{ calculator.mensajeria | number_format(2)}}</td>
