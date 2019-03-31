@@ -146,6 +146,16 @@ class ReportController extends Controller
             ]);
     }
 
+
+    /**
+     * @Route("/reagendar", name="reagendar")
+     */
+    public function createAction(Request $request)
+    {
+var_dump($request->request->all());
+var_dump($request->query->all());
+    }
+
     /**
      * @Route("/report-create/{company}", name="report_create")
      */
