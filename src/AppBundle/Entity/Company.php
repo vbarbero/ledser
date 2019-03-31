@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Model\CompanyModel;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CompanyRepository")
@@ -631,5 +632,10 @@ class Company extends BaseEntity
         $this->longitude = $longitude;
     }
 
+
+    public function getTypes()
+    {
+        return CompanyModel::getType($this->type);
+    }
 
 }
