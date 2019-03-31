@@ -27,7 +27,7 @@ class ReportType extends AbstractType
         $builder->add('company', EntityType::class, [
             'class' => Company::class, 
             'choice_label' => 'name', 
-            'group_by'=> 'state',
+            'group_by'=> 'type',
             'query_builder' => function( CompanyRepository $er ) {
                 return $er->getCompaniesSorted();
         }]);
