@@ -24,8 +24,12 @@ class ReportType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('company', EntityType::class, ['class' => Company::class, 'choice_label' => 'name', 'query_builder' => function( CompanyRepository $er ) {
-            return $er->getCompaniesSorted();
+        $builder->add('company', EntityType::class, [
+            'class' => Company::class, 
+            'choice_label' => 'name', 
+            'group_by'=> 'name',
+            'query_builder' => function( CompanyRepository $er ) {
+                return $er->getCompaniesSorted();
         }]);
         $builder->add('user', EntityType::class, ['class' => User::class, 'choice_label' => 'username', 'placeholder' => 'Choose an option', 'required' => false, 'empty_data' => null,]);
         $builder->add('date', DateTimeType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd HH:mm']);
