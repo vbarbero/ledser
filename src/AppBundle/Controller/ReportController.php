@@ -152,9 +152,19 @@ class ReportController extends Controller
      */
     public function reagendarAction(Request $request)
     {
-var_dump($request->request->all());
-var_dump($request->query->all());
-die;
+        $params = $request->request->all();
+        $fecha = new \DateTime($params['calendar_reasginar']. " 00:00:00");
+        var_dump($fecha);
+        die;
+        $em = $this->getDoctrine()->getManager();
+        $reportRepository = $em->getRepository(Report::class);
+        foreach(array_keys($params['reportId']) as $reportId) {
+            $report = $reportRepository->find($reportId);
+            $report->setDate($fecha);
+        }
+        $em->flush();
+        return $this->redirect("report-list");
+   
     }
 
     /**
