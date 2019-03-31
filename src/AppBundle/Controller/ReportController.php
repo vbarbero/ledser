@@ -154,6 +154,7 @@ class ReportController extends Controller
     {
 var_dump($request->request->all());
 var_dump($request->query->all());
+die;
     }
 
     /**
