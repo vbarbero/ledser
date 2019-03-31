@@ -154,8 +154,6 @@ class ReportController extends Controller
     {
         $params = $request->request->all();
         $fecha = new \DateTime($params['calendar_reasginar']. " 00:00:00");
-        var_dump($fecha);
-        die;
         $em = $this->getDoctrine()->getManager();
         $reportRepository = $em->getRepository(Report::class);
         foreach(array_keys($params['reportId']) as $reportId) {
