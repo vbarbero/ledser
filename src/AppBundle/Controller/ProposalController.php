@@ -91,6 +91,8 @@ class ProposalController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $proposal->setUser($user);
         $form = $this->createForm(ProposalType::class, $proposal);
+        $form->add('next', SubmitType::class, ['label' => 'Next'])
+            ->add('remesa', SubmitType::class, ['label' => 'Remesa']);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -98,7 +100,12 @@ class ProposalController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($proposal);
             $em->flush();
-            return $this->redirect("create-calculator/". $proposal->getId());
+            if ($form->getClickedButton() && 'next' === $form->getClickedButton()->getName()) {
+                return $this->redirect($this->generateUrl("create_calculator", ['proposal' => $proposal->getId()] ) );
+            }
+            else {
+                return $this->redirect($this->generateUrl("create_remesa", ['proposal' => $proposal->getId()]));
+            }
         }
         return $this->render('AppBundle:Proposal:createProposal.html.twig', ['form' => $form->createView()]);
     }
@@ -172,6 +179,24 @@ class ProposalController extends Controller
         }
         $form->get('introduce')->setData('tae');
         return $this->render('AppBundle:Proposal:createCalculator.html.twig', ['form' => $form->createView(), 'edit' => true]);
+    }
+    
+
+    /**
+     * @Route("/create-remesa/{proposal}", name="create_remesa")
+     */
+    public function createRemesaAction($proposal, Request $request)
+    {
+        $form = $this->createForm(RemesaType::class);
+        $form->handleRequest($request);
+        if ( $form->isValid()) {
+            $calculator = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($calculator);
+            $em->flush();
+        }
+        return $this->render('AppBundle:Proposal:createRemesa.html.twig', ['form' => $form->createView(), 'edit' => true]);
+   
     }
 
     /**

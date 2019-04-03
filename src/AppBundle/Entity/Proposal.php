@@ -47,6 +47,13 @@ class Proposal extends BaseEntity
     protected $operationalType;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $remesa;
+
+    /**
      * @var Calculator
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Calculator",cascade={"remove"}, mappedBy="proposal")
@@ -165,6 +172,22 @@ class Proposal extends BaseEntity
         $this->calculator = $calculator;
     }
 
+
+    /**
+     * @return bool
+     */
+    public function getRemesa()
+    {
+        return $this->remesa;
+    }
+
+    /**
+     * @param bool $remesa
+     */
+    public function setRemesa($remesa)
+    {
+        $this->remesa = $remesa;
+    }
 
 }
 
