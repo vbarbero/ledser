@@ -69,39 +69,33 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4">
-                {{ form_label(form.calculadora) }}
-            </div>
-            <div class="col-lg-4">
-                <table class="calculadora" data-prototype="{{ form_widget(form.calculadora.vars.prototype)|e('html_attr') }}">
-                    {# iterate over each existing tag and render its only field: name #}
+            <table class="calculadora" data-prototype="{{ form_widget(form.calculadora.vars.prototype)|e('html_attr') }}">
+                {# iterate over each existing tag and render its only field: name #}
+                <tr>
+                    <td>nominal</td>
+                    <td>costeFinanciero</td>
+                    <td>costeUnitario</td>
+                    <td>timbres</td>
+                    <td>formalizacion</td>
+                    <td>vencimiento</td>
+                    <td>dias</td>
+                    <td>tae</td>
+                    <td>drawee</td>
+                </tr>
+                {% for calculadora in form.calculadora %}
                     <tr>
-                        <td>nominal</td>
-                        <td>costeFinanciero</td>
-                        <td>costeUnitario</td>
-                        <td>timbres</td>
-                        <td>formalizacion</td>
-                        <td>vencimiento</td>
-                        <td>dias</td>
-                        <td>tae</td>
-                        <td>drawee</td>
+                        <td>{{ form_widget(calculadora.nominal, { 'attr':{'class': 'campito'} }) }}</td>
+                        <td>{{ form_widget(calculadora.costeFinanciero, { 'attr':{'class': 'campito'} }) }}</td>
+                        <td>{{ form_widget(calculadora.costeUnitario, { 'attr':{'class': 'campito'} }) }}</td>
+                        <td>{{ form_widget(calculadora.timbres, { 'attr':{'class': 'campito'} }) }}</td>
+                        <td>{{ form_widget(calculadora.formalizacion, { 'attr':{'class': 'campito'} }) }}</td>
+                        <td>{{ form_widget(calculadora.vencimiento, { 'attr':{'class': 'campito'} }) }}</td>
+                        <td>{{ form_widget(calculadora.dias, { 'attr':{'class': 'campito'} }) }}</td>
+                        <td>{{ form_widget(calculadora.tae, { 'attr':{'class': 'campito'} }) }}</td>
+                        <td>{{ form_widget(calculadora.drawee, { 'attr':{'class': 'campito'} }) }}</td>
                     </tr>
-                    {% for calculadora in form.calculadora %}
-                        <tr>
-                            <td>{{ form_row(calculadora.nominal, { 'attr':{'class': 'campito'} }) }}</td>
-                            <td>{{ form_row(calculadora.costeFinanciero, { 'attr':{'class': 'campito'} }) }}</td>
-                            <td>{{ form_row(calculadora.costeUnitario, { 'attr':{'class': 'campito'} }) }}</td>
-                            <td>{{ form_row(calculadora.timbres, { 'attr':{'class': 'campito'} }) }}</td>
-                            <td>{{ form_row(calculadora.formalizacion, { 'attr':{'class': 'campito'} }) }}</td>
-                            <td>{{ form_row(calculadora.vencimiento, { 'attr':{'class': 'campito'} }) }}</td>
-                            <td>{{ form_row(calculadora.dias, { 'attr':{'class': 'campito'} }) }}</td>
-                            <td>{{ form_row(calculadora.tae, { 'attr':{'class': 'campito'} }) }}</td>
-                            <td>{{ form_row(calculadora.drawee, { 'attr':{'class': 'campito'} }) }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-
-            </div>
+                {% endfor %}
+            </table>
         </div>
         <div class="row second">
             <table>
