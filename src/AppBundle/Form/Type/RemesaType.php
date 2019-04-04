@@ -5,6 +5,7 @@ namespace AppBundle\Form\Type;
 use AppBundle\Entity\Calculator;
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Proposal;
+use AppBundle\Form\Model\RemesaModel;
 use AppBundle\Model\CalculatorModel;
 use AppBundle\Repository\CompanyRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -12,6 +13,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -30,45 +32,41 @@ class RemesaType extends AbstractType
     {
         $builder->add('state', ChoiceType::class, ['choices' => CalculatorModel::getStateAsChoice()]);
         $builder->add('emision', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
-        
-        $builder->add('formalizacion', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
-        $builder->add('vencimiento', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
-        $builder->add('dias', IntegerType::class, ['data' => 1]); //, 'attr' => ['readonly' => true]
-        $builder->add('costeFinancieroCoste', TextType::class, ['mapped' => false, 'attr' => ['readonly' => true]]); //, 'attr' => ['readonly' => true]
-        $builder->add('costeFinancieroLedserCoste', TextType::class, ['mapped' => false, 'attr' => ['readonly' => true]]); //, 'attr' => ['readonly' => true]
-        $builder->add('costeTotalCoste', TextType::class, ['mapped' => false, 'attr' => ['readonly' => true]]); //, 'attr' => ['readonly' => true]
-        $builder->add('ConPorcentaje', CheckboxType::class, ['mapped' => false, 'required' => false]);
         $builder->add('nominal');
         $builder->add('honorarios');
         $builder->add('extra');
-        $builder->add('timbres');
         $builder->add('omf');
         $builder->add('mensajeria');
         $builder->add('burofax');
         $builder->add('gastos');
         $builder->add('reason');
-        $builder->add('porcentaje', TextType::class, ['required' => false ]);
-        $builder->add('introduce', ChoiceType::class, ['choices' => ['' => '', 'tae' => 'tae', 'mensual' => 'mensual', 'total' => 'total', 'coste' => 'coste']]);
-        $builder->add('introduce2', ChoiceType::class, ['choices' => ['' => '', 'costeFinanciero' =>'costeFinanciero','costeFinancieroLedser' => 'costeFinancieroLedser','costeTotal'=> 'costeTotal']]);
-        $builder->add('existeTimbre', CheckboxType::class, ['mapped' => false, 'required' => false ]);
+        $builder->add('tags', CollectionType::class, [
+            'entry_type' => RemesaCalculadoraType::class,
+            'entry_options' => ['label' => false],,
+            'allow_add' => true,
+        ]);
         $builder->add('notice', CheckboxType::class, ['required' => false ]);
         $builder->add('noticeMessage', TextType::class, ['required' => false]); //, 'attr' => ['readonly' => true]
-        $builder->add('boton', HiddenType::class, ['mapped' => false, 'required' => false ]);
-        $builder->add('costeFinanciero', CostType::class);
-        $builder->add('costeFinancieroLedser', CostType::class);
-        $builder->add('costeTotal', CostType::class);
-        $builder->add('proposal', EntityType::class, ['class' => Proposal::class, 'choice_label' => 'id']);
-        $builder->add('proposal', EntityType::class, ['class' => Proposal::class, 'choice_label' => 'id']);
-        $builder->add('proposal', EntityType::class, ['class' => Proposal::class, 'choice_label' => 'id']);
-        $builder->add('save', SubmitType::class, array('label' => 'Save'));
-        $builder->add('saveAndAdd', SubmitType::class, array('label' => 'Save and Add'));
-        $builder->add('drawee', EntityType::class, [
-            'class' => Company::class,
-            'choice_label' => 'name',
-            'required' => false,
-            'query_builder' => function( CompanyRepository $er ) {
-                return $er->getDrawee();
-            }]);
+        $builder->add('costeFinancieroTotal');
+        $builder->add('costeFinancieroTae');
+        $builder->add('costeFinancieroMensual');
+        $builder->add('costeFinancieroNominal');
+        $builder->add('costeFinancieroCoste');
+        $builder->add('costeFinancieroLiquido');
+        $builder->add('costeFinancieroLedserTotal');
+
+        $builder->add('costeFinancieroLedserTae');
+        $builder->add('costeFinancieroLedserMensual');
+        $builder->add('costeFinancieroLedserNominal');
+        $builder->add('costeFinancieroLedserCoste');
+        $builder->add('costeFinancieroLedserLiquido');
+        $builder->add('costeTotalTotal');
+        $builder->add('costeTotalTae');
+        $builder->add('costeTotalMensual');
+        $builder->add('costeTotalNominal');
+        $builder->add('costeTotalCoste');
+
+        $builder->add('costeTotalLiquido');
     }
 
     /**
@@ -81,7 +79,7 @@ class RemesaType extends AbstractType
         $resolver
             ->setDefaults(
                 [
-                    'data_class'         => Calculator::class,
+                    'data_class'         => RemesaModel::class,
                 ]
             );
     }
@@ -93,6 +91,6 @@ class RemesaType extends AbstractType
      */
     public function getName()
     {
-        return 'calculator';
+        return 'remesa';
     }
 }

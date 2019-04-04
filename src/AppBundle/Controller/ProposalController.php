@@ -9,6 +9,7 @@ use AppBundle\Entity\Proposal;
 use AppBundle\Entity\User;
 use AppBundle\Form\Model\DraweeRiskFilterModel;
 use AppBundle\Form\Model\ProposalFilterModel;
+use AppBundle\Form\Model\RemesaModel;
 use AppBundle\Form\Type\CalculatorType;
 use AppBundle\Form\Type\DraweeRiskFilterType;
 use AppBundle\Form\Type\ProposalEditType;
@@ -187,7 +188,8 @@ class ProposalController extends Controller
      */
     public function createRemesaAction($proposal, Request $request)
     {
-        $form = $this->createForm(RemesaType::class);
+        $remesaModel = new RemesaModel();
+        $form = $this->createForm(RemesaType::class, $remesaModel);
         $form->handleRequest($request);
         if ( $form->isValid()) {
             $calculator = $form->getData();
