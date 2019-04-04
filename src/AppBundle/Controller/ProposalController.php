@@ -99,12 +99,19 @@ class ProposalController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $proposal = $form->getData();
             $em = $this->getDoctrine()->getManager();
-            $em->persist($proposal);
-            $em->flush();
+
             if ($form->getClickedButton() && 'next' === $form->getClickedButton()->getName()) {
+                $proposal->setRemesa(false);
+                $em->persist($proposal);
+                $em->flush();
+                $em->persist($proposal);
+                $em->flush();
                 return $this->redirect($this->generateUrl("create_calculator", ['proposal' => $proposal->getId()] ) );
             }
             else {
+                $proposal->setRemesa(true);
+                $em->persist($proposal);
+                $em->flush();
                 return $this->redirect($this->generateUrl("create_remesa", ['proposal' => $proposal->getId()]));
             }
         }
