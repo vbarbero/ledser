@@ -197,6 +197,7 @@ class ProposalController extends Controller
     public function createRemesaAction($proposal, Request $request)
     {
         $remesaModel = new RemesaModel();
+        $remesaModel->setProposal($proposal);
         $form = $this->createForm(RemesaType::class, $remesaModel);
         $form->handleRequest($request);
         if ( $form->isValid()) {
