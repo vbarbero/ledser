@@ -89,11 +89,6 @@ class RemesaModel
     /**
      * @var float
      */
-    protected $costeFinancieroNominal;
-
-    /**
-     * @var float
-     */
     protected $costeFinancieroCoste;
 
     /**
@@ -119,11 +114,6 @@ class RemesaModel
     /**
      * @var float
      */
-    protected $costeFinancieroLedserNominal;
-
-    /**
-     * @var float
-     */
     protected $costeFinancieroLedserCoste;
 
     /**
@@ -145,11 +135,6 @@ class RemesaModel
      * @var float
      */
     protected $costeTotalMensual;
-
-    /**
-     * @var float
-     */
-    protected $costeTotalNominal;
 
     /**
      * @var float
