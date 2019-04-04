@@ -40,6 +40,7 @@ class RemesaType extends AbstractType
         $builder->add('burofax');
         $builder->add('gastos');
         $builder->add('reason');
+        $builder->add('proposal');
         $builder->add('calculadora', CollectionType::class, [
             'entry_type' => RemesaCalculadoraType::class,
             'entry_options' => ['label' => false],
