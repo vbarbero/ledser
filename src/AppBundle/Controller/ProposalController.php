@@ -15,6 +15,7 @@ use AppBundle\Form\Type\DraweeRiskFilterType;
 use AppBundle\Form\Type\ProposalEditType;
 use AppBundle\Form\Type\ProposalFilterType;
 use AppBundle\Form\Type\ProposalType;
+use AppBundle\Form\Type\RemesaType;
 use AppBundle\Model\CalculatorModel;
 use AppBundle\Model\ProposalModel;
 use Doctrine\Common\Collections\ArrayCollection;
