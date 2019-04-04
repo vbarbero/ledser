@@ -185,13 +185,6 @@
 {% block javascript %}
     {{ parent() }}
     <script type="text/javascript">
-//        $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-        $('.datepicker').datepicker({
-            format: 'yyyy-MM-dd',
-            startDate: '-3d'
-        });
-    </script>
-    <script type="text/javascript">
         var $collectionHolder;
 
         // setup an "add a calculator" link
@@ -214,6 +207,6 @@
         addCalculatorForm($collectionHolder, $newLinkLi);
     });
 });
-        
+
     </script>
 {% endblock %}
