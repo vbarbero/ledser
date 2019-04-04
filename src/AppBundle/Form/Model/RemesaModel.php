@@ -171,6 +171,30 @@ class RemesaModel
         $this->calculadora =  new ArrayCollection();
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getCalculadora()
+    {
+        return $this->calculadora;
+    }
+
+    /**
+     * @param ArrayCollection $calculadora
+     */
+    public function setCalculadora($calculadora)
+    {
+        $this->calculadora = $calculadora;
+    }
+
+    /**
+     * @param ArrayCollection $calculadora
+     */
+    public function addCalculadora($calculadora)
+    {
+        $this->calculadora->add($calculadora);
+    }
+
 
     /**
      * @return int
