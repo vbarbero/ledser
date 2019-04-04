@@ -188,7 +188,7 @@ class RemesaModel
     }
 
     /**
-     * @param ArrayCollection $calculadora
+     * @param RemesaCalculadoraModel $calculadora
      */
     public function addCalculadora($calculadora)
     {
