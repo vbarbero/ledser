@@ -200,7 +200,7 @@ class ProposalController extends Controller
         $remesaModel->setProposal($proposal);
         $form = $this->createForm(RemesaType::class, $remesaModel);
         $form->handleRequest($request);
-        if ( $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $calculator = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($calculator);
