@@ -194,24 +194,24 @@
     <script type="text/javascript">
         var $collectionHolder;
 
-        // setup an "add a tag" link
-        var $addTagButton = $('<button type="button" class="add_tag_link">Add a tag</button>');
-        var $newLinkLi = $('<tr></tr>').append($addTagButton);
+        // setup an "add a calculator" link
+        var $addCalculatorButton = $('<button type="button" class="add_calculator_link">Add a calculator</button>');
+        var $newLinkLi = $('<tr></tr>').append($addCalculatorButton);
         $(function () {
 
 
     $collectionHolder = $('table.calculadora');
 
-    // add the "add a tag" anchor and li to the tags ul
+    // add the "add a Calculator" anchor and li to the Calculators ul
     $collectionHolder.append($newLinkLi);
 
     // count the current form inputs we have (e.g. 2), use that as the new
     // index when inserting a new item (e.g. 2)
     $collectionHolder.data('index', $collectionHolder.find(':input').length);
 
-    $addTagButton.on('click', function(e) {
-        // add a new tag form (see next code block)
-        addTagForm($collectionHolder, $newLinkLi);
+    $addCalculatorButton.on('click', function(e) {
+        // add a new Calculator form (see next code block)
+        addCalculatorForm($collectionHolder, $newLinkLi);
     });
 });
         }
