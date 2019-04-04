@@ -42,7 +42,7 @@ class RemesaType extends AbstractType
         $builder->add('reason');
         $builder->add('tags', CollectionType::class, [
             'entry_type' => RemesaCalculadoraType::class,
-            'entry_options' => ['label' => false],,
+            'entry_options' => ['label' => false],
             'allow_add' => true,
         ]);
         $builder->add('notice', CheckboxType::class, ['required' => false ]);
