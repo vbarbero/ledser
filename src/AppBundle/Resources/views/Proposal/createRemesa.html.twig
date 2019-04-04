@@ -96,6 +96,7 @@
                     </tr>
                 {% endfor %}
             </table>
+            <button type="button" class="add_calculator_link">Add a calculator</button>
         </div>
         <div class="row second">
             <table>
@@ -181,17 +182,24 @@
     <script type="text/javascript">
         var $collectionHolder;
 
-        // setup an "add a calculator" link
-        var $addCalculatorButton = $('<button type="button" class="add_calculator_link">Add a calculator</button>');
-        var $newLinkLi = $('<tr><td colspan="9"></td></tr>').append($addCalculatorButton);
         $(function () {
             $collectionHolder = $('table.calculadora');
-            $collectionHolder.append($newLinkLi);
             $collectionHolder.data('index', $collectionHolder.find(':input').length);
             $addCalculatorButton.on('click', function(e) {
                 addCalculatorForm($collectionHolder, $newLinkLi);
             });
         });
 
+        function addCalculatorForm($collectionHolder) {
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolder.data('prototype');
+            var index = $collectionHolder.data('index');
+            var newForm = prototype;
+            newForm = newForm.replace(/__name__/g, index);
+            $collectionHolder.data('index', index + 1);
+            var $newFormTd = $('<td colspan="9"></td>').append(newForm);
+            var $newFormTr = $('<tr></tr>').append($newFormTd);
+            $collectionHolder.append($newFormTr);
+        }
     </script>
 {% endblock %}
