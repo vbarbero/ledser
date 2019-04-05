@@ -1,7 +1,7 @@
 {% import _self as formMacros %}
 {% macro printCalculadoraRow(calculadoraForm) %}
     <tr class="col-xs-4 js-calculadora-item">
-        <td>
+        <td class="col-lg-10">
             {{ form_errors(calculadoraForm) }}
             <a href="#" class="js-remove-calculadora pull-right">
                 <span class="fa fa-close"></span>
@@ -94,6 +94,7 @@
             <table class="calculadora js-calculadora-wrapper" data-prototype="{{ formMacros.printCalculadoraRow(form.calculadora.vars.prototype)|e('html_attr') }}">
                 {# iterate over each existing tag and render its only field: name #}
                 <tr>
+                    <td>close[x]</td>
                     <td>nominal</td>
                     <td>costeFinanciero</td>
                     <td>costeUnitario</td>
