@@ -226,7 +226,7 @@
             var finishD = new Date(start);
             var dateString = finishD.getUTCDate() +"/"+ (finishD.getUTCMonth()+1) +"/"+ finishD.getUTCFullYear() ;
             console.log(dateString);
-            finishD.setDate(finishD.getDate() + parseInt($("#calculator_dias").val()));
+            finishD.setDate(finishD.getDate() + parseInt($("#remesa_calculadora_"+index+"_dias").val()));
             var nd = new Date(finishD);
             var day = ("0" + nd.getDate()).slice(-2);
             var month = ("0" + (nd.getMonth() + 1)).slice(-2);
