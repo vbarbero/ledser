@@ -31,65 +31,127 @@
     <div class="row">
         {{ form_start(form, {'attr': {'id' : 'form'}}) }}
         {{ form_errors(form) }}
+        <div style="float: left">
+            <table>
+                <tr>
+                    <td></td>
+                    <td>Coste Financiero</td>
+                    <td>Coste Financiero + Ledser</td>
+                    <td>Coste Total</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>{{ form_widget(form.costeFinancieroTotal, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                    <td>{{ form_widget(form.costeFinancieroLedserTotal, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                    <td>{{ form_widget(form.costeTotalTotal, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                </tr>
+                <tr>
+                    <td>Tae</td>
+                    <td>{{ form_widget(form.costeFinancieroTae, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                    <td>{{ form_widget(form.costeFinancieroLedserTae, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                    <td>{{ form_widget(form.costeTotalTae, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                    </tr>
+                <tr>
+                    <td>Mensual</td>
+                    <td>{{ form_widget(form.costeFinancieroMensual, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                    <td>{{ form_widget(form.costeFinancieroLedserMensual, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>                        <td>{{ form_widget(form.costeTotalMensual, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                    </tr>
+                <tr>
+                    <td>Coste</td>
+                    <td>{{ form_widget(form.costeFinancieroCoste, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                    <td>{{ form_widget(form.costeFinancieroLedserCoste, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                    <td>{{ form_widget(form.costeTotalCoste, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>                    </tr>
+                <tr>
+                    <td>Liquido</td>
+                    <td>{{ form_widget(form.costeFinancieroLiquido, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                    <td>{{ form_widget(form.costeFinancieroLedserLiquido, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                    <td>{{ form_widget(form.costeTotalLiquido, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                </tr>
+            </table>
+        </div
 
-        <div class="row">
-            <div class="col-lg-4">
-                {{ form_label(form.state) }}
+
+        <div style="float: left">
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.state) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.state) }}
+                </div>
             </div>
-            <div class="col-lg-4">
-                {{ form_widget(form.state) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                {{ form_label(form.emision) }}
-            </div>
-            <div class="col-lg-4">
-                <div class="input-group date" data-provide="datepicker">
-                    {{ form_widget(form.emision, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
-                    <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-th"></span>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.emision) }}
+                </div>
+                <div class="col-lg-4">
+                    <div class="input-group date" data-provide="datepicker">
+                        {{ form_widget(form.emision, {'attr' : {'class' : "form-control", 'style' : 'width: 180px;', 'data-date-format': "yyyy-MM-dd"}}) }} {#<input type="text" class="form-control">#}
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-th"></span>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.notice) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.notice, { 'attr':{'class': 'campito'} }) }}
+                </div>
+            </div>
+
+            <div class="row messageNotice">
+                <div class="col-lg-4">
+                    {{ form_label(form.noticeMessage) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.noticeMessage, { 'attr':{'class': 'campito'} }) }}
+                </div>
+            </div>
+
+            <div class="row reason">
+                <div class="col-lg-4">
+                    {{ form_label(form.reason) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.reason) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.nominal) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.nominal, { 'attr':{'class': 'campito'} }) }}
+                </div>
+            </div>
         </div>
-
-
+        <div style="clear: both">
+            </div>
         <div class="row">
-            <div class="col-lg-4">
-                {{ form_label(form.notice) }}
-            </div>
-            <div class="col-lg-4">
-                {{ form_widget(form.notice, { 'attr':{'class': 'campito'} }) }}
-            </div>
-        </div>
+            <table>
+                <tr>
+                    <td>Extra</td>
+                    <td>OMF</td>
+                    <td>Mensajeria</td>
+                    <td>Burofax</td>
+                    <td>Otros gastos</td>
+                    <td>Honorarios</td>
+                </tr>
+                <tr>
 
-        <div class="row messageNotice">
-            <div class="col-lg-4">
-                {{ form_label(form.noticeMessage) }}
-            </div>
-            <div class="col-lg-4">
-                {{ form_widget(form.noticeMessage, { 'attr':{'class': 'campito'} }) }}
-            </div>
-        </div>
-
-        <div class="row reason">
-            <div class="col-lg-4">
-                {{ form_label(form.reason) }}
-            </div>
-            <div class="col-lg-4">
-                {{ form_widget(form.reason) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                {{ form_label(form.nominal) }}
-            </div>
-            <div class="col-lg-4">
-                {{ form_widget(form.nominal, { 'attr':{'class': 'campito'} }) }}
-            </div>
-        </div>
-
+                    <td>{{ form_widget(form.extra, { 'attr':{'class': 'campito'} }) }}</td>
+                    <td>{{ form_widget(form.omf, { 'attr':{'class': 'campito'} }) }}</td>
+                    <td>{{ form_widget(form.mensajeria, { 'attr':{'class': 'campito'} }) }}</td>
+                    <td>{{ form_widget(form.burofax, { 'attr':{'class': 'campito'} }) }}</td>
+                    <td>{{ form_widget(form.gastos, { 'attr':{'class': 'campito'} }) }}</td>
+                    <td>{{ form_widget(form.honorarios, { 'attr':{'class': 'campito'} }) }}</td>
+                </tr>
+            </table>
         <div class="row">
             <table class="calculadora js-calculadora-wrapper" data-prototype="{{ formMacros.printCalculadoraRow(form.calculadora.vars.prototype)|e('html_attr') }}">
                 {# iterate over each existing tag and render its only field: name #}
@@ -111,76 +173,10 @@
             </table>
             <button type="button" class="add_calculator_link">Add a calculator</button>
         </div>
-        <div class="row second">
-            <table>
-                <tr>
-                    <td>Extra</td>
-                    <td>OMF</td>
-                    <td>Mensajeria</td>
-                    <td>Burofax</td>
-                    <td>Otros gastos</td>
-                </tr>
-                <tr>
 
-                    <td>{{ form_widget(form.extra, { 'attr':{'class': 'campito'} }) }}</td>
-                    <td>{{ form_widget(form.omf, { 'attr':{'class': 'campito'} }) }}</td>
-                    <td>{{ form_widget(form.mensajeria, { 'attr':{'class': 'campito'} }) }}</td>
-                    <td>{{ form_widget(form.burofax, { 'attr':{'class': 'campito'} }) }}</td>
-                    <td>{{ form_widget(form.gastos, { 'attr':{'class': 'campito'} }) }}</td>
-                </tr>
-            </table>
 
-            <div class="row third">
-                <div class="col-lg-4">
-                    Honorarios
-                </div>
-                <div class="col-lg-4">
-                    {{ form_widget(form.honorarios, { 'attr':{'class': 'campito'} }) }}
-                </div>
-            </div>
-            <div class="fourth">
-                <table>
-                    <tr>
-                        <td></td>
-                        <td>Coste Financiero</td>
-                        <td>Coste Financiero + Ledser</td>
-                        <td>Coste Total</td>
-                    </tr>
-                    <tr>
-                        <td>Total</td>
-                        <td>{{ form_widget(form.costeFinancieroTotal, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                        <td>{{ form_widget(form.costeFinancieroLedserTotal, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                        <td>{{ form_widget(form.costeTotalTotal, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                    </tr>
-                    <tr>
-                        <td>Tae</td>
-                        <td>{{ form_widget(form.costeFinancieroTae, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                        <td>{{ form_widget(form.costeFinancieroLedserTae, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                        <td>{{ form_widget(form.costeTotalTae, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                    </tr>
-                    <tr>
-                        <td>Mensual</td>
-                        <td>{{ form_widget(form.costeFinancieroMensual, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                        <td>{{ form_widget(form.costeFinancieroLedserMensual, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                        <td>{{ form_widget(form.costeTotalMensual, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                    </tr>
-                    <tr>
-                        <td>Coste</td>
-                        <td>{{ form_widget(form.costeFinancieroCoste, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                        <td>{{ form_widget(form.costeFinancieroLedserCoste, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                        <td>{{ form_widget(form.costeTotalCoste, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                    </tr>
-                    <tr>
-                        <td>Liquido</td>
-                        <td>{{ form_widget(form.costeFinancieroLiquido, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                        <td>{{ form_widget(form.costeFinancieroLedserLiquido, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                        <td>{{ form_widget(form.costeTotalLiquido, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                    </tr>
-                </table>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Siguiente</button>
 
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Siguiente</button>
-
-            </div>
 
         </div>
 
