@@ -4,7 +4,7 @@
         <td class="col-lg-10">
             {{ form_errors(calculadoraForm) }}
             <a href="#" class="js-remove-calculadora pull-right">
-                <span class="fa fa-close"></span>
+                <span class="fa fa-close">[X]</span>
             </a>
         </td>
         <td>{{ form_widget(calculadoraForm.nominal, { 'attr':{'class': 'campito'} }) }}</td>
@@ -217,8 +217,7 @@
             var newForm = prototype;
             newForm = newForm.replace(/__name__/g, index);
             $collectionHolder.data('index', index + 1);
-            var $newFormTr = $('<tr></tr>').append(newForm);
-            $collectionHolder.append($newFormTr);
+            $collectionHolder.append(newForm);
         }
     </script>
 {% endblock %}
