@@ -240,7 +240,7 @@
            $(".messageNotice").hide();
            $("input[id$='_dias']").on("change", function() {
                var index = $(this).attr('id').substr(19,1);
-               calculaDias(index);
+               reloadDates(index);
             });
            $("input[id$='vencimiento']").on("change", function() {
                var index = $(this).attr('id').substr(19,1);
