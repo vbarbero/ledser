@@ -71,7 +71,7 @@
         </div
 
 
-        <div style="float: left">
+        <div class="row" style="float: left">
             <div class="row">
                 <div class="col-lg-4">
                     {{ form_label(form.state) }}
@@ -102,16 +102,16 @@
                 <div class="col-lg-4">
                     {{ form_widget(form.notice, { 'attr':{'class': 'campito'} }) }}
                 </div>
+                <div class="col-lg-4 messageNotice">
+                    <div class="col-lg-4">
+                        {{ form_label(form.noticeMessage) }}
+                    </div>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.noticeMessage, { 'attr':{'class': 'campito'} }) }}
+                    </div>
+                </div>
             </div>
 
-            <div class="row messageNotice">
-                <div class="col-lg-4">
-                    {{ form_label(form.noticeMessage) }}
-                </div>
-                <div class="col-lg-4">
-                    {{ form_widget(form.noticeMessage, { 'attr':{'class': 'campito'} }) }}
-                </div>
-            </div>
 
             <div class="row reason">
                 <div class="col-lg-4">
