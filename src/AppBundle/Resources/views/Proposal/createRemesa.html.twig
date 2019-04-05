@@ -16,7 +16,6 @@
         <td>{{ form_widget(calculadoraForm.timbres, { 'attr':{'class': 'campito'} }) }}</td>
         <td>{{ form_widget(calculadoraForm.costeUnitario, { 'attr':{'class': 'campito'} }) }}</td>
         <td>{{ form_widget(calculadoraForm.drawee, { 'attr':{'class': 'campito'} }) }}</td>
-
     </tr>
 {% endmacro %}
 
@@ -205,31 +204,61 @@
 {% endblock %}
 {% block javascript %}
     {{ parent() }}
-    <script type="text/javascript">
-        var $collectionHolder;
+   <script type="text/javascript">
+//        $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+       $('.datepicker').datepicker({
+           format: 'yyyy-MM-dd',
+           startDate: '-3d'
+       });
+        calculaDias(false);
+   </script>
 
-        $(function () {
-            $collectionHolder = $('table.calculadora');
-            $collectionHolder.data('index', $collectionHolder.find(':input').length);
-            $(".add_calculator_link").on('click', function(e) {
-                addCalculatorForm($collectionHolder);
-            });
-            var $wrapper = $('.js-calculadora-wrapper');
-            $wrapper.on('click', '.js-remove-calculadora', function(e) {
-                e.preventDefault();
-                $(this).closest('.js-calculadora-item')
-                    .remove();
-            });
-        });
+   <script type="text/javascript">
+       var $collectionHolder;
 
-        function addCalculatorForm($collectionHolder) {
-            // Get the data-prototype explained earlier
-            var prototype = $collectionHolder.data('prototype');
-            var index = $collectionHolder.data('index');
-            var newForm = prototype;
-            newForm = newForm.replace(/__name__/g, index);
-            $collectionHolder.data('index', index + 1);
-            $collectionHolder.append(newForm);
-        }
-    </script>
+       $(function () {
+           $(".messageNotice").hide();
+           $("#calculator_notice").on("click", function() {
+		        if($("#calculator_notice").prop('checked') ) {
+                    $(".messageNotice").show();
+                } else {
+                    $(".messageNotice").hide();
+                }
+            });
+           if ($("#calculator_state").val() == 5) {
+                $(".reason").show();
+            } else {
+                $(".reason").hide();
+            }
+            $("#calculator_state").on('change', function () {
+                if ($("#calculator_state").val() == 5) {
+                    $(".reason").show();
+                } else {
+                    $(".reason").hide();
+                }
+            });
+            reloadDates();
+           $collectionHolder = $('table.calculadora');
+           $collectionHolder.data('index', $collectionHolder.find(':input').length);
+           $(".add_calculator_link").on('click', function(e) {
+               addCalculatorForm($collectionHolder);
+           });
+           var $wrapper = $('.js-calculadora-wrapper');
+           $wrapper.on('click', '.js-remove-calculadora', function(e) {
+               e.preventDefault();
+               $(this).closest('.js-calculadora-item')
+                   .remove();
+           });
+       });
+
+       function addCalculatorForm($collectionHolder) {
+           // Get the data-prototype explained earlier
+           var prototype = $collectionHolder.data('prototype');
+           var index = $collectionHolder.data('index');
+           var newForm = prototype;
+           newForm = newForm.replace(/__name__/g, index);
+           $collectionHolder.data('index', index + 1);
+           $collectionHolder.append(newForm);
+       }
+   </script>
 {% endblock %}

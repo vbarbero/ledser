@@ -199,6 +199,7 @@ class ProposalController extends Controller
     {
         $remesaModel = new RemesaModel();
         $remesaModel->setProposal($proposal);
+        $remesaModel->setState(CalculatorModel::CLOSE);
         $remesaModel->addCalculadora(new RemesaCalculadoraModel());
         $form = $this->createForm(RemesaType::class, $remesaModel);
         $form->handleRequest($request);
