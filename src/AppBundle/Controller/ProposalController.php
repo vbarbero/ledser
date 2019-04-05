@@ -199,8 +199,12 @@ class ProposalController extends Controller
     {
         $remesaModel = new RemesaModel();
         $remesaModel->setProposal($proposal);
+        $remesaModel->setEmision(new \DateTime());
         $remesaModel->setState(CalculatorModel::CLOSE);
-        $remesaModel->addCalculadora(new RemesaCalculadoraModel());
+        $remesaCalculadora = new RemesaCalculadoraModel();
+        $remesaCalculadora->setVencimiento(new \DateTime());
+        $remesaCalculadora->setFormalizacion(new \DateTime());
+        $remesaModel->addCalculadora($remesaCalculadora);
         $form = $this->createForm(RemesaType::class, $remesaModel);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
