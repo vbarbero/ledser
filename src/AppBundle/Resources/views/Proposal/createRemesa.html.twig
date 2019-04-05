@@ -93,8 +93,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-lg-4">
                     {{ form_label(form.notice) }}
@@ -124,28 +122,54 @@
                 </div>
             </div>
         </div>
-        <div style="clear: both">
+
+        <div class="row" style="float: left">
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.omf) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.omf, { 'attr':{'class': 'campito'} }) }}
+                </div>
             </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.mensajeria) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.mensajeria, { 'attr':{'class': 'campito'} }) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.burofax) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.burofax, { 'attr':{'class': 'campito'} }) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_label(form.gastos) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.gastos, { 'attr':{'class': 'campito'} }) }}
+                </div>
+            </div>
+        </div>
+        <div style="clear: both"></div>
         <div class="row">
             <table>
                 <tr>
-                    <td>Extra</td>
-                    <td>OMF</td>
-                    <td>Mensajeria</td>
-                    <td>Burofax</td>
-                    <td>Otros gastos</td>
                     <td>Honorarios</td>
+                    <td>Extra</td>
                 </tr>
                 <tr>
-
-                    <td>{{ form_widget(form.extra, { 'attr':{'class': 'campito'} }) }}</td>
-                    <td>{{ form_widget(form.omf, { 'attr':{'class': 'campito'} }) }}</td>
-                    <td>{{ form_widget(form.mensajeria, { 'attr':{'class': 'campito'} }) }}</td>
-                    <td>{{ form_widget(form.burofax, { 'attr':{'class': 'campito'} }) }}</td>
-                    <td>{{ form_widget(form.gastos, { 'attr':{'class': 'campito'} }) }}</td>
                     <td>{{ form_widget(form.honorarios, { 'attr':{'class': 'campito'} }) }}</td>
+                    <td>{{ form_widget(form.extra, { 'attr':{'class': 'campito'} }) }}</td>
                 </tr>
             </table>
+        </div>
         <div class="row">
             <table class="calculadora js-calculadora-wrapper" data-prototype="{{ formMacros.printCalculadoraRow(form.calculadora.vars.prototype)|e('html_attr') }}">
                 {# iterate over each existing tag and render its only field: name #}
