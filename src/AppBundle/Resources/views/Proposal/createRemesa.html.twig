@@ -1,3 +1,25 @@
+{% import _self as formMacros %}
+{% macro printCalculadora(calculadoraForm) %}
+    <tr class="col-xs-4 js-calculadora-item">
+        <td>
+            {{ form_errors(calculadoraForm) }}
+            <a href="#" class="js-remove-calculadora pull-right">
+                <span class="fa fa-close"></span>
+            </a>
+        </td>
+        <td>{{ form_widget(calculadoraForm.nominal, { 'attr':{'class': 'campito'} }) }}</td>
+        <td>{{ form_widget(calculadoraForm.costeFinanciero, { 'attr':{'class': 'campito'} }) }}</td>
+        <td>{{ form_widget(calculadoraForm.costeUnitario, { 'attr':{'class': 'campito'} }) }}</td>
+        <td>{{ form_widget(calculadoraForm.timbres, { 'attr':{'class': 'campito'} }) }}</td>
+        <td>{{ form_widget(calculadoraForm.formalizacion, { 'attr':{'class': 'campito'} }) }}</td>
+        <td>{{ form_widget(calculadoraForm.vencimiento, { 'attr':{'class': 'campito'} }) }}</td>
+        <td>{{ form_widget(calculadoraForm.dias, { 'attr':{'class': 'campito'} }) }}</td>
+        <td>{{ form_widget(calculadoraForm.tae, { 'attr':{'class': 'campito'} }) }}</td>
+        <td>{{ form_widget(calculadoraForm.drawee, { 'attr':{'class': 'campito'} }) }}</td>
+
+    </tr>
+{% endmacro %}
+
 {% extends 'AppBundle::layout.html.twig' %}
 {% block content %}
     <div class="row">
@@ -69,7 +91,7 @@
         </div>
 
         <div class="row">
-            <table class="calculadora" data-prototype="{{ form_widget(form.calculadora.vars.prototype)|e('html_attr') }}">
+            <table class="calculadora js-calculadora-wrapper" data-prototype="{{ formMacros.printCalculadoraRow(form.calculadora.vars.prototype)|e('html_attr') }}">
                 {# iterate over each existing tag and render its only field: name #}
                 <tr>
                     <td>nominal</td>
@@ -82,18 +104,8 @@
                     <td>tae</td>
                     <td>drawee</td>
                 </tr>
-                {% for calculadora in form.calculadora %}
-                    <tr>
-                        <td>{{ form_widget(calculadora.nominal, { 'attr':{'class': 'campito'} }) }}</td>
-                        <td>{{ form_widget(calculadora.costeFinanciero, { 'attr':{'class': 'campito'} }) }}</td>
-                        <td>{{ form_widget(calculadora.costeUnitario, { 'attr':{'class': 'campito'} }) }}</td>
-                        <td>{{ form_widget(calculadora.timbres, { 'attr':{'class': 'campito'} }) }}</td>
-                        <td>{{ form_widget(calculadora.formalizacion, { 'attr':{'class': 'campito'} }) }}</td>
-                        <td>{{ form_widget(calculadora.vencimiento, { 'attr':{'class': 'campito'} }) }}</td>
-                        <td>{{ form_widget(calculadora.dias, { 'attr':{'class': 'campito'} }) }}</td>
-                        <td>{{ form_widget(calculadora.tae, { 'attr':{'class': 'campito'} }) }}</td>
-                        <td>{{ form_widget(calculadora.drawee, { 'attr':{'class': 'campito'} }) }}</td>
-                    </tr>
+                {% for calculadoraForm in form.calculadora %}
+                    {{ formMacros.printCalculadoraRow(calculadoraForm) }}
                 {% endfor %}
             </table>
             <button type="button" class="add_calculator_link">Add a calculator</button>
@@ -188,6 +200,13 @@
             $(".add_calculator_link").on('click', function(e) {
                 addCalculatorForm($collectionHolder);
             });
+            var $wrapper = $('.js-calculadora-wrapper');
+            $wrapper.on('click', '.js-remove-calculadora', function(e) {
+                e.preventDefault();
+                $(this).closest('.js-calculadora-item')
+                    .fadeOut()
+                    .remove();
+            });
         });
 
         function addCalculatorForm($collectionHolder) {
@@ -197,8 +216,7 @@
             var newForm = prototype;
             newForm = newForm.replace(/__name__/g, index);
             $collectionHolder.data('index', index + 1);
-            var $newFormTd = $('<td colspan="9"></td>').append(newForm);
-            var $newFormTr = $('<tr></tr>').append($newFormTd);
+            var $newFormTr = $('<tr></tr>').append(newForm);
             $collectionHolder.append($newFormTr);
         }
     </script>
