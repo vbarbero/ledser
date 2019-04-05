@@ -210,7 +210,16 @@
            format: 'yyyy-MM-dd',
            startDate: '-3d'
        });*/
-        calculaDias(false);
+        calculaDias(0);
+        function calculaDias(index) {
+            0_vencimiento
+            var start = $("#remesa_calculadora_"+index+"_formalizacion").val();
+            var startD = new Date(start);
+            var end = $("#remesa_calculadora_"+index+"_vencimiento").val();
+            var endD = new Date(end);
+            var diff = parseInt((endD.getTime()-startD.getTime())/(24*3600*1000));
+            $("#remesa_calculadora_"+index+"_dias").val(diff);
+        }
    </script>
 
    <script type="text/javascript">
@@ -218,6 +227,10 @@
 
        $(function () {
            $(".messageNotice").hide();
+           $("#input[id$='vencimiento']").on("click", function() {
+		        console.log($(this).attr('id'));
+            });
+
            $("#calculator_notice").on("click", function() {
 		        if($("#calculator_notice").prop('checked') ) {
                     $(".messageNotice").show();
