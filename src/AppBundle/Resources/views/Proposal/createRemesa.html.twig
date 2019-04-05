@@ -224,7 +224,6 @@
             var start = $("#remesa_calculadora_"+index+"_formalizacion").val();
             var startD = new Date(start);
             var finishD = new Date(start);
-            debugger;
             var dateString = finishD.getUTCDate() +"/"+ (finishD.getUTCMonth()+1) +"/"+ finishD.getUTCFullYear() ;
             console.log(dateString);
             finishD.setDate(finishD.getDate() + parseInt($("#remesa_calculadora_"+index+"_dias").val()));
