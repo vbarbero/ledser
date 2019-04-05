@@ -219,6 +219,18 @@
             var diff = parseInt((endD.getTime()-startD.getTime())/(24*3600*1000));
             $("#remesa_calculadora_"+index+"_dias").val(diff);
         }
+        function  reloadDates(index) {
+            var start = $("#remesa_calculadora_"+index+"_formalizacion").val();
+            var startD = new Date(start);
+            var finishD = new Date(start);
+            var dateString = finishD.getUTCDate() +"/"+ (finishD.getUTCMonth()+1) +"/"+ finishD.getUTCFullYear() ;
+            finishD.setDate(finishD.getDate() + parseInt($("#calculator_dias").val()));
+            var nd = new Date(finishD);
+            var day = ("0" + nd.getDate()).slice(-2);
+            var month = ("0" + (nd.getMonth() + 1)).slice(-2);
+            var dateString = nd.getUTCFullYear() +"-"+ month +"-"+ day;
+            $("#remesa_calculadora_"+index+"_vencimiento").val(dateString);
+        }
    </script>
 
    <script type="text/javascript">
@@ -226,9 +238,17 @@
 
        $(function () {
            $(".messageNotice").hide();
+           $("input[id$='_dias']").on("change", function() {
+               var index = $(this).attr('id').substr(19,1);
+               calculaDias(index);
+            });
            $("input[id$='vencimiento']").on("change", function() {
-               var id = $(this).attr('id').substr(19,1);
-		        console.log(id);
+               var index = $(this).attr('id').substr(19,1);
+               calculaDias(index);
+            });
+           $("input[id$='formalizacion']").on("change", function() {
+               var index = $(this).attr('id').substr(19,1);
+               calculaDias(index);
             });
 
            $("#calculator_notice").on("click", function() {
