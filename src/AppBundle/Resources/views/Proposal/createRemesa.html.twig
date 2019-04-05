@@ -220,6 +220,7 @@
             $("#remesa_calculadora_"+index+"_dias").val(diff);
         }
         function  reloadDates(index) {
+            console.log(index);
             var start = $("#remesa_calculadora_"+index+"_formalizacion").val();
             var startD = new Date(start);
             var finishD = new Date(start);
@@ -238,7 +239,7 @@
 
        $(function () {
            $(".messageNotice").hide();
-           $("input[id$='_dias']").on("change", function() {
+           $("input[id$='dias']").on("change", function() {
                var index = $(this).attr('id').substr(19,1);
                reloadDates(index);
             });
