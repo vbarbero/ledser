@@ -254,20 +254,20 @@
                calculaDias(index);
             });
 
-           $("#calculator_notice").on("click", function() {
-		        if($("#calculator_notice").prop('checked') ) {
+           $("#remesa_calculator_notice").on("click", function() {
+		        if($("#remesa_calculator_notice").prop('checked') ) {
                     $(".messageNotice").show();
                 } else {
                     $(".messageNotice").hide();
                 }
             });
-           if ($("#calculator_state").val() == 5) {
+           if ($("#remesa_calculator_state").val() == 5) {
                 $(".reason").show();
             } else {
                 $(".reason").hide();
             }
-            $("#calculator_state").on('change', function () {
-                if ($("#calculator_state").val() == 5) {
+            $("#remesa_calculator_state").on('change', function () {
+                if ($("#remesa_scalculator_state").val() == 5) {
                     $(".reason").show();
                 } else {
                     $(".reason").hide();
