@@ -186,17 +186,20 @@
                 {% for calculadoraForm in form.calculadora %}
                     {{ formMacros.printCalculadoraRow(calculadoraForm) }}
                 {% endfor %}
+            </table>
+            <table>
+
                 <tr>
                     <td></td>
                     <td>{{ form_widget(form.totalNominal, { 'attr':{'class': 'campito'} }) }}</td>
                     <td></td>
                     <td></td>
-                   <td>{{ form_widget(form.mediaDias, { 'attr':{'class': 'campito'} }) }}</td>
-                   <td>{{ form_widget(form.mediaTae, { 'attr':{'class': 'campito'} }) }}</td>
+                    <td>{{ form_widget(form.mediaDias, { 'attr':{'class': 'campito'} }) }}</td>
+                    <td>{{ form_widget(form.mediaTae, { 'attr':{'class': 'campito'} }) }}</td>
                     <td></td>
-                   <td>{{ form_widget(form.totalCosteFinanciero, { 'attr':{'class': 'campito'} }) }}</td>
-                   <td>{{ form_widget(form.totalTimbres, { 'attr':{'class': 'campito'} }) }}</td>
-                   <td>{{ form_widget(form.totalCoste, { 'attr':{'class': 'campito'} }) }}</td>
+                    <td>{{ form_widget(form.totalCosteFinanciero, { 'attr':{'class': 'campito'} }) }}</td>
+                    <td>{{ form_widget(form.totalTimbres, { 'attr':{'class': 'campito'} }) }}</td>
+                    <td>{{ form_widget(form.totalCoste, { 'attr':{'class': 'campito'} }) }}</td>
                 </tr>
             </table>
             <button type="button" class="add_calculator_link">Add a calculator</button>
@@ -266,6 +269,10 @@
                calculaDias(index);
             });
 
+           $(".linea-nominal").on("change", function() {
+               $("#remesa_totalNominal").val(calculaTotalNominal());
+            });
+
 
 
            $("#remesa_notice").on("click", function() {
@@ -320,6 +327,10 @@
                var index = $(this).attr('id').substr(19,1);
                calculaDias(index);
             });
+
+           $(".linea-nominal").on("change", function() {
+               $("#remesa_totalNominal").val(calculaTotalNominal());
+            });
        }
        
        function calculaTotalNominal() {
@@ -333,6 +344,7 @@
                     total = total + $("#remesa_calculadora_" + i + "_nominal").val();
                 }
             }
+            console.log(total);
             return total;
        }
    </script>
