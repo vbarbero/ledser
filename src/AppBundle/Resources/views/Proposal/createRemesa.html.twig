@@ -328,16 +328,12 @@
        }
        
        function calculaTotalNominal() {
-            $collectionHolder = $('table.calculadora');
-            var index = $collectionHolder.data('index');
-            console.log(index);
             var total = 0;
-            for (i = 0; i < index; i++) {
-                if($.isNumeric($("#remesa_calculadora_" + i + "_nominal").val())) {
-                    total = parseFloat(total)+ parseFloat($("#remesa_calculadora_" + i + "_nominal").val());
+            $(".linea-nominal").each(function( index ) {
+                if($.isNumeric($(this).val())) {
+                    total = parseFloat(total)+ parseFloat($(this).val());
                 }
-            }
-            console.log(total);
+            })
             return total;
        }
 
@@ -376,53 +372,43 @@
        }
 
        function calculaMediaTae() {
-            $collectionHolder = $('table.calculadora');
-            var index = $collectionHolder.data('index');
-
-            console.log("index --> " + index);
-            var total = 0;
-            for (i = 0; i < index; i++) {
-                if($.isNumeric($("#remesa_calculadora_" + i + "_tae").val())) {
-                    total = parseFloat(total)+ parseFloat($("#remesa_calculadora_" + i + "_tae").val());
+           var total = 0;
+            $(".linea-tae").each(function( index ) {
+                if($.isNumeric($(this).val())) {
+                    total = parseFloat(total)+ parseFloat($(this).val());
                 }
-            }
-            return total/index;
+            })
+            return total/$(".linea-tae").length;
        }
 
        function calculaTotalCosteFinanciero() {
-           $collectionHolder = $('table.calculadora');
-           var index = $collectionHolder.data('index');
            var total = 0;
-           for (i = 0; i < index; i++) {
-               if ($.isNumeric($("#remesa_calculadora_" + i + "_tae").val())) {
-                   total = parseFloat(total) + parseFloat($("#remesa_calculadora_" + i + "_tae").val());
-               }
-           }
-           return total / index;
+            $(".linea-costeFinanciero").each(function( index ) {
+                if($.isNumeric($(this).val())) {
+                    total = parseFloat(total)+ parseFloat($(this).val());
+                }
+            })
+            return total;
        }
 
        function calculaTotalCoste() {
-            $collectionHolder = $('table.calculadora');
-            var index = $collectionHolder.data('index');
-            var total = 0;
-            for (i = 0; i < index; i++) {
-                if($.isNumeric($("#remesa_calculadora_" + i + "_totalCoste").val())) {
-                    total = parseFloat(total)+ parseFloat($("#remesa_calculadora_" + i + "_totalCoste").val());
+           var total = 0;
+            $(".linea-costeTotal").each(function( index ) {
+                if($.isNumeric($(this).val())) {
+                    total = parseFloat(total)+ parseFloat($(this).val());
                 }
-            }
-            return total/index;
+            })
+            return total;
        }
 
        function calculaTotalTimbres() {
-            $collectionHolder = $('table.calculadora');
-            var index = $collectionHolder.data('index');
             var total = 0;
-            for (i = 0; i < index; i++) {
-                if($.isNumeric($("#remesa_calculadora_" + i + "_totalTimbres").val())) {
-                    total = parseFloat(total)+ parseFloat($("#remesa_calculadora_" + i + "_totalTimbres").val());
+            $(".linea-timbres").each(function( index ) {
+                if($.isNumeric($(this).val())) {
+                    total = parseFloat(total)+ parseFloat($(this).val());
                 }
-            }
-            return total/index;
+            })
+            return total;
        }
    </script>
 {% endblock %}
