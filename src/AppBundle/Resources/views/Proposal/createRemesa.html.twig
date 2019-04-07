@@ -354,7 +354,7 @@
            $(".linea-tae").on("change", function() {
                $("#remesa_mediaTae").val(calculaMediaTae());
             });
-           $(".linea-timbres").on("change", function() {
+           $(".linea-costeFinanciero").on("change", function() {
                $("#remesa_totalCosteFinanciero").val(calculaTotalCosteFinanciero());
             });
            $(".linea-costeUnitario").on("change", function() {
@@ -404,12 +404,12 @@
 
        function calculaTotalCoste() {
            var total = 0;
-            $(".linea-costeTotal").each(function( index ) {
+            $(".linea-costeUnitario").each(function( index ) {
                 if($.isNumeric($(this).val())) {
                     total = parseFloat(total)+ parseFloat($(this).val());
                 }
             });
-            console.log("index --> " + $(".linea-costeTotal").length);
+            console.log("index --> " + $(".linea-costeUnitario").length);
             console.log("total media linea-costeTotal --> " + total);
             return total;
        }
