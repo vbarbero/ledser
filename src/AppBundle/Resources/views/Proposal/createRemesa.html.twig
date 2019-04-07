@@ -324,7 +324,7 @@
                var index = $(this).attr('id').substr(19,1);
                calculaDias(index);
             });
-           var d = new Date(Date.now());
+           var d = new Date();
            debugger;
            $("#remesa_calculadora_" + index + "_formalizacion").val(d.getDate()+"/"+ d.getMonth() + "/" + d.getFullYear());
            $("#remesa_calculadora_" + index + "_vencimiento").val(d.getDate()+"/"+ d.getMonth() + "/" + d.getFullYear());
