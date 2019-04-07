@@ -184,6 +184,7 @@ class RemesaModel
     public function __construct()
     {
         $this->calculadora =  new ArrayCollection();
+        $this->totalNominal =  0;
         $this->totalCoste =  0;
         $this->mediaDias =  0;
         $this->mediaTae =  0;
@@ -194,6 +195,21 @@ class RemesaModel
         $this->mensajeria =  0;
         $this->burofax =  0;
         $this->gastos =  0;
+        $this->costeFinancieroCoste =  0;
+        $this->costeFinancieroLiquido =  0;
+        $this->costeFinancieroTae =  0;
+        $this->costeFinancieroMensual =  0;
+        $this->costeFinancieroTotal =  0;
+        $this->costeFinancieroLedserCoste =  0;
+        $this->costeFinancieroLedserLiquido =  0;
+        $this->costeFinancieroLedserMensual =  0;
+        $this->costeFinancieroLedserTae =  0;
+        $this->costeFinancieroLedserTotal =  0;
+        $this->costeTotalCoste =  0;
+        $this->costeTotalLiquido =  0;
+        $this->costeTotalTae =  0;
+        $this->costeTotalMensual =  0;
+        $this->costeTotalTotal =  0;
 
 
     }
