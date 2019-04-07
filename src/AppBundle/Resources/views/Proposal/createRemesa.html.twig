@@ -370,9 +370,9 @@
                     total = parseFloat(total)+ parseFloat($(this).val());
                 }
             })
-            console.log("index --> " + $(".linea-dias").size());
+            console.log("index --> " + $(".linea-dias").length);
             console.log("total media dias --> " + total);
-            return total/$(".linea-dias").size();
+            return total/$(".linea-dias").length;
        }
 
        function calculaMediaTae() {
