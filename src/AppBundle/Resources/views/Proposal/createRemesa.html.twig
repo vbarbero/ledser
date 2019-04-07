@@ -311,6 +311,7 @@
            newForm = newForm.replace(/__name__/g, index);
            $collectionHolder.data('index', index + 1);
            $collectionHolder.append(newForm);
+
            $("input[id$='dias']").on("change", function() {
                var index = $(this).attr('id').substr(19,1);
                reloadDates(index);
@@ -323,8 +324,10 @@
                var index = $(this).attr('id').substr(19,1);
                calculaDias(index);
             });
+           var d = Date(Date.now());
+           $("#remesa_calculadora_" + index + "_formalizacion").val(d.toString());
+           $("#remesa_calculadora_" + index + "_vencimiento").val(d.toString());
            recalculaTotales() ;
-
        }
        
        function calculaTotalNominal() {
