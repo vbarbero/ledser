@@ -333,7 +333,9 @@
                 if($.isNumeric($(this).val())) {
                     total = parseFloat(total)+ parseFloat($(this).val());
                 }
-            })
+            });
+            console.log("index --> " + $(".linea-nominal").length);
+            console.log("total media linea-nominal --> " + total);
             return total;
        }
 
@@ -354,8 +356,8 @@
            $(".linea-costeUnitario").on("change", function() {
                $("#remesa_totalCosteUnitario").val(calculaTotalCoste());
             });
-           $(".linea-costeFinanciero").on("change", function() {
-               $("#remesa_totalCosteFinanciero").val(calculaTotalCosteFinanciero());
+           $(".linea-timbres").on("change", function() {
+               $("#remesa_totalTimbres").val(calculaTotalTimbres());
             });
        }
 
@@ -365,7 +367,7 @@
                 if($.isNumeric($(this).val())) {
                     total = parseFloat(total)+ parseFloat($(this).val());
                 }
-            })
+            });
             console.log("index --> " + $(".linea-dias").length);
             console.log("total media dias --> " + total);
             return total/$(".linea-dias").length;
@@ -377,7 +379,10 @@
                 if($.isNumeric($(this).val())) {
                     total = parseFloat(total)+ parseFloat($(this).val());
                 }
-            })
+            });
+
+            console.log("index --> " + $(".linea-tae").length);
+            console.log("total media tae --> " + total);
             return total/$(".linea-tae").length;
        }
 
@@ -387,7 +392,9 @@
                 if($.isNumeric($(this).val())) {
                     total = parseFloat(total)+ parseFloat($(this).val());
                 }
-            })
+            });
+            console.log("index --> " + $(".linea-costeFinanciero").length);
+            console.log("total media calculaTotalCosteFinanciero --> " + total);
             return total;
        }
 
@@ -397,7 +404,9 @@
                 if($.isNumeric($(this).val())) {
                     total = parseFloat(total)+ parseFloat($(this).val());
                 }
-            })
+            });
+            console.log("index --> " + $(".linea-costeTotal").length);
+            console.log("total media linea-costeTotal --> " + total);
             return total;
        }
 
@@ -407,7 +416,9 @@
                 if($.isNumeric($(this).val())) {
                     total = parseFloat(total)+ parseFloat($(this).val());
                 }
-            })
+            });
+            console.log("index --> " + $(".linea-timbres").length);
+            console.log("total media linea-linea-timbres --> " + total);
             return total;
        }
    </script>
