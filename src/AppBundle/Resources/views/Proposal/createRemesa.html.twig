@@ -183,12 +183,6 @@
                     <td>costeUnitario</td>
                     <td>drawee</td>
                 </tr>
-                {% for calculadoraForm in form.calculadora %}
-                    {{ formMacros.printCalculadoraRow(calculadoraForm) }}
-                {% endfor %}
-            </table>
-            <button type="button" class="add_calculator_link">Add a calculator</button><br/>
-            <table>
 
                 <tr>
                     <td></td>
@@ -202,7 +196,11 @@
                     <td>{{ form_widget(form.totalTimbres, { 'attr':{'class': 'campito'} }) }}</td>
                     <td>{{ form_widget(form.totalCoste, { 'attr':{'class': 'campito'} }) }}</td>
                 </tr>
+                {% for calculadoraForm in form.calculadora %}
+                    {{ formMacros.printCalculadoraRow(calculadoraForm) }}
+                {% endfor %}
             </table>
+            <button type="button" class="add_calculator_link">Add a calculator</button>
         </div>
 
 
