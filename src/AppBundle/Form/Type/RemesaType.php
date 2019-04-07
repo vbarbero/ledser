@@ -54,7 +54,6 @@ class RemesaType extends AbstractType
         $builder->add('costeFinancieroCoste');
         $builder->add('costeFinancieroLiquido');
         $builder->add('costeFinancieroLedserTotal');
-
         $builder->add('costeFinancieroLedserTae');
         $builder->add('costeFinancieroLedserMensual');
         $builder->add('costeFinancieroLedserCoste');
@@ -65,6 +64,13 @@ class RemesaType extends AbstractType
         $builder->add('costeTotalCoste');
 
         $builder->add('costeTotalLiquido');
+
+        $builder->add('totalNominal');
+        $builder->add('mediaDias');
+        $builder->add('mediaTae');
+        $builder->add('totalCosteFinanciero');
+        $builder->add('totalTimbres');
+        $builder->add('totalCoste');
     }
 
     /**
