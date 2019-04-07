@@ -50,7 +50,7 @@ class RemesaType extends AbstractType
         $builder->add('noticeMessage', TextType::class, ['required' => false]); //, 'attr' => ['readonly' => true]
         $builder->add('costeFinancieroTotal');
         $builder->add('costeFinancieroTae');
-        $builder->add('costeFinancieroMensual');
+        $builder->add('costeFinancieroMensual');totalTimbres
         $builder->add('costeFinancieroCoste');
         $builder->add('costeFinancieroLiquido');
         $builder->add('costeFinancieroLedserTotal');
