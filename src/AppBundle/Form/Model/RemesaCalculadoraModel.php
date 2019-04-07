@@ -51,6 +51,16 @@ class RemesaCalculadoraModel
      */
     protected $drawee;
 
+    public function __construct()
+    {
+        $this->dias = 0;
+        $this->nominal = 0;
+        $this->timbres = 0;
+        $this->costeFinanciero = 0;
+        $this->costeUnitario = 0;
+    }
+
+
     /**
      * @return float
      */
