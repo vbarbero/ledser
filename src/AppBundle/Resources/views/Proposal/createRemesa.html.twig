@@ -326,8 +326,8 @@
             });
            var d = new Date();
            debugger;
-           $("#remesa_calculadora_" + index + "_formalizacion").val(d.getDate()+"/"+ d.getMonth() + "/" + d.getFullYear());
-           $("#remesa_calculadora_" + index + "_vencimiento").val(d.getDate()+"/"+ d.getMonth() + "/" + d.getFullYear());
+           $("#remesa_calculadora_" + index + "_formalizacion").val(d.getFullYear()+"-"+ d.getMonth() + "-" + d.getDate());
+           $("#remesa_calculadora_" + index + "_vencimiento").val(d.getFullYear()+"-"+ d.getMonth() + "-" + d.getDate());
            recalculaTotales() ;
        }
        
