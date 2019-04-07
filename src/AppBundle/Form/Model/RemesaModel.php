@@ -210,6 +210,9 @@ class RemesaModel
         $this->costeTotalTae =  0;
         $this->costeTotalMensual =  0;
         $this->costeTotalTotal =  0;
+        $this->nominal =  0;
+        $this->honorarios =  0;
+        $this->extra =  0;
 
 
     }
