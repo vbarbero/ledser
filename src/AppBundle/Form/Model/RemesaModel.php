@@ -707,5 +707,101 @@ class RemesaModel
         $this->nominal = $nominal;
     }
 
+    /**
+     * @return float
+     */
+    public function getTotalNominal()
+    {
+        return $this->totalNominal;
+    }
+
+    /**
+     * @param float $totalNominal
+     */
+    public function setTotalNominal($totalNominal)
+    {
+        $this->totalNominal = $totalNominal;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMediaDias()
+    {
+        return $this->mediaDias;
+    }
+
+    /**
+     * @param int $mediaDias
+     */
+    public function setMediaDias($mediaDias)
+    {
+        $this->mediaDias = $mediaDias;
+    }
+
+    /**
+     * @return float
+     */
+    public function getMediaTae()
+    {
+        return $this->mediaTae;
+    }
+
+    /**
+     * @param float $mediaTae
+     */
+    public function setMediaTae($mediaTae)
+    {
+        $this->mediaTae = $mediaTae;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTotalCosteFinanciero()
+    {
+        return $this->totalCosteFinanciero;
+    }
+
+    /**
+     * @param float $totalCosteFinanciero
+     */
+    public function setTotalCosteFinanciero($totalCosteFinanciero)
+    {
+        $this->totalCosteFinanciero = $totalCosteFinanciero;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTotalTimbres()
+    {
+        return $this->totalTimbres;
+    }
+
+    /**
+     * @param float $totalTimbres
+     */
+    public function setTotalTimbres($totalTimbres)
+    {
+        $this->totalTimbres = $totalTimbres;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTotalCoste()
+    {
+        return $this->totalCoste;
+    }
+
+    /**
+     * @param float $totalCoste
+     */
+    public function setTotalCoste($totalCoste)
+    {
+        $this->totalCoste = $totalCoste;
+    }
+
     
 }
