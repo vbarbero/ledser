@@ -147,6 +147,36 @@ class RemesaModel
     protected $costeTotalLiquido;
 
     /**
+     * @var float
+     */
+    protected $totalNominal;
+
+    /**
+     * @var int
+     */
+    protected $mediaDias;
+
+    /**
+     * @var float
+     */
+    protected $mediaTae;
+
+    /**
+     * @var float
+     */
+    protected $totalCosteFinanciero;
+
+    /**
+     * @var float
+     */
+    protected $totalTimbres;
+
+    /**
+     * @var float
+     */
+    protected $totalCoste;
+
+    /**
      * @var ArrayCollection
      */
     protected $calculadora;
