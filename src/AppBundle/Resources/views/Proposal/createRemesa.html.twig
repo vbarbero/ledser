@@ -366,18 +366,23 @@
        function calculaMediaDias() {
             $collectionHolder = $('table.calculadora');
             var index = $collectionHolder.data('index');
+            console.log("index --> " + index);
             var total = 0;
             for (i = 0; i < index; i++) {
                 if($.isNumeric($("#remesa_calculadora_" + i + "_dias").val())) {
                     total = parseFloat(total)+ parseFloat($("#remesa_calculadora_" + i + "_dias").val());
                 }
             }
+
+            console.log("total media dias --> " + total);
             return total/index;
        }
 
        function calculaMediaTae() {
             $collectionHolder = $('table.calculadora');
             var index = $collectionHolder.data('index');
+
+            console.log("index --> " + index);
             var total = 0;
             for (i = 0; i < index; i++) {
                 if($.isNumeric($("#remesa_calculadora_" + i + "_tae").val())) {
