@@ -39,17 +39,17 @@
                     <td>Coste Total</td>
                 </tr>
                 <tr>
+                    <td>Tae</td>
+                    <td>{{ form_widget(form.costeFinancieroTae, { 'attr':{'class': 'campito tae-table'} }) }}</td>
+                    <td>{{ form_widget(form.costeFinancieroLedserTae, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                    <td>{{ form_widget(form.costeTotalTae, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
+                    </tr>
+                <tr>
                     <td>Total</td>
                     <td>{{ form_widget(form.costeFinancieroTotal, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
                     <td>{{ form_widget(form.costeFinancieroLedserTotal, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
                     <td>{{ form_widget(form.costeTotalTotal, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
                 </tr>
-                <tr>
-                    <td>Tae</td>
-                    <td>{{ form_widget(form.costeFinancieroTae, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                    <td>{{ form_widget(form.costeFinancieroLedserTae, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                    <td>{{ form_widget(form.costeTotalTae, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
-                    </tr>
                 <tr>
                     <td>Mensual</td>
                     <td>{{ form_widget(form.costeFinancieroMensual, { 'attr':{'class': 'campito', 'readonly':true} }) }}</td>
@@ -113,10 +113,10 @@
             </div>
             <div class="row">
                 <div class="col-lg-4">
-                    {{ form_label(form.nominal) }}
+                    {{ form_label(form.honorarios) }}
                 </div>
                 <div class="col-lg-4">
-                    {{ form_widget(form.nominal, { 'attr':{'class': 'campito'} }) }}
+                    {{ form_widget(form.honorarios, { 'attr':{'class': 'campito'} }) }}
                 </div>
             </div>
         </div>
@@ -127,7 +127,7 @@
                     {{ form_label(form.omf) }}
                 </div>
                 <div class="col-lg-4">
-                    {{ form_widget(form.omf, { 'attr':{'class': 'campito'} }) }}
+                    {{ form_widget(form.omf, { 'attr':{'class': 'campito linea-gastos'} }) }}
                 </div>
             </div>
             <div class="row">
@@ -135,7 +135,7 @@
                     {{ form_label(form.mensajeria) }}
                 </div>
                 <div class="col-lg-4">
-                    {{ form_widget(form.mensajeria, { 'attr':{'class': 'campito'} }) }}
+                    {{ form_widget(form.mensajeria, { 'attr':{'class': 'campito linea-gastos'} }) }}
                 </div>
             </div>
             <div class="row">
@@ -143,7 +143,7 @@
                     {{ form_label(form.burofax) }}
                 </div>
                 <div class="col-lg-4">
-                    {{ form_widget(form.burofax, { 'attr':{'class': 'campito'} }) }}
+                    {{ form_widget(form.burofax, { 'attr':{'class': 'campito linea-gastos'} }) }}
                 </div>
             </div>
             <div class="row">
@@ -151,23 +151,11 @@
                     {{ form_label(form.gastos) }}
                 </div>
                 <div class="col-lg-4">
-                    {{ form_widget(form.gastos, { 'attr':{'class': 'campito'} }) }}
+                    {{ form_widget(form.gastos, { 'attr':{'class': 'campito linea-gastos'} }) }}
                 </div>
             </div>
         </div>
         <div style="clear: both"></div>
-        <div class="row">
-            <table>
-                <tr>
-                    <td>Honorarios</td>
-                    <td>Extra</td>
-                </tr>
-                <tr>
-                    <td>{{ form_widget(form.honorarios, { 'attr':{'class': 'campito'} }) }}</td>
-                    <td>{{ form_widget(form.extra, { 'attr':{'class': 'campito'} }) }}</td>
-                </tr>
-            </table>
-        </div>
         <div class="row">
             <table class="calculadora js-calculadora-wrapper" data-prototype="{{ formMacros.printCalculadoraRow(form.calculadora.vars.prototype)|e('html_attr') }}">
                 {# iterate over each existing tag and render its only field: name #}
@@ -224,84 +212,19 @@
            format: 'yyyy-MM-dd',
            startDate: '-3d'
        });*/
-        calculaDias(0);
-        function calculaDias(index) {
-            var start = $("#remesa_calculadora_"+index+"_formalizacion").val();
-            var startD = new Date(start);
-            var end = $("#remesa_calculadora_"+index+"_vencimiento").val();
-            var endD = new Date(end);
-            var diff = parseInt((endD.getTime()-startD.getTime())/(24*3600*1000));
-            $("#remesa_calculadora_"+index+"_dias").val(diff);
-        }
-        function  reloadDates(index) {
-            console.log(index);
-            var start = $("#remesa_calculadora_"+index+"_formalizacion").val();
-            var startD = new Date(start);
-            var finishD = new Date(start);
-            var dateString = finishD.getUTCDate() +"/"+ (finishD.getUTCMonth()+1) +"/"+ finishD.getUTCFullYear() ;
-            console.log(dateString);
-            finishD.setDate(finishD.getDate() + parseInt($("#remesa_calculadora_"+index+"_dias").val()));
-            var nd = new Date(finishD);
-            var day = ("0" + nd.getDate()).slice(-2);
-            var month = ("0" + (nd.getMonth() + 1)).slice(-2);
-            var dateString = nd.getUTCFullYear() +"-"+ month +"-"+ day;
-            console.log(dateString);
-            $("#remesa_calculadora_"+index+"_vencimiento").val(dateString);
-        }
    </script>
 
    <script type="text/javascript">
-       var $collectionHolder;
+        calculaDias(0);
+        var $collectionHolder;
 
-       $(function () {
-           $(".messageNotice").hide();
-           $("input[id$='dias']").on("change", function() {
-               var index = $(this).attr('id').substr(19,1);
-               reloadDates(index);
+        $(function() {
+            recalculaTotales() ; 
+            $("#remesa_costeFinancieroTotal").on("change", function() {
+                recalculaTablaCostes();
             });
-           $("input[id$='vencimiento']").on("change", function() {
-               var index = $(this).attr('id').substr(19,1);
-               calculaDias(index);
-            });
-           $("input[id$='formalizacion']").on("change", function() {
-               var index = $(this).attr('id').substr(19,1);
-               calculaDias(index);
-            });
-            recalculaTotales() ;
 
-
-
-           $("#remesa_notice").on("click", function() {
-		        if($("#remesa_notice").prop('checked') ) {
-                    $(".messageNotice").show();
-                } else {
-                    $(".messageNotice").hide();
-                }
-            });
-           if ($("#remesa_state").val() == 5) {
-                $(".reason").show();
-            } else {
-                $(".reason").hide();
-            }
-            $("#remesa_state").on('change', function () {
-                if ($("#remesa_state").val() == 5) {
-                    $(".reason").show();
-                } else {
-                    $(".reason").hide();
-                }
-            });
-           $collectionHolder = $('table.calculadora');
-           $collectionHolder.data('index', $collectionHolder.find(':input').length);
-           $(".add_calculator_link").on('click', function(e) {
-               addCalculatorForm($collectionHolder);
-           });
-           var $wrapper = $('.js-calculadora-wrapper');
-           $wrapper.on('click', '.js-remove-calculadora', function(e) {
-               e.preventDefault();
-               $(this).closest('.js-calculadora-item')
-                   .remove();
-           });
-       });
+        });
 
        function addCalculatorForm($collectionHolder) {
            // Get the data-prototype explained earlier
@@ -325,22 +248,9 @@
                calculaDias(index);
             });
            var d = new Date();
-           debugger;
-           $("#remesa_calculadora_" + index + "_formalizacion").val(d.getFullYear()+"-"+ ("0" + d.getDate()).slice(-2) + "-" + ("0" + (d.getMonth() + 1)).slice(-2));
-           $("#remesa_calculadora_" + index + "_vencimiento").val(d.getFullYear()+"-"+ ("0" + d.getDate()).slice(-2) + "-" + ("0" + (d.getMonth() + 1)).slice(-2));
+           $("#remesa_calculadora_" + index + "_formalizacion").val(d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2));
+           $("#remesa_calculadora_" + index + "_vencimiento").val(d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2));
            recalculaTotales() ;
-       }
-       
-       function calculaTotalNominal() {
-            var total = 0;
-            $(".linea-nominal").each(function( index ) {
-                if($.isNumeric($(this).val())) {
-                    total = parseFloat(total)+ parseFloat($(this).val());
-                }
-            });
-            console.log("index --> " + $(".linea-nominal").length);
-            console.log("total media linea-nominal --> " + total);
-            return total;
        }
 
        function recalculaTotales() {
@@ -364,6 +274,16 @@
                $("#remesa_totalTimbres").val(calculaTotalTimbres());
             });
        }
+       
+       function calculaTotalNominal() {
+            var total = 0;
+            $(".linea-nominal").each(function( index ) {
+                if($.isNumeric($(this).val())) {
+                    total = parseFloat(total)+ parseFloat($(this).val());
+                }
+            });
+            return total;
+       }
 
        function calculaMediaDias() {
             var total = 0;
@@ -372,8 +292,6 @@
                     total = parseFloat(total)+ parseFloat($(this).val());
                 }
             });
-            console.log("index --> " + $(".linea-dias").length);
-            console.log("total media dias --> " + total);
             return total/$(".linea-dias").length;
        }
 
@@ -384,9 +302,6 @@
                     total = parseFloat(total)+ parseFloat($(this).val());
                 }
             });
-
-            console.log("index --> " + $(".linea-tae").length);
-            console.log("total media tae --> " + total);
             return total/$(".linea-tae").length;
        }
 
@@ -397,8 +312,6 @@
                     total = parseFloat(total)+ parseFloat($(this).val());
                 }
             });
-            console.log("index --> " + $(".linea-costeFinanciero").length);
-            console.log("total media calculaTotalCosteFinanciero --> " + total);
             return total;
        }
 
@@ -409,8 +322,6 @@
                     total = parseFloat(total)+ parseFloat($(this).val());
                 }
             });
-            console.log("index --> " + $(".linea-costeUnitario").length);
-            console.log("total media linea-costeTotal --> " + total);
             return total;
        }
 
@@ -421,9 +332,39 @@
                     total = parseFloat(total)+ parseFloat($(this).val());
                 }
             });
-            console.log("index --> " + $(".linea-timbres").length);
-            console.log("total media linea-linea-timbres --> " + total);
             return total;
        }
+       
+        function calculaDias(index) {
+            var start = $("#remesa_calculadora_"+index+"_formalizacion").val();
+            var startD = new Date(start);
+            var end = $("#remesa_calculadora_"+index+"_vencimiento").val();
+            var endD = new Date(end);
+            var diff = parseInt((endD.getTime()-startD.getTime())/(24*3600*1000));
+            $("#remesa_calculadora_"+index+"_dias").val(diff);
+        }
+
+        function  reloadDates(index) {
+            console.log(index);
+            var start = $("#remesa_calculadora_"+index+"_formalizacion").val();
+            var startD = new Date(start);
+            var finishD = new Date(start);
+            var dateString = finishD.getUTCDate() +"/"+ (finishD.getUTCMonth()+1) +"/"+ finishD.getUTCFullYear() ;
+            console.log(dateString);
+            finishD.setDate(finishD.getDate() + parseInt($("#remesa_calculadora_"+index+"_dias").val()));
+            var nd = new Date(finishD);
+            var day = ("0" + nd.getDate()).slice(-2);
+            var month = ("0" + (nd.getMonth() + 1)).slice(-2);
+            var dateString = nd.getUTCFullYear() +"-"+ month +"-"+ day;
+            console.log(dateString);
+            $("#remesa_calculadora_"+index+"_vencimiento").val(dateString);
+        }
+
+        function recalculaTablaCostes()
+        {
+            $("#remesa_costeFinancieroTotal").val(parseFloat($("#remesa_totalNominal").val()) / parseFloat($("#remesa_totalCosteFinanciero")));
+            $("#remesa_costeFinancieroMensual").val(parseFloat($("#remesa_costeFinancieroTotal").val()) / 12);
+            
+        }
    </script>
 {% endblock %}

@@ -32,15 +32,7 @@ class RemesaModel
      * @var float
      */
     protected $honorarios;
-    /**
-     * @var float
-     */
-    protected $extra;
-    /**
-     * @var float
-     */
-    protected $nominal;
-
+    
     /**
      * @var float
      */
@@ -210,9 +202,7 @@ class RemesaModel
         $this->costeTotalTae =  0;
         $this->costeTotalMensual =  0;
         $this->costeTotalTotal =  0;
-        $this->nominal =  0;
         $this->honorarios =  0;
-        $this->extra =  0;
 
 
     }
@@ -320,22 +310,6 @@ class RemesaModel
     public function setHonorarios($honorarios)
     {
         $this->honorarios = $honorarios;
-    }
-
-    /**
-     * @return float
-     */
-    public function getExtra()
-    {
-        return $this->extra;
-    }
-
-    /**
-     * @param float $extra
-     */
-    public function setExtra($extra)
-    {
-        $this->extra = $extra;
     }
 
     /**
@@ -720,22 +694,6 @@ class RemesaModel
     public function setCosteTotalLiquido($costeTotalLiquido)
     {
         $this->costeTotalLiquido = $costeTotalLiquido;
-    }
-
-    /**
-     * @return float
-     */
-    public function getNominal()
-    {
-        return $this->nominal;
-    }
-
-    /**
-     * @param float $nominal
-     */
-    public function setNominal($nominal)
-    {
-        $this->nominal = $nominal;
     }
 
     /**

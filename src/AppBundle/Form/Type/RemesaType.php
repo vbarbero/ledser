@@ -32,9 +32,7 @@ class RemesaType extends AbstractType
     {
         $builder->add('state', ChoiceType::class, ['choices' => CalculatorModel::getStateAsChoice()]);
         $builder->add('emision', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd']);
-        $builder->add('nominal');
         $builder->add('honorarios');
-        $builder->add('extra');
         $builder->add('omf');
         $builder->add('mensajeria');
             $builder->add('burofax');
