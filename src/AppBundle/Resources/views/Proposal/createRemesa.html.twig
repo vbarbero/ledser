@@ -375,6 +375,8 @@
        }
        
         function calculaDias(index) {
+
+            console.log(index);
             var start = $("#remesa_calculadora_"+index+"_formalizacion").val();
             var startD = new Date(start);
             var end = $("#remesa_calculadora_"+index+"_vencimiento").val();
@@ -386,6 +388,7 @@
         function  reloadDates(index) {
             console.log(index);
             var start = $("#remesa_calculadora_"+index+"_formalizacion").val();
+            console.log(start);
             var startD = new Date(start);
             var finishD = new Date(start);
             var dateString = finishD.getUTCDate() +"/"+ (finishD.getUTCMonth()+1) +"/"+ finishD.getUTCFullYear() ;
@@ -438,15 +441,11 @@
         
         function calculaTimbreFila() {
             $(".linea-existeTimbre").on('click', function() {
-                console.log('calculaTimbreFila');
-                console.log($(this).is(':checked'));
-                console.log($(this).attr('id'));
                 if($(this).is(':checked'))
                 {
                     var idNominal = $(this).attr('id').replace("existeTimbre", "nominal");
                     var idTimbre = $(this).attr('id').replace("existeTimbre", "timbres");
                     var valor = timbre($("#" + idNominal).val());
-                    console.log("#" + idTimbre);
                     $("#" + idTimbre).val(valor);
                 }
             });
