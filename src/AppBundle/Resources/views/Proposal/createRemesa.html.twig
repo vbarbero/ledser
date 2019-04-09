@@ -303,14 +303,17 @@
            $("input[id$='dias']").on("change", function() {
                var id = $(this).attr('id').split("_");
                reloadDates(id[2]);
+               $("#remesa_mediaDias").val(calculaMediaDias());
             });
            $("input[id$='vencimiento']").on("change", function() {
                var id = $(this).attr('id').split("_");
                calculaDias(id[2]);
+               $("#remesa_mediaDias").val(calculaMediaDias());
             });
            $("input[id$='formalizacion']").on("change", function() {
                var id = $(this).attr('id').split("_");
                calculaDias(id[2]);
+               $("#remesa_mediaDias").val(calculaMediaDias());
             });
        }
        
