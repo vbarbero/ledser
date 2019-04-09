@@ -436,6 +436,8 @@
         function calculaTimbreFila() {
             $(".linea-existeTimbre").on('click', function() {
                 console.log('calculaTimbreFila');
+                console.log($(this).is(':checked'));
+                console.log($(this).attr('id'));
                 if($(this).is(':checked'))
                 {
                     var idNominal = $(this).attr('id').replace("existeTimbre", "nominal");
