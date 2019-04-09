@@ -597,10 +597,12 @@
         }
 
         function calculaCosteFinancieroFila(i) {
+           console.log('---------');
            console.log((getValueFila(i, 'nominal') + getValueFila(i, 'dias') + getValueFila(i, 'tae'))/36000);
            console.log(getValueFila(i, 'nominal') );
            console.log(getValueFila(i, 'dias') );
            console.log(getValueFila(i, 'tae') );
+           console.log('---------');
             setValueFila(i, 'costeFinanciero', (getValueFila(i, 'nominal') + getValueFila(i, 'dias') + getValueFila(i, 'tae'))/36000);
         }
 
