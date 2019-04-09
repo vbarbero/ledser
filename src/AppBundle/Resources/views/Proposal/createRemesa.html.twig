@@ -532,6 +532,10 @@
 
         function calculaCosteTotalTotalFila(index)
         {
+            console.log('__calculaCosteTotalTotalFila__');
+            console.log(calculaCosteTotalFila(index));
+            console.log(getValueFila(index, 'nominal'));
+            console.log(getValueFila(index, 'dias'));
             return (360 * 100 * calculaCosteTotalFila(index))/(getValueFila(index, 'nominal') * getValueFila(index, 'dias'));
         }
 
