@@ -11,7 +11,10 @@
         <td>{{ form_widget(calculadoraForm.formalizacion, { 'attr':{'class': 'campito'} }) }}</td>
         <td>{{ form_widget(calculadoraForm.vencimiento, { 'attr':{'class': 'campito'} }) }}</td>
         <td>{{ form_widget(calculadoraForm.dias, { 'attr':{'class': 'campitod linea-dias'} }) }}</td>
-        <td>{{ form_widget(calculadoraForm.timbres, { 'attr':{'class': 'campito linea-timbres'} }) }}</td>
+        <td>
+            {{ form_widget(calculadoraForm.existeTimbre, { 'attr':{'class': 'campito linea-existeTimbre'} }) }}
+            {{ form_widget(calculadoraForm.timbres, { 'attr':{'class': 'campito linea-timbres'} }) }}
+        </td>
         <td>{{ form_widget(calculadoraForm.tae, { 'attr':{'class': 'campito linea-tae'} }) }}</td>
         <td>{{ form_widget(calculadoraForm.costeFinanciero, { 'attr':{'class': 'campito linea-costeFinanciero'} }) }}</td>
         <td>{{ form_widget(calculadoraForm.costeUnitario, { 'attr':{'class': 'campito linea-costeUnitario'} }) }}</td>
@@ -358,6 +361,53 @@
             var dateString = nd.getUTCFullYear() +"-"+ month +"-"+ day;
             console.log(dateString);
             $("#remesa_calculadora_"+index+"_vencimiento").val(dateString);
+        }
+
+        function timbre(valor)
+        {
+            if(valor < 24.05) {
+                stamp = 0.06;
+            }else if(valor < 48.09) {
+                stamp = 0.12;
+            }else if(valor < 90.16) {
+                stamp = 0.24;
+            }else if(valor < 180.31) {
+                stamp = 0.48;
+            }else if(valor < 360.62) {
+                stamp = 0.96;
+            }else if(valor < 751.27) {
+                stamp = 1.98;
+            }else if(valor < 1502.54) {
+                stamp = 4.21;
+            }else if(valor < 3005.07) {
+                stamp = 8.41;
+            }else if(valor < 6010.13) {
+                stamp = 16.83;
+            }else if(valor < 12020.25) {
+                stamp = 33.66;
+            }else if(valor < 24040.49) {
+                stamp = 67.31;
+            }else if(valor < 48080.98) {
+                stamp = 134.63;
+            }else if(valor < 96161.95 ) {
+                stamp = 269.25;
+            }else if(valor < 192323.87 ) {
+                stamp = 538.51;
+            }
+            return stamp;
+        }
+        
+        function calculaTimbreFila() {
+            $(".linea-existeTimbre").on('click', function() {
+                if($(this).is(':checked'))
+                {
+                    var valor = timbre($(this).val());
+                    $("#calculator_timbres").val(stamp);
+                } else
+                {
+                    $("#calculator_timbres").val(0);
+                }
+            });
         }
 
         function recalculaTablaCostes()

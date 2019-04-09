@@ -45,7 +45,7 @@ class RemesaCalculadoraType extends AbstractType
         $builder->add('costeUnitario');
         $builder->add('timbres');
         $builder->add('tae');
-
+        $builder->add('existeTimbre', CheckboxType::class, ['mapped' => false, 'required' => false ]);
     }
 
     /**
