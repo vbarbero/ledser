@@ -540,7 +540,11 @@
             var total = 0;
             var ids = calculaIds();
             var arrayLength = ids.length;
+                console.log('__calculaCosteTotalTotal__');
             for (var i = 0; i < arrayLength; i++) {
+                console.log('calculaCosteTotalTotalFila');
+                console.log(ids[i]);
+                console.log(calculaCosteTotalTotalFila(ids[i]));
                 total += calculaCosteTotalTotalFila(ids[i]);
             }
             return total / arrayLength;
