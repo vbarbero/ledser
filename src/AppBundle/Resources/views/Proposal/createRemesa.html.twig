@@ -401,6 +401,8 @@
 
         function timbre(valor)
         {
+            varlor = parseFloat(valor);
+            var stamp = 0.00;
             if(valor < 24.05) {
                 stamp = 0.06;
             }else if(valor < 48.09) {
@@ -429,7 +431,8 @@
                 stamp = 269.25;
             }else if(valor < 192323.87 ) {
                 stamp = 538.51;
-            }
+
+                console.log(stamp);
             return stamp;
         }
         
