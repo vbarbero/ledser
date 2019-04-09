@@ -479,12 +479,18 @@
 
         function getValue(index)
         {
-            return parseFloat($("#remesa_" + index).val());
+            var aux = parseFloat($("#remesa_" + index).val());
+            if(isNaN(aux))
+                return 0;
+            return aux;
         }
 
         function getValueFila(index,campo)
         {
-            return parseFloat($("#remesa_calculadora_" + index + "_" + campo).val());
+            var aux = parseFloat($("#remesa_calculadora_" + index + "_" + campo).val());
+            if(isNaN(aux))
+                return 0;
+            return aux;
         }
 
         function setValue(index, value)
