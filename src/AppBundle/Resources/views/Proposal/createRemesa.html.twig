@@ -217,14 +217,68 @@
        });*/
    </script>
 
+
+   -----------------------------
+   $(function () {
+
+       });
+-------
    <script type="text/javascript">
         calculaDias(0);
         var $collectionHolder;
 
         $(function() {
+            $(".messageNotice").hide();
+           $("input[id$='dias']").on("change", function() {
+               var index = $(this).attr('id').substr(19,1);
+               reloadDates(index);
+            });
+           $("input[id$='vencimiento']").on("change", function() {
+               var index = $(this).attr('id').substr(19,1);
+               calculaDias(index);
+            });
+           $("input[id$='formalizacion']").on("change", function() {
+               var index = $(this).attr('id').substr(19,1);
+               calculaDias(index);
+            });
+            recalculaTotales() ;
+
+
+
+           $("#remesa_notice").on("click", function() {
+		        if($("#remesa_notice").prop('checked') ) {
+                    $(".messageNotice").show();
+                } else {
+                    $(".messageNotice").hide();
+                }
+            });
+           if ($("#remesa_state").val() == 5) {
+                $(".reason").show();
+            } else {
+                $(".reason").hide();
+            }
+            $("#remesa_state").on('change', function () {
+                if ($("#remesa_state").val() == 5) {
+                    $(".reason").show();
+                } else {
+                    $(".reason").hide();
+                }
+            });
+
             recalculaTotales() ; 
             $("#remesa_costeFinancieroTotal").on("change", function() {
                 recalculaTablaCostes();
+            });
+            $collectionHolder = $('table.calculadora');
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
+            $(".add_calculator_link").on('click', function(e) {
+               addCalculatorForm($collectionHolder);
+            });
+            var $wrapper = $('.js-calculadora-wrapper');
+            $wrapper.on('click', '.js-remove-calculadora', function(e) {
+               e.preventDefault();
+               $(this).closest('.js-calculadora-item')
+                   .remove();
             });
 
         });
@@ -257,8 +311,8 @@
            recalculaTotales() ;
        }
 
-       function recalculaTotales() {
-
+       function recalculaTotales()
+       {
            $(".linea-nominal").on("change", function() {
                $("#remesa_totalNominal").val(calculaTotalNominal());
             });
