@@ -450,6 +450,7 @@
                     var idTimbre = $(this).attr('id').replace("existeTimbre", "timbres");
                     var valor = timbre($("#" + idNominal).val());
                     $("#" + idTimbre).val(valor);
+                    $("#remesa_totalTimbres").val(calculaTotalTimbres());
                 }
             });
         }
