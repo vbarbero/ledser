@@ -231,6 +231,11 @@
                     $(".messageNotice").hide();
                 }
             });
+
+           $("#remesa_costeFinancieroTae").on("change", function() {
+		        calculaNumeros();
+            });
+
            if ($("#remesa_state").val() == 5) {
                 $(".reason").show();
             } else {
@@ -453,6 +458,156 @@
                     $("#remesa_totalTimbres").val(calculaTotalTimbres());
                 }
             });
+        }
+
+        function calculaCosteFinancieroTotal() {
+           console.log($("#remesa_totalCosteFinanciero").val());
+           console.log($("#remesa_totalNominal").val());
+           return parseFloat($("#remesa_totalCosteFinanciero").val()) / parseFloat($("#remesa_totalNominal").val());
+        }
+
+        function calculaLiquido() {
+           console.log($("#remesa_totalCosteFinanciero").val());
+           console.log($("#remesa_totalNominal").val());
+           return parseFloat($("#remesa_totalNominal").val()) - parseFloat($("#remesa_totalCosteFinanciero").val());
+        }
+
+        function getValue(index)
+        {
+            return parseFloat($("#remesa_" + index).val());
+        }
+
+        function getValueFila(index,campo)
+        {
+            return parseFloat($("#remesa_calculadora_" + index + "_" + campo).val());
+        }
+
+        function setValue(index, value)
+        {
+            return parseFloat($("#remesa_" + index).val(value));
+        }
+
+        function setValueFila(index,campo, value)
+        {
+            return parseFloat($("#remesa_calculadora_" + index + "_" + campo).val(value));
+        }
+
+        function calculaHonorariosFila(index)
+        {
+            return (getValueFila(index, 'costeFinanciero')/getValue('totalCosteFinanciero')) * getValue('honorarios');
+        }
+
+        function calculaCosteFinancieroLedserCosteFila(index)
+        {
+            return getValueFila(index, 'costeFinanciero') + calculaHonorariosFila(index);
+        }
+
+        function calculaCosteFinancieroLedserTaeFila(index)
+        {
+            return (360 * 100 * calculaCosteFinancieroLedserCosteFila(index)) / (getValueFila(index, 'nominal') * getValueFila(index, 'dias'));
+        }
+
+        function calculaCosteFinancieroledserTae()
+        {
+            var total = 0;
+            var arrayLength = calculaIds().length;
+            for (var i = 0; i < arrayLength; i++) {
+                total += calculaCosteFinancieroLedserTaeFila(myStringArray[i]);
+            }
+            return total / arrayLength;
+        }
+
+        function calculaCosteTotalFila(index)
+        {
+            calculaCosteFinancieroLedserCosteFila(index) + getValueFila(index, 'timbres') +   (getValue('omf') +getValue('mensajeria') +getValue('burofax') +getValue('gastos'))/4;
+        }
+
+        function calculaCosteTotalTotalFila(index)
+        {
+            return (360 * 100 * calculaCosteTotalFila(index))/(getValueFila(index, 'nominal') * getValueFila(index, 'dias'));
+        }
+
+        function calculaCosteTotalTotal()
+        {
+            var total = 0;
+            var arrayLength = calculaIds().length;
+            for (var i = 0; i < arrayLength; i++) {
+                total += calculaCosteTotalTotalFila(myStringArray[i]);
+            }
+            return total / arrayLength;
+        }
+
+
+
+
+        function calculaTotalCosteFinancieroledserCoste()
+        {
+            var total = 0;
+            var arrayLength = calculaIds().length;
+            for (var i = 0; i < arrayLength; i++) {
+                total += calculaCosteFinancieroLedserCosteFila(myStringArray[i]);
+            }
+            return total;
+        }
+
+        function calculaCosteFinancieroledserTotal()
+        {
+            return (calculaTotalCosteFinancieroledserCoste() / getValue('totalNominal')) * 100;
+        }
+
+        function calculaCosteFinancieroledserMensual()
+        {
+            return calculaCosteFinancieroledserTae() / 12;
+        }
+
+        function calculaTotalCosteFinancieroledserLiquido()
+        {
+            return getValue('totalNominal') - calculaTotalCosteFinancieroledserCoste();
+        }
+
+        function calculaTotalCosteTotalTotal()
+        {
+            return (calculaTotalCosteTotal() / getValue('totalNominal')) * 100;
+
+
+        function calculaTotalCosteTotal()
+        {
+            var total = 0;
+            var arrayLength = calculaIds().length;
+            for (var i = 0; i < arrayLength; i++) {
+                total += calculaCosteTotalFila(myStringArray[i]);
+            }
+            return total;
+        }
+
+
+
+        function calculaIds()
+        {
+            var valores = Array();
+            $(".linea-nominal").each(function() {
+                var ids = $(this).attr('id').split("_");
+                valores.push(ids[2]);
+            })
+            return valores;
+        }
+
+        function calculaNumeros()
+        {
+            $("#remesa_costeFinancieroTotal").val(calculaCosteFinancieroTotal());
+            $("#remesa_costeFinancieroMensual").val(parseFloat($("#remesa_costeFinancieroTae").val())/12);
+            $("#remesa_costeFinancieroCoste").val($("#remesa_totalCosteFinanciero").val());
+            $("#remesa_costeFinancieroLiquido").val(calculaLiquido());
+            $("#remesa_costeFinancieroLedserTae").val(calculaCosteFinancieroledserTae());
+            $("#remesa_costeFinancieroLedserTotal").val(calculaCosteFinancieroledserTotal());
+            $("#remesa_costeFinancieroLedserMensual").val(calculaCosteFinancieroledserMensual());
+            $("#remesa_costeFinancieroLedserCoste").val(calculaTotalCosteFinancieroledserCoste()());
+            $("#remesa_costeFinancieroLedserLiquido").val(calculaTotalCosteFinancieroledserLiquido()());
+            $("#remesa_costeTotalTae").val(calculaCosteTotalTotal());
+            $("#remesa_costeTotalTotal").val(calculaTotalCosteTotalTotal());
+            $("#remesa_costeTotalMensual").val(calculaCosteTotalTotal()/12);
+            $("#remesa_costeTotalCoste").val(calculaTotalCosteTotal());
+            $("#remesa_costeTotalLiquido").val(getValue('totalNominal') - calculaTotalCosteTotal());
         }
 
         function recalculaTablaCostes()
