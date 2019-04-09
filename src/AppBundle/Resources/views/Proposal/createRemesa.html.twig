@@ -568,6 +568,7 @@
         function calculaTotalCosteTotalTotal()
         {
             return (calculaTotalCosteTotal() / getValue('totalNominal')) * 100;
+        }
 
 
         function calculaTotalCosteTotal()
@@ -610,11 +611,11 @@
             $("#remesa_costeTotalLiquido").val(getValue('totalNominal') - calculaTotalCosteTotal());
         }
 
-        function recalculaTablaCostes()
+        /*function recalculaTablaCostes()
         {
             $("#remesa_costeFinancieroTotal").val(parseFloat($("#remesa_totalNominal").val()) / parseFloat($("#remesa_totalCosteFinanciero")));
             $("#remesa_costeFinancieroMensual").val(parseFloat($("#remesa_costeFinancieroTotal").val()) / 12);
             
-        }
+        }*/
    </script>
 {% endblock %}
