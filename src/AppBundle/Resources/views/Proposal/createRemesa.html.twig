@@ -610,7 +610,7 @@
            console.log(getValueFila(i, 'dias') );
            console.log(getValueFila(i, 'tae') );
            console.log('---------');
-            setValueFila(i, 'costeFinanciero', (getValueFila(i, 'nominal') + getValueFila(i, 'dias') + getValueFila(i, 'tae'))/36000);
+            setValueFila(i, 'costeFinanciero', (getValueFila(i, 'nominal') * getValueFila(i, 'dias') * getValueFila(i, 'tae'))/36000);
         }
 
 
