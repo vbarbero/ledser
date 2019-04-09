@@ -521,9 +521,10 @@
         function calculaCosteFinancieroledserTae()
         {
             var total = 0;
-            var arrayLength = calculaIds().length;
+            var ids = calculaIds();
+            var arrayLength = ids.length;
             for (var i = 0; i < arrayLength; i++) {
-                total += calculaCosteFinancieroLedserTaeFila(myStringArray[i]);
+                total += calculaCosteFinancieroLedserTaeFila(ids[i]);
             }
             return total / arrayLength;
         }
@@ -541,9 +542,10 @@
         function calculaCosteTotalTotal()
         {
             var total = 0;
-            var arrayLength = calculaIds().length;
+            var ids = calculaIds();
+            var arrayLength = ids.length;
             for (var i = 0; i < arrayLength; i++) {
-                total += calculaCosteTotalTotalFila(myStringArray[i]);
+                total += calculaCosteTotalTotalFila(ids[i]);
             }
             return total / arrayLength;
         }
@@ -554,9 +556,10 @@
         function calculaTotalCosteFinancieroledserCoste()
         {
             var total = 0;
-            var arrayLength = calculaIds().length;
+            var ids = calculaIds();
+            var arrayLength = ids.length;
             for (var i = 0; i < arrayLength; i++) {
-                total += calculaCosteFinancieroLedserCosteFila(myStringArray[i]);
+                total += calculaCosteFinancieroLedserCosteFila(ids[i]);
             }
             return total;
         }
@@ -585,9 +588,10 @@
         function calculaTotalCosteTotal()
         {
             var total = 0;
-            var arrayLength = calculaIds().length;
+            var ids = calculaIds();
+            var arrayLength = ids.length;
             for (var i = 0; i < arrayLength; i++) {
-                total += calculaCosteTotalFila(myStringArray[i]);
+                total += calculaCosteTotalFila(ids[i]);
             }
             return total;
         }
@@ -596,7 +600,8 @@
         function setTae()
         {
             var total = 0;
-            var arrayLength = calculaIds().length;
+            var ids = calculaIds();
+            var arrayLength = ids.length;
             for (var i = 0; i < arrayLength; i++) {
                 setValueFila(i, 'tae', getValue('costeFinancieroTae'));
             }
