@@ -446,6 +446,7 @@
                     var idNominal = $(this).attr('id').replace("existeTimbre", "nominal");
                     var idTimbre = $(this).attr('id').replace("existeTimbre", "timbre");
                     var valor = timbre($("#" + idNominal).val());
+                    console.log("#" + idTimbre);
                     $("#" + idTimbre).val(valor);
                 }
             });
