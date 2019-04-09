@@ -599,7 +599,10 @@
             var arrayLength = ids.length;
             for (var i = 0; i < arrayLength; i++) {
                 setValueFila(i, 'tae', getValue('costeFinancieroTae'));
+                $("#remesa_mediaTae").val(calculaMediaTae());
                 calculaCosteFinancieroFila(i);
+                $("#remesa_totalCosteFinanciero").val(calculaTotalCosteFinanciero());
+
             }
         }
 
