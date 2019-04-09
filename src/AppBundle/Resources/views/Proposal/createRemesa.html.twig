@@ -223,21 +223,6 @@
 
         $(function() {
             $(".messageNotice").hide();
-           $("input[id$='dias']").on("change", function() {
-               var index = $(this).attr('id').substr(19,1);
-               reloadDates(index);
-            });
-           $("input[id$='vencimiento']").on("change", function() {
-               var index = $(this).attr('id').substr(19,1);
-               calculaDias(index);
-            });
-           $("input[id$='formalizacion']").on("change", function() {
-               var index = $(this).attr('id').substr(19,1);
-               calculaDias(index);
-            });
-            recalculaTotales() ;
-
-
 
            $("#remesa_notice").on("click", function() {
 		        if($("#remesa_notice").prop('checked') ) {
@@ -286,18 +271,7 @@
            $collectionHolder.data('index', index + 1);
            $collectionHolder.append(newForm);
 
-           $("input[id$='dias']").on("change", function() {
-               var index = $(this).attr('id').substr(19,1);
-               reloadDates(index);
-            });
-           $("input[id$='vencimiento']").on("change", function() {
-               var index = $(this).attr('id').substr(19,1);
-               calculaDias(index);
-            });
-           $("input[id$='formalizacion']").on("change", function() {
-               var index = $(this).attr('id').substr(19,1);
-               calculaDias(index);
-            });
+
            var d = new Date();
            $("#remesa_calculadora_" + index + "_formalizacion").val(d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2));
            $("#remesa_calculadora_" + index + "_vencimiento").val(d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2));
@@ -325,6 +299,19 @@
                $("#remesa_totalTimbres").val(calculaTotalTimbres());
             });
            calculaTimbreFila();
+
+           $("input[id$='dias']").on("change", function() {
+               var index = $(this).attr('id').substr(19,1);
+               reloadDates(index);
+            });
+           $("input[id$='vencimiento']").on("change", function() {
+               var index = $(this).attr('id').substr(19,1);
+               calculaDias(index);
+            });
+           $("input[id$='formalizacion']").on("change", function() {
+               var index = $(this).attr('id').substr(19,1);
+               calculaDias(index);
+            });
        }
        
        function calculaTotalNominal() {
