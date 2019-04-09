@@ -287,6 +287,8 @@
        {
            $(".linea-nominal").on("change", function() {
                $("#remesa_totalNominal").val(calculaTotalNominal());
+               var ids = $(this).attr('id').split("_");
+               calculaCosteFinancieroFila(ids[2]);
             });
            $(".linea-dias").on("change", function() {
                $("#remesa_mediaDias").val(calculaMediaDias());
@@ -309,15 +311,18 @@
                var id = $(this).attr('id').split("_");
                reloadDates(id[2]);
                $("#remesa_mediaDias").val(calculaMediaDias());
+               calculaCosteFinancieroFila(id[2]);
             });
            $("input[id$='vencimiento']").on("change", function() {
                var id = $(this).attr('id').split("_");
                calculaDias(id[2]);
+               calculaCosteFinancieroFila(id[2]);
                $("#remesa_mediaDias").val(calculaMediaDias());
             });
            $("input[id$='formalizacion']").on("change", function() {
                var id = $(this).attr('id').split("_");
                calculaDias(id[2]);
+               calculaCosteFinancieroFila(id[2]);
                $("#remesa_mediaDias").val(calculaMediaDias());
             });
        }
@@ -582,6 +587,20 @@
         }
 
 
+        function setTae()
+        {
+            var total = 0;
+            var arrayLength = calculaIds().length;
+            for (var i = 0; i < arrayLength; i++) {
+                setValueFila(i, 'tae', getValue('costeFinancieroTae'));
+            }
+        }
+
+        function calculaCosteFinancieroFila(i) {
+            setValueFila(i, 'costeFinanciero', (getValueFila(i, 'nominal') + getValueFila(i, 'dias') + getValueFila(i, 'tae'))/36000);
+        }
+
+
 
         function calculaIds()
         {
@@ -595,8 +614,10 @@
 
         function calculaNumeros()
         {
+            setTae();
+
             $("#remesa_costeFinancieroTotal").val(calculaCosteFinancieroTotal());
-            $("#remesa_costeFinancieroMensual").val(parseFloat($("#remesa_costeFinancieroTae").val())/12);
+            $("#remesa_costeFinancieroMensual").val(parseFloat(getValue('costeFinancieroTae'))/12);
             $("#remesa_costeFinancieroCoste").val($("#remesa_totalCosteFinanciero").val());
             $("#remesa_costeFinancieroLiquido").val(calculaLiquido());
             $("#remesa_costeFinancieroLedserTae").val(calculaCosteFinancieroledserTae());
