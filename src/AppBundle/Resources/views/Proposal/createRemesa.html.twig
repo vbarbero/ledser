@@ -250,9 +250,9 @@
             });
 
             recalculaTotales() ; 
-            $("#remesa_costeFinancieroTotal").on("change", function() {
+            /*$("#remesa_costeFinancieroTotal").on("change", function() {
                 recalculaTablaCostes();
-            });
+            });*/
             $collectionHolder = $('table.calculadora');
             $collectionHolder.data('index', $collectionHolder.find(':input').length);
             $(".add_calculator_link").on('click', function(e) {
@@ -588,7 +588,7 @@
             $(".linea-nominal").each(function() {
                 var ids = $(this).attr('id').split("_");
                 valores.push(ids[2]);
-            })
+            });
             return valores;
         }
 
