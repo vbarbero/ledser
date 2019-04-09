@@ -217,12 +217,6 @@
        });*/
    </script>
 
-
-   -----------------------------
-   $(function () {
-
-       });
--------
    <script type="text/javascript">
         calculaDias(0);
         var $collectionHolder;
@@ -331,6 +325,7 @@
            $(".linea-timbres").on("change", function() {
                $("#remesa_totalTimbres").val(calculaTotalTimbres());
             });
+           calculaTimbreFila();
        }
        
        function calculaTotalNominal() {
@@ -456,11 +451,11 @@
             $(".linea-existeTimbre").on('click', function() {
                 if($(this).is(':checked'))
                 {
-                    var valor = timbre($(this).val());
+                    var idNominal = $(this).attr('id').replace("existeTimbre", "nominal");
+                    var idTimbre = $(this).attr('id').replace("existeTimbre", "timbre");
+                    var valor = timbre($("#" + idNominal).val());
+                    $("#" + idTimbre).val(valor);
                     $("#calculator_timbres").val(stamp);
-                } else
-                {
-                    $("#calculator_timbres").val(0);
                 }
             });
         }
