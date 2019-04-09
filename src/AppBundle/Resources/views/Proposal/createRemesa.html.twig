@@ -301,8 +301,10 @@
            calculaTimbreFila();
 
            $("input[id$='dias']").on("change", function() {
-               console.log($(this).attr('id'));
-               console.log($(this).attr('id').substr(19,1));
+               var id = $(this).attr('id').split("_");
+               console.log(id);
+               console.log(id[2]);
+               debugger;
                var index = $(this).attr('id').substr(19,1);
                reloadDates(index);
             });
