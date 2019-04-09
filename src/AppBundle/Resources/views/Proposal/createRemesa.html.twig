@@ -602,8 +602,8 @@
             console.log("setTae");
             for (var i = 0; i < arrayLength; i++) {
                 console.log("__" + i);
-                setValueFila(i, 'tae', getValue('costeFinancieroTae'));
-                calculaCosteFinancieroFila(i);
+                setValueFila(ids[i], 'tae', getValue('costeFinancieroTae'));
+                calculaCosteFinancieroFila(ids[i]);
 
             }
             $("#remesa_mediaTae").val(calculaMediaTae());
