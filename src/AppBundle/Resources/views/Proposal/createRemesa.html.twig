@@ -598,7 +598,10 @@
             var total = 0;
             var ids = calculaIds();
             var arrayLength = ids.length;
+            console.log(ids);
+            console.log("setTae");
             for (var i = 0; i < arrayLength; i++) {
+                console.log("__" + i);
                 setValueFila(i, 'tae', getValue('costeFinancieroTae'));
                 calculaCosteFinancieroFila(i);
 
