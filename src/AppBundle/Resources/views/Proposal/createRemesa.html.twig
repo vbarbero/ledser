@@ -600,11 +600,11 @@
             var arrayLength = ids.length;
             for (var i = 0; i < arrayLength; i++) {
                 setValueFila(i, 'tae', getValue('costeFinancieroTae'));
-                $("#remesa_mediaTae").val(calculaMediaTae());
                 calculaCosteFinancieroFila(i);
-                $("#remesa_totalCosteFinanciero").val(calculaTotalCosteFinanciero());
 
             }
+            $("#remesa_mediaTae").val(calculaMediaTae());
+            $("#remesa_totalCosteFinanciero").val(calculaTotalCosteFinanciero());
         }
 
         function calculaCosteFinancieroFila(i) {
