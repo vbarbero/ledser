@@ -301,14 +301,20 @@
            calculaTimbreFila();
 
            $("input[id$='dias']").on("change", function() {
+               console.log($(this).attr('id'));
+               console.log($(this).attr('id').substr(19,1));
                var index = $(this).attr('id').substr(19,1);
                reloadDates(index);
             });
            $("input[id$='vencimiento']").on("change", function() {
+               console.log($(this).attr('id'));
+               console.log($(this).attr('id').substr(19,1));
                var index = $(this).attr('id').substr(19,1);
                calculaDias(index);
             });
            $("input[id$='formalizacion']").on("change", function() {
+               console.log($(this).attr('id'));
+               console.log($(this).attr('id').substr(19,1));
                var index = $(this).attr('id').substr(19,1);
                calculaDias(index);
             });
