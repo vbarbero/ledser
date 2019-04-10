@@ -245,9 +245,9 @@ class ProposalController extends Controller
 
                 $costeFinancieroLedser = new Cost();
                 $costeFinancieroLedser->setCoste($remesaCalculadora->getCosteFinanciero() + $calculadora->getHonorarios());
-                $costeFinancieroLedser->setTae((36000 * $costeFinancieroLedser->getCoste()) / ($calculadora->getNominal() * $calculadora->getDias()));
+                $costeFinancieroLedser->setTae((36000 * $costeFinancieroLedser->getCoste()) / ($remesaCalculadora->getNominal() * $remesaCalculadora->getDias()));
 
-                var_dump($costeFinancieroLedser->getTae());die;
+                var_dump($costeFinancieroLedser->getTae(), $costeFinancieroLedser->getCoste(), $calculadora->getNominal());die;
                 $costeFinancieroLedser->setTotal($costeFinancieroLedser->getCoste() * 100 / $remesaCalculadora->getNominal());
                 $costeFinancieroLedser->setMensual($costeFinancieroLedser->getTae()/ 12);
                 $costeFinancieroLedser->setRetencion(0);
