@@ -211,7 +211,6 @@ class ProposalController extends Controller
             /** @var RemesaModel $remesa */
             $remesa = $form->getData();
             $em = $this->getDoctrine()->getManager();
-            var_dump(1);die;
             /** @var RemesaCalculadoraModel $remesaCalculadora */
             foreach ($remesaModel->getCalculadora() as $remesaCalculadora)
             {
