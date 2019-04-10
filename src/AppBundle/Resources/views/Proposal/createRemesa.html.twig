@@ -280,6 +280,10 @@
            var d = new Date();
            $("#remesa_calculadora_" + index + "_formalizacion").val(d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2));
            $("#remesa_calculadora_" + index + "_vencimiento").val(d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2));
+           $("#remesa_calculadora_" + index + "_timbres").val(0);
+           $("#remesa_calculadora_" + index + "_tae").val(0);
+           $("#remesa_calculadora_" + index + "_costeFinanciero").val(0);
+           $("#remesa_calculadora_" + index + "nominal").val(0);
            recalculaTotales();
        }
 
