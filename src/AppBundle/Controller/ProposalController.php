@@ -222,7 +222,7 @@ class ProposalController extends Controller
                 $calculadora->setVencimiento($remesaCalculadora->getVencimiento());
                 $calculadora->setDias($remesaCalculadora->getDias());
                 $calculadora->setState($remesa->getState());
-                $calculadora->setHonorarios($remesa->getHonorarios() * ($remesa->getTotalCosteFinanciero() * $remesaCalculadora->getCosteFinanciero()));
+                $calculadora->setHonorarios($remesa->getHonorarios() * ($remesa->getTotalCosteFinanciero() / $remesaCalculadora->getCosteFinanciero()));
                 $calculadora->setBurofax($remesa->getBurofax());
                 $calculadora->setOmf($remesa->getOmf());
                 $calculadora->setGastos($remesa->getGastos());
