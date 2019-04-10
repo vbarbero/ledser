@@ -266,9 +266,6 @@ class ProposalController extends Controller
                 $costeTotal->setRetencionTotal(0);
                 $calculadora->setCosteTotal($costeTotal);
 
-                var_dump($costeTotal->getTae());
-                die;
-
                 $em->persist($calculadora);
                 $objProposal = $em->getRepository(Proposal::class)->find($proposal);
                 $calculadora->setProposal($objProposal);
