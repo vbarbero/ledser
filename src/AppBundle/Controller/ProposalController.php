@@ -234,7 +234,7 @@ class ProposalController extends Controller
                 $costeFinanciero = new Cost();
                 $costeFinanciero->setTae($remesaCalculadora->getTae());
 
-                var_dump($remesaCalculadora->getTae(),'**');die;
+                var_dump($remesaCalculadora->getTae(),'**');
                 var_dump($costeFinanciero->getTae());die;;
                 $costeFinanciero->setTotal($remesaCalculadora->getCosteFinanciero() * 100 / $remesaCalculadora->getNominal());
                 $costeFinanciero->setMensual($remesaCalculadora->getTae()/ 12);
