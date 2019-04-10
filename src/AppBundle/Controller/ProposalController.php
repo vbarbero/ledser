@@ -276,6 +276,8 @@ class ProposalController extends Controller
             }
 
             $em->flush();
+            return $this->redirect($this->generateUrl("list_proposal"));
+
         }
         return $this->render('AppBundle:Proposal:createRemesa.html.twig', ['form' => $form->createView(), 'edit' => true]);
    
