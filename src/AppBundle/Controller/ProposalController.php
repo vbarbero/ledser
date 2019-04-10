@@ -224,7 +224,6 @@ class ProposalController extends Controller
                 $calculadora->setVencimiento($remesaCalculadora->getVencimiento());
                 $calculadora->setDias($remesaCalculadora->getDias());
                 $calculadora->setState($remesa->getState());
-                $calculadora->setProposal($proposal);
                 $calculadora->setHonorarios($remesa->getHonorarios() * ($remesa->getTotalCosteFinanciero() * $remesaCalculadora->getCosteFinanciero()));
                 $calculadora->setBurofax($remesa->getBurofax());
                 $calculadora->setOmf($remesa->getOmf());
@@ -267,6 +266,7 @@ class ProposalController extends Controller
 
                 $em->persist($calculadora);
                 $objProposal = $em->getRepository(Proposal::class)->find($proposal);
+                $calculadora->setProposal($objProposal);
                 $objProposal->addCalculator($calculadora);
             }
 
