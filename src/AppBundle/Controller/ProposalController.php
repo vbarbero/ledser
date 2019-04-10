@@ -208,9 +208,66 @@ class ProposalController extends Controller
         $form = $this->createForm(RemesaType::class, $remesaModel);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $calculator = $form->getData();
+            /** @var RemesaModel $remesa */
+            $remesa = $form->getData();
             $em = $this->getDoctrine()->getManager();
-            $em->persist($calculator);
+            /** @var RemesaCalculadoraModel $remesaCalculadora */
+            foreach ($remesaModel->getCalculadora() as $remesaCalculadora)
+            {
+                $calculadora = new Calculator();
+                $calculadora->setEmision($remesa->getEmision());
+                $calculadora->setPorcentaje(0);
+                $calculadora->setExtra(0);
+                $calculadora->setIntroduce('tae');
+                $calculadora->setIntroduce2('costeFinanciero');
+                $calculadora->setFormalizacion($remesaCalculadora->getFormalizacion());
+                $calculadora->setVencimiento($remesaCalculadora->getVencimiento());
+                $calculadora->setDias($remesaCalculadora->getDias());
+                $calculadora->setState($remesa->getState());
+                $calculadora->setProposal($proposal);
+                $calculadora->setHonorarios($remesa->getHonorarios() * ($remesa->getTotalCosteFinanciero() * $remesaCalculadora->getCosteFinanciero()));
+                $calculadora->setBurofax($remesa->getBurofax());
+                $calculadora->setOmf($remesa->getOmf());
+                $calculadora->setGastos($remesa->getGastos());
+                $calculadora->setMensajeria($remesa->getMensajeria());
+                $calculadora->setTimbres($remesaCalculadora->getTimbres());
+
+                $costeFinanciero = new Cost();
+                $costeFinanciero->setTae($remesaCalculadora->getTae());
+                $costeFinanciero->setTotal($remesaCalculadora->getCosteFinanciero() * 100 / $remesaCalculadora->getNominal());
+                $costeFinanciero->setMensual($remesaCalculadora->getTae()/ 12);
+                $costeFinanciero->setRetencion(0);
+                $costeFinanciero->setCoste($remesaCalculadora->getCosteFinanciero());
+                $costeFinanciero->setNominal($remesaCalculadora->getNominal());
+                $costeFinanciero->setLiquido($remesaCalculadora->getNominal() - $costeFinanciero->getCoste());
+                $costeFinanciero->setRetencionTotal(0);
+                $calculadora->setCosteFinanciero($costeFinanciero);
+
+                $costeFinancieroLedser = new Cost();
+                $costeFinancieroLedser->setCoste($remesaCalculadora->getCosteFinanciero() + $calculadora->getHonorarios());
+                $costeFinancieroLedser->setTae((36000 * $costeFinancieroLedser->getCoste()) / ($calculadora->getNominal() * $calculadora->getDias()));
+                $costeFinancieroLedser->setTotal($costeFinancieroLedser->getCoste() * 100 / $remesaCalculadora->getNominal());
+                $costeFinancieroLedser->setMensual($costeFinancieroLedser->getTae()/ 12);
+                $costeFinancieroLedser->setRetencion(0);
+                $costeFinancieroLedser->setNominal($remesaCalculadora->getNominal());
+                $costeFinancieroLedser->setLiquido($costeFinancieroLedser->getNominal() - $costeFinancieroLedser->getCoste());
+                $costeFinancieroLedser->setRetencionTotal(0);
+                $calculadora->setCosteFinancieroLedser($costeFinancieroLedser);
+
+                $costeTotal = new Cost();
+                $costeTotal->setCoste($costeFinancieroLedser->getCoste() + $calculadora->getHonorarios() + ($remesa->getOmf() + $remesa->getMensajeria() + $remesa->getBurofax() + $remesa->getGastos()) / 4);
+                $costeTotal->setTae((36000 * $costeTotal->getCoste()) / ($remesaCalculadora->getDias() * $remesaCalculadora->getNominal()));
+                $costeTotal->setTotal($costeTotal->getCoste() * 100/ $costeTotal->getNominal());
+                $costeTotal->setMensual($costeTotal->getTae()/ 12);
+                $costeTotal->setRetencion(0);
+                $costeTotal->setNominal($remesaCalculadora->getNominal());
+                $costeTotal->setLiquido($remesaCalculadora->getNominal() - $costeTotal->getCoste());
+                $costeTotal->setRetencionTotal(0);
+                $calculadora->setCosteTotal($costeTotal);
+
+                $em->persist($calculadora);
+            }
+
             $em->flush();
         }
         return $this->render('AppBundle:Proposal:createRemesa.html.twig', ['form' => $form->createView(), 'edit' => true]);
