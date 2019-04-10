@@ -266,7 +266,7 @@ class ProposalController extends Controller
                 $calculadora->setCosteTotal($costeTotal);
 
                 $em->persist($calculadora);
-                $objProposal =$em->find($proposal);
+                $objProposal =$em->getRepository(Proposal::class)->find($proposal);
                 $objProposal->addCalculator($calculadora);
             }
 
