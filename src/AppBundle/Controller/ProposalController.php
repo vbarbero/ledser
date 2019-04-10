@@ -266,6 +266,7 @@ class ProposalController extends Controller
                 $calculadora->setCosteTotal($costeTotal);
 
                 $em->persist($calculadora);
+                $proposal->addCalculator($calculadora);
             }
 
             $em->flush();
