@@ -242,6 +242,7 @@ class ProposalController extends Controller
                 $costeFinanciero->setRetencionTotal(0);
                 $calculadora->setCosteFinanciero($costeFinanciero);
 
+
                 $costeFinancieroLedser = new Cost();
                 $costeFinancieroLedser->setCoste($remesaCalculadora->getCosteFinanciero() + $calculadora->getHonorarios());
                 $costeFinancieroLedser->setTae((36000 * $costeFinancieroLedser->getCoste()) / ($calculadora->getNominal() * $calculadora->getDias()));
@@ -263,6 +264,11 @@ class ProposalController extends Controller
                 $costeTotal->setLiquido($remesaCalculadora->getNominal() - $costeTotal->getCoste());
                 $costeTotal->setRetencionTotal(0);
                 $calculadora->setCosteTotal($costeTotal);
+
+                var_dump($costeFinanciero->getTae());
+                var_dump($costeFinancieroLedser->getTae());
+                var_dump($costeTotal->getTae());
+                die;
 
                 $em->persist($calculadora);
                 $objProposal = $em->getRepository(Proposal::class)->find($proposal);
