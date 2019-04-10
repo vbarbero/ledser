@@ -106,8 +106,6 @@ class ProposalController extends Controller
                 $proposal->setRemesa(false);
                 $em->persist($proposal);
                 $em->flush();
-                $em->persist($proposal);
-                $em->flush();
                 return $this->redirect($this->generateUrl("create_calculator", ['proposal' => $proposal->getId()] ) );
             }
             else {

@@ -63,6 +63,7 @@ class Proposal extends BaseEntity
     public function __construct()
     {
         $this->calculator = new ArrayCollection();
+        parent::__construct();
     }
 
 
