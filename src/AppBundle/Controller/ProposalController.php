@@ -230,6 +230,7 @@ class ProposalController extends Controller
                 $calculadora->setGastos($remesa->getGastos());
                 $calculadora->setMensajeria($remesa->getMensajeria());
                 $calculadora->setTimbres($remesaCalculadora->getTimbres());
+                $calculadora->setNominal($remesaCalculadora->getNominal());
 
                 $costeFinanciero = new Cost();
                 $costeFinanciero->setTae($remesaCalculadora->getTae());
