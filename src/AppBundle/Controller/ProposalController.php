@@ -265,6 +265,7 @@ class ProposalController extends Controller
                 $costeTotal->setRetencionTotal(0);
                 $calculadora->setCosteTotal($costeTotal);
 
+                var_dump($remesaCalculadora->getTae(),'**');
                 var_dump($costeFinanciero->getTae());
                 var_dump($costeFinancieroLedser->getTae());
                 var_dump($costeTotal->getTae());
