@@ -54,11 +54,17 @@ class Proposal extends BaseEntity
     protected $remesa;
 
     /**
-     * @var Calculator
+     * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Calculator",cascade={"remove"}, mappedBy="proposal")
      */
     protected $calculator;
+
+    public function __construct()
+    {
+        $this->calculator = new ArrayCollection();
+    }
+
 
     /**
      * @return Company
@@ -157,7 +163,7 @@ class Proposal extends BaseEntity
     }
 
     /**
-     * @return Calculator
+     * @return ArrayCollection
      */
     public function getCalculator()
     {
@@ -165,11 +171,19 @@ class Proposal extends BaseEntity
     }
 
     /**
-     * @param Calculator $calculator
+     * @param ArrayCollection $calculator
      */
     public function setCalculator($calculator)
     {
         $this->calculator = $calculator;
+    }
+
+    /**
+     * @param Calculator $calculator
+     */
+    public function addCalculator($calculator)
+    {
+        $this->calculator->add($calculator);
     }
 
 
