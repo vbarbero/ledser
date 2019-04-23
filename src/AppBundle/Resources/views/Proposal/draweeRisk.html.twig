@@ -145,6 +145,14 @@
 
 {% block javascript %}
     {{ parent() }}
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#drawee_risk_filter_drawee").select2();
+            $("#drawee_risk_filter_company").select2();
+        });
+    </script>
     <script type="text/javascript">
 //        $('.datepicker').datepicker({
 //            format: 'yyyy-mm-dd',

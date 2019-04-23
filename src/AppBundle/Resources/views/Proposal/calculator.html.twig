@@ -183,16 +183,7 @@
 {% endblock %}
 {% block javascript %}
     {{ parent() }}
-    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-datepicker.es.min.js') }}"></script>
-
-    <script type="text/javascript">
-//        $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-        $('.datepicker').datepicker({
-            format: 'yyyy-MM-dd',
-            startDate: '-3d'
-        });
-    </script>
+    
     <script type="text/javascript">
 
         calculaDias(false);
