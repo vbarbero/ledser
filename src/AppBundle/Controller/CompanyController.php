@@ -334,7 +334,7 @@ die;*/
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $company = $form->getData();
-            var_dump($company->getLatitude(), $_POST['company']['latitude']);die;
+            $company->setLatitude($_POST['company']['latitude']);die;
             $em = $this->getDoctrine()->getManager();
             $em->persist($company);
             $em->flush();
