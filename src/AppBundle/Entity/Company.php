@@ -611,7 +611,7 @@ class Company extends BaseEntity
     /**
      * @param float $latitude
      */
-    public function setLatitude(float $latidude)
+    public function setLatitude(float $latitude)
     {
         $this->latitude = $latitude;
     }
