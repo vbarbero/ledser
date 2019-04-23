@@ -531,8 +531,7 @@
 
         function calculaCosteTotalFila(index)
         {
-            var ids = calculaIds();
-            return calculaCosteFinancieroLedserCosteFila(index) + getValueFila(index, 'timbres') +   (getValue('omf') +getValue('mensajeria') +getValue('burofax') +getValue('gastos'))/ids.length;
+            return calculaCosteFinancieroLedserCosteFila(index) + getValueFila(index, 'timbres') +   (getValue('omf') +getValue('mensajeria') +getValue('burofax') +getValue('gastos'))/4;
         }
 
         function calculaCosteTotalTotalFila(index)
