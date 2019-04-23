@@ -420,7 +420,7 @@ die;*/
             $em = $this->getDoctrine()->getManager();
             $em->persist($contact);
             $em->flush();
-            return $this->redirect($this->generateUrl("show_company", ['company' => $company->getId()]));
+            return $this->redirect($this->generateUrl("show_company", ['id' => $company->getId()]));
         }
         return $this->render('AppBundle:Company:createContact.html.twig', ['form' => $form->createView()]);
     }
