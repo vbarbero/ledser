@@ -50,3 +50,12 @@
     {{ form_end(form) }}
     </div>
 {% endblock %}
+{% block javascript %}
+{{ parent() }}
+
+<script type="text/javascript">
+    $(function () {
+        $("#contact_company").select2();
+    });
+</script>
+{% endblock %}
