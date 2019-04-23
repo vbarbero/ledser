@@ -526,12 +526,13 @@
             for (var i = 0; i < arrayLength; i++) {
                 total += calculaCosteFinancieroLedserTaeFila(ids[i]);
             }
-            return total / arrayLength;
+            return total;
         }
 
         function calculaCosteTotalFila(index)
         {
-            return calculaCosteFinancieroLedserCosteFila(index) + getValueFila(index, 'timbres') +   (getValue('omf') +getValue('mensajeria') +getValue('burofax') +getValue('gastos'))/4;
+            var ids = calculaIds();
+            return calculaCosteFinancieroLedserCosteFila(index) + getValueFila(index, 'timbres') +   (getValue('omf') +getValue('mensajeria') +getValue('burofax') +getValue('gastos'))/ids.length;
         }
 
         function calculaCosteTotalTotalFila(index)
