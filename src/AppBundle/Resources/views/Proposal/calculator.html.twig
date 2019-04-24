@@ -197,18 +197,18 @@
 //            $("#calculator_costeFinanciero_" + introduce).prop('readonly', true);
 //        }
         $(function () {
-if(!$("#calculator_notice").prop('checked') ) {
+if(!$("#calculator_fake_notice").prop('checked') ) {
             $(".messageNotice").hide();
 }
-            $("#calculator_notice").on("click", function() {
-		if($("#calculator_notice").prop('checked') ) {
+            $("#calculator_fake_notice").on("click", function() {
+		if($("#calculator_fake_notice").prop('checked') ) {
                     $(".messageNotice").show();
                 } else {
 $(".messageNotice").hide();
 }
             });
 
-            if (($("#calculator_introduce2").val() == 'costeFinancieroLedser' || $("#calculator_introduce2").val() == 'costeTotal') && $("#calculator_introduce").val() == 'coste')
+            if (($("#calculator_fake_introduce2").val() == 'costeFinancieroLedser' || $("#calculator_fake_introduce2").val() == 'costeTotal') && $("#calculator_fake_introduce").val() == 'coste')
             {
                 $(".ConPorcentaje").show();
             }
@@ -217,24 +217,24 @@ $(".messageNotice").hide();
                 $(".ConPorcentaje").hide();
             }
 
-            //$("#calculator_porcentaje").hide();
-            /*$('#calculator_introduce').prop('disabled', 'disabled');
-            $("#calculator_introduce2").on('change', function () {
-                $('#calculator_introduce').prop('disabled', false);
+            //$("#calculator_fake_porcentaje").hide();
+            /*$('#calculator_fake_introduce').prop('disabled', 'disabled');
+            $("#calculator_fake_introduce2").on('change', function () {
+                $('#calculator_fake_introduce').prop('disabled', false);
             });*/
           
             reloadDates();
             // var formalizacion = false;
             // var vencimiento = false;
             var nominal = false;
-            $("#calculator_formalizacion").on('change', function() {
+            $("#calculator_fake_formalizacion").on('change', function() {
                 // formalizacion = true;
                 // if(formalizacion && vencimiento)
                 // {
                 calculaDias(nominal);
                 // }
             });
-            $("#calculator_vencimiento").on('change', function() {
+            $("#calculator_fake_vencimiento").on('change', function() {
                 // vencimiento = true;
                 // if(formalizacion && vencimiento)
                 // {
@@ -242,7 +242,7 @@ $(".messageNotice").hide();
                 // }
             });
 
-            $("#calculator_nominal").on('change', function() {
+            $("#calculator_fake_nominal").on('change', function() {
                 nominal = true;
                 // if(formalizacion && vencimiento)
                 // {
@@ -273,43 +273,43 @@ $(".messageNotice").hide();
             });
 
 
-            $("#calculator_existeTimbre").on('click', function() {
+            $("#calculator_fake_existeTimbre").on('click', function() {
 
                 if($(this).is(':checked'))
                 {
-                    if($("#calculator_nominal").val() < 24.05) {
+                    if($("#calculator_fake_nominal").val() < 24.05) {
                         stamp = 0.06;
-                    }else if($("#calculator_nominal").val() < 48.09) {
+                    }else if($("#calculator_fake_nominal").val() < 48.09) {
                         stamp = 0.12;
-                    }else if($("#calculator_nominal").val() < 90.16) {
+                    }else if($("#calculator_fake_nominal").val() < 90.16) {
                         stamp = 0.24;
-                    }else if($("#calculator_nominal").val() < 180.31) {
+                    }else if($("#calculator_fake_nominal").val() < 180.31) {
                         stamp = 0.48;
-                    }else if($("#calculator_nominal").val() < 360.62) {
+                    }else if($("#calculator_fake_nominal").val() < 360.62) {
                         stamp = 0.96;
-                    }else if($("#calculator_nominal").val() < 751.27) {
+                    }else if($("#calculator_fake_nominal").val() < 751.27) {
                         stamp = 1.98;
-                    }else if($("#calculator_nominal").val() < 1502.54) {
+                    }else if($("#calculator_fake_nominal").val() < 1502.54) {
                         stamp = 4.21;
-                    }else if($("#calculator_nominal").val() < 3005.07) {
+                    }else if($("#calculator_fake_nominal").val() < 3005.07) {
                         stamp = 8.41;
-                    }else if($("#calculator_nominal").val() < 6010.13) {
+                    }else if($("#calculator_fake_nominal").val() < 6010.13) {
                         stamp = 16.83;
-                    }else if($("#calculator_nominal").val() < 12020.25) {
+                    }else if($("#calculator_fake_nominal").val() < 12020.25) {
                         stamp = 33.66;
-                    }else if($("#calculator_nominal").val() < 24040.49) {
+                    }else if($("#calculator_fake_nominal").val() < 24040.49) {
                         stamp = 67.31;
-                    }else if($("#calculator_nominal").val() < 48080.98) {
+                    }else if($("#calculator_fake_nominal").val() < 48080.98) {
                         stamp = 134.63;
-                    }else if($("#calculator_nominal").val() < 96161.95 ) {
+                    }else if($("#calculator_fake_nominal").val() < 96161.95 ) {
                         stamp = 269.25;
-                    }else if($("#calculator_nominal").val() < 192323.87 ) {
+                    }else if($("#calculator_fake_nominal").val() < 192323.87 ) {
                         stamp = 538.51;
                     }
-                    $("#calculator_timbres").val(stamp);
+                    $("#calculator_fake_timbres").val(stamp);
                 } else
                 {
-                    $("#calculator_timbres").val(0);
+                    $("#calculator_fake_timbres").val(0);
                 }
                 calculaResultados();
 
@@ -317,51 +317,51 @@ $(".messageNotice").hide();
 
 
 
-            $("#calculator_introduce2").on('change', function() {
+            $("#calculator_fake_introduce2").on('change', function() {
                 introduceChange ();
             });
-            $("#calculator_introduce").on('change', function() {
+            $("#calculator_fake_introduce").on('change', function() {
                 introduceChange ();
             });
 
             var porcentaje = false;
             var retencion = false;
 
-           $("#calculator_honorarios").on('change', function() {
+           $("#calculator_fake_honorarios").on('change', function() {
                calculaResultados();
            });
 
-           $("#calculator_extra").on('change', function() {
+           $("#calculator_fake_extra").on('change', function() {
                calculaResultados();
            });
 
-           $("#calculator_timbres").on('change', function() {
+           $("#calculator_fake_timbres").on('change', function() {
                calculaResultados();
            });
 
-           $("#calculator_omf").on('change', function() {
+           $("#calculator_fake_omf").on('change', function() {
                calculaResultados();
            });
 
-           $("#calculator_mensajeria").on('change', function() {
+           $("#calculator_fake_mensajeria").on('change', function() {
                calculaResultados();
            });
 
-           $("#calculator_burofax").on('change', function() {
+           $("#calculator_fake_burofax").on('change', function() {
                calculaResultados();
            });
 
-           $("#calculator_gastos").on('change', function() {
+           $("#calculator_fake_gastos").on('change', function() {
                calculaResultados();
            });
         });
         function calculaDias(nominal) {
-            var start = $("#calculator_formalizacion").val();
+            var start = $("#calculator_fake_formalizacion").val();
             var startD = new Date(start);
-            var end = $("#calculator_vencimiento").val();
+            var end = $("#calculator_fake_vencimiento").val();
             var endD = new Date(end);
             var diff = parseInt((endD.getTime()-startD.getTime())/(24*3600*1000));
-            $("#calculator_dias").val(diff);
+            $("#calculator_fake_dias").val(diff);
             if(nominal)
             {
                 $(".second").show();
@@ -370,13 +370,13 @@ $(".messageNotice").hide();
 
         function checkThird() {
             if(
-                $("#calculator_honorarios").val() != "" &&
-                $("#calculator_extra").val() != "" &&
-                $("#calculator_timbres").val() != "" &&
-                $("#calculator_omf").val() != "" &&
-                $("#calculator_mensajeria").val() != "" &&
-                $("#calculator_burofax").val() != "" &&
-                $("#calculator_gastos").val() != ""
+                $("#calculator_fake_honorarios").val() != "" &&
+                $("#calculator_fake_extra").val() != "" &&
+                $("#calculator_fake_timbres").val() != "" &&
+                $("#calculator_fake_omf").val() != "" &&
+                $("#calculator_fake_mensajeria").val() != "" &&
+                $("#calculator_fake_burofax").val() != "" &&
+                $("#calculator_fake_gastos").val() != ""
             ){
                 $(".third").show();
                 return true;
@@ -386,7 +386,7 @@ $(".messageNotice").hide();
         }
         function rellenoTae()
         {
-            if ($("#calculator_costeFinanciero_total").val() != "" || $("#calculator_costeFinanciero_mensual").val() != "" || $("#calculator_costeFinanciero_tae").val() != "" || $("#calculator_costeFinanciero_coste").val() != "")
+            if ($("#calculator_fake_costeFinanciero_total").val() != "" || $("#calculator_fake_costeFinanciero_mensual").val() != "" || $("#calculator_fake_costeFinanciero_tae").val() != "" || $("#calculator_fake_costeFinanciero_coste").val() != "")
             {
                 return true;
             }
@@ -395,123 +395,123 @@ $(".messageNotice").hide();
 
         function calculaResultados()
         {
-            if ($("#calculator_introduce").val() == '' )
+            if ($("#calculator_fake_introduce").val() == '' )
             {
                 return;
             }
-            if ($("#calculator_introduce2").val() == '' )
+            if ($("#calculator_fake_introduce2").val() == '' )
             {
                 return;
             }
-            if ($("#calculator_" + $("#calculator_introduce").val() + "_" + $("#calculator_introduce").val()).val() == '' )
+            if ($("#calculator_fake_" + $("#calculator_fake_introduce").val() + "_" + $("#calculator_fake_introduce").val()).val() == '' )
             {
                 return;
             }
-            if ($("#calculator_nominal").val() == '' )
+            if ($("#calculator_fake_nominal").val() == '' )
             {
                 return;
             }
-            if ($("#calculator_gastos").val() == '' )
+            if ($("#calculator_fake_gastos").val() == '' )
             {
                 return;
             }
-            if ($("#calculator_burofax").val() == '' )
+            if ($("#calculator_fake_burofax").val() == '' )
             {
                 return;
             }
-            if ($("#calculator_mensajeria").val() == '' )
+            if ($("#calculator_fake_mensajeria").val() == '' )
             {
                 return;
             }
-            if ($("#calculator_omf").val() == '' )
+            if ($("#calculator_fake_omf").val() == '' )
             {
                 return;
             }
-            if ($("#calculator_timbres").val() == '' )
+            if ($("#calculator_fake_timbres").val() == '' )
             {
                 return;
             }
-            if ($("#calculator_honorarios").val() == '' )
+            if ($("#calculator_fake_honorarios").val() == '' )
             {
                 return;
             }
-            if ($("#calculator_extra").val() == '' )
+            if ($("#calculator_fake_extra").val() == '' )
             {
                 return;
             }
-            var nominal = parseFloat($("#calculator_nominal").val().replace(",", "."));
-            var retencion = parseFloat($("#calculator_costeFinanciero_retencion").val().replace(",", "."));
-            var dias = parseInt($("#calculator_dias").val());
-            var honorarios = parseFloat($("#calculator_honorarios").val());
-            var extra = parseFloat($("#calculator_extra").val());
-            var timbres = parseFloat($("#calculator_timbres").val());
-            var omf = parseFloat($("#calculator_omf").val());
-            var mensajeria = parseFloat($("#calculator_mensajeria").val());
-            var burofax = parseFloat($("#calculator_burofax").val());
-            var gastos = parseFloat($("#calculator_gastos").val());
+            var nominal = parseFloat($("#calculator_fake_nominal").val().replace(",", "."));
+            var retencion = parseFloat($("#calculator_fake_costeFinanciero_retencion").val().replace(",", "."));
+            var dias = parseInt($("#calculator_fake_dias").val());
+            var honorarios = parseFloat($("#calculator_fake_honorarios").val());
+            var extra = parseFloat($("#calculator_fake_extra").val());
+            var timbres = parseFloat($("#calculator_fake_timbres").val());
+            var omf = parseFloat($("#calculator_fake_omf").val());
+            var mensajeria = parseFloat($("#calculator_fake_mensajeria").val());
+            var burofax = parseFloat($("#calculator_fake_burofax").val());
+            var gastos = parseFloat($("#calculator_fake_gastos").val());
             var tae, total, mensual, coste = 0.0;
-            $("#calculator_costeFinanciero_nominal").val(nominal - (nominal * (retencion/100)));
+            $("#calculator_fake_costeFinanciero_nominal").val(nominal - (nominal * (retencion/100)));
 
-            if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'tae')
+            if ($("#calculator_fake_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_fake_introduce").val() == 'tae')
             {
-                coste = parseFloat($("#calculator_costeFinancieroLedser_tae").val()) * nominal * dias / 36000 - (honorarios + extra);
+                coste = parseFloat($("#calculator_fake_costeFinancieroLedser_tae").val()) * nominal * dias / 36000 - (honorarios + extra);
             }
-            else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'tae')
+            else if ($("#calculator_fake_introduce2").val() == 'costeTotal' && $("#calculator_fake_introduce").val() == 'tae')
             {
-                coste = parseFloat($("#calculator_costeTotal_tae").val()) * nominal * dias / 36000 - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
+                coste = parseFloat($("#calculator_fake_costeTotal_tae").val()) * nominal * dias / 36000 - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
             }
-            else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'total')
+            else if ($("#calculator_fake_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_fake_introduce").val() == 'total')
             {
-                coste = parseFloat($("#calculator_costeFinancieroLedser_total").val()) / 100 * nominal - (honorarios + extra);
+                coste = parseFloat($("#calculator_fake_costeFinancieroLedser_total").val()) / 100 * nominal - (honorarios + extra);
             }
-            else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'total')
+            else if ($("#calculator_fake_introduce2").val() == 'costeTotal' && $("#calculator_fake_introduce").val() == 'total')
             {
-                coste = parseFloat($("#calculator_costeTotal_total").val()) * nominal / 100 - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
+                coste = parseFloat($("#calculator_fake_costeTotal_total").val()) * nominal / 100 - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
             }
-            else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'mensual')
+            else if ($("#calculator_fake_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_fake_introduce").val() == 'mensual')
             {
-                coste = parseFloat($("#calculator_costeFinancieroLedser_mensual").val()) * 12 * nominal * dias / 36000 - (honorarios + extra);
+                coste = parseFloat($("#calculator_fake_costeFinancieroLedser_mensual").val()) * 12 * nominal * dias / 36000 - (honorarios + extra);
             }
-            else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'mensual')
+            else if ($("#calculator_fake_introduce2").val() == 'costeTotal' && $("#calculator_fake_introduce").val() == 'mensual')
             {
-                coste = parseFloat($("#calculator_costeTotal_mensual").val()) * nominal * 12 * dias / 36000 - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
+                coste = parseFloat($("#calculator_fake_costeTotal_mensual").val()) * nominal * 12 * dias / 36000 - (honorarios + extra) - timbres - omf - mensajeria - burofax - gastos;
             }
-            else if ($("#calculator_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_introduce").val() == 'coste')
+            else if ($("#calculator_fake_introduce2").val() == 'costeFinancieroLedser' && $("#calculator_fake_introduce").val() == 'coste')
             {
-                if($("#calculator_ConPorcentaje").is(':checked')) {
-                    honorarios = (parseFloat($("#calculator_costeFinancieroLedser_coste").val())) * parseFloat($("#calculator_porcentaje").val()) / 100;
-                    $("#calculator_honorarios").val(honorarios.toFixed(2));
+                if($("#calculator_fake_ConPorcentaje").is(':checked')) {
+                    honorarios = (parseFloat($("#calculator_fake_costeFinancieroLedser_coste").val())) * parseFloat($("#calculator_fake_porcentaje").val()) / 100;
+                    $("#calculator_fake_honorarios").val(honorarios.toFixed(2));
                 }
-                coste = parseFloat($("#calculator_costeFinancieroLedser_coste").val()) - honorarios.toFixed(2) - extra;
+                coste = parseFloat($("#calculator_fake_costeFinancieroLedser_coste").val()) - honorarios.toFixed(2) - extra;
             }
-            else if ($("#calculator_introduce2").val() == 'costeTotal' && $("#calculator_introduce").val() == 'coste')
+            else if ($("#calculator_fake_introduce2").val() == 'costeTotal' && $("#calculator_fake_introduce").val() == 'coste')
             {
-                if($("#calculator_ConPorcentaje").is(':checked')) {
-                    honorarios = (parseFloat($("#calculator_costeTotal_coste").val()) - extra - timbres - omf - mensajeria - burofax - gastos) * parseFloat($("#calculator_porcentaje").val()) / 100;
-                    $("#calculator_honorarios").val(honorarios.toFixed(2));
+                if($("#calculator_fake_ConPorcentaje").is(':checked')) {
+                    honorarios = (parseFloat($("#calculator_fake_costeTotal_coste").val()) - extra - timbres - omf - mensajeria - burofax - gastos) * parseFloat($("#calculator_fake_porcentaje").val()) / 100;
+                    $("#calculator_fake_honorarios").val(honorarios.toFixed(2));
                 }
-                coste = parseFloat($("#calculator_costeTotal_coste").val()) - honorarios - extra - timbres - omf - mensajeria - burofax - gastos;
+                coste = parseFloat($("#calculator_fake_costeTotal_coste").val()) - honorarios - extra - timbres - omf - mensajeria - burofax - gastos;
             }
-            else if ($("#calculator_introduce2").val() == 'costeFinanciero' && $("#calculator_introduce").val() == 'tae')
+            else if ($("#calculator_fake_introduce2").val() == 'costeFinanciero' && $("#calculator_fake_introduce").val() == 'tae')
             {
-                tae = parseFloat($("#calculator_costeFinanciero_tae").val());
+                tae = parseFloat($("#calculator_fake_costeFinanciero_tae").val());
                 total = tae / 360 * dias;
-                coste = $("#calculator_costeFinanciero_nominal").val() * total / 100;
+                coste = $("#calculator_fake_costeFinanciero_nominal").val() * total / 100;
             }
-            else if ($("#calculator_introduce2").val() == 'costeFinanciero' && $("#calculator_introduce").val() == 'total')
+            else if ($("#calculator_fake_introduce2").val() == 'costeFinanciero' && $("#calculator_fake_introduce").val() == 'total')
             {
-                total = parseFloat($("#calculator_costeFinanciero_total").val());
-                coste = parseFloat($("#calculator_costeFinanciero_nominal").val()) * total / 100;
+                total = parseFloat($("#calculator_fake_costeFinanciero_total").val());
+                coste = parseFloat($("#calculator_fake_costeFinanciero_nominal").val()) * total / 100;
             }
-            else if ($("#calculator_introduce2").val() == 'costeFinanciero' && $("#calculator_introduce").val() == 'mensual')
+            else if ($("#calculator_fake_introduce2").val() == 'costeFinanciero' && $("#calculator_fake_introduce").val() == 'mensual')
             {
-                mensual = parseFloat($("#calculator_costeFinanciero_mensual").val());
-                total = mensual * ($("#calculator_dias").val() / 30);
-                coste = parseFloat($("#calculator_costeFinanciero_nominal").val()) * total / 100;
+                mensual = parseFloat($("#calculator_fake_costeFinanciero_mensual").val());
+                total = mensual * ($("#calculator_fake_dias").val() / 30);
+                coste = parseFloat($("#calculator_fake_costeFinanciero_nominal").val()) * total / 100;
             }
-            else if ($("#calculator_introduce2").val() == 'costeFinanciero' && $("#calculator_introduce").val() == 'coste')
+            else if ($("#calculator_fake_introduce2").val() == 'costeFinanciero' && $("#calculator_fake_introduce").val() == 'coste')
             {
-                coste = parseFloat($("#calculator_costeFinanciero_coste").val());
+                coste = parseFloat($("#calculator_fake_costeFinanciero_coste").val());
             }
 
             total = coste / nominal * 100;
@@ -549,65 +549,65 @@ $(".messageNotice").hide();
 
 
 
-                $("#calculator_costeFinanciero_total").val(parseFloat(total).toFixed(2));
-                $("#calculator_costeFinanciero_mensual").val(parseFloat(mensual).toFixed(2));
-                $("#calculator_costeFinanciero_tae").val(parseFloat(tae).toFixed(2));
-                $("#calculator_costeFinanciero_coste").val(parseFloat(coste).toFixed(2));
+                $("#calculator_fake_costeFinanciero_total").val(parseFloat(total).toFixed(2));
+                $("#calculator_fake_costeFinanciero_mensual").val(parseFloat(mensual).toFixed(2));
+                $("#calculator_fake_costeFinanciero_tae").val(parseFloat(tae).toFixed(2));
+                $("#calculator_fake_costeFinanciero_coste").val(parseFloat(coste).toFixed(2));
 
 
 
-                $("#calculator_costeFinanciero_liquido").val(parseFloat($("#calculator_costeFinanciero_nominal").val() - $("#calculator_costeFinanciero_coste").val()).toFixed(2));
-                $("#calculator_costeFinanciero_retencionTotal").val(nominal * retencion / 100);
+                $("#calculator_fake_costeFinanciero_liquido").val(parseFloat($("#calculator_fake_costeFinanciero_nominal").val() - $("#calculator_fake_costeFinanciero_coste").val()).toFixed(2));
+                $("#calculator_fake_costeFinanciero_retencionTotal").val(nominal * retencion / 100);
 
-                $("#calculator_costeFinancieroLedser_total").val(
+                $("#calculator_fake_costeFinancieroLedser_total").val(
                     parseFloat(
-                     (parseFloat($("#calculator_costeFinanciero_coste").val()) + (parseFloat($("#calculator_honorarios").val()) + parseFloat($("#calculator_extra").val()))) / $("#calculator_costeFinanciero_nominal").val() * 100
+                     (parseFloat($("#calculator_fake_costeFinanciero_coste").val()) + (parseFloat($("#calculator_fake_honorarios").val()) + parseFloat($("#calculator_fake_extra").val()))) / $("#calculator_fake_costeFinanciero_nominal").val() * 100
                     ).toFixed(2)
                 );
-                $("#calculator_costeFinancieroLedser_tae").val(parseFloat($("#calculator_costeFinancieroLedser_total").val() / $("#calculator_dias").val() * 360).toFixed(2));
-                $("#calculator_costeFinancieroLedser_mensual").val(parseFloat($("#calculator_costeFinancieroLedser_tae").val() / 12).toFixed(2));
-                $("#calculator_costeFinancieroLedser_retencion").val(retencion);
-                $("#calculator_costeTotal_retencion").val(retencion);
-                $("#calculator_costeFinancieroLedser_nominal").val($("#calculator_costeFinanciero_nominal").val());
-                $("#calculator_costeTotal_nominal").val($("#calculator_costeFinanciero_nominal").val());
+                $("#calculator_fake_costeFinancieroLedser_tae").val(parseFloat($("#calculator_fake_costeFinancieroLedser_total").val() / $("#calculator_fake_dias").val() * 360).toFixed(2));
+                $("#calculator_fake_costeFinancieroLedser_mensual").val(parseFloat($("#calculator_fake_costeFinancieroLedser_tae").val() / 12).toFixed(2));
+                $("#calculator_fake_costeFinancieroLedser_retencion").val(retencion);
+                $("#calculator_fake_costeTotal_retencion").val(retencion);
+                $("#calculator_fake_costeFinancieroLedser_nominal").val($("#calculator_fake_costeFinanciero_nominal").val());
+                $("#calculator_fake_costeTotal_nominal").val($("#calculator_fake_costeFinanciero_nominal").val());
 
-                $("#calculator_costeFinancieroLedser_coste").val(
-                    parseFloat(parseFloat($("#calculator_costeFinanciero_coste").val()) + (parseFloat($("#calculator_honorarios").val()) + parseFloat($("#calculator_extra").val()))).toFixed(2)
+                $("#calculator_fake_costeFinancieroLedser_coste").val(
+                    parseFloat(parseFloat($("#calculator_fake_costeFinanciero_coste").val()) + (parseFloat($("#calculator_fake_honorarios").val()) + parseFloat($("#calculator_fake_extra").val()))).toFixed(2)
                 );
 
-                $("#calculator_costeTotal_coste").val(parseFloat(parseFloat($("#calculator_costeFinancieroLedser_coste").val()) + parseFloat($("#calculator_timbres").val()) +
-                    parseFloat($("#calculator_omf").val()) + parseFloat($("#calculator_mensajeria").val()) + parseFloat($("#calculator_burofax").val()) + parseFloat($("#calculator_gastos").val())).toFixed(2));
+                $("#calculator_fake_costeTotal_coste").val(parseFloat(parseFloat($("#calculator_fake_costeFinancieroLedser_coste").val()) + parseFloat($("#calculator_fake_timbres").val()) +
+                    parseFloat($("#calculator_fake_omf").val()) + parseFloat($("#calculator_fake_mensajeria").val()) + parseFloat($("#calculator_fake_burofax").val()) + parseFloat($("#calculator_fake_gastos").val())).toFixed(2));
 
-                $("#calculator_costeFinancieroLedser_liquido").val(
-                    parseFloat($("#calculator_costeFinancieroLedser_nominal").val() - $("#calculator_costeFinancieroLedser_coste").val()).toFixed(2)
+                $("#calculator_fake_costeFinancieroLedser_liquido").val(
+                    parseFloat($("#calculator_fake_costeFinancieroLedser_nominal").val() - $("#calculator_fake_costeFinancieroLedser_coste").val()).toFixed(2)
                 );
-                $("#calculator_costeTotal_liquido").val(parseFloat($("#calculator_costeTotal_nominal").val() - $("#calculator_costeTotal_coste").val()).toFixed(2))
-                $("#calculator_costeFinancieroLedser_retencionTotal").val(nominal * retencion / 100);
-                $("#calculator_costeTotal_retencionTotal").val(nominal * retencion / 100);
+                $("#calculator_fake_costeTotal_liquido").val(parseFloat($("#calculator_fake_costeTotal_nominal").val() - $("#calculator_fake_costeTotal_coste").val()).toFixed(2))
+                $("#calculator_fake_costeFinancieroLedser_retencionTotal").val(nominal * retencion / 100);
+                $("#calculator_fake_costeTotal_retencionTotal").val(nominal * retencion / 100);
 
-                $("#calculator_costeTotal_total").val(parseFloat((parseFloat($("#calculator_costeFinanciero_coste").val()) + (parseFloat($("#calculator_honorarios").val()) + parseFloat($("#calculator_extra").val())) + parseFloat($("#calculator_timbres").val()) +
-                    parseFloat($("#calculator_omf").val()) + parseFloat($("#calculator_mensajeria").val()) + parseFloat($("#calculator_burofax").val()) + parseFloat($("#calculator_gastos").val())) / $("#calculator_costeFinanciero_nominal").val() * 100).toFixed(2));
+                $("#calculator_fake_costeTotal_total").val(parseFloat((parseFloat($("#calculator_fake_costeFinanciero_coste").val()) + (parseFloat($("#calculator_fake_honorarios").val()) + parseFloat($("#calculator_fake_extra").val())) + parseFloat($("#calculator_fake_timbres").val()) +
+                    parseFloat($("#calculator_fake_omf").val()) + parseFloat($("#calculator_fake_mensajeria").val()) + parseFloat($("#calculator_fake_burofax").val()) + parseFloat($("#calculator_fake_gastos").val())) / $("#calculator_fake_costeFinanciero_nominal").val() * 100).toFixed(2));
 
-                $("#calculator_costeTotal_tae").val(parseFloat($("#calculator_costeTotal_total").val() / $("#calculator_dias").val() * 360).toFixed(2));
-                $("#calculator_costeTotal_mensual").val(parseFloat($("#calculator_costeTotal_tae").val() / 12).toFixed(2));
+                $("#calculator_fake_costeTotal_tae").val(parseFloat($("#calculator_fake_costeTotal_total").val() / $("#calculator_fake_dias").val() * 360).toFixed(2));
+                $("#calculator_fake_costeTotal_mensual").val(parseFloat($("#calculator_fake_costeTotal_tae").val() / 12).toFixed(2));
 
-                $("#calculator_costeFinancieroCoste").val($("#calculator_costeFinanciero_coste").val());
-                $("#calculator_costeFinancieroLedserCoste").val(parseFloat($("#calculator_costeFinancieroLedser_coste").val()) + parseFloat(extra));
-                $("#calculator_costeTotalCoste").val(parseFloat($("#calculator_costeTotal_coste").val()) + parseFloat(extra));
+                $("#calculator_fake_costeFinancieroCoste").val($("#calculator_fake_costeFinanciero_coste").val());
+                $("#calculator_fake_costeFinancieroLedserCoste").val(parseFloat($("#calculator_fake_costeFinancieroLedser_coste").val()) + parseFloat(extra));
+                $("#calculator_fake_costeTotalCoste").val(parseFloat($("#calculator_fake_costeTotal_coste").val()) + parseFloat(extra));
 //            }
         }
         function  reloadDates() {
-            $("#calculator_dias").on('change', function() {
-                var start = $("#calculator_formalizacion").val();
+            $("#calculator_fake_dias").on('change', function() {
+                var start = $("#calculator_fake_formalizacion").val();
                 var startD = new Date(start);
                 var finishD = new Date(start);
                 var dateString = finishD.getUTCDate() +"/"+ (finishD.getUTCMonth()+1) +"/"+ finishD.getUTCFullYear() ;
-                finishD.setDate(finishD.getDate() + parseInt($("#calculator_dias").val()));
+                finishD.setDate(finishD.getDate() + parseInt($("#calculator_fake_dias").val()));
                 var nd = new Date(finishD);
                 var day = ("0" + nd.getDate()).slice(-2);
                 var month = ("0" + (nd.getMonth() + 1)).slice(-2);
                 var dateString = nd.getUTCFullYear() +"-"+ month +"-"+ day;
-                $("#calculator_vencimiento").val(dateString);
+                $("#calculator_fake_vencimiento").val(dateString);
             });
         }
         function introduceChange ()
@@ -615,7 +615,7 @@ $(".messageNotice").hide();
             $(".fourth").show();
             var introduces2 = {'costeFinanciero':'costeFinanciero','costeFinancieroLedser' : 'costeFinancieroLedser','costeTotal': 'costeTotal'};
             var introduces = {'tae':'tae','mensual' : 'mensual','total': 'total','coste': 'coste'};
-            if (($("#calculator_introduce2").val() == 'costeFinancieroLedser' || $("#calculator_introduce2").val() == 'costeTotal') && $("#calculator_introduce").val() == 'coste')
+            if (($("#calculator_fake_introduce2").val() == 'costeFinancieroLedser' || $("#calculator_fake_introduce2").val() == 'costeTotal') && $("#calculator_fake_introduce").val() == 'coste')
             {
                 $(".ConPorcentaje").show();
             }
@@ -626,12 +626,12 @@ $(".messageNotice").hide();
         for (introduce2 in introduces2) {
                 for (introduce in introduces) {
                     //                        if(introduce == $(this).val()){
-                    $("#calculator_" + introduce2 +"_" + introduce).prop('readonly', 'readonly');
+                    $("#calculator_fake_" + introduce2 +"_" + introduce).prop('readonly', 'readonly');
                     //                        }
                 }
             }
-            $("#calculator_" + $("#calculator_introduce2").val() +"_" + $("#calculator_introduce").val()).prop('readonly', false);
-            console.log("#calculator_" + $("#calculator_introduce2").val() +"_" + $("#calculator_introduce").val());
+            $("#calculator_fake_" + $("#calculator_fake_introduce2").val() +"_" + $("#calculator_fake_introduce").val()).prop('readonly', false);
+            console.log("#calculator_fake_" + $("#calculator_fake_introduce2").val() +"_" + $("#calculator_fake_introduce").val());
         }
     </script>
 {% endblock %}
