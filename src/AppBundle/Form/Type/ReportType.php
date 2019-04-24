@@ -29,6 +29,7 @@ class ReportType extends AbstractType
             'choice_label' => 'name', 
             'group_by'=> 'types',
             'required' => false,
+            'placeholder' => 'Elige',
             'query_builder' => function( CompanyRepository $er ) {
                 return $er->getCompaniesSorted();
         }]);
