@@ -28,8 +28,10 @@ class CalculatorFakeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $tomorrow = new \DateTime();
+        $tomorrow->modify("+1 day");
         $builder->add('formalizacion', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd',  'data' => new \DateTime("now")]);
-        $builder->add('vencimiento', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd',  'data' => new \DateTime("now")]);
+        $builder->add('vencimiento', DateType::class, ['widget' => 'single_text',  'format' => 'yyyy-MM-dd',  'data' => $tomorrow]);
         $builder->add('dias', IntegerType::class, ['data' => 1]); //, 'attr' => ['readonly' => true]
         $builder->add('costeFinancieroCoste', TextType::class, ['mapped' => false, 'attr' => ['readonly' => true]]); //, 'attr' => ['readonly' => true]
         $builder->add('costeFinancieroLedserCoste', TextType::class, ['mapped' => false, 'attr' => ['readonly' => true]]); //, 'attr' => ['readonly' => true]
