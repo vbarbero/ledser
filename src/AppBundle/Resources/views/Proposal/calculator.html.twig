@@ -197,9 +197,21 @@
 //            $("#calculator_costeFinanciero_" + introduce).prop('readonly', true);
 //        }
         $(function () {
-if(!$("#calculator_fake_notice").prop('checked') ) {
-            $(".messageNotice").hide();
-}
+            $("#calculator_fake_costeFinanciero_retencion").val(0);
+            $("#calculator_fake_nominal").val(0);
+            $("#calculator_fake_costeFinancieroLedser_retencion").val(0);
+            $("#calculator_fake_costeTotal_retencion").val(0);
+            $("#calculator_fake_honorarios").val(0);
+            $("#calculator_fake_dias").val(0);
+            $("#calculator_fake_extra").val(0);
+            $("#calculator_fake_timbres").val(0);
+            $("#calculator_fake_omf").val(0);
+            $("#calculator_fake_mensajeria").val(0);
+            $("#calculator_fake_burofax").val(0);
+            $("#calculator_fake_gastos").val(0);
+            if(!$("#calculator_fake_notice").prop('checked') ) {
+                        $(".messageNotice").hide();
+            }
             $("#calculator_fake_notice").on("click", function() {
 		if($("#calculator_fake_notice").prop('checked') ) {
                     $(".messageNotice").show();
@@ -439,7 +451,7 @@ $(".messageNotice").hide();
             {
                 return;
             }
-            debugger;
+
             var nominal = parseFloat($("#calculator_fake_nominal").val().replace(",", "."));
             var retencion = parseFloat($("#calculator_fake_costeFinanciero_retencion").val().replace(",", "."));
             var dias = parseInt($("#calculator_fake_dias").val());
